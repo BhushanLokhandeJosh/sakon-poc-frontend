@@ -1,0 +1,35 @@
+.form {
+    padding: 2%;
+    border: 1px solid black;
+    box-shadow: 10px black;
+    width: 40%;
+    height: auto;
+    margin: auto;
+    margin-top: 8%;
+    background-color: rgb(252, 252, 249);
+}
+
+.form-basic {
+    height: 100%;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10%;
+    justify-content: center;
+}
+
+.form-field {
+    width: 70%;
+}
+
+.text-field {
+    border: 1px solid black;
+}
+
+.form-group {
+    padding: 20px;
+}
+
+.submit-btn {
+    width: 20%;
+}
