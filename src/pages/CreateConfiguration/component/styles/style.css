@@ -1,35 +1,24 @@
+
+.css-1wi1tdd-MuiGrid-root > .MuiGrid-item {
+  padding-top: 20px;
+}
+
 .form {
-    padding: 2%;
-    border: 1px solid black;
-    box-shadow: 10px black;
-    width: 40%;
-    height: auto;
-    margin: auto;
-    margin-top: 8%;
-    background-color: rgb(252, 252, 249);
-}
-
-.form-basic {
-    height: 100%;
-    border: 1px solid red;
-    display: flex;
-    flex-direction: row;
-    column-gap: 10%;
-    justify-content: center;
-}
-
-.form-field {
-    width: 70%;
+  width: 95%;
+  height: auto;
+  margin: auto;
 }
 
 .text-field {
-    border: 1px solid black;
+  text-align: left;
+  border: 0.5px solid rgb(180, 177, 177);
+  width: 95%;
+  padding: 10px;
+  box-shadow: 0.5px 1px rgb(199, 198, 198);
 }
 
-.form-group {
-    padding: 20px;
-}
-
-.submit-btn {
-    width: 20%;
+.label-style {
+  text-align: left;
+  color: rgb(62, 61, 61);
+  padding-bottom: 5px;
 }

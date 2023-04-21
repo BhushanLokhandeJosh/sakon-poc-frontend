@@ -4,23 +4,30 @@ export const initialValues = {
   email: "",
   password: "",
   carrierName: "",
-  websiteURL: "",
+  sftpLogin:"",
+  sftpPassword:"",
   sftpLocation: "",
   downloadPath: "",
-  uploadPath: "",
   template: "",
 };
 
+export interface IProps {
+  initialValues: InitialValuesProps;
+  validationSchema: any;
+  onSubmit: (values: InitialValuesProps) => void;
+  handleClose ?: () => void;
+}
+
 export interface InitialValuesProps {
-  id?:number,
+  id?: number;
   email: string;
   password: string;
   carrierName: string;
-  websiteURL: string;
+  sftpLogin:string;
+  sftpPassword:string;
   sftpLocation: string;
   downloadPath: string;
-  uploadPath: string;
-  template: string;
+  template?: string;
 }
 
 export const validationSchema = Yup.object({
@@ -37,9 +44,9 @@ export const validationSchema = Yup.object({
     )
     .required("Password Required"),
   carrierName: Yup.string().required("Carrier Name is Must"),
-  websiteURL: Yup.string().required("Website URL Required"),
+  sftpLogin:Yup.string().required("Login Credential is Required"),
+  sftpPassword:Yup.string().required("Password Required"),
   sftpLocation: Yup.string().required("Sftp Location Required"),
   downloadPath: Yup.string().required("Download Path Required"),
-  uploadPath: Yup.string().required("Upload Path Required"),
   template: Yup.string().required("Template Required"),
 });

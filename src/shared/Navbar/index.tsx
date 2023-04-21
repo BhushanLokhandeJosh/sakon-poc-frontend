@@ -29,7 +29,7 @@ const sidebarMenu = [
 ];
 
 interface IProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const LayoutComponent = (props: IProps) => {

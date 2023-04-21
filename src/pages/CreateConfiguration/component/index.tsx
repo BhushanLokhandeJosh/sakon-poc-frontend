@@ -1,132 +1,59 @@
-import React from "react";
-import { Form, Formik } from "formik";
-import FormikControl from "../../../shared/FormikContainer/formikControl";
-import "./styles/style.css";
-import { InitialValuesProps } from "../constants";
-import { Box, Button, Grid } from "@mui/material";
+import React, { useState } from "react";
 
-interface IProps {
-  initialValues: InitialValuesProps;
-  validationSchema: any;
-  onSubmit: (values: InitialValuesProps) => void;
-}
+import { Button } from "@mui/material";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import ConfigurationForm from "./ConfigurationForm";
+
+import { IProps } from "../constants";
+import "./styles/style.css";
 
 const CreateConfigurationComponent = (props: IProps) => {
+  const [open, setOpen] = useState(false);
+
   const { initialValues, validationSchema, onSubmit } = props;
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <div className="form">
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
-        {(formikProps) => {
-          return (
-            <Box sx={{ width: "100%" }}>
-              <Form>
-                <Grid
-                  container
-                  rowSpacing={1}
-                  columnSpacing={{ xs: 1, sm: 1, md: 1 }}
-
-                >
-                  <Grid item xs={6}>
-                    <div className="form-group">
-                      <FormikControl
-                        control="input"
-                        type="text"
-                        label="Email"
-                        name="email"
-                        className="form-field"
-                      />
-                    </div>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <div className="form-group">
-                      <FormikControl
-                        control="input"
-                        type="password"
-                        label="Password"
-                        name="password"
-                        className="form-field"
-                      />
-                    </div>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <div className="form-group">
-                      <FormikControl
-                        control="input"
-                        type="text"
-                        label="Carrier Name"
-                        name="carrierName"
-                        className="form-field"
-                      />
-                    </div>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <div className="form-group">
-                      <FormikControl
-                        control="input"
-                        type="text"
-                        label="Website URL"
-                        name="websiteURL"
-                        className="form-field"
-                      />
-                    </div>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <div className="form-group">
-                      <FormikControl
-                        control="input"
-                        type="text"
-                        label="Sftp Location"
-                        name="sftpLocation"
-                        className="form-field"
-                      />
-                    </div>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <div className="form-group">
-                      <FormikControl
-                        control="input"
-                        type="text"
-                        label="Download Path"
-                        name="downloadPath"
-                        className="form-field"
-                      />
-                    </div>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <div className="form-group">
-                      <FormikControl
-                        control="input"
-                        type="file"
-                        label="Template"
-                        name="template"
-                        className="form-field"
-                      />
-                    </div>
-                  </Grid>
-                  <Grid item xs={6}></Grid>
-
-                  <Grid item xs={4}></Grid>
-                  <Grid item xs={4}>
-                    <Button
-                      variant="contained" 
-                      color="error"
-                      type="submit"
-                      className="form-group form-field"
-                    >
-                      Submit
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Form>
-            </Box>
-          );
+    <div>
+      <Button
+        variant="contained"
+        className="create-button"
+        color="info"
+        onClick={handleClickOpen}
+        sx={{
+          backgroundColor: "blue",
+          marginTop: "5%",
+          marginLeft: "50%",
         }}
-      </Formik>
+      >
+        Create Configuration
+      </Button>
+      <Dialog open={open} onClose={handleClose} sx={{ borderRadius: "20px" }}>
+        <DialogTitle
+          sx={{
+            fontSize: "25px",
+            textDecorationLine: "underline",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          Configuration Form
+        </DialogTitle>
+        <ConfigurationForm
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+          handleClose={handleClose}
+        />
+      </Dialog>
     </div>
   );
 };

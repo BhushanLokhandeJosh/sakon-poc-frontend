@@ -4,17 +4,14 @@ import { validationSchema } from "./constants";
 import { useCreateConfiguration } from "../../hooks/useQueryhooks";
 import CreateConfigurationComponent from "./component";
 import { toast } from "react-toastify";
-import { AxiosError } from "axios";
 
 const CreateConfigContainer = () => {
-
+  
   const onSuccess = async (values: any) => {
-    console.log("Form submitted succesfully...");
-    console.log(values);
     toast.success("Configuration Added Successfully...");
   };
 
-  const onError = (values: AxiosError) => {
+  const onError = (values: any) => {
     toast.error("Something Went Wrong...");
   };
 
