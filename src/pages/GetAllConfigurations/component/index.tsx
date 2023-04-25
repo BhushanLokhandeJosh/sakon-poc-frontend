@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@mui/material";
-import DataTable from "./DataTable";
+import GetAllConfDataTable from "./GetAllConfDataTable";
 
 interface IProps {
   searchValue: string;
@@ -23,7 +23,7 @@ const GetAllConfigurationComponent = (props: IProps) => {
           onChange={(e: any) => setSearchValue(e.target.value)}
         />
       </div>
-      <DataTable data={data} />
+      <GetAllConfDataTable data={data} />
     </div>
   );
 };

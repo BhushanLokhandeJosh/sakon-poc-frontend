@@ -7,7 +7,7 @@ interface IProps {
   data: any;
 }
 
-export default function DataTable(props: IProps) {
+export default function GetAllConfDataTable(props: IProps) {
   const { data } = props;
 
   return (
