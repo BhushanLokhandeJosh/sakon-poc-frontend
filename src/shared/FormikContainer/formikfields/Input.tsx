@@ -29,8 +29,6 @@ const Input = (props: IProps): ReactElement => {
 
       <div>
       <Field id={name} name={name} className={className} {...other} />
-
-      
       <ErrorMessage name={name} component={FormError} />
       </div>
     </>
