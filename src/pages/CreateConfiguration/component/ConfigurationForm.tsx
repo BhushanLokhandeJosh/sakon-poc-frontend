@@ -35,7 +35,7 @@ const ConfigurationForm = (props: IProps) => {
                           type="text"
                           label="EMAIL"
                           name="email"
-                          className="form-field"
+                          className="text-field"
                         />
                       </div>
                     </Grid>
@@ -46,7 +46,18 @@ const ConfigurationForm = (props: IProps) => {
                           type="password"
                           label="PASSWORD"
                           name="password"
-                          className="form-field"
+                          className="text-field"
+                        />
+                      </div>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <div className="form-group">
+                        <FormikControl
+                          control="input"
+                          type="text"
+                          label="CONFIGURATION NAME"
+                          name="configurationName"
+                          className="text-field"
                         />
                       </div>
                     </Grid>
@@ -57,11 +68,22 @@ const ConfigurationForm = (props: IProps) => {
                           type="text"
                           label="CARRIER NAME"
                           name="carrierName"
-                          className="form-field"
+                          className="text-field"
                         />
                       </div>
                     </Grid>
 
+                    <Grid item xs={12}>
+                      <div className="form-group">
+                        <FormikControl
+                          control="input"
+                          type="text"
+                          label="DEPARTMENT"
+                          name="department"
+                          className="text-field"
+                        />
+                      </div>
+                    </Grid>
                     <Grid item xs={12}>
                       <div className="form-group">
                         <FormikControl
@@ -69,11 +91,10 @@ const ConfigurationForm = (props: IProps) => {
                           type="text"
                           label="SFTP LOGIN"
                           name="sftpLogin"
-                          className="form-field"
+                          className="text-field"
                         />
                       </div>
                     </Grid>
-
                     <Grid item xs={12}>
                       <div className="form-group">
                         <FormikControl
@@ -81,11 +102,10 @@ const ConfigurationForm = (props: IProps) => {
                           type="password"
                           label="SFTP PASSWORD"
                           name="sftpPassword"
-                          className="form-field"
+                          className="text-field"
                         />
                       </div>
                     </Grid>
-
                     <Grid item xs={12}>
                       <div className="form-group">
                         <FormikControl
@@ -93,7 +113,7 @@ const ConfigurationForm = (props: IProps) => {
                           type="text"
                           label="SFTP LOCATION"
                           name="sftpLocation"
-                          className="form-field"
+                          className="text-field"
                         />
                       </div>
                     </Grid>
@@ -104,7 +124,7 @@ const ConfigurationForm = (props: IProps) => {
                           type="text"
                           label="DOWNLOAD LINK"
                           name="downloadPath"
-                          className="form-field"
+                          className="text-field"
                         />
                       </div>
                     </Grid>
@@ -115,11 +135,10 @@ const ConfigurationForm = (props: IProps) => {
                           type="file"
                           label="TEMPLATE"
                           name="template"
-                          className="form-field"
+                          className="text-field"
                         />
                       </div>
                     </Grid>
-
                     <Grid item xs={12}>
                       <DialogActions>
                         <Button
@@ -135,7 +154,7 @@ const ConfigurationForm = (props: IProps) => {
                           variant="contained"
                           onClick={handleClose}
                         >
-                          ERROR
+                          CLOSE
                         </Button>
                       </DialogActions>
                     </Grid>

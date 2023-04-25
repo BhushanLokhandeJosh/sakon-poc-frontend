@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 import { TextField } from "@mui/material";
 
 interface IProps {
-  label: string;
+  label?: string;
   name: string;
   type?:
     | "text"
@@ -16,29 +16,24 @@ interface IProps {
     | "password"
     | "number"
     | "file";
+  className?: string;
 }
 
 const Input = (props: IProps): ReactElement => {
-  const { label, name, ...other } = props;
+  const { label, name, className, ...other } = props;
   return (
-    <div>
+    <>
       <div className="label-style">
-        <label htmlFor={name} >
-          {label}
-        </label>
-      </div>
-      <div>
-        <Field
-          id={name}
-          name={name}
-          {...other}
-          className="form-control text-field"
-        />
-        
-        <ErrorMessage name={name} component={FormError} />
+        <label htmlFor={name}>{label}</label>
       </div>
 
-    </div>
+      <div>
+      <Field id={name} name={name} className={className} {...other} />
+
+      
+      <ErrorMessage name={name} component={FormError} />
+      </div>
+    </>
   );
 };
 

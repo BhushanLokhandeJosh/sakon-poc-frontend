@@ -2,39 +2,46 @@ import { Field, ErrorMessage } from "formik";
 import FormError from "./FormError";
 import { ReactElement } from "react";
 
+import "./styles/style.css";
+
 interface IProps {
-  label:string,
-  name:string,
-  options?: { key: string; value: string }[];
+  label?: string;
+  name: string;
+  options?: { label: string; value: string }[];
+  className?: string;
+  onClick?: () => void;
+  placeholder?: string;
 }
 
-const Select = (props:IProps):ReactElement => {
-  const { label, name, options, ...other } = props;
+const Select = (props: IProps): ReactElement => {
+  const { label, name, options, className, onClick, placeholder, ...other } =
+    props;
   return (
-    <div>
-      <label
-        htmlFor={name}
-        style={{ fontSize: "25px", fontWeight: "bold" }}
-      >
-        {label}
-      </label>
+    <>
+      <label htmlFor={name}>{label}</label>
+
       <Field
         as="select"
         id={name}
         name={name}
         {...other}
-        className="form-control"
+        onClick={onClick}
+        className={className}
+        placeholder={placeholder}
       >
         {options?.map((option) => {
           return (
             <option key={option.value} value={option.value}>
-              {option.key}
+              {option.label}
             </option>
           );
         })}
       </Field>
-      <ErrorMessage name={name} component={FormError} />
-    </div>
+
+      <div>
+        <ErrorMessage name={name} component={FormError} />
+      </div>
+    </>
   );
 };
 

@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const CreateConfigContainer = () => {
   
-  const onSuccess = async (values: any) => {
+  const onSuccess = async (values: InitialValuesProps) => {
     toast.success("Configuration Added Successfully...");
   };
 

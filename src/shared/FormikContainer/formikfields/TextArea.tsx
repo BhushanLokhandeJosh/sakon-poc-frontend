@@ -3,14 +3,14 @@ import FormError from "./FormError";
 import { ReactElement } from "react";
 
 interface IProps {
-  label: string;
+  label?: string;
   name: string;
 }
 
 const TextArea = (props: IProps): ReactElement => {
   const { label, name, ...other } = props;
   return (
-    <div className="mb-3 row">
+    <>
       <label
         htmlFor={name}
         className="col-sm-2 col-form-label"
@@ -26,7 +26,7 @@ const TextArea = (props: IProps): ReactElement => {
         className="form-control"
       />
       <ErrorMessage name={name} component={FormError} />
-    </div>
+    </>
   );
 };
 
