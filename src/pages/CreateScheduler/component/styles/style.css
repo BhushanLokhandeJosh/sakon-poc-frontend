@@ -1,0 +1,133 @@
+.card-container {
+  margin: 5%;
+  width: auto;
+  height: auto;
+  padding: 30px;
+  text-align: left;
+  border: 1px solid rgb(220, 216, 216);
+  box-shadow: 3px 3px rgb(234, 233, 233);
+  border-radius: 4px;
+}
+
+.header-style {
+  text-align: left;
+  font-size: 25px;
+}
+
+.container-style {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.subheading-style {
+  font-size: 20px;
+  color: rgb(37, 35, 35);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.card-style {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0px;
+  align-items: center;
+  column-gap: 5px;
+  
+}
+
+.select-box {
+  background-color: red;
+  width: 150%;
+}
+
+.form-styling {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 30px;
+  width: 200px;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+}
+
+.select-timezone {
+  width: 20%;
+  padding: 10px 0px;
+  margin: 5px 0px;
+  text-align: center;
+}
+
+.form-control {
+  width: 15%;
+  padding: 10px 0px;
+  margin: 5px 0px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.form-control:hover {
+  background-color: rgb(248, 242, 242);
+}
+
+.form-control-timestate {
+  width: 10%;
+  padding: 10px 0px;
+  margin: 5px 0px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.form-control-timezone {
+  width: 60%;
+  padding: 10px 0px;
+  margin: 30px 0px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.form-control-input {
+  width: 60%;
+  padding: 10px 0px;
+  margin: 30px 0px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.form-control-multiselect {
+  width: 20%;
+  padding: 10px 0px;
+  margin: 30px 0px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.button-submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  column-gap: 30px;
+  font-size: 15px;
+}
+
+.configuration-style {
+  width: 60%;
+  height: fit-content;
+  margin: 20px 0px;
+  text-align: center;
+  font-size: 15px;
+  border: 0.5px solid rgb(146, 143, 143);
+  border-radius: 5px;
+}
+
+.month-style {
+  padding: 0px 5px;
+}

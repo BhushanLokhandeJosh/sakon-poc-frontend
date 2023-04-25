@@ -29,7 +29,9 @@ interface IProps {
   value?:string;
   onClick?:() => void;
   isMulti?:boolean;
-  component?:any
+  component?:any;
+  variant?:string;
+  color?:string;
 }
 
 const FormikControl = (props: IProps) => {
@@ -43,7 +45,6 @@ const FormikControl = (props: IProps) => {
       return <Select {...other} />;
     case "date":
       return <Date {...other} />;
-
     case "multi-select":
       return <MultiSelect {...other} />
     case "time":

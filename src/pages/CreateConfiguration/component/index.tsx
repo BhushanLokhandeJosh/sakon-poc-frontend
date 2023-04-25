@@ -9,7 +9,7 @@ import { IProps } from "../constants";
 import "./styles/style.css";
 
 const CreateConfigurationComponent = (props: IProps) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const { initialValues, validationSchema, onSubmit } = props;
 
