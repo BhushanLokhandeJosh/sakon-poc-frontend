@@ -15,7 +15,7 @@ export interface InputElementProps {
     | "number"
     | "file";
   className?: string;
-  placeholder?:string
+  placeholder?: string;
 }
 
 export interface DateElementProps {
@@ -30,7 +30,7 @@ export interface MultiSelectProps {
   component?: any;
   placeholder?: string;
   isMulti?: boolean;
-  label?:string
+  label?: string;
 }
 
 export interface SelectElementProps {
@@ -43,7 +43,7 @@ export interface SelectElementProps {
 }
 
 export interface Option {
-  label:string
+  label: string;
   value: string;
 }
 
@@ -59,16 +59,13 @@ export interface TextAreaElementProps {
   name: string;
 }
 
-
 export interface TimeElementProps {
   label?: string;
   name: string;
   value?: string;
-  className?:string;
+  className?: string;
 }
 
 export interface ErrorComponentProps {
   children?: string;
 }
-
-

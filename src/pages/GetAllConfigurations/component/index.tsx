@@ -15,11 +15,15 @@ const GetAllConfigurationComponent = (props: IProps) => {
 
   return (
     <div>
-      <div className="input-btn-container">
-        <Button variant="contained">Create Configuration</Button>
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
-      </div>
-      <GetAllConfDataTable data={data} />
+      {/* <div className="input-btn-container"> */}
+      <Button variant="contained">Create Configuration</Button>
+      {/* <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} /> */}
+      {/* </div> */}
+      <GetAllConfDataTable
+        data={data}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
     </div>
   );
 };

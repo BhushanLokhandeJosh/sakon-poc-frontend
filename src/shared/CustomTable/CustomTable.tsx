@@ -8,7 +8,8 @@ import {
 } from "@mui/x-data-grid";
 import React from "react";
 import { getAllConfigColumns } from "../../pages/GetAllConfigurations/constants";
-import { Box } from "@mui/material";
+import { Box, Hidden } from "@mui/material";
+// import "./style.css";
 // import { Box } from "@mui/material";
 
 interface IProps {
@@ -20,16 +21,16 @@ const CustomTable = (props: IProps) => {
 
   /*
   function QuickSearchToolbar() {
-    return (
-      <Box
-        sx={{
-          p: 0.5,
-          pb: 0,
-        }}
-      >
-        <GridToolbarQuickFilter />
-      </Box>
-    );
+  return (
+  <Box
+  sx={{
+  p: 0.5,
+  pb: 0,
+  }}
+  >
+  <GridToolbarQuickFilter />
+  </Box>
+  );
   }
   */
 
@@ -42,11 +43,11 @@ const CustomTable = (props: IProps) => {
     const filteredFields = currentFilters?.map((item) => item.field);
     return columns
       .filter(
-        (colDef) =>
+        (colDef: any) =>
           colDef.filterable &&
           (colDef.field === field || !filteredFields.includes(colDef.field))
       )
-      .map((column) => column.field);
+      .map((column: any) => column.field);
   };
 
   const getColumnForNewFilter = ({
@@ -56,43 +57,54 @@ const CustomTable = (props: IProps) => {
     const filteredFields = currentFilters?.map(({ field }) => field);
     const columnForNewFilter = columns
       .filter(
-        (colDef) => colDef.filterable && !filteredFields.includes(colDef.field)
+        (colDef: any) =>
+          colDef.filterable && !filteredFields.includes(colDef.field)
       )
-      .find((colDef) => colDef.filterOperators?.length);
+      .find((colDef: any) => colDef.filterOperators?.length);
     return columnForNewFilter?.field ?? null;
   };
 
   return (
-    <div style={{ height: 600, width: "98%" }}>
+    <div style={{ height: "600px", width: "auto", marginRight: "20px" }}>
       <DataGrid
         {...data} //Not needed
         disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.
         disableRowSelectionOnClick //Used to Remove statement: whenever we select rows it shows selected rows statement on UI.
         rows={data}
         columns={columnHeader}
-        slots={{ toolbar: GridToolbar }}
-        slotProps={{
-          filterPanel: {
-            filterFormProps: {
-              filterColumns,
-            },
-            getColumnForNewFilter,
-          },
-        }}
+        // slots={{ toolbar: GridToolbar }}
+        // slotProps={{
+        // filterPanel: {
+        // filterFormProps: {
+        // filterColumns,
+        // },
+        // getColumnForNewFilter,
+        // },
+        // }}
         disableColumnSelector // Used to disable column selector.
         disableDensitySelector // Used to disable density selector.
-
-        /*
-        slotProps={{
-          filterPanel: {
-            filterFormProps: {
-              //   filterColumns,
-            },
-            // getColumnForNewFilter,
+        sx={{
+          ".MuiDataGrid-iconButtonContainer": {
+            visibility: "visible",
+          },
+          ".MuiDataGrid-sortIcon": {
+            opacity: "inherit !important",
           },
         }}
-        slots={{ toolbar: QuickSearchToolbar }} //  =>Used for searching on UI using material UI library
-        */
+        // showCellVerticalBorder
+        // showColumnVerticalBorder
+
+        /*
+  slotProps={{
+  filterPanel: {
+  filterFormProps: {
+  // filterColumns,
+  },
+  // getColumnForNewFilter,
+  },
+  }}
+  slots={{ toolbar: QuickSearchToolbar }} // =>Used for searching on UI using material UI library
+  */
 
         // pageSize={5}
         // rowsPerPageOptions={[5]}

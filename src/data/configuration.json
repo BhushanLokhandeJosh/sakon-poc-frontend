@@ -1,75 +1,241 @@
 {
-  "configurations": [
+  "configuration": [
     {
-      "configurationName": "Josh/DEBU/Verizone",
-      "department": "IT",
-      "email": "bhushan@gmail.com",
-      "password": "Bhushan@123",
-      "carrierName": "Verizone",
-      "sftpLogin": "C/local/data",
-      "sftpPassword": "C/local/data",
-      "sftpLocation": "C/local/data",
-      "downloadPath": "ghkgfkfhf",
-      "template": "C:\\fakepath\\chainIcon.png",
-      "id": 6
+      "email": "harshal@gmail.com",
+      "password": "Harshal@123",
+      "carrierName": "dhefhrle",
+      "sftpLogin": "qwefjrh",
+      "sftpPassword": "qwjfdhj",
+      "sftpLocation": "qwesfdhj",
+      "downloadPath": "qWASDHFJ",
+      "template": "C:\\fakepath\\labelIcon.png",
+      "id": 4
     }
   ],
 
   "configDetails": [
     {
       "id": 1,
-      "email": "harshal@gmail.com",
-      "carrierName": "jio",
       "configurationName": "josh/finance",
       "department": "finance",
+      "carrierName": "jio",
+      "email": "harshal@gmail.com",
       "schedulingStatus": "scheduled"
     },
     {
       "id": 2,
-      "email": "bhushan@gmail.com",
-      "carrierName": "vodafone",
       "configurationName": "josh/bfsi",
       "department": "bfsi",
+      "carrierName": "vodafone",
+      "email": "bhushan@gmail.com",
       "schedulingStatus": "not scheduled"
     },
     {
       "id": 3,
-      "email": "shubham@gmail.com",
-      "carrierName": "airtel",
       "configurationName": "josh/data engineering",
       "department": "data engineering",
+      "carrierName": "airtel",
+      "email": "shubham@gmail.com",
       "schedulingStatus": "scheduled"
     },
     {
       "id": 4,
-      "email": "bhushan@gmail.com",
-      "carrierName": "vodafone",
       "configurationName": "josh/learning",
       "department": "learning",
+      "carrierName": "vodafone",
+      "email": "bhushan@gmail.com",
       "schedulingStatus": "not scheduled"
     },
     {
       "id": 5,
-      "email": "shubham@gmail.com",
-      "carrierName": "airtel",
       "configurationName": "josh/finance/",
       "department": "finance",
+      "carrierName": "airtel",
+      "email": "shubham@gmail.com",
       "schedulingStatus": "not scheduled"
     },
     {
       "id": 6,
-      "email": "bhushan@gmail.com",
-      "carrierName": "vodafone",
       "configurationName": "josh/HR",
       "department": "HR",
+      "carrierName": "vodafone",
+      "email": "bhushan@gmail.com",
       "schedulingStatus": "scheduled"
     },
     {
       "id": 7,
-      "email": "shubham@gmail.com",
-      "carrierName": "airtel",
       "configurationName": "josh/bu",
       "department": "BU",
+      "carrierName": "airtel",
+      "email": "shubham@gmail.com",
+      "schedulingStatus": "scheduled"
+    },
+    {
+      "id": 8,
+      "configurationName": "josh/finance",
+      "department": "finance",
+      "carrierName": "jio",
+      "email": "harshal@gmail.com",
+      "schedulingStatus": "scheduled"
+    },
+    {
+      "id": 9,
+      "configurationName": "josh/bfsi",
+      "department": "bfsi",
+      "carrierName": "vodafone",
+      "email": "bhushan@gmail.com",
+      "schedulingStatus": "not scheduled"
+    },
+    {
+      "id": 10,
+      "configurationName": "josh/data engineering",
+      "department": "data engineering",
+      "carrierName": "airtel",
+      "email": "shubham@gmail.com",
+      "schedulingStatus": "scheduled"
+    },
+    {
+      "id": 11,
+      "configurationName": "josh/learning",
+      "department": "learning",
+      "carrierName": "vodafone",
+      "email": "bhushan@gmail.com",
+      "schedulingStatus": "not scheduled"
+    },
+    {
+      "id": 12,
+      "configurationName": "josh/finance/",
+      "department": "finance",
+      "carrierName": "airtel",
+      "email": "shubham@gmail.com",
+      "schedulingStatus": "not scheduled"
+    },
+    {
+      "id": 13,
+      "configurationName": "josh/HR",
+      "department": "HR",
+      "carrierName": "vodafone",
+      "email": "bhushan@gmail.com",
+      "schedulingStatus": "scheduled"
+    },
+    {
+      "id": 14,
+      "configurationName": "josh/bu",
+      "department": "BU",
+      "carrierName": "airtel",
+      "email": "shubham@gmail.com",
+      "schedulingStatus": "scheduled"
+    },
+    {
+      "id": 15,
+      "configurationName": "josh/finance",
+      "department": "finance",
+      "carrierName": "jio",
+      "email": "harshal@gmail.com",
+      "schedulingStatus": "scheduled"
+    },
+    {
+      "id": 16,
+      "configurationName": "josh/bfsi",
+      "department": "bfsi",
+      "carrierName": "vodafone",
+      "email": "bhushan@gmail.com",
+      "schedulingStatus": "not scheduled"
+    },
+    {
+      "id": 17,
+      "configurationName": "josh/data engineering",
+      "department": "data engineering",
+      "carrierName": "airtel",
+      "email": "shubham@gmail.com",
+      "schedulingStatus": "scheduled"
+    },
+    {
+      "id": 18,
+      "configurationName": "josh/learning",
+      "department": "learning",
+      "carrierName": "vodafone",
+      "email": "bhushan@gmail.com",
+      "schedulingStatus": "not scheduled"
+    },
+    {
+      "id": 19,
+      "configurationName": "josh/finance/",
+      "department": "finance",
+      "carrierName": "airtel",
+      "email": "shubham@gmail.com",
+      "schedulingStatus": "not scheduled"
+    },
+    {
+      "id": 20,
+      "configurationName": "josh/HR",
+      "department": "HR",
+      "carrierName": "vodafone",
+      "email": "bhushan@gmail.com",
+      "schedulingStatus": "scheduled"
+    },
+    {
+      "id": 21,
+      "configurationName": "josh/bu",
+      "department": "BU",
+      "carrierName": "airtel",
+      "email": "shubham@gmail.com",
+      "schedulingStatus": "scheduled"
+    },
+    {
+      "id": 22,
+      "configurationName": "josh/finance",
+      "department": "finance",
+      "carrierName": "jio",
+      "email": "harshal@gmail.com",
+      "schedulingStatus": "scheduled"
+    },
+    {
+      "id": 23,
+      "configurationName": "josh/bfsi",
+      "department": "bfsi",
+      "carrierName": "vodafone",
+      "email": "bhushan@gmail.com",
+      "schedulingStatus": "not scheduled"
+    },
+    {
+      "id": 24,
+      "configurationName": "josh/data engineering",
+      "department": "data engineering",
+      "carrierName": "airtel",
+      "email": "shubham@gmail.com",
+      "schedulingStatus": "scheduled"
+    },
+    {
+      "id": 25,
+      "configurationName": "josh/learning",
+      "department": "learning",
+      "carrierName": "vodafone",
+      "email": "bhushan@gmail.com",
+      "schedulingStatus": "not scheduled"
+    },
+    {
+      "id": 26,
+      "configurationName": "josh/finance/",
+      "department": "finance",
+      "carrierName": "airtel",
+      "email": "shubham@gmail.com",
+      "schedulingStatus": "not scheduled"
+    },
+    {
+      "id": 27,
+      "configurationName": "josh/HR",
+      "department": "HR",
+      "carrierName": "vodafone",
+      "email": "bhushan@gmail.com",
+      "schedulingStatus": "scheduled"
+    },
+    {
+      "id": 28,
+      "configurationName": "josh/bu",
+      "department": "BU",
+      "carrierName": "airtel",
+      "email": "shubham@gmail.com",
       "schedulingStatus": "scheduled"
     }
   ]
