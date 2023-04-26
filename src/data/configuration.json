@@ -1,15 +1,17 @@
 {
-  "configuration": [
+  "configurations": [
     {
-      "email": "harshal@gmail.com",
-      "password": "Harshal@123",
-      "carrierName": "dhefhrle",
-      "sftpLogin": "qwefjrh",
-      "sftpPassword": "qwjfdhj",
-      "sftpLocation": "qwesfdhj",
-      "downloadPath": "qWASDHFJ",
-      "template": "C:\\fakepath\\labelIcon.png",
-      "id": 4
+      "configurationName": "Josh/DEBU/Verizone",
+      "department": "IT",
+      "email": "bhushan@gmail.com",
+      "password": "Bhushan@123",
+      "carrierName": "Verizone",
+      "sftpLogin": "C/local/data",
+      "sftpPassword": "C/local/data",
+      "sftpLocation": "C/local/data",
+      "downloadPath": "ghkgfkfhf",
+      "template": "C:\\fakepath\\chainIcon.png",
+      "id": 6
     }
   ],
 

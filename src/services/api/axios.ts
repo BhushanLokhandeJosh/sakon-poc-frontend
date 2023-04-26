@@ -1,5 +1,5 @@
 import axios from "axios";
-import { InitialValuesProps } from "../../pages/CreateConfiguration/constants";
+import { InitialValuesProps } from "../../pages/CreateConfiguration/types";
 
 const instance = axios.create({ baseURL: "http://localhost:8000" });
 

@@ -1,6 +1,9 @@
 import * as Yup from "yup";
+import { InitialValuesProps } from "./types";
 
-export const initialValues = {
+export const initialValues:InitialValuesProps = {
+  configurationName:"",
+  department:"",
   email: "",
   password: "",
   carrierName: "",
@@ -11,26 +14,9 @@ export const initialValues = {
   template: "",
 };
 
-export interface IProps {
-  initialValues: InitialValuesProps;
-  validationSchema: any;
-  onSubmit: (values: InitialValuesProps) => void;
-  handleClose ?: () => void;
-}
-
-export interface InitialValuesProps {
-  id?: number;
-  email: string;
-  password: string;
-  carrierName: string;
-  sftpLogin:string;
-  sftpPassword:string;
-  sftpLocation: string;
-  downloadPath: string;
-  template?: string;
-}
-
 export const validationSchema = Yup.object({
+  configurationName: Yup.string().required("Configuration Name Required"),
+  department: Yup.string().required("Department Required"),
   email: Yup.string()
     .trim()
     .lowercase()
