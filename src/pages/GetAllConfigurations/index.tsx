@@ -3,7 +3,7 @@ import useFetchAllConfigurations from "../../hooks/useFetchAllConfig";
 import GetAllConfigurationComponent from "./component";
 
 const GetAllConfigurations = () => {
-  const [searchValue, setSearchValue] = useState<any>("");
+  const [searchValue, setSearchValue] = useState<string>("");
   const [searchTrigger, setSearchTrigger] = useState<any>("");
 
   const { data, isLoading, isError } = useFetchAllConfigurations({

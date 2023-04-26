@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "@mui/material";
 import GetAllConfDataTable from "./GetAllConfDataTable";
+import CustomTable from "../../../shared/CustomTable/CustomTable";
+import SearchBox from "../../../shared/SearchBox/SearchBox";
 
 interface IProps {
   searchValue: string;
@@ -15,13 +17,7 @@ const GetAllConfigurationComponent = (props: IProps) => {
     <div>
       <div className="input-btn-container">
         <Button variant="contained">Create Configuration</Button>
-        <input
-          className="search"
-          type="text"
-          value={searchValue}
-          placeholder="Search..."
-          onChange={(e: any) => setSearchValue(e.target.value)}
-        />
+        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <GetAllConfDataTable data={data} />
     </div>

@@ -11,7 +11,7 @@ const getConfig = (params: any) => {
 const useFetchAllConfigurations = ({
   searchValue,
 }: {
-  searchValue: string;
+  searchValue?: string;
 }) => {
   return useQuery<GetAllConfig[]>(["getAllConfigurations", searchValue], () =>
     getConfig({ carrierName_like: searchValue })
