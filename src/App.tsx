@@ -2,14 +2,12 @@ import React from "react";
 import "./App.css";
 import CreateConfigContainer from "./pages/CreateConfiguration";
 import LayoutComponent from "./shared/Navbar";
-import CreateSchedulerContainer from "./pages/CreateScheduler";
 
-function App({ children }: any) {
+function App() {
   return (
     <div className="App">
       <LayoutComponent>
-        {/* <CreateConfigContainer /> */}
-        <CreateSchedulerContainer />
+        <CreateConfigContainer />
       </LayoutComponent>
     </div>
   );

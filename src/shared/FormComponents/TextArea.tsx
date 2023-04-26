@@ -1,20 +1,19 @@
-import { ErrorMessage, Field } from "formik";
-import FormError from "./FormError";
 import { ReactElement } from "react";
+import { ErrorMessage, Field } from "formik";
 
-interface IProps {
-  label?: string;
-  name: string;
-}
+import FormError from "./FormError";
 
-const TextArea = (props: IProps): ReactElement => {
-  const { label, name, ...other } = props;
+import { TextAreaElementProps } from "./types";
+
+import "./styles/styles.css"
+
+const TextArea = (props: TextAreaElementProps): ReactElement => {
+  const { label, name } = props;
   return (
     <>
       <label
         htmlFor={name}
-        className="col-sm-2 col-form-label"
-        style={{ fontSize: "25px", fontWeight: "bold" }}
+        className="label-field-style"
       >
         {label}
       </label>
@@ -22,8 +21,6 @@ const TextArea = (props: IProps): ReactElement => {
         as="textarea"
         id={name}
         name={name}
-        {...other}
-        className="form-control"
       />
       <ErrorMessage name={name} component={FormError} />
     </>

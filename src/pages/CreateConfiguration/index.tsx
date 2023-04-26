@@ -1,14 +1,19 @@
-import React from "react";
-import { InitialValuesProps, initialValues } from "./constants";
-import { validationSchema } from "./constants";
-import { useCreateConfiguration } from "../../hooks/useQueryhooks";
-import CreateConfigurationComponent from "./component";
 import { toast } from "react-toastify";
 
+import useModal from "../../shared/CustomHooks/useModal";
+import { useCreateConfiguration } from "../../hooks/useQueryhooks";
+
+import CreateConfigurationComponent from "./component";
+
+import { InitialValuesProps } from "./types";
+
+
 const CreateConfigContainer = () => {
-  
+  const { isOpen, toggleModal } = useModal();
+
   const onSuccess = async (values: InitialValuesProps) => {
     toast.success("Configuration Added Successfully...");
+    toggleModal();
   };
 
   const onError = (values: any) => {
@@ -27,9 +32,9 @@ const CreateConfigContainer = () => {
   return (
     <div>
       <CreateConfigurationComponent
-        initialValues={initialValues}
+        isOpen={isOpen}
+        toggleModal={toggleModal}
         onSubmit={onSubmit}
-        validationSchema={validationSchema}
       />
     </div>
   );

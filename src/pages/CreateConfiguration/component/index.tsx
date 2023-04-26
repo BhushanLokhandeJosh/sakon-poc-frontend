@@ -1,59 +1,38 @@
-import React, { useState } from "react";
-
+import React from "react";
 import { Button } from "@mui/material";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
+
+import ModalComponent from "../../../shared/ModalComponent/component";
+
 import ConfigurationForm from "./ConfigurationForm";
 
-import { IProps } from "../constants";
-import "./styles/style.css";
+import { ConfigurationProps } from "../types";
 
-const CreateConfigurationComponent = (props: IProps) => {
-  const [open, setOpen] = useState<boolean>(false);
+import "./styles/styles.css";
 
-  const { initialValues, validationSchema, onSubmit } = props;
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+const CreateConfigurationComponent = (props: ConfigurationProps) => {
+  const { isOpen, toggleModal, onSubmit } = props;
 
   return (
     <div>
       <Button
         variant="contained"
-        className="create-button"
         color="info"
-        onClick={handleClickOpen}
+        onClick={toggleModal}
         sx={{
-          backgroundColor: "blue",
-          marginTop: "5%",
-          marginLeft: "50%",
+          marginTop:"5%",
+          marginLeft:"50%"
         }}
       >
         Create Configuration
       </Button>
-      <Dialog open={open} onClose={handleClose} sx={{ borderRadius: "20px" }}>
-        <DialogTitle
-          sx={{
-            fontSize: "25px",
-            textDecorationLine: "underline",
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
-          Configuration Form
-        </DialogTitle>
-        <ConfigurationForm
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
-          handleClose={handleClose}
-        />
-      </Dialog>
+
+      <ModalComponent
+        isOpen={isOpen}
+        toggleModal={toggleModal}
+        modalTitle="Create Configuration"
+        maxwidth="md"
+        modalBody={<ConfigurationForm onSubmit={onSubmit} />}
+      />
     </div>
   );
 };

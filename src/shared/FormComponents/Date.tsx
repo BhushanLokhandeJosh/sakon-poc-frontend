@@ -1,25 +1,22 @@
 import { ErrorMessage, Field } from "formik";
 
 import FormError from "./FormError";
+import { DateElementProps } from "./types";
 
-interface IProps {
-  label?:string,
-  name:string,
- 
-}
+import "./styles/style.css";
 
-const Date = (props:IProps) => {
-  const { label, name,...other } = props;
+const Date = (props:DateElementProps) => {
+  const { label, name } = props;
 
   return (
     <>
       <label
         htmlFor={name}
-        style={{ fontSize: "25px", fontWeight: "bold" }}
+        className="label-field-style"
       >
         {label}
       </label>
-      <Field type="date" name={name} className="form-control">
+      <Field id={name} type="date" name={name} className="form-control">
       </Field>
       <ErrorMessage name={name} component={FormError} />
     </>

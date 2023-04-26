@@ -1,22 +1,19 @@
-import React from "react";
 import { ErrorMessage, Field } from "formik";
 
-import "./styles/style.css";
 import FormError from "./FormError";
 
-interface IProps {
-  className?: string;
-  name: string;
-  options?: { label: string; value: string }[];
-  component?: any;
-  placeholder?: string;
-  isMulti?: boolean;
-}
+import { MultiSelectProps } from "./types";
 
-const MultiSelect = (props: IProps) => {
-  const { className, name, options, component, placeholder, isMulti } = props;
+import "./styles/style.css";
+
+const MultiSelect = (props: MultiSelectProps) => {
+  const { className, name, options, component, placeholder, isMulti,label } = props;
   return (
     <>
+      <div className="label-style">
+        <label htmlFor={name}>{label}</label>
+      </div>
+
       <Field
         className={className}
         name={name}
@@ -25,10 +22,10 @@ const MultiSelect = (props: IProps) => {
         placeholder={placeholder}
         isMulti={isMulti}
       />
-
       <ErrorMessage name={name} component={FormError} />
     </>
   );
 };
 
 export default MultiSelect;
+

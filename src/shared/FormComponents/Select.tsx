@@ -1,24 +1,18 @@
-import { Field, ErrorMessage } from "formik";
-import FormError from "./FormError";
 import { ReactElement } from "react";
+import { Field, ErrorMessage } from "formik";
+
+import FormError from "./FormError";
+
+import { SelectElementProps } from "./types";
 
 import "./styles/style.css";
 
-interface IProps {
-  label?: string;
-  name: string;
-  options?: { label: string; value: string }[];
-  className?: string;
-  onClick?: () => void;
-  placeholder?: string;
-}
-
-const Select = (props: IProps): ReactElement => {
+const Select = (props: SelectElementProps): ReactElement => {
   const { label, name, options, className, onClick, placeholder, ...other } =
     props;
   return (
     <>
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={name} className="label-field-style">{label}</label>
 
       <Field
         as="select"
