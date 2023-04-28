@@ -30,7 +30,9 @@ export interface MultiSelectProps {
   component?: any;
   placeholder?: string;
   isMulti?: boolean;
-  label?:string
+  label?:string,
+  menuPlacement?:string
+  menuShouldScrollIntoView?:boolean
 }
 
 export interface SelectElementProps {

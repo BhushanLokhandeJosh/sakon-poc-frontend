@@ -7,7 +7,7 @@ import { MultiSelectProps } from "./types";
 import "./styles/style.css";
 
 const MultiSelect = (props: MultiSelectProps) => {
-  const { className, name, options, component, placeholder, isMulti,label } = props;
+  const { className, name, options, component, placeholder, isMulti,label,menuPlacement,menuShouldScrollIntoView } = props;
   return (
     <>
       <div className="label-style">
@@ -21,6 +21,8 @@ const MultiSelect = (props: MultiSelectProps) => {
         component={component}
         placeholder={placeholder}
         isMulti={isMulti}
+        menuPlacement={menuPlacement}
+        menuShouldScrollIntoView={menuShouldScrollIntoView}
       />
       <ErrorMessage name={name} component={FormError} />
     </>
