@@ -8,6 +8,10 @@ const getConfig = (params: any) => {
   return GET("/configDetails", params);
 };
 
+const getDepartments = () => {
+  return GET("/departments");
+};
+
 const useFetchAllConfigurations = ({
   searchValue,
 }: {
@@ -16,6 +20,10 @@ const useFetchAllConfigurations = ({
   return useQuery<GetAllConfig[]>(["getAllConfigurations", searchValue], () =>
     getConfig({ carrierName_like: searchValue })
   );
+};
+
+export const useGetDepartments = () => {
+  return useQuery(["departments"], () => getDepartments());
 };
 
 export default useFetchAllConfigurations;

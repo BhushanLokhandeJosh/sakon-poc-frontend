@@ -238,5 +238,10 @@
       "email": "shubham@gmail.com",
       "schedulingStatus": "scheduled"
     }
+  ],
+  "departments": [
+    { "id": 1, "value": "Finance", "label": "Finance" },
+    { "id": 2, "value": "BU", "label": "BU" },
+    { "id": 3, "value": "Human Resource", "label": "Human Resource" }
   ]
 }

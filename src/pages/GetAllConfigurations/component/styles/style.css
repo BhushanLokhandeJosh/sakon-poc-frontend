@@ -3,3 +3,13 @@
   flex-direction: row-reverse;
   margin: 22px;
 }
+.create-config-btn {
+}
+
+.filter-modal-style {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: 1%;
+  margin-bottom: 5%;
+}

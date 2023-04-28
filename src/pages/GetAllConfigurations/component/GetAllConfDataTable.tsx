@@ -7,6 +7,7 @@ import useFetchAllConfigurations from "../../../hooks/useFetchAllConfig";
 import SearchBox from "../../../shared/SearchBox/SearchBox";
 import FilterBox from "../../../shared/FilterBox/FilterBox";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import ModalComponent from "../../../shared/ModalComponent/component";
 interface IProps {
   data: any;
   searchValue: string;
@@ -15,17 +16,32 @@ interface IProps {
 
 export default function GetAllConfDataTable(props: IProps) {
   const { data, searchValue, setSearchValue } = props;
-  console.log(data);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+
+  // const handleFilter = () => {
+  //   navigate("/filterSearchBox");
+  // };
 
   return (
     <div>
       <div className="input-btn-container">
-        {/* <button>Filter Icon</button> */}
-        <button style={{ backgroundColor: "blue" }}>
-          <FilterListIcon sx={{ color: "white", fontSize: 25 }} />
+        <button
+          style={{ backgroundColor: "blue" }}
+          onClick={() => setIsOpen((prev) => !prev)}
+        >
+          <FilterListIcon
+            sx={{ color: "white", fontSize: 25, cursor: "pointer" }}
+          />
         </button>
+
+        <ModalComponent
+          isOpen={isOpen}
+          modalBody={<FilterBox />}
+          modalTitle="Filter Configurations"
+          toggleModal={() => setIsOpen((prev) => !prev)}
+          modalStyle="filter-modal-style"
+        />
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
-        <FilterBox />
       </div>
       <CustomTable data={data} columnHeader={getAllConfigColumns} />
     </div>

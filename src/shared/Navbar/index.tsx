@@ -190,7 +190,9 @@ const LayoutComponent = (props: IProps) => {
           <div className="sidebar-container">
             <div className="sidebar-menu"></div>
             {sidebarMenu.map((item) => (
-              <div key={item} className="sidebar-menu">{item}</div>
+              <div key={item} className="sidebar-menu">
+                {item}
+              </div>
             ))}
           </div>
         </Grid>

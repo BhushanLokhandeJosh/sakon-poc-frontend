@@ -12,8 +12,9 @@ const Select = (props: SelectElementProps): ReactElement => {
     props;
   return (
     <>
-      <label htmlFor={name} className="label-field-style">{label}</label>
-
+      <label htmlFor={name} className="label-field-style">
+        {label}
+      </label>
       <Field
         as="select"
         id={name}
