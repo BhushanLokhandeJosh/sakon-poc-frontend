@@ -8,7 +8,7 @@ export interface InitialValuesProps {
   sftpPassword:string;
   sftpLocation: string;
   downloadPath: string;
-  template?: string;
+  template: string | Blob;
 }
 
 export interface ConfigurationProps {
@@ -19,5 +19,6 @@ export interface ConfigurationProps {
 
 export interface ConfigurationFormProps {
   onSubmit: (values: InitialValuesProps) => void;
+  toggleModal:() => void
 }
 

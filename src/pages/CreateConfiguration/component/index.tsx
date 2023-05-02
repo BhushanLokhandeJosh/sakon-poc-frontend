@@ -31,7 +31,7 @@ const CreateConfigurationComponent = (props: ConfigurationProps) => {
         toggleModal={toggleModal}
         modalTitle="Create Configuration"
         maxwidth="md"
-        modalBody={<ConfigurationForm onSubmit={onSubmit} />}
+        modalBody={<ConfigurationForm onSubmit={onSubmit} toggleModal={toggleModal} />}
       />
     </div>
   );

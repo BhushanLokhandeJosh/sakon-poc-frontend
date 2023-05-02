@@ -10,7 +10,7 @@ import { ConfigurationFormProps } from "../types";
 import "./styles/styles.css";
 
 const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
-  const { onSubmit } = props;
+  const { onSubmit, toggleModal } = props;
 
   return (
     <div className="form">
@@ -20,10 +20,6 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
         onSubmit={onSubmit}
       >
         {(formik) => {
-          const handleReset = () => {
-            formik.resetForm();
-          };
-
           return (
             <Form>
               <Grid
@@ -141,14 +137,10 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                       variant="contained"
                       type="submit"
                       className="submit-btn"
-                      disabled={!formik.isValid || !formik.touched}
                     >
                       SUBMIT
                     </Button>
-                    <button
-                      onClick={handleReset}
-                      className="cancel-button"
-                    >
+                    <button onClick={toggleModal} className="cancel-button">
                       CANCEL
                     </button>
                   </DialogActions>

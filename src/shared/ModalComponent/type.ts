@@ -4,5 +4,6 @@ export interface CustomModalProp {
   modalBody: JSX.Element;
   modalTitle: string;
   label?:string;
-  maxwidth?:any
+  maxwidth?:any;
+  modalStyle?:string
 }

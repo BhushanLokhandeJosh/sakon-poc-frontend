@@ -6,7 +6,7 @@ import { useCreateConfiguration } from "../../hooks/useQueryhooks";
 import CreateConfigurationComponent from "./component";
 
 import { InitialValuesProps } from "./types";
-
+import { formDataMapping } from "./helpers";
 
 const CreateConfigContainer = () => {
   const { isOpen, toggleModal } = useModal();
@@ -25,8 +25,9 @@ const CreateConfigContainer = () => {
     onError,
   });
 
-  const onSubmit = async (values: InitialValuesProps) => {
-    await createConfiguration({ ...values });
+  const onSubmit = (values: InitialValuesProps) => {
+    let formData = formDataMapping(values);
+    createConfiguration(formData);
   };
 
   return (
