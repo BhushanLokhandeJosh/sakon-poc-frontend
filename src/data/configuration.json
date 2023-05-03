@@ -243,5 +243,28 @@
     { "id": 1, "value": "Finance", "label": "Finance" },
     { "id": 2, "value": "BU", "label": "BU" },
     { "id": 3, "value": "Human Resource", "label": "Human Resource" }
+  ],
+  "schedulers": [
+    {
+      "id": 1,
+      "schedule_name": "Abc",
+      "day_of_week": "Sunday",
+      "day_of_month": "2nd day of Sunday",
+      "created_at": "sunday"
+    },
+    {
+      "id": 2,
+      "schedule_name": "Def",
+      "day_of_week": "Friday",
+      "day_of_month": "5th day of Friday",
+      "created_at": "Friday"
+    },
+    {
+      "id": 3,
+      "schedule_name": "Ghi",
+      "day_of_week": "Monday",
+      "day_of_month": "3rd day of Monday",
+      "created_at": "Monday"
+    }
   ]
 }

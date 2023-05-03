@@ -18,10 +18,6 @@ export default function GetAllConfDataTable(props: IProps) {
   const { data, searchValue, setSearchValue } = props;
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
-  // const handleFilter = () => {
-  //   navigate("/filterSearchBox");
-  // };
-
   return (
     <div>
       <div className="input-btn-container">
@@ -33,7 +29,6 @@ export default function GetAllConfDataTable(props: IProps) {
             sx={{ color: "white", fontSize: 25, cursor: "pointer" }}
           />
         </button>
-
         <ModalComponent
           isOpen={isOpen}
           modalBody={<FilterBox />}

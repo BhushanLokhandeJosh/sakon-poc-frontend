@@ -4,7 +4,7 @@ import React, { ElementType, ReactNode } from "react";
 interface IProps {
   pageTitle: string;
   buttonLable?: any;
-  pageBody: ReactNode;
+  pageBody?: ReactNode;
   //   searchValue: string;
   //   setSearchValue: Function;
   //   data: any;

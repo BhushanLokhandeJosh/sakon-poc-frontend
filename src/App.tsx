@@ -5,13 +5,15 @@ import LayoutComponent from "./shared/Navbar";
 import GetAllConfigurations from "./pages/GetAllConfigurations";
 import { Route, Routes } from "react-router-dom";
 import FilterBox from "./shared/FilterBox/FilterBox";
+import GetAllSchedulers from "./pages/GetAllSchedulers";
 
 function App() {
   return (
     <div className="App">
       <LayoutComponent>
         {/* <CreateConfigContainer /> */}
-        <GetAllConfigurations />
+        {/* <GetAllConfigurations /> */}
+        <GetAllSchedulers />
       </LayoutComponent>
     </div>
   );

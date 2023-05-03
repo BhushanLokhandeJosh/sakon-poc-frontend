@@ -3,7 +3,7 @@ import { ValueType } from "react-select/lib/types";
 
 import { CustomSelectProps, Option } from "./types";
 
-import "./styles/style.css";
+import "./styles/styles.css";
 
 export const CustomSelect = ({
   className,
