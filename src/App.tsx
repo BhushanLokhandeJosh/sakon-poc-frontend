@@ -8,7 +8,6 @@ function App() {
     <div className="App">
       <LayoutComponent>
         <CreateConfigContainer />
-     
       </LayoutComponent>
     </div>
   );

@@ -133,6 +133,9 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                 </Grid>
                 <Grid item xs={12}>
                   <DialogActions>
+                    <button type="reset" onClick={toggleModal} className="cancel-button">
+                      CANCEL
+                    </button>
                     <Button
                       variant="contained"
                       type="submit"
@@ -140,9 +143,6 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                     >
                       SUBMIT
                     </Button>
-                    <button onClick={toggleModal} className="cancel-button">
-                      CANCEL
-                    </button>
                   </DialogActions>
                 </Grid>
               </Grid>
