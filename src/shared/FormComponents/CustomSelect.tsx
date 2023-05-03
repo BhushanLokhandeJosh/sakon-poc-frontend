@@ -3,7 +3,7 @@ import { ValueType } from "react-select/lib/types";
 
 import { CustomSelectProps, Option } from "./types";
 
-import "./styles/style.css";
+import "./styles/styles.css";
 
 export const CustomSelect = ({
   className,
@@ -12,6 +12,8 @@ export const CustomSelect = ({
   form,
   options,
   isMulti = false,
+  menuPlacement,
+  maxMenuHeight,
 }: CustomSelectProps) => {
   const onChange = (option: ValueType<Option | Option[]>) => {
     form.setFieldValue(
@@ -34,6 +36,7 @@ export const CustomSelect = ({
 
   return (
     <Select
+      id={field.name}
       className={className}
       name={field.name}
       value={getValue()}
@@ -41,6 +44,8 @@ export const CustomSelect = ({
       placeholder={placeholder}
       options={options}
       isMulti={isMulti}
+      menuPlacement={menuPlacement}
+      maxMenuHeight={maxMenuHeight}
     />
   );
 };

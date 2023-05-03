@@ -1,0 +1,176 @@
+.card-container {
+  margin: 5%;
+  width: auto;
+  height: auto;
+  padding: 30px;
+  text-align: left;
+  border: 1px solid rgb(220, 216, 216);
+  box-shadow: 3px 3px rgb(234, 233, 233);
+  border-radius: 4px;
+}
+
+.header-style {
+  text-align: left;
+  font-size: 25px;
+}
+
+.container-style {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.subheading-style {
+  display: flex;
+  font-size: 20px;
+  color: rgb(37, 35, 35);
+  justify-content: left;
+  align-items: center;
+  margin: 30px 0px 0px 30px;
+}
+
+.subheading-styling {
+  display: flex;
+  font-size: 20px;
+  text-align: left;
+  justify-content: left;
+  align-items: center;
+  margin: 20px 0px 0px 30px;
+  font-size: "20px";
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.card-style {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  margin: 0;
+}
+
+.select-box {
+  background-color: red;
+  width: 150%;
+}
+
+.form-styling {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 30px;
+  width: 200px;
+}
+
+.select-timezone {
+  width: 20%;
+  padding: 10px 0px;
+  margin: 5px 0px;
+  text-align: center;
+}
+
+.form-control {
+  width: 21%;
+  padding: 5px 0px;
+  margin: 5px 0px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.form-control-monthdays {
+  width: 20%;
+  padding: 5px 0px;
+  margin: 5px 0px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.form-control-time {
+  width: 15%;
+  margin-top: 10px;
+  height: 35px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  border: 0.5px solid rgb(213, 212, 212);
+}
+
+.form-control:hover {
+  background-color: rgb(248, 242, 242);
+}
+
+.form-control-timestate {
+  width: 10%;
+  padding: 10px 0px;
+  margin: 5px 0px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.form-control-timezone {
+  width: 85%;
+  padding: 3px 5px 10px 0px;
+  margin: 20px 0px;
+  text-align: left;
+  font-size: 15px;
+  border-radius: 4px rgb(117, 116, 116);
+}
+
+.form-control-input {
+  width: 80%;
+  padding: 10px 10px;
+  text-align: left;
+  font-size: 15px;
+  border: 0.5px solid rgb(213, 212, 212);
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  column-gap: 15px;
+  font-size: 15px;
+  margin-right: -50px;
+}
+.configuration-style {
+  width: 84%;
+  height: fit-content;
+  margin: 20px 0px;
+  text-align: left;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.month-style {
+  margin-top: 20px;
+  padding: 0px 15px;
+}
+
+.scheduler-style {
+  margin-left: 30px;
+  padding-top: 10px;
+  font-size: 20px;
+  display: flex;
+}
+
+.cancel-button {
+  background-color: rgb(255, 255, 255);
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 0.5px solid rgb(76, 102, 205);
+}
+.cancel-button:hover {
+  color: white;
+  background-color: red;
+}
+
+.form-control-weekly {
+  margin-top: 10px;
+  height: auto;
+  width: 200px;
+  font-size: 15px;
+}

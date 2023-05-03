@@ -15,7 +15,7 @@ export interface InputElementProps {
     | "number"
     | "file";
   className?: string;
-  placeholder?:string
+  placeholder?: string;
 }
 
 export interface DateElementProps {
@@ -30,9 +30,9 @@ export interface MultiSelectProps {
   component?: any;
   placeholder?: string;
   isMulti?: boolean;
-  label?:string,
-  menuPlacement?:string
-  menuShouldScrollIntoView?:boolean
+  label?: string;
+  menuPlacement?: string;
+  maxMenuHeight?: number;
 }
 
 export interface SelectElementProps {
@@ -45,7 +45,7 @@ export interface SelectElementProps {
 }
 
 export interface Option {
-  label:string
+  label: string;
   value: string;
 }
 
@@ -54,6 +54,8 @@ export interface CustomSelectProps extends FieldProps {
   isMulti?: boolean;
   className?: string;
   placeholder?: string;
+  menuPlacement?:any;
+  maxMenuHeight?:number
 }
 
 export interface TextAreaElementProps {
@@ -61,16 +63,13 @@ export interface TextAreaElementProps {
   name: string;
 }
 
-
 export interface TimeElementProps {
   label?: string;
   name: string;
   value?: string;
-  className?:string;
+  className?: string;
 }
 
 export interface ErrorComponentProps {
   children?: string;
 }
-
-

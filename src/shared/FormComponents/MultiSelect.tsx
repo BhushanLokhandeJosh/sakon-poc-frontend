@@ -4,10 +4,20 @@ import FormError from "./FormError";
 
 import { MultiSelectProps } from "./types";
 
-import "./styles/style.css";
+import "./styles/styles.css";
 
 const MultiSelect = (props: MultiSelectProps) => {
-  const { className, name, options, component, placeholder, isMulti,label,menuPlacement,menuShouldScrollIntoView } = props;
+  const {
+    className,
+    name,
+    options,
+    component,
+    placeholder,
+    isMulti,
+    label,
+    menuPlacement,
+    maxMenuHeight,
+  } = props;
   return (
     <>
       <div className="label-style">
@@ -22,7 +32,7 @@ const MultiSelect = (props: MultiSelectProps) => {
         placeholder={placeholder}
         isMulti={isMulti}
         menuPlacement={menuPlacement}
-        menuShouldScrollIntoView={menuShouldScrollIntoView}
+        maxMenuHeight={maxMenuHeight}
       />
       <ErrorMessage name={name} component={FormError} />
     </>
@@ -30,4 +40,3 @@ const MultiSelect = (props: MultiSelectProps) => {
 };
 
 export default MultiSelect;
-
