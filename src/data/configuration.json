@@ -248,22 +248,22 @@
     {
       "id": 1,
       "schedule_name": "Abc",
-      "day_of_week": "Sunday",
-      "day_of_month": "2nd day of Sunday",
+      "frequency": "daily at 12:00",
+      "configuration": ["airtel", "jio", "vodafone"],
       "created_at": "sunday"
     },
     {
       "id": 2,
       "schedule_name": "Def",
-      "day_of_week": "Friday",
-      "day_of_month": "5th day of Friday",
+      "frequency": "monthly on 2nd at 12:00",
+      "configuration": ["vodafone"],
       "created_at": "Friday"
     },
     {
       "id": 3,
       "schedule_name": "Ghi",
-      "day_of_week": "Monday",
-      "day_of_month": "3rd day of Monday",
+      "frequency": "weekly sunday at 12:00",
+      "configuration": ["airtel", "jio"],
       "created_at": "Monday"
     }
   ]

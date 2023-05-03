@@ -1,5 +1,5 @@
 import { GridColDef } from "@mui/x-data-grid";
-
+import CustomColumnPopover from "../../shared/ColumnPopover/CustomColumnPopover";
 export const getAllSchedulerColumns: GridColDef[] = [
   { field: "id", headerName: "Id", width: 150 },
   {
@@ -9,15 +9,19 @@ export const getAllSchedulerColumns: GridColDef[] = [
     // sortable: false,
   },
   {
-    field: "day_of_week",
-    headerName: "Day of Week",
+    field: "frequency",
+    headerName: "Frequency",
     width: 250,
   },
   {
-    field: "day_of_month",
-    headerName: "Day of Month",
+    field: "configuration",
+    headerName: "Configuration",
     width: 300,
     sortable: false,
+    renderCell: (params: any) => {
+      const arr = params?.row.configuration;
+      return <CustomColumnPopover arr={arr} />;
+    },
   },
   {
     field: "created_at",

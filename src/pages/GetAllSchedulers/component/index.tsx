@@ -10,6 +10,11 @@ interface IProps {
 const GetAllSchedulerComponent = (props: IProps) => {
   const { searchValue, setSearchValue, data } = props;
 
+  const initialValues = {};
+  const handleSubmit = (values: any) => {
+    console.log(values);
+  };
+
   return (
     <div>
       <PageComponent
@@ -20,6 +25,8 @@ const GetAllSchedulerComponent = (props: IProps) => {
             data={data}
             searchValue={searchValue}
             setSearchValue={setSearchValue}
+            initialValues={initialValues}
+            handleSubmit={handleSubmit}
           />
         }
       />

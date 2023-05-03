@@ -8,6 +8,7 @@ import SearchBox from "../../../shared/SearchBox/SearchBox";
 import FilterBox from "../../../shared/FilterBox/FilterBox";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import ModalComponent from "../../../shared/ModalComponent/component";
+
 interface IProps {
   data: any;
   searchValue: string;
@@ -18,10 +19,19 @@ export default function GetAllConfDataTable(props: IProps) {
   const { data, searchValue, setSearchValue } = props;
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
+  const initialValues = {
+    schedulingStatus: "",
+    department: "",
+  };
+
+  const handleSubmit = (values: any) => {
+    console.log(values);
+  };
+
   return (
     <div>
-      <div className="input-btn-container">
-        <button
+      {/* <div className="input-btn-container"> */}
+      {/* <button
           style={{ backgroundColor: "blue" }}
           onClick={() => setIsOpen((prev) => !prev)}
         >
@@ -31,14 +41,26 @@ export default function GetAllConfDataTable(props: IProps) {
         </button>
         <ModalComponent
           isOpen={isOpen}
-          modalBody={<FilterBox />}
+          modalBody={
+            <FilterBox
+              initialValues={initialValues}
+              handleSubmit={handleSubmit}
+            />
+          }
           modalTitle="Filter Configurations"
           toggleModal={() => setIsOpen((prev) => !prev)}
           modalStyle="filter-modal-style"
-        />
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
-      </div>
-      <CustomTable data={data} columnHeader={getAllConfigColumns} />
+        /> */}
+      {/* <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} /> */}
+      {/* </div> */}
+      <CustomTable
+        data={data}
+        columnHeader={getAllConfigColumns}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        initialValues={initialValues}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
   // return (

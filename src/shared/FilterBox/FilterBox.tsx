@@ -7,7 +7,12 @@ import { Field, Form, Formik } from "formik";
 import MultiSelect from "../FormComponents/MultiSelect";
 import CustomSelect from "../FormComponents/CustomSelect";
 
-const FilterBox = () => {
+interface IProps {
+  initialValues: any;
+  handleSubmit: any;
+}
+
+const FilterBox = ({ initialValues, handleSubmit }: IProps) => {
   //   const { data } = props;
   const { data, isLoading, isError } = useGetDepartments();
   console.log("in a filter ", data);
@@ -20,13 +25,13 @@ const FilterBox = () => {
     return <>Error...</>;
   }
 
-  const initialValues = {
-    schedulingStatus: "",
-    department: "",
-  };
-  const handleSubmit = (values: any) => {
-    console.log(values);
-  };
+  // const initialValues = {
+  //   schedulingStatus: "",
+  //   department: "",
+  // };
+  // const handleSubmit = (values: any) => {
+  //   console.log(values);
+  // };
 
   return (
     <div style={{ height: "200px" }}>
