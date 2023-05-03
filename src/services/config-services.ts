@@ -5,4 +5,7 @@ import { POST } from "./api/axios";
 export const createConfiguration = (payload: any) => {
     return POST('/configurations', payload);
 }
-  
+
+export const scheduleConfiguration = (payload:any) => {
+    return POST("/schedules",payload)
+}

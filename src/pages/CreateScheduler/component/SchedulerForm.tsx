@@ -75,7 +75,7 @@ const SchedulerForm = (props: any) => {
                     />
                     {values.interval === "MONTHLY" ? (
                       <>
-                        <span className="month-style">day of month</span>
+                        <span className="month-style">Day of month</span>
                         <MultiSelect
                           name="monthDay"
                           component={CustomSelect}

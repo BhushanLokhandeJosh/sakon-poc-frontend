@@ -34,6 +34,7 @@ const MultiSelect = (props: MultiSelectProps) => {
         menuPlacement={menuPlacement}
         maxMenuHeight={maxMenuHeight}
       />
+
       <ErrorMessage name={name} component={FormError} />
     </>
   );

@@ -1,5 +1,5 @@
 import { useMutation } from "react-query";
-import { createConfiguration } from "../services/config-services";
+import { createConfiguration, scheduleConfiguration } from "../services/config-services";
 
 interface IProps {
   onSuccess:(values:any) => void;
@@ -9,6 +9,14 @@ interface IProps {
 export const useCreateConfiguration = (props: IProps) => {
   const { onSuccess, onError } = props;
   return useMutation(createConfiguration, {
+    onSuccess,
+    onError
+  });
+};
+
+export const useScheduleConfiguration = (props: IProps) => {
+  const { onSuccess, onError } = props;
+  return useMutation(scheduleConfiguration, {
     onSuccess,
     onError
   });
