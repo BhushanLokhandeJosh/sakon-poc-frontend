@@ -1,12 +1,15 @@
 import { Button, Popover } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 
-export default function CustomColumnPopover({ arr }: any) {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const id = open ? "popover" : undefined;
+interface CustomColumnToolTipProps {
+  arr: string[];
+  sx?: Record<string, unknown>;
+}
 
-  const handleClick = (event: any) => {
+const CustomColumnToolTip = ({ arr, sx = {} }: CustomColumnToolTipProps) => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -14,44 +17,49 @@ export default function CustomColumnPopover({ arr }: any) {
     setAnchorEl(null);
   };
 
+  const content =
+    arr.length > 1 ? (
+      arr.map((item: string, index: number) => (
+        <div key={index} style={{ margin: "8px 8px " }}>
+          {item}
+        </div>
+      ))
+    ) : (
+      <div style={{ margin: "8px 0" }}>{arr[0]}</div>
+    );
+
   return (
     <>
-      {arr[0]}
-      {arr.length > 1 ? (
-        <Button onClick={handleClick}>{`+${arr.length - 1}`}</Button>
-      ) : (
-        <></>
+      {arr.length > 0 && (
+        <>
+          {arr[0]}
+          {arr.length > 1 && (
+            <Button onClick={handleClick}>{`+${arr.length - 1}`}</Button>
+          )}
+          <Popover
+            open={Boolean(anchorEl)}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            sx={{
+              p: 2,
+              m: 1,
+              ...sx,
+            }}
+            anchorOrigin={{
+              vertical: "center",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "center",
+              horizontal: "left",
+            }}
+          >
+            {content}
+          </Popover>
+        </>
       )}
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        sx={{
-          p: 2,
-          m: 1,
-          "& > *": {
-            margin: "0.5rem 0",
-          },
-        }}
-        anchorOrigin={{
-          vertical: "center",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "center",
-          horizontal: "left",
-        }}
-      >
-        <React.Fragment>
-          {arr?.map((a: any) => (
-            <b>
-              {a}
-              <br />
-            </b>
-          ))}
-        </React.Fragment>
-      </Popover>
     </>
   );
-}
+};
+
+export default CustomColumnToolTip;
