@@ -44,12 +44,16 @@ export default function CustomColumnPopover({ arr }: any) {
         }}
       >
         <React.Fragment>
-          {arr?.map((a: any) => (
-            <b>
-              {a}
-              <br />
-            </b>
-          ))}
+          {arr?.map((a: any, idx: number) => {
+            if (idx !== 0) {
+              return (
+                <b>
+                  {a}
+                  <br />
+                </b>
+              );
+            }
+          })}
         </React.Fragment>
       </Popover>
     </>

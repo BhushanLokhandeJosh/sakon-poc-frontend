@@ -8,6 +8,7 @@ import SearchBox from "../../../shared/SearchBox/SearchBox";
 import FilterBox from "../../../shared/FilterBox/FilterBox";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import ModalComponent from "../../../shared/ModalComponent/component";
+import FilterForm from "../../../shared/FilterBox/FilterForm";
 
 interface IProps {
   data: any;
@@ -30,49 +31,16 @@ export default function GetAllConfDataTable(props: IProps) {
 
   return (
     <div>
-      {/* <div className="input-btn-container"> */}
-      {/* <button
-          style={{ backgroundColor: "blue" }}
-          onClick={() => setIsOpen((prev) => !prev)}
-        >
-          <FilterListIcon
-            sx={{ color: "white", fontSize: 25, cursor: "pointer" }}
-          />
-        </button>
-        <ModalComponent
-          isOpen={isOpen}
-          modalBody={
-            <FilterBox
-              initialValues={initialValues}
-              handleSubmit={handleSubmit}
-            />
-          }
-          modalTitle="Filter Configurations"
-          toggleModal={() => setIsOpen((prev) => !prev)}
-          modalStyle="filter-modal-style"
-        /> */}
-      {/* <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} /> */}
-      {/* </div> */}
       <CustomTable
-        data={data}
         columnHeader={getAllConfigColumns}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        initialValues={initialValues}
-        handleSubmit={handleSubmit}
+        filterBody={
+          <FilterForm
+            initialValues={initialValues}
+            handleSubmit={handleSubmit}
+          />
+        }
+        {...props}
       />
     </div>
   );
-  // return (
-  // <div style={{ height: 600, width: "98%" }}>
-  // <DataGrid
-  // disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.
-  // disableRowSelectionOnClick //Used to Remove statement: whenever we select rows it shows selected rows statement on UI.
-  // rows={data}
-  // columns={getAllConfigColumns}
-  // // pageSize={5}
-  // // rowsPerPageOptions={[5]}
-  // />
-  // </div>
-  // );
 }

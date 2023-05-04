@@ -13,19 +13,11 @@ interface IProps {
   columnHeader: GridColDef[];
   searchValue: string;
   setSearchValue: Function;
-  initialValues: any;
-  handleSubmit: any;
+  filterBody: JSX.Element;
 }
 const CustomTable = (props: IProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const {
-    data,
-    columnHeader,
-    searchValue,
-    setSearchValue,
-    initialValues,
-    handleSubmit,
-  } = props;
+  const { data, columnHeader, searchValue, setSearchValue, filterBody } = props;
 
   return (
     <>
@@ -40,12 +32,7 @@ const CustomTable = (props: IProps) => {
         </button>
         <ModalComponent
           isOpen={isOpen}
-          modalBody={
-            <FilterBox
-              initialValues={initialValues}
-              handleSubmit={handleSubmit}
-            />
-          }
+          modalBody={<FilterBox filterBody={filterBody} />}
           modalTitle="Filter Configurations"
           toggleModal={() => setIsOpen((prev) => !prev)}
           modalStyle="filter-modal-style"

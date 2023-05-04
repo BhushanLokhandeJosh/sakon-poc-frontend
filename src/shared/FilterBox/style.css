@@ -25,3 +25,6 @@
 .department-container > .select-box-container {
   margin: 10px 0 18px 0px;
 }
+.filter-body {
+  height: 200px;
+}

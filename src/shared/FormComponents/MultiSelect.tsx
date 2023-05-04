@@ -1,9 +1,6 @@
 import { ErrorMessage, Field } from "formik";
-
 import FormError from "./FormError";
-
 import { MultiSelectProps } from "./types";
-
 import "./styles/styles.css";
 
 const MultiSelect = (props: MultiSelectProps) => {
