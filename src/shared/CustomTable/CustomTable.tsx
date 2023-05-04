@@ -59,8 +59,6 @@ const CustomTable = (props: IProps) => {
           disableRowSelectionOnClick //Used to Remove statement: whenever we select rows it shows selected rows statement on UI.
           rows={data}
           columns={columnHeader}
-          // disableColumnSelector // Used to disable column selector.
-          // disableDensitySelector // Used to disable density selector.
           sx={{
             ".MuiDataGrid-iconButtonContainer": {
               visibility: "visible",
@@ -69,8 +67,6 @@ const CustomTable = (props: IProps) => {
               opacity: "inherit !important",
             },
           }}
-          // showCellVerticalBorder
-          // showColumnVerticalBorder
         />
       </div>
     </>

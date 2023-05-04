@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
-import React, { ElementType, ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 interface IProps {
   pageTitle: string;
-  buttonLable?: any;
+  buttonLable?: string | boolean;
   pageBody?: ReactNode;
   //   searchValue: string;
   //   setSearchValue: Function;
