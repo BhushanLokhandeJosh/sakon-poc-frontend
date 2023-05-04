@@ -17,11 +17,17 @@ const CustomColumnToolTip = ({ arr, sx = {} }: CustomColumnToolTipProps) => {
     setAnchorEl(null);
   };
 
-  const content = arr.map((item: string, index: number) => (
-    <div key={index} className="content-container">
-      {item}
-    </div>
-  ));
+  const content = arr
+    ?.filter((item: string, index: number) => index !== 0)
+    .map((item: string, index: number) => (
+      <div
+        key={index}
+        className="content-container"
+        style={{ marginBottom: "0.5rem" }}
+      >
+        {item}
+      </div>
+    ));
 
   return (
     <>
