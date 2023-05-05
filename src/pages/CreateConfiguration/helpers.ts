@@ -1,7 +1,7 @@
 import * as Yup from "yup";
-import { InitialValuesProps } from "./types";
+import { IConfigurationValues } from "./types";
 
-export const initialValues: InitialValuesProps = {
+export const initialValues: IConfigurationValues = {
   configurationName: "",
   department: "",
   email: "",
@@ -37,7 +37,7 @@ export const validationSchema = Yup.object({
   template: Yup.string().required("Template Required"),
 });
 
-export const formDataMapping = (values: InitialValuesProps) => {
+export const formDataMapping = (values: IConfigurationValues) => {
   console.log(values);
   const {
     configurationName,

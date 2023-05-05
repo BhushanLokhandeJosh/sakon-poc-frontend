@@ -4,10 +4,12 @@
 }
 
 .label-style {
-  font-size: 20px;
   text-align: left;
-  text-decoration-line: inherit;
+  font-size: 20px;
+  color: rgb(49, 49, 49);
+  padding-bottom: 5px;
 }
+
 .label-field-style {
   font-size: 25px;
   font-weight: bold;

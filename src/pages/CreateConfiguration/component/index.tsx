@@ -1,37 +1,27 @@
-import React from "react";
-import { Button } from "@mui/material";
-
 import ModalComponent from "../../../shared/ModalComponent/component";
-
 import ConfigurationForm from "./ConfigurationForm";
 
-import { ConfigurationProps } from "../types";
+import { IConfigurationFormProps } from "../types";
 
 import "./styles/styles.css";
 
-const CreateConfigurationComponent = (props: ConfigurationProps) => {
+const CreateConfigurationComponent = (props: IConfigurationFormProps) => {
   const { isOpen, toggleModal, onSubmit } = props;
 
   return (
     <div>
-      <Button
-        variant="contained"
-        color="info"
-        onClick={toggleModal}
-        sx={{
-          marginTop:"5%",
-          marginLeft:"50%"
-        }}
-      >
+      <button className="config-button-style" onClick={toggleModal}>
         Create Configuration
-      </Button>
+      </button>
 
       <ModalComponent
         isOpen={isOpen}
         toggleModal={toggleModal}
         modalTitle="Create Configuration"
         maxwidth="md"
-        modalBody={<ConfigurationForm onSubmit={onSubmit} toggleModal={toggleModal} />}
+        modalBody={
+          <ConfigurationForm onSubmit={onSubmit} toggleModal={toggleModal} />
+        }
       />
     </div>
   );

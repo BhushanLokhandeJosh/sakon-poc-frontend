@@ -5,11 +5,11 @@ import DialogActions from "@mui/material/DialogActions";
 import Input from "../../../shared/FormComponents/Input";
 
 import { initialValues, validationSchema } from "../helpers";
-import { ConfigurationFormProps } from "../types";
+import { IConfigurationProps } from "../types";
 
 import "./styles/styles.css";
 
-const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
+const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
   const { onSubmit, toggleModal } = props;
 
   return (
@@ -28,7 +28,7 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                 columnSpacing={{ xs: 4, sm: 4, md: 4 }}
               >
                 <Grid item xs={6}>
-                  <div className="form-group">
+                  <div>
                     <Input
                       type="text"
                       label="Configuration Name"
@@ -39,7 +39,7 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                 </Grid>
 
                 <Grid item xs={6}>
-                  <div className="form-group">
+                  <div>
                     <Input
                       type="text"
                       label="Carrier Name"
@@ -50,7 +50,7 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                 </Grid>
 
                 <Grid item xs={6}>
-                  <div className="form-group">
+                  <div>
                     <Input
                       type="text"
                       label="Email"
@@ -60,7 +60,7 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                   </div>
                 </Grid>
                 <Grid item xs={6}>
-                  <div className="form-group">
+                  <div>
                     <Input
                       type="password"
                       label="Password"
@@ -71,7 +71,7 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                 </Grid>
 
                 <Grid item xs={6}>
-                  <div className="form-group">
+                  <div>
                     <Input
                       type="text"
                       label="Department"
@@ -81,7 +81,7 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                   </div>
                 </Grid>
                 <Grid item xs={6}>
-                  <div className="form-group">
+                  <div>
                     <Input
                       type="text"
                       label="Sftp Location"
@@ -91,7 +91,7 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                   </div>
                 </Grid>
                 <Grid item xs={6}>
-                  <div className="form-group">
+                  <div>
                     <Input
                       type="text"
                       label="Sftp Login"
@@ -101,7 +101,7 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                   </div>
                 </Grid>
                 <Grid item xs={6}>
-                  <div className="form-group">
+                  <div>
                     <Input
                       type="password"
                       label="Sftp Password"
@@ -112,7 +112,7 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                 </Grid>
 
                 <Grid item xs={6}>
-                  <div className="form-group">
+                  <div>
                     <Input
                       type="text"
                       label="Download Link"
@@ -122,7 +122,7 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                   </div>
                 </Grid>
                 <Grid item xs={6}>
-                  <div className="form-group">
+                  <div>
                     <Input
                       type="file"
                       label="Template"
@@ -133,7 +133,11 @@ const ConfigurationForm = (props: ConfigurationFormProps): JSX.Element => {
                 </Grid>
                 <Grid item xs={12}>
                   <DialogActions>
-                    <button type="reset" onClick={toggleModal} className="cancel-button">
+                    <button
+                      type="reset"
+                      onClick={toggleModal}
+                      className="cancel-button"
+                    >
                       CANCEL
                     </button>
                     <Button

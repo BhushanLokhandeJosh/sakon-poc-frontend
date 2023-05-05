@@ -1,15 +1,16 @@
 import { useMutation } from "react-query";
 import { createConfiguration } from "../services/config-services";
+import { AxiosError } from "axios";
 
-interface IProps {
-  onSuccess:(values:any) => void;
-  onError:(values:any) => void
+interface IResponseProps {
+  onSuccess: (values: any) => void;
+  onError: (values: AxiosError) => void;
 }
 
-export const useCreateConfiguration = (props: IProps) => {
+export const useCreateConfiguration = (props: IResponseProps) => {
   const { onSuccess, onError } = props;
   return useMutation(createConfiguration, {
     onSuccess,
-    onError
+    onError,
   });
 };

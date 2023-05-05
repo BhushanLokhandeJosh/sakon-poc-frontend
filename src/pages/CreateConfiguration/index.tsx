@@ -1,23 +1,24 @@
 import { toast } from "react-toastify";
+import { AxiosError } from "axios";
+
+import CreateConfigurationComponent from "./component";
 
 import useModal from "../../shared/CustomHooks/useModal";
 import { useCreateConfiguration } from "../../hooks/useQueryhooks";
 
-import CreateConfigurationComponent from "./component";
-
-import { InitialValuesProps } from "./types";
+import { IConfigurationValues } from "./types";
 import { formDataMapping } from "./helpers";
 
 const CreateConfigContainer = () => {
   const { isOpen, toggleModal } = useModal();
 
-  const onSuccess = async (values: InitialValuesProps) => {
+  const onSuccess = (values: IConfigurationValues) => {
     toast.success("Configuration Added Successfully...");
     toggleModal();
   };
 
-  const onError = (values: any) => {
-    toast.error("Something Went Wrong...");
+  const onError = (values: AxiosError) => {
+    toast.error(values.message);
   };
 
   const { mutate: createConfiguration } = useCreateConfiguration({
@@ -25,7 +26,7 @@ const CreateConfigContainer = () => {
     onError,
   });
 
-  const onSubmit = (values: InitialValuesProps) => {
+  const onSubmit = (values: IConfigurationValues) => {
     let formData = formDataMapping(values);
     createConfiguration(formData);
   };
