@@ -1,22 +1,44 @@
 import { ReactElement } from "react";
 import { Field, ErrorMessage } from "formik";
+import InputLabel from "@mui/material/InputLabel";
 
 import FormError from "./FormError";
 
-import { InputElementProps } from "./types";
-
 import "./styles/styles.css";
 
-const Input = (props: InputElementProps): ReactElement => {
-  const { label, name, className, ...other } = props;
+interface IInputElementProps {
+  label?: string;
+  name: string;
+  type?:
+    | "text"
+    | "date"
+    | "time"
+    | "textarea"
+    | "select"
+    | "email"
+    | "password"
+    | "number"
+    | "file";
+  className?: string;
+  placeholder?: string;
+}
+
+const Input = (props: IInputElementProps): ReactElement => {
+  const { label, name, className, placeholder, type } = props;
   return (
     <>
       <div className="label-style">
-        <label htmlFor={name}>{label}</label>
+        <InputLabel htmlFor={name}>{label}</InputLabel>
       </div>
 
       <div>
-        <Field id={name} name={name} className={className} {...other} />
+        <Field
+          type={type}
+          id={name}
+          name={name}
+          className={className}
+          placeholder={placeholder}
+        />
         <ErrorMessage name={name} component={FormError} />
       </div>
     </>

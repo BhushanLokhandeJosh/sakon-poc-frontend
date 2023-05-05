@@ -2,16 +2,37 @@ import { ErrorMessage, Field } from "formik";
 
 import FormError from "./FormError";
 
-import { MultiSelectProps } from "./types";
-
 import "./styles/style.css";
+import { InputLabel } from "@mui/material";
 
-const MultiSelect = (props: MultiSelectProps) => {
-  const { className, name, options, component, placeholder, isMulti,label,menuPlacement,menuShouldScrollIntoView } = props;
+interface IMultiSelectProps {
+  className?: string;
+  name: string;
+  options?: { label: string; value: string }[];
+  component?: any;
+  placeholder?: string;
+  isMulti?: boolean;
+  label?: string;
+  menuPlacement?: string;
+  menuShouldScrollIntoView?: boolean;
+}
+
+const MultiSelect = (props: IMultiSelectProps) => {
+  const {
+    className,
+    name,
+    options,
+    component,
+    placeholder,
+    isMulti,
+    label,
+    menuPlacement,
+    menuShouldScrollIntoView,
+  } = props;
   return (
     <>
       <div className="label-style">
-        <label htmlFor={name}>{label}</label>
+        <InputLabel htmlFor={name}>{label}</InputLabel>
       </div>
 
       <Field
@@ -30,4 +51,3 @@ const MultiSelect = (props: MultiSelectProps) => {
 };
 
 export default MultiSelect;
-
