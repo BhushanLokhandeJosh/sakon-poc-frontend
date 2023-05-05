@@ -1,12 +1,11 @@
 import { Button, Popover } from "@mui/material";
 import { useState } from "react";
 
-interface CustomColumnToolTipProps {
+interface CustomColumnPopoverProps {
   arr: string[];
-  sx?: Record<string, unknown>;
 }
 
-const CustomColumnToolTip = ({ arr, sx = {} }: CustomColumnToolTipProps) => {
+const CustomColumnPopover = ({ arr }: CustomColumnPopoverProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -20,11 +19,7 @@ const CustomColumnToolTip = ({ arr, sx = {} }: CustomColumnToolTipProps) => {
   const content = arr
     ?.filter((item: string, index: number) => index !== 0)
     .map((item: string, index: number) => (
-      <div
-        key={index}
-        className="content-container"
-        style={{ marginBottom: "0.5rem" }}
-      >
+      <div key={index} className="content-container">
         {item}
       </div>
     ));
@@ -35,32 +30,33 @@ const CustomColumnToolTip = ({ arr, sx = {} }: CustomColumnToolTipProps) => {
         <>
           {arr[0]}
           {arr.length > 1 && (
-            <Button onClick={handleClick}>{`+${arr.length - 1}`}</Button>
+            <>
+              <Button onClick={handleClick}>{`+${arr.length - 1}`}</Button>
+              <Popover
+                open={Boolean(anchorEl)}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                sx={{
+                  p: 2,
+                  m: 1,
+                }}
+                anchorOrigin={{
+                  vertical: "center",
+                  horizontal: "right",
+                }}
+                transformOrigin={{
+                  vertical: "center",
+                  horizontal: "left",
+                }}
+              >
+                {content}
+              </Popover>
+            </>
           )}
-          <Popover
-            open={Boolean(anchorEl)}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            sx={{
-              p: 2,
-              m: 1,
-              ...sx,
-            }}
-            anchorOrigin={{
-              vertical: "center",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "center",
-              horizontal: "left",
-            }}
-          >
-            {content}
-          </Popover>
         </>
       )}
     </>
   );
 };
 
-export default CustomColumnToolTip;
+export default CustomColumnPopover;
