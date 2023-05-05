@@ -4,10 +4,9 @@ import "./style.css";
 
 interface CustomColumnPopoverProps {
   arr: string[];
-  sx?: Record<string, unknown>;
 }
 
-const CustomColumnPopover = ({ arr, sx = {} }: CustomColumnPopoverProps) => {
+const CustomColumnPopover = ({ arr }: CustomColumnPopoverProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -21,11 +20,7 @@ const CustomColumnPopover = ({ arr, sx = {} }: CustomColumnPopoverProps) => {
   const content = arr
     ?.filter((item: string, index: number) => index !== 0)
     .map((item: string, index: number) => (
-      <div
-        key={index}
-        className="content-container"
-        style={{ marginBottom: "0.5rem" }}
-      >
+      <div key={index} className="content-container">
         {item}
       </div>
     ));
@@ -45,7 +40,6 @@ const CustomColumnPopover = ({ arr, sx = {} }: CustomColumnPopoverProps) => {
                 sx={{
                   p: 2,
                   m: 1,
-                  ...sx,
                 }}
                 anchorOrigin={{
                   vertical: "center",

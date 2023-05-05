@@ -18,6 +18,7 @@ function GetAllSchedulersDataTable<T>(props: ISchedulers<T>) {
   return (
     <div>
       <CustomTable
+        isFilterVisible={false}
         columnHeader={getAllSchedulerColumns}
         filterBody={
           <FilterForm

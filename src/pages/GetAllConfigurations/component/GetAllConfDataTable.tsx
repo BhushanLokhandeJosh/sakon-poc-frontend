@@ -29,7 +29,9 @@ export default function GetAllConfDataTable<T>(props: IProps<T>) {
   return (
     <div>
       <CustomTable
+        isFilterVisible={true}
         columnHeader={getAllConfigColumns}
+        filterBodyTitle="Filter Configurations"
         filterBody={
           <FilterForm
             initialValues={initialValues}
