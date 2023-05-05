@@ -25,11 +25,13 @@ const GetAllSchedulers = () => {
 
   return (
     <>
-      <GetAllSchedulerComponent
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        data={data}
-      />
+      {data && (
+        <GetAllSchedulerComponent
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          data={data}
+        />
+      )}
     </>
   );
 };

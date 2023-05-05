@@ -10,16 +10,13 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import ModalComponent from "../../../shared/ModalComponent/component";
 import FilterForm from "../../../shared/FilterBox/FilterForm";
 
-interface IProps {
-  data: any;
+interface IProps<T> {
+  data: T[];
   searchValue: string;
   setSearchValue: Function;
 }
 
-export default function GetAllConfDataTable(props: IProps) {
-  const { data, searchValue, setSearchValue } = props;
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
-
+export default function GetAllConfDataTable<T>(props: IProps<T>) {
   const initialValues = {
     schedulingStatus: "",
     department: "",

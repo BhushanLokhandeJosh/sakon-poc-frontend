@@ -36,28 +36,30 @@ const CustomColumnPopover = ({ arr, sx = {} }: CustomColumnPopoverProps) => {
         <>
           {arr[0]}
           {arr.length > 1 && (
-            <Button onClick={handleClick}>{`+${arr.length - 1}`}</Button>
+            <>
+              <Button onClick={handleClick}>{`+${arr.length - 1}`}</Button>
+              <Popover
+                open={Boolean(anchorEl)}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                sx={{
+                  p: 2,
+                  m: 1,
+                  ...sx,
+                }}
+                anchorOrigin={{
+                  vertical: "center",
+                  horizontal: "right",
+                }}
+                transformOrigin={{
+                  vertical: "center",
+                  horizontal: "left",
+                }}
+              >
+                {content}
+              </Popover>
+            </>
           )}
-          <Popover
-            open={Boolean(anchorEl)}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            sx={{
-              p: 2,
-              m: 1,
-              ...sx,
-            }}
-            anchorOrigin={{
-              vertical: "center",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "center",
-              horizontal: "left",
-            }}
-          >
-            {content}
-          </Popover>
         </>
       )}
     </>

@@ -6,13 +6,13 @@ import SearchBox from "../../../shared/SearchBox/SearchBox";
 import { Direction } from "react-toastify/dist/utils";
 import PageComponent from "../../../shared/PageComponent/PageComponent";
 
-interface IProps {
+interface IProps<T> {
+  data: T[];
   searchValue: string;
   setSearchValue: Function;
-  data: any;
 }
 
-const GetAllConfigurationComponent = (props: IProps) => {
+function GetAllConfigurationComponent<T>(props: IProps<T>) {
   const { searchValue, setSearchValue, data } = props;
 
   return (
@@ -30,6 +30,6 @@ const GetAllConfigurationComponent = (props: IProps) => {
       />
     </div>
   );
-};
+}
 
 export default GetAllConfigurationComponent;

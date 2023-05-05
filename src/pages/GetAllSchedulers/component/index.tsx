@@ -2,12 +2,12 @@ import React from "react";
 import PageComponent from "../../../shared/PageComponent/PageComponent";
 import GetAllSchedulersDataTable from "./GetAllSchedulersDataTable";
 
-interface IProps {
+interface IProps<T> {
+  data: T[];
   searchValue: string;
   setSearchValue: Function;
-  data: any;
 }
-const GetAllSchedulerComponent = (props: IProps) => {
+function GetAllSchedulerComponent<T>(props: IProps<T>) {
   const { searchValue, setSearchValue, data } = props;
 
   const initialValues = {};
@@ -32,6 +32,6 @@ const GetAllSchedulerComponent = (props: IProps) => {
       />
     </div>
   );
-};
+}
 
 export default GetAllSchedulerComponent;

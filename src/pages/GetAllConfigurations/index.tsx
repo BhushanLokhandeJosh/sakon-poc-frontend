@@ -24,11 +24,13 @@ const GetAllConfigurations = () => {
 
   return (
     <>
-      <GetAllConfigurationComponent
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        data={data}
-      />
+      {data && (
+        <GetAllConfigurationComponent
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          data={data}
+        />
+      )}
     </>
   );
 };

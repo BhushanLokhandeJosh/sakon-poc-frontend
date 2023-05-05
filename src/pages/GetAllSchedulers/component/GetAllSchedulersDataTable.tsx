@@ -5,14 +5,14 @@ import { getAllSchedulerColumns } from "../constants";
 import "./styles/style.css";
 import FilterForm from "../../../shared/FilterBox/FilterForm";
 
-interface ISchedulers {
-  data: any;
+interface ISchedulers<T> {
+  data: T[];
   searchValue: string;
   setSearchValue: Function;
   initialValues: any;
   handleSubmit: any;
 }
-const GetAllSchedulersDataTable = (props: ISchedulers) => {
+function GetAllSchedulersDataTable<T>(props: ISchedulers<T>) {
   const { initialValues, handleSubmit } = props;
 
   return (
@@ -29,6 +29,6 @@ const GetAllSchedulersDataTable = (props: ISchedulers) => {
       />
     </div>
   );
-};
+}
 
 export default GetAllSchedulersDataTable;
