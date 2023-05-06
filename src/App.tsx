@@ -12,8 +12,8 @@ function App() {
     <div className="App">
       <LayoutComponent>
         {/* <CreateConfigContainer /> */}
-        {/* <GetAllConfigurations /> */}
-        <GetAllSchedulers />
+        <GetAllConfigurations />
+        {/* <GetAllSchedulers /> */}
       </LayoutComponent>
     </div>
   );

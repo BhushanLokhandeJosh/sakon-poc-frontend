@@ -19,7 +19,7 @@ function GetAllConfigurationComponent<T>(props: IProps<T>) {
     <div>
       <PageComponent
         pageTitle="Configurations"
-        buttonLable="Create Configuration"
+        buttonLabel="Create Configuration"
         pageBody={
           <GetAllConfDataTable
             data={data}

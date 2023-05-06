@@ -1,43 +1,48 @@
-import { Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import React, { ReactNode } from "react";
 
 interface IProps {
   pageTitle: string;
-  buttonLable?: string | boolean;
-  pageBody?: ReactNode;
-  //   searchValue: string;
-  //   setSearchValue: Function;
-  //   data: any;
+  buttonLabel?: string;
+  pageBody: ReactNode;
 }
+
 const PageComponent = (props: IProps) => {
-  const { pageTitle, buttonLable, pageBody } = props;
+  const { pageTitle, buttonLabel, pageBody } = props;
+
+  const styles = {
+    root: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+    },
+    title: {
+      marginTop: "15px",
+      fontWeight: "15px",
+    },
+    button: {
+      margin: "2% 4% 0% 0%",
+      padding: "10px",
+      height: "30px",
+    },
+  };
+
   return (
-    //todo work on mtrl ui css
-    <div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <h2 style={{ fontWeight: "15px" }}>{pageTitle}</h2>
+    <Box>
+      <Box sx={styles.root}>
+        <Typography variant="h4" sx={styles.title}>
+          {pageTitle}
+        </Typography>
 
-        {buttonLable ? (
-          <Button
-            variant="contained"
-            style={{ margin: "2% 4% 0% 0%", padding: "10px", height: "30px" }}
-          >
-            {buttonLable}
+        {buttonLabel && (
+          <Button variant="contained" sx={styles.button}>
+            {buttonLabel}
           </Button>
-        ) : (
-          false
         )}
-      </div>
+      </Box>
 
-      {/*todo what should we render when button lable is not there */}
       {pageBody}
-    </div>
+    </Box>
   );
 };
 

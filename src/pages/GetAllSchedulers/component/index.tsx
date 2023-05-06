@@ -19,7 +19,6 @@ function GetAllSchedulerComponent<T>(props: IProps<T>) {
     <div>
       <PageComponent
         pageTitle="Schedulers"
-        // buttonLable={}
         pageBody={
           <GetAllSchedulersDataTable
             data={data}
