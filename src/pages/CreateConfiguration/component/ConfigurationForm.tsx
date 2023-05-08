@@ -27,7 +27,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
                 rowSpacing={4}
                 columnSpacing={{ xs: 4, sm: 4, md: 4 }}
               >
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={12} md={10} lg={6}>
                   <div>
                     <Input
                       type="text"
@@ -38,7 +38,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
                   </div>
                 </Grid>
 
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={12} md={10} lg={6}>
                   <div>
                     <Input
                       type="text"
@@ -49,7 +49,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
                   </div>
                 </Grid>
 
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={12} md={10} lg={6}>
                   <div>
                     <Input
                       type="text"
@@ -59,7 +59,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
                     />
                   </div>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={12} md={10} lg={6}>
                   <div>
                     <Input
                       type="password"
@@ -70,7 +70,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
                   </div>
                 </Grid>
 
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={12} md={10} lg={6}>
                   <div>
                     <Input
                       type="text"
@@ -80,7 +80,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
                     />
                   </div>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={12} md={10} lg={6}>
                   <div>
                     <Input
                       type="text"
@@ -90,7 +90,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
                     />
                   </div>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={12} md={10} lg={6}>
                   <div>
                     <Input
                       type="text"
@@ -100,7 +100,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
                     />
                   </div>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={12} md={10} lg={6}>
                   <div>
                     <Input
                       type="password"
@@ -111,7 +111,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
                   </div>
                 </Grid>
 
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={12} md={10} lg={6}>
                   <div>
                     <Input
                       type="text"
@@ -121,7 +121,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
                     />
                   </div>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={12} md={10} lg={6}>
                   <div>
                     <Input
                       type="file"
@@ -131,7 +131,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
                     />
                   </div>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={12} md={10} lg={12}>
                   <DialogActions>
                     <button
                       type="reset"

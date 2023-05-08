@@ -4,6 +4,7 @@
   margin: auto;
 }
 
+
 .text-field {
   text-align: left;
   border: 0.5px solid rgb(195, 195, 195);
@@ -12,6 +13,14 @@
   box-shadow: 0.5px 1px rgb(193, 193, 193);
   border-radius: 5px;
   font-size: 18px;
+}
+
+
+@media (max-width:768px) {
+  .text-field {
+    width: 90%;
+    padding: 8px;
+  }
 }
 
 .config-button-style {
