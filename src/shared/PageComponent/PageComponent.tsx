@@ -1,14 +1,14 @@
 import { Box, Button, Typography } from "@mui/material";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 interface IProps {
   pageTitle: string;
-  buttonLabel?: string | boolean;
+  buttonLabel?: string;
   pageBody: ReactNode;
 }
+
 const PageComponent = (props: IProps) => {
   const { pageTitle, buttonLabel, pageBody } = props;
-
   const styles = {
     root: {
       display: "flex",
@@ -17,7 +17,7 @@ const PageComponent = (props: IProps) => {
     },
     title: {
       marginTop: "15px",
-      ofntWeight: "15px",
+      fontWeight: "15px",
     },
     button: {
       margin: "2% 4% 0% 0%",
@@ -25,13 +25,14 @@ const PageComponent = (props: IProps) => {
       height: "30px",
     },
   };
+
   return (
-    //todo work on mtrl ui css
     <Box>
       <Box sx={styles.root}>
         <Typography variant="h4" sx={styles.title}>
           {pageTitle}
         </Typography>
+
         {buttonLabel && (
           <Button variant="contained" sx={styles.button}>
             {buttonLabel}
