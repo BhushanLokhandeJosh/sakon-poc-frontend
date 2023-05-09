@@ -1,19 +1,20 @@
+import { Form, Formik } from "formik";
 import { Button, DialogActions, Grid } from "@mui/material";
-import { Form, Formik, FormikProps } from "formik";
-
 import { BUTTONS } from "../../constants";
 
-interface IFormikProps {
+import { IFormikProps } from "../../types";
+
+interface IFormikFormProps {
   initialValues: any;
   validationSchema: any;
   onSubmitHandler: (values: any) => void;
   formClassName?: string;
   toggleModal: () => void;
   submitButtonLabel?: string;
-  formikForm: (formik: any) => JSX.Element;
+  getFormikForm: (formik: IFormikProps<any>) => JSX.Element;
 }
 
-const FormikContainer = (props: IFormikProps) => {
+const FormikContainer = (props: IFormikFormProps) => {
   const {
     initialValues,
     validationSchema,
@@ -21,7 +22,7 @@ const FormikContainer = (props: IFormikProps) => {
     formClassName,
     toggleModal,
     submitButtonLabel = BUTTONS.SUBMIT,
-    formikForm,
+    getFormikForm,
   } = props;
 
   return (
@@ -31,14 +32,14 @@ const FormikContainer = (props: IFormikProps) => {
         validationSchema={validationSchema}
         onSubmit={onSubmitHandler}
       >
-        {(formik: FormikProps<any>) => (
+        {(formik: IFormikProps<any>) => (
           <Form>
             <Grid
               container
               rowSpacing={4}
               columnSpacing={{ xs: 2, sm: 2, md: 2 }}
             >
-              {formikForm(formik)}
+              {getFormikForm(formik)}
 
               <Grid item xs={11}>
                 <DialogActions>

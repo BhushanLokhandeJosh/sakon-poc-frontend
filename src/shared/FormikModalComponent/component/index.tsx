@@ -1,11 +1,11 @@
 import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { FormikProps } from "formik";
 
 import FormikContainer from "./FormikContainer";
 
-import { MAX_WIDTH } from "../../types";
+import { IFormikProps, MAX_WIDTH } from "../../types";
 import "./styles/styles.css";
+
 
 export interface IFormikModalProp {
   isOpen: boolean;
@@ -61,9 +61,9 @@ const FormikModalComponent = (props: IFormikModalProp) => {
             formClassName={formClassName}
             toggleModal={toggleModal}
             submitButtonLabel={submitButtonLabel}
-            formikForm={(formik: FormikProps<any>) => {
-              return getFormBody(formik);
-            }}
+            getFormikForm={(formik: IFormikProps<any>) =>
+              getFormBody(formik)
+            }
           />
         </DialogContent>
       </Dialog>

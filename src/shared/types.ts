@@ -1,3 +1,5 @@
+import { FormikProps } from "formik";
+
 export enum MAX_WIDTH {
     XS = "xs",
     SM = "sm",
@@ -6,4 +8,4 @@ export enum MAX_WIDTH {
     XL = "xl"
 }
 
-
+export interface IFormikProps<T> extends FormikProps<T> {}
