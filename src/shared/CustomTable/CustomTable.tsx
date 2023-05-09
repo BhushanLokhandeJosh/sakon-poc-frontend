@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { Button } from "@mui/material";
@@ -9,27 +9,46 @@ import ModalComponent from "../ModalComponent/component";
 import { dataGridStyleForColumnSortArrow } from "./constant";
 import "./style.css";
 
-interface ICustomTableProps<T> {
-  data: T[];
+interface ICustomTableProps {
   columnHeader: GridColDef[];
-  searchValue: string;
-  setSearchValue: Function;
-  filterBody: JSX.Element;
+  filterBody?: JSX.Element;
   isFilterVisible: boolean;
   filterBodyTitle?: string;
+  useCustomFetch: any;
 }
-function CustomTable<T>(props: ICustomTableProps<T>) {
+function CustomTable(props: ICustomTableProps) {
   const { isOpen, toggleModal } = useModal();
   const {
-    data,
     columnHeader,
-    searchValue,
-    setSearchValue,
     filterBody,
     isFilterVisible,
     filterBodyTitle,
+    useCustomFetch,
   } = props;
 
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [searchTrigger, setSearchTrigger] = useState<string>("");
+
+  useEffect(() => {
+    if (searchTrigger !== searchValue) {
+      const delayDebounceFn = setTimeout(() => {
+        setSearchTrigger(searchValue);
+      }, 200);
+      return () => clearTimeout(delayDebounceFn);
+    }
+  }, [searchValue, searchTrigger, setSearchTrigger]);
+
+  const { data, isLoading, isError } = useCustomFetch({
+    searchValue: searchTrigger,
+  });
+  console.log(data, "sccc");
+
+  if (isLoading) {
+    return <>Loading...</>;
+  }
+  if (isError) {
+    return <>Error...</>;
+  }
   return (
     <>
       <div className="input-btn-container">
@@ -38,13 +57,15 @@ function CustomTable<T>(props: ICustomTableProps<T>) {
             <Button variant="contained" onClick={toggleModal}>
               <FilterListIcon />
             </Button>
-            <ModalComponent
-              isOpen={isOpen}
-              modalBody={<FilterBox filterBody={filterBody} />}
-              modalTitle={filterBodyTitle}
-              toggleModal={toggleModal}
-              modalStyle="filter-modal-style"
-            />
+            {filterBody && (
+              <ModalComponent
+                isOpen={isOpen}
+                modalBody={<FilterBox filterBody={filterBody} />}
+                modalTitle={filterBodyTitle}
+                toggleModal={toggleModal}
+                modalStyle="filter-modal-style"
+              />
+            )}
           </>
         )}
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />

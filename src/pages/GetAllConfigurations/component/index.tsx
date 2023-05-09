@@ -6,27 +6,17 @@ import SearchBox from "../../../shared/SearchBox/SearchBox";
 import { Direction } from "react-toastify/dist/utils";
 import PageComponent from "../../../shared/PageComponent/PageComponent";
 
-interface IProps<T> {
-  data: T[];
-  searchValue: string;
-  setSearchValue: Function;
+interface IProps {
+  useCustomFetch: any;
 }
 
-function GetAllConfigurationComponent<T>(props: IProps<T>) {
-  const { searchValue, setSearchValue, data } = props;
-
+function GetAllConfigurationComponent(props: IProps) {
   return (
     <div>
       <PageComponent
         pageTitle="Configurations"
         buttonLabel="Create Configuration"
-        pageBody={
-          <GetAllConfDataTable
-            data={data}
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-          />
-        }
+        pageBody={<GetAllConfDataTable {...props} />}
       />
     </div>
   );

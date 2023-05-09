@@ -8,21 +8,20 @@ import SearchBox from "../../../shared/SearchBox/SearchBox";
 import FilterBox from "../../../shared/FilterBox/FilterBox";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import ModalComponent from "../../../shared/ModalComponent/component";
-import FilterForm from "../../../shared/FilterBox/FilterForm";
+import FilterForm from "./FilterForm";
+import { ConfigFilterFormInitialValues } from "../types";
 
-interface IProps<T> {
-  data: T[];
-  searchValue: string;
-  setSearchValue: Function;
+interface IProps {
+  useCustomFetch: any;
 }
 
-export default function GetAllConfDataTable<T>(props: IProps<T>) {
+export default function GetAllConfDataTable(props: IProps) {
   const initialValues = {
     schedulingStatus: "",
     department: "",
   };
 
-  const handleSubmit = (values: any) => {
+  const handleSubmit = (values: ConfigFilterFormInitialValues) => {
     console.log(values);
   };
 

@@ -2,32 +2,15 @@ import React from "react";
 import PageComponent from "../../../shared/PageComponent/PageComponent";
 import GetAllSchedulersDataTable from "./GetAllSchedulersDataTable";
 
-interface IProps<T> {
-  data: T[];
-  searchValue: string;
-  setSearchValue: Function;
+interface IProps {
+  useCustomFetch: any;
 }
-function GetAllSchedulerComponent<T>(props: IProps<T>) {
-  const { searchValue, setSearchValue, data } = props;
-
-  const initialValues = {};
-  const handleSubmit = (values: any) => {
-    console.log(values);
-  };
-
+function GetAllSchedulerComponent({ useCustomFetch }: IProps) {
   return (
     <div>
       <PageComponent
         pageTitle="Schedulers"
-        pageBody={
-          <GetAllSchedulersDataTable
-            data={data}
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-            initialValues={initialValues}
-            handleSubmit={handleSubmit}
-          />
-        }
+        pageBody={<GetAllSchedulersDataTable useCustomFetch={useCustomFetch} />}
       />
     </div>
   );

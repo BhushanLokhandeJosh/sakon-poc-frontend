@@ -1,19 +1,25 @@
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, FormikValues } from "formik";
 import React from "react";
-import MultiSelect from "../FormComponents/MultiSelect";
-import CustomSelect from "../FormComponents/CustomSelect";
+import MultiSelect from "../../../shared/FormComponents/MultiSelect";
+import CustomSelect from "../../../shared/FormComponents/CustomSelect";
 import { Button } from "@mui/material";
-import { useGetDepartments } from "../../hooks/useFetchAllConfig";
+import { useGetDepartments } from "../../../hooks/useFetchAllConfig";
+import { ConfigFilterFormInitialValues } from "../types";
 
 interface FilterFormProps {
-  initialValues: any;
-  handleSubmit: any;
+  initialValues: ConfigFilterFormInitialValues;
+  handleSubmit: (values: ConfigFilterFormInitialValues) => void;
 }
 
-const FilterForm = (props: FilterFormProps) => {
+function FilterForm(props: FilterFormProps) {
   const { initialValues, handleSubmit } = props;
   const { data, isLoading, isError } = useGetDepartments();
-  console.log("in a filter ", data);
+  console.log(
+    "in a filter component ",
+    initialValues,
+    "handleSubmit",
+    handleSubmit
+  );
 
   if (isLoading) {
     return <>Loading...</>;
@@ -80,6 +86,6 @@ const FilterForm = (props: FilterFormProps) => {
       </Form>
     </Formik>
   );
-};
+}
 
 export default FilterForm;
