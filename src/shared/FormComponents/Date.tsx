@@ -15,9 +15,9 @@ const Date = (props: IDateElementProps) => {
 
   return (
     <>
-      <div className="label-style">
-        <InputLabel htmlFor={name}>{label}</InputLabel>
-      </div>
+      <InputLabel htmlFor={name} sx={{ color: "black" }}>
+        {label}
+      </InputLabel>
 
       <Field id={name} type="date" name={name} className="form-control"></Field>
       <ErrorMessage name={name} component={FormError} />

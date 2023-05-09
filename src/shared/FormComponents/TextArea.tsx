@@ -15,9 +15,9 @@ const TextArea = (props: ITextAreaElementProps): ReactElement => {
   const { label, name } = props;
   return (
     <>
-      <div className="label-style">
-        <InputLabel htmlFor={name}>{label}</InputLabel>
-      </div>
+      <InputLabel htmlFor={name} sx={{ color: "black" }}>
+        {label}
+      </InputLabel>
       <Field as="textarea" id={name} name={name} />
       <ErrorMessage name={name} component={FormError} />
     </>

@@ -27,9 +27,9 @@ const Input = (props: InputElementProps): ReactElement => {
   const { label, name, className, type, placeholder } = props;
   return (
     <>
-      <div className="label-style">
-        <InputLabel htmlFor={name}>{label}</InputLabel>
-      </div>
+      <InputLabel htmlFor={name} sx={{ color: "black" }}>
+        {label}
+      </InputLabel>
 
       <div>
         <Field

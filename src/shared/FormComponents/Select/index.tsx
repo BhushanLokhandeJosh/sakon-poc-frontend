@@ -1,33 +1,32 @@
 import { ErrorMessage, Field } from "formik";
-
-import FormError from "./FormError";
-
-import "./styles/style.css";
 import { InputLabel } from "@mui/material";
+
+import FormError from "../FormError";
+import CustomSelect from "./CustomSelect";
 
 interface IMultiSelectProps {
   className?: string;
   name: string;
   options?: { label: string; value: string }[];
-  component?: any;
   placeholder?: string;
   isMulti?: boolean;
   label?: string;
   menuPlacement?: string;
+  maxMenuHeight?: number;
   menuShouldScrollIntoView?: boolean;
 }
 
-const MultiSelect = (props: IMultiSelectProps) => {
+const Select = (props: IMultiSelectProps) => {
   const {
     className,
     name,
     options,
-    component,
     placeholder,
     isMulti,
     label,
     menuPlacement,
     menuShouldScrollIntoView,
+    maxMenuHeight,
   } = props;
   return (
     <>
@@ -39,15 +38,16 @@ const MultiSelect = (props: IMultiSelectProps) => {
         className={className}
         name={name}
         options={options}
-        component={component}
+        component={CustomSelect}
         placeholder={placeholder}
         isMulti={isMulti}
         menuPlacement={menuPlacement}
         menuShouldScrollIntoView={menuShouldScrollIntoView}
+        maxMenuHeight={maxMenuHeight}
       />
       <ErrorMessage name={name} component={FormError} />
     </>
   );
 };
 
-export default MultiSelect;
+export default Select;

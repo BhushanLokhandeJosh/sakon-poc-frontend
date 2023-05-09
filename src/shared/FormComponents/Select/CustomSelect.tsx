@@ -3,8 +3,6 @@ import { ValueType } from "react-select/lib/types";
 import { FieldProps } from "formik";
 import { OptionsType } from "react-select/lib/types";
 
-import "./styles/style.css";
-
 export interface Option {
   label: string;
   value: string;
@@ -15,6 +13,7 @@ export interface ICustomSelectProps extends FieldProps {
   isMulti?: boolean;
   className?: string;
   placeholder?: string;
+  menuShouldScrollIntoView?: boolean;
 }
 
 export const CustomSelect = ({
@@ -24,6 +23,7 @@ export const CustomSelect = ({
   form,
   options,
   isMulti = false,
+  menuShouldScrollIntoView,
 }: ICustomSelectProps) => {
   /*onChange function handles:
   1.isMulti is true then just set field value of formik field with mapping over 
@@ -64,6 +64,7 @@ export const CustomSelect = ({
       placeholder={placeholder}
       options={options}
       isMulti={isMulti}
+      menuShouldScrollIntoView={menuShouldScrollIntoView}
     />
   );
 };

@@ -1,11 +1,10 @@
 import "./styles/styles.css";
 
 interface IErrorComponentProps {
-  message?: string;
+  children?: string;
 }
-
 const FormError = (props: IErrorComponentProps) => {
-  const { message } = props;
+  const { children: message } = props;
   return <div className="error-message">{message}</div>;
 };
 

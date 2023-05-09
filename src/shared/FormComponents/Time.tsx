@@ -9,7 +9,7 @@ interface ITimeElementProps {
   label?: string;
   name: string;
   value?: string;
-  className?:string;
+  className?: string;
 }
 
 const Time = (props: ITimeElementProps) => {
@@ -17,9 +17,9 @@ const Time = (props: ITimeElementProps) => {
 
   return (
     <>
-      <div className="label-style">
-        <InputLabel htmlFor={name}>{label}</InputLabel>
-      </div>
+      <InputLabel htmlFor={name} sx={{ color: "black" }}>
+        {label}
+      </InputLabel>
       <Field type="time" name={name} className={className}></Field>
       <ErrorMessage name={name} component={FormError} />
     </>

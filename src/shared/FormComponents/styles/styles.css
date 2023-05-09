@@ -1,35 +1,5 @@
-
-.label-style {
-  font-size: 20px;
-  text-align: left;
-  text-decoration-line: inherit;
-}
-
-.input-field-style {
-  width: 100%;
-}
-
-.input-field-style:hover {
-  background-color: red;
-}
-
 .error-message {
   color: rgb(215, 70, 70);
   text-align: left;
   padding-top: 5px;
-}
-
-.input-control {
-  width: 10%;
-  padding: 10px 0px;
-  margin: 5px 0px;
-  text-align: center;
-}
-
-.form-control-multiselect {
-  width: 20%;
-  padding: 10px 0px;
-  margin: 30px 0px;
-  text-align: center;
-  font-size: 15px;
 }
