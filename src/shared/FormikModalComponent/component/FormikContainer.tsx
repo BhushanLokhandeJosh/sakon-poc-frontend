@@ -1,17 +1,16 @@
-import React from "react";
-import { Form, Formik } from "formik";
 import { Button, DialogActions, Grid } from "@mui/material";
+import { Form, Formik, FormikProps } from "formik";
+
 import { BUTTONS } from "../../constants";
 
 interface IFormikProps {
   initialValues: any;
   validationSchema: any;
   onSubmitHandler: (values: any) => void;
-  children: JSX.Element;
-  formStyle?: any;
+  formClassName?: string;
   toggleModal: () => void;
   submitButtonLabel?: string;
-  getModalBody: (formik : any) => JSX.Element
+  formikForm: (formik: any) => JSX.Element;
 }
 
 const FormikContainer = (props: IFormikProps) => {
@@ -19,30 +18,27 @@ const FormikContainer = (props: IFormikProps) => {
     initialValues,
     validationSchema,
     onSubmitHandler,
-    // children,
-    formStyle,
+    formClassName,
     toggleModal,
     submitButtonLabel = BUTTONS.SUBMIT,
-    getModalBody
+    formikForm,
   } = props;
 
   return (
-    <div className={formStyle}>
+    <div className={formClassName}>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmitHandler}
       >
-        {({ values }) => (
+        {(formik: FormikProps<any>) => (
           <Form>
             <Grid
               container
               rowSpacing={4}
               columnSpacing={{ xs: 2, sm: 2, md: 2 }}
             >
-              {/* {React.cloneElement(children, { formValues: values })} */}
-
-              {getModalBody(values)}
+              {formikForm(formik)}
 
               <Grid item xs={11}>
                 <DialogActions>
@@ -52,10 +48,15 @@ const FormikContainer = (props: IFormikProps) => {
                       variant="contained"
                       color="error"
                       onClick={toggleModal}
+                      sx={{ textTransform: "capitalize" }}
                     >
                       {BUTTONS.CANCEL}
                     </Button>
-                    <Button type="submit" variant="contained">
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      sx={{ textTransform: "capitalize" }}
+                    >
                       {submitButtonLabel}
                     </Button>
                   </div>

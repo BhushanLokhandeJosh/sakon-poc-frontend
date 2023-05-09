@@ -1,26 +1,26 @@
 import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { FormikProps } from "formik";
 
 import FormikContainer from "./FormikContainer";
 
-import "./styles/styles.css";
 import { MAX_WIDTH } from "../../types";
-
+import "./styles/styles.css";
 
 export interface IFormikModalProp {
   isOpen: boolean;
   toggleModal: () => void;
   modalTitle: string;
-  modalBody: JSX.Element;
+  getFormBody: (formik: any) => JSX.Element;
   submitButtonLabel?: string;
   initialValues: any;
   validationSchema: any;
-  onSubmit: (values:any) => void;
+  onSubmit: (values: any) => void;
   //To Define the size of Material UI Modal,They have maxwidth property which
   //takes values like "xs", "sm", "md", "lg", "xl".
   maxwidth?: MAX_WIDTH;
-  modalPosition?: string;
-  className?: string;
+  modalClassName?: string;
+  formClassName?: string;
 }
 
 const FormikModalComponent = (props: IFormikModalProp) => {
@@ -28,21 +28,19 @@ const FormikModalComponent = (props: IFormikModalProp) => {
     isOpen,
     toggleModal,
     modalTitle,
-    modalBody,
+    getFormBody,
     //Default props value is MD which is "md".
     maxwidth = MAX_WIDTH.MD,
     submitButtonLabel,
-    modalPosition,
     initialValues,
     validationSchema,
     onSubmit,
-    className,
+    modalClassName,
+    formClassName,
   } = props;
 
-  const ModalBody = (formik:any) => modalBody;
-
   return (
-    <div className={modalPosition}>
+    <div className={modalClassName}>
       <Dialog open={isOpen} maxWidth={maxwidth}>
         <div className="modal-header">
           <DialogTitle>{modalTitle}</DialogTitle>
@@ -60,13 +58,13 @@ const FormikModalComponent = (props: IFormikModalProp) => {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmitHandler={onSubmit}
-            formStyle={className}
+            formClassName={formClassName}
             toggleModal={toggleModal}
             submitButtonLabel={submitButtonLabel}
-            getModalBody={(formik:any) => <ModalBody formik={formik} />}
-          >
-            {modalBody}
-          </FormikContainer>
+            formikForm={(formik: FormikProps<any>) => {
+              return getFormBody(formik);
+            }}
+          />
         </DialogContent>
       </Dialog>
     </div>
