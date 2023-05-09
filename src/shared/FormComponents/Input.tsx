@@ -1,12 +1,12 @@
 import { ReactElement } from "react";
 import { Field, ErrorMessage } from "formik";
-import InputLabel from "@mui/material/InputLabel";
+import { InputLabel } from "@mui/material";
 
 import FormError from "./FormError";
 
 import "./styles/styles.css";
 
-interface IInputElementProps {
+interface InputElementProps {
   label?: string;
   name: string;
   type?:
@@ -23,8 +23,8 @@ interface IInputElementProps {
   placeholder?: string;
 }
 
-const Input = (props: IInputElementProps): ReactElement => {
-  const { label, name, className, placeholder, type } = props;
+const Input = (props: InputElementProps): ReactElement => {
+  const { label, name, className, type, placeholder } = props;
   return (
     <>
       <div className="label-style">
@@ -33,10 +33,10 @@ const Input = (props: IInputElementProps): ReactElement => {
 
       <div>
         <Field
-          type={type}
           id={name}
           name={name}
           className={className}
+          type={type}
           placeholder={placeholder}
         />
         <ErrorMessage name={name} component={FormError} />
