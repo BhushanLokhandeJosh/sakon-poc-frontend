@@ -1,21 +1,41 @@
-import { Box, Dialog, DialogContent, DialogTitle } from "@mui/material";
-
-import { CustomModalProp } from "../type";
+import {
+  Box,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 import "./styles/styles.css";
 
-const ModalComponent = (props: CustomModalProp) => {
-  const { isOpen, toggleModal, modalBody, modalTitle, maxwidth, modalStyle } =
+
+export interface ICustomModalProp {
+  isOpen: boolean;
+  toggleModal: () => void;
+  modalBody: JSX.Element;
+  modalTitle: string;
+  label?: string;
+  maxwidth?: any;
+  modalPosition?: string;
+}
+
+const ModalComponent = (props: ICustomModalProp) => {
+  const { isOpen, toggleModal, modalBody, modalTitle, maxwidth, modalPosition } =
     props;
 
   return (
-    <div className={modalStyle}>
+    <div className={modalPosition}>
       <Dialog open={isOpen} maxWidth={maxwidth}>
         <div className="modal-header">
           <DialogTitle className="modal-title">{modalTitle}</DialogTitle>
-          <div className="close-modal" onClick={toggleModal}>
-            X
-          </div>
+          <IconButton
+            aria-label="close"
+            onClick={toggleModal}
+            sx={{ position: "absolute", right: 30 }}
+          >
+            <CloseIcon />
+          </IconButton>
         </div>
 
         <DialogContent>

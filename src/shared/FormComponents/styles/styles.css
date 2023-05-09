@@ -1,56 +1,5 @@
-.label-text {
-  padding-bottom: 10px;
-  text-align: left;
-}
-
-.label-style {
-  text-align: left;
-  font-size: 20px;
-  color: rgb(49, 49, 49);
-  padding-bottom: 5px;
-}
-
-.label-field-style {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.input-field-style {
-  width: 100%;
-}
-
-.input-field-style:hover {
-  background-color: red;
-}
-
 .error-message {
   color: rgb(215, 70, 70);
   text-align: left;
   padding-top: 5px;
-}
-
-.input-control {
-  width: 10%;
-  padding: 10px 0px;
-  margin: 5px 0px;
-  text-align: center;
-}
-
-.submit-button-style {
-  background-color: rgb(199, 96, 96);
-  color: rgb(11, 10, 10);
-  padding: 5px 10px;
-}
-
-.button-submit {
-  padding-top: 5%;
-  text-align: center;
-}
-
-.form-control-multiselect {
-  width: 20%;
-  padding: 10px 0px;
-  margin: 30px 0px;
-  text-align: center;
-  font-size: 15px;
 }
