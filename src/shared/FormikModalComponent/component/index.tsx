@@ -4,6 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import FormikContainer from "./FormikContainer";
 
 import "./styles/styles.css";
+import { MAX_WIDTH } from "../../types";
 
 
 export interface IFormikModalProp {
@@ -11,13 +12,15 @@ export interface IFormikModalProp {
   toggleModal: () => void;
   modalTitle: string;
   modalBody: JSX.Element;
-  buttonLabel?: string;
+  submitButtonLabel?: string;
   initialValues: any;
   validationSchema: any;
-  onSubmit: any;
-  maxwidth?: "xs" | "sm" | "md" | "lg" | "xl";
+  onSubmit: (values:any) => void;
+  //To Define the size of Material UI Modal,They have maxwidth property which
+  //takes values like "xs", "sm", "md", "lg", "xl".
+  maxwidth?: MAX_WIDTH;
   modalPosition?: string;
-  FormikContainerStyle?: string;
+  className?: string;
 }
 
 const FormikModalComponent = (props: IFormikModalProp) => {
@@ -26,24 +29,27 @@ const FormikModalComponent = (props: IFormikModalProp) => {
     toggleModal,
     modalTitle,
     modalBody,
-    maxwidth,
-    buttonLabel,
+    //Default props value is MD which is "md".
+    maxwidth = MAX_WIDTH.MD,
+    submitButtonLabel,
     modalPosition,
     initialValues,
     validationSchema,
     onSubmit,
-    FormikContainerStyle,
+    className,
   } = props;
+
+  const ModalBody = (formik:any) => modalBody;
 
   return (
     <div className={modalPosition}>
-      <Dialog open={isOpen} maxWidth={maxwidth || "md"}>
+      <Dialog open={isOpen} maxWidth={maxwidth}>
         <div className="modal-header">
-          <DialogTitle className="modal-title">{modalTitle}</DialogTitle>
+          <DialogTitle>{modalTitle}</DialogTitle>
           <IconButton
             aria-label="close"
             onClick={toggleModal}
-            sx={{ position: "absolute", right: 30 }}
+            sx={{ position: "relative", right: 20 }}
           >
             <CloseIcon />
           </IconButton>
@@ -54,9 +60,10 @@ const FormikModalComponent = (props: IFormikModalProp) => {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmitHandler={onSubmit}
-            formikContainerStyle={FormikContainerStyle}
+            formStyle={className}
             toggleModal={toggleModal}
-            buttonLabel={buttonLabel}
+            submitButtonLabel={submitButtonLabel}
+            getModalBody={(formik:any) => <ModalBody formik={formik} />}
           >
             {modalBody}
           </FormikContainer>

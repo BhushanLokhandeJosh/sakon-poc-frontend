@@ -1,35 +1,33 @@
 import React from "react";
 import { Form, Formik } from "formik";
 import { Button, DialogActions, Grid } from "@mui/material";
+import { BUTTONS } from "../../constants";
 
 interface IFormikProps {
   initialValues: any;
   validationSchema: any;
-  onSubmitHandler: any;
+  onSubmitHandler: (values: any) => void;
   children: JSX.Element;
-  formikContainerStyle: any;
-  toggleModal: any;
-  buttonLabel?: string;
+  formStyle?: any;
+  toggleModal: () => void;
+  submitButtonLabel?: string;
+  getModalBody: (formik : any) => JSX.Element
 }
-
-const BUTTONS = {
-  SUBMIT: "SUBMIT",
-  CANCEL: "CANCEL",
-};
 
 const FormikContainer = (props: IFormikProps) => {
   const {
     initialValues,
     validationSchema,
     onSubmitHandler,
-    children,
-    formikContainerStyle,
+    // children,
+    formStyle,
     toggleModal,
-    buttonLabel,
+    submitButtonLabel = BUTTONS.SUBMIT,
+    getModalBody
   } = props;
 
   return (
-    <div className={formikContainerStyle}>
+    <div className={formStyle}>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -42,20 +40,23 @@ const FormikContainer = (props: IFormikProps) => {
               rowSpacing={4}
               columnSpacing={{ xs: 2, sm: 2, md: 2 }}
             >
-              {React.cloneElement(children, { formValues: values })}
+              {/* {React.cloneElement(children, { formValues: values })} */}
+
+              {getModalBody(values)}
 
               <Grid item xs={11}>
                 <DialogActions>
                   <div className="button-container">
-                    <button
+                    <Button
                       type="reset"
-                      className="cancel-button"
+                      variant="contained"
+                      color="error"
                       onClick={toggleModal}
                     >
                       {BUTTONS.CANCEL}
-                    </button>
+                    </Button>
                     <Button type="submit" variant="contained">
-                      {buttonLabel?.toUpperCase() || BUTTONS.SUBMIT}
+                      {submitButtonLabel}
                     </Button>
                   </div>
                 </DialogActions>
