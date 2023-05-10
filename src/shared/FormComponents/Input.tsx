@@ -18,13 +18,15 @@ interface InputElementProps {
     | "email"
     | "password"
     | "number"
-    | "file";
+    | "file"
+    | "radio";
   className?: string;
   placeholder?: string;
+  value?: string;
 }
 
 const Input = (props: InputElementProps): ReactElement => {
-  const { label, name, className, type, placeholder } = props;
+  const { label, name, className, type, placeholder, value } = props;
   return (
     <>
       <InputLabel htmlFor={name} sx={{ color: "black" }}>
@@ -38,6 +40,7 @@ const Input = (props: InputElementProps): ReactElement => {
           className={className}
           type={type}
           placeholder={placeholder}
+          value={value}
         />
         <ErrorMessage name={name} component={FormError} />
       </div>
