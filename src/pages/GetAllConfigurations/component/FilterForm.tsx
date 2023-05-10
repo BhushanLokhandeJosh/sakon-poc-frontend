@@ -11,16 +11,8 @@ interface FilterFormProps {
   handleSubmit: (values: ConfigFilterFormInitialValues) => void;
 }
 
-function FilterForm(props: FilterFormProps) {
-  const { initialValues, handleSubmit } = props;
+function FilterForm({ initialValues, handleSubmit }: FilterFormProps) {
   const { data, isLoading, isError } = useGetDepartments();
-  console.log(
-    "in a filter component ",
-    initialValues,
-    "handleSubmit",
-    handleSubmit
-  );
-
   if (isLoading) {
     return <>Loading...</>;
   }
@@ -52,7 +44,7 @@ function FilterForm(props: FilterFormProps) {
                 <Field
                   type="radio"
                   name="schedulingStatus"
-                  value="not-scheduled"
+                  value="not scheduled"
                 ></Field>
                 Not Scheduled
               </label>

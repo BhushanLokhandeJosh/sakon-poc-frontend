@@ -21,5 +21,8 @@ export const getAllConfigColumns: GridColDef[] = [
     headerName: "Scheduling Status",
     width: 200,
     sortable: false,
+    renderCell: (params: any) => {
+      return params.value ? "scheduled" : "not scheduled";
+    },
   },
 ];

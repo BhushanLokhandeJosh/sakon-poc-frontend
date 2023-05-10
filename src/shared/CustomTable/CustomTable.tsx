@@ -3,8 +3,8 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { Button } from "@mui/material";
 import useModal from "../CustomHooks/useModal";
-import SearchBox from "../SearchBox/SearchBox";
-import FilterBox from "../FilterBox/FilterBox";
+import SearchBox from "./SearchBox";
+import FilterBox from "./FilterBox";
 import ModalComponent from "../ModalComponent/component";
 import { dataGridStyleForColumnSortArrow } from "./constant";
 import "./style.css";
@@ -15,6 +15,7 @@ interface ICustomTableProps {
   isFilterVisible: boolean;
   filterBodyTitle?: string;
   useCustomFetch: any;
+  filterData?: any;
 }
 function CustomTable(props: ICustomTableProps) {
   const { isOpen, toggleModal } = useModal();
@@ -24,6 +25,7 @@ function CustomTable(props: ICustomTableProps) {
     isFilterVisible,
     filterBodyTitle,
     useCustomFetch,
+    filterData,
   } = props;
 
   const [searchValue, setSearchValue] = useState<string>("");
@@ -40,8 +42,9 @@ function CustomTable(props: ICustomTableProps) {
 
   const { data, isLoading, isError } = useCustomFetch({
     searchValue: searchTrigger,
+    departmentValue: filterData?.department,
+    schedulingStatusValue: filterData?.schedulingStatus === "scheduled",
   });
-  console.log(data, "sccc");
 
   if (isLoading) {
     return <>Loading...</>;

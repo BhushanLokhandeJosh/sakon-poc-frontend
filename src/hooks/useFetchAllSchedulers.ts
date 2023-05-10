@@ -11,6 +11,8 @@ export const useFetchAllSchedulers = ({
   searchValue?: string;
 }) => {
   return useQuery(["getAllSchedulers", searchValue], () =>
-    getSchedulers({ schedule_name_like: searchValue })
+    getSchedulers({
+      schedule_name_like: searchValue,
+    })
   );
 };

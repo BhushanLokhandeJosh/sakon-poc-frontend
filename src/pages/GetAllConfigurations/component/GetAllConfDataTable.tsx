@@ -4,8 +4,8 @@ import { getAllConfigColumns } from "../constants";
 import "./styles/style.css";
 import CustomTable from "../../../shared/CustomTable/CustomTable";
 import useFetchAllConfigurations from "../../../hooks/useFetchAllConfig";
-import SearchBox from "../../../shared/SearchBox/SearchBox";
-import FilterBox from "../../../shared/FilterBox/FilterBox";
+import SearchBox from "../../../shared/CustomTable/SearchBox";
+import FilterBox from "../../../shared/CustomTable/FilterBox";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import ModalComponent from "../../../shared/ModalComponent/component";
 import FilterForm from "./FilterForm";
@@ -15,14 +15,15 @@ interface IProps {
   useCustomFetch: any;
 }
 
-export default function GetAllConfDataTable(props: IProps) {
+export default function GetAllConfDataTable({ useCustomFetch }: IProps) {
+  const [filterData, setFilterData] = React.useState<any>({});
   const initialValues = {
     schedulingStatus: "",
     department: "",
   };
 
   const handleSubmit = (values: ConfigFilterFormInitialValues) => {
-    console.log(values);
+    setFilterData(values);
   };
 
   return (
@@ -31,13 +32,14 @@ export default function GetAllConfDataTable(props: IProps) {
         isFilterVisible={true}
         columnHeader={getAllConfigColumns}
         filterBodyTitle="Filter Configurations"
+        useCustomFetch={useCustomFetch}
+        filterData={filterData}
         filterBody={
           <FilterForm
             initialValues={initialValues}
             handleSubmit={handleSubmit}
           />
         }
-        {...props}
       />
     </div>
   );
