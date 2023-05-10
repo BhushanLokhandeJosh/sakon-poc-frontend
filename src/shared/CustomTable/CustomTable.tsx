@@ -61,7 +61,7 @@ function CustomTable(props: ICustomTableProps) {
             <Button variant="contained" onClick={handleToggle}>
               <FilterListIcon />
             </Button>
-            {filterBody && (
+            {/* {filterBody && (
               <ModalComponent
                 isOpen={isOpen}
                 modalBody={<FilterBox filterBody={filterBody} />}
@@ -69,7 +69,7 @@ function CustomTable(props: ICustomTableProps) {
                 toggleModal={handleToggle}
                 modalPosition="filter-modal-style"
               />
-            )}
+            )} */}
           </>
         )}
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />

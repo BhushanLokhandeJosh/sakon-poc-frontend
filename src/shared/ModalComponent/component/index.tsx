@@ -13,7 +13,7 @@ export interface ICustomModalProp {
   isOpen: boolean;
   toggleModal: () => void;
   modalBody: JSX.Element;
-  modalTitle?: string;
+  modalTitle: string;
   label?: string;
   maxwidth?: any;
   modalPosition?: string;
