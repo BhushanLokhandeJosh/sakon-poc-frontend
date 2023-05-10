@@ -41,27 +41,25 @@ const FormikContainer = (props: IFormikFormProps) => {
             >
               {getFormikForm(formik)}
 
-              <Grid item xs={11}>
-                <DialogActions>
-                  <div className="button-container">
-                    <Button
-                      type="reset"
-                      variant="contained"
-                      color="error"
-                      onClick={toggleModal}
-                      sx={{ textTransform: "capitalize" }}
-                    >
-                      {BUTTONS.CANCEL}
-                    </Button>
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      sx={{ textTransform: "capitalize" }}
-                    >
-                      {submitButtonLabel}
-                    </Button>
-                  </div>
-                </DialogActions>
+              <Grid item xs={11} sm={11} md={12} lg={12}>
+                <div className="button-container">
+                  <Button
+                    type="reset"
+                    variant="contained"
+                    color="error"
+                    onClick={toggleModal}
+                    sx={{ textTransform: "capitalize", marginRight: "2%" }}
+                  >
+                    {BUTTONS.CANCEL}
+                  </Button>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    sx={{ textTransform: "capitalize" }}
+                  >
+                    {submitButtonLabel}
+                  </Button>
+                </div>
               </Grid>
             </Grid>
           </Form>
