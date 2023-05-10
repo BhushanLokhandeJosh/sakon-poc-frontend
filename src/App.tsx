@@ -1,7 +1,7 @@
-import React from "react";
-import "./App.css";
-import CreateConfigContainer from "./pages/CreateConfiguration";
+import CreateConfigContainer from "./pages/Configuration/CreateConfiguration";
 import LayoutComponent from "./shared/Navbar";
+
+import "./App.css";
 
 function App() {
   return (

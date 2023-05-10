@@ -1,9 +1,9 @@
 import { useMutation } from "react-query";
-import { createConfiguration } from "../services/config-services";
-import { AxiosError } from "axios";
+import { createConfiguration } from "./config-services";
+import { AxiosError, AxiosResponse } from "axios";
 
 interface IResponseProps {
-  onSuccess: (values: any) => void;
+  onSuccess: (values: AxiosResponse) => void;
   onError: (values: AxiosError) => void;
 }
 

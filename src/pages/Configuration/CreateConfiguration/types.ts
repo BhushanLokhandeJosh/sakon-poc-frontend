@@ -1,4 +1,4 @@
-export interface IConfigurationValues {
+export interface IConfiguration {
   configurationName: string;
   department: string;
   email: string;
@@ -11,11 +11,9 @@ export interface IConfigurationValues {
   template: string | Blob;
 }
 
-export interface IConfigurationProps {
+export interface IConfigurationFormProps {
   toggleModal: () => void;
-  onSubmit: (values: IConfigurationValues) => void;
-}
-
-export interface IConfigurationFormProps extends IConfigurationProps {
+  onSubmit: (values: IConfiguration) => void;
   isOpen: boolean;
 }
+

@@ -1,8 +1,8 @@
 import { AxiosResponse } from "axios";
-import { POST } from "./api/axios";
+import { POST } from "../../services/api/axios";
 
 export const createConfiguration = (
-  payload: any
-): Promise<AxiosResponse<any, any>> => {
+  payload: FormData
+): Promise<AxiosResponse<string, any>> => {
   return POST("/configurations", payload);
 };

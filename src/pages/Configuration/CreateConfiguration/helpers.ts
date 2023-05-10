@@ -1,7 +1,7 @@
 import * as Yup from "yup";
-import { IConfigurationValues } from "./types";
+import { IConfiguration } from "./types";
 
-export const initialValues: IConfigurationValues = {
+export const initialConfigurationValues: IConfiguration = {
   configurationName: "",
   department: "",
   email: "",
@@ -31,14 +31,13 @@ export const validationSchema = Yup.object({
     .required("Password Required"),
   carrierName: Yup.string().required("Carrier Name is Must"),
   sftpLogin: Yup.string().required("Login Credential is Required"),
-  sftpPassword: Yup.string().required("Password Required"),
+  sftpPassword: Yup.string().required("Sftp Password Required"),
   sftpLocation: Yup.string().required("Sftp Location Required"),
   downloadPath: Yup.string().required("Download Path Required"),
   template: Yup.string().required("Template Required"),
 });
 
-export const formDataMapping = (values: IConfigurationValues) => {
-  console.log(values);
+export const formDataMapping = (values: IConfiguration): FormData => {
   const {
     configurationName,
     department,
@@ -63,7 +62,5 @@ export const formDataMapping = (values: IConfigurationValues) => {
   form.append("sftp-path", sftpLocation);
   form.append("sftp-login", sftpLogin);
   form.append("sftp-password", sftpPassword);
-
-  console.log(form.get("sftp-login"));
   return form;
 };

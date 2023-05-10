@@ -6,7 +6,6 @@ import FormikContainer from "./FormikContainer";
 import { IFormikProps, MAX_WIDTH } from "../../types";
 import "./styles/styles.css";
 
-
 export interface IFormikModalProp {
   isOpen: boolean;
   toggleModal: () => void;
@@ -43,7 +42,7 @@ const FormikModalComponent = (props: IFormikModalProp) => {
     <div className={modalClassName}>
       <Dialog open={isOpen} maxWidth={maxwidth}>
         <div className="modal-header">
-          <DialogTitle>{modalTitle}</DialogTitle>
+          <DialogTitle sx={{ fontWeight: "bold" }}>{modalTitle}</DialogTitle>
           <IconButton
             aria-label="close"
             onClick={toggleModal}
@@ -61,9 +60,7 @@ const FormikModalComponent = (props: IFormikModalProp) => {
             formClassName={formClassName}
             toggleModal={toggleModal}
             submitButtonLabel={submitButtonLabel}
-            getFormikForm={(formik: IFormikProps<any>) =>
-              getFormBody(formik)
-            }
+            getFormikForm={(formik: IFormikProps<any>) => getFormBody(formik)}
           />
         </DialogContent>
       </Dialog>

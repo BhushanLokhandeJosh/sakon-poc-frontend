@@ -1,20 +1,20 @@
 import { toast } from "react-toastify";
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 
 import CreateConfigurationComponent from "./component";
 
-import useModal from "../../shared/CustomHooks/useModal";
-import { useCreateConfiguration } from "../../hooks/useQueryhooks";
+import { useCreateConfiguration } from "../config-hooks";
+import useToggle from "../../../shared/CustomHooks/useModal";
 
-import { IConfigurationValues } from "./types";
+import { IConfiguration } from "./types";
 import { formDataMapping } from "./helpers";
 
 const CreateConfigContainer = () => {
-  const { isOpen, toggleModal } = useModal();
+  const { isOpen, handleToggle } = useToggle();
 
-  const onSuccess = (values: IConfigurationValues) => {
+  const onSuccess = (value: AxiosResponse) => {
     toast.success("Configuration Added Successfully...");
-    toggleModal();
+    handleToggle();
   };
 
   const onError = (values: AxiosError) => {
@@ -26,7 +26,7 @@ const CreateConfigContainer = () => {
     onError,
   });
 
-  const onSubmit = (values: IConfigurationValues) => {
+  const onSubmit = (values: IConfiguration) => {
     let formData = formDataMapping(values);
     createConfiguration(formData);
   };
@@ -35,7 +35,7 @@ const CreateConfigContainer = () => {
     <div>
       <CreateConfigurationComponent
         isOpen={isOpen}
-        toggleModal={toggleModal}
+        toggleModal={handleToggle}
         onSubmit={onSubmit}
       />
     </div>

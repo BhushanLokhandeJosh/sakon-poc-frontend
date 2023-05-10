@@ -1,5 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-import { IConfigurationValues } from "../../pages/CreateConfiguration/types";
 
 const instance = axios.create({
   baseURL: "http://localhost:8000",
@@ -7,7 +6,7 @@ const instance = axios.create({
 
 export const POST = (
   url: string,
-  body: IConfigurationValues
-): Promise<AxiosResponse<any, any>> => {
+  body: FormData | any
+): Promise<AxiosResponse<string, any>> => {
   return instance.post(url, body).then((res) => res);
 };
