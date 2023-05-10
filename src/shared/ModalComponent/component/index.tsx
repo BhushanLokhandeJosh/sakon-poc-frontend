@@ -9,7 +9,6 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import "./styles/styles.css";
 
-
 export interface ICustomModalProp {
   isOpen: boolean;
   toggleModal: () => void;
@@ -21,14 +20,20 @@ export interface ICustomModalProp {
 }
 
 const ModalComponent = (props: ICustomModalProp) => {
-  const { isOpen, toggleModal, modalBody, modalTitle, maxwidth, modalPosition } =
-    props;
+  const {
+    isOpen,
+    toggleModal,
+    modalBody,
+    modalTitle,
+    maxwidth,
+    modalPosition,
+  } = props;
 
   return (
     <div className={modalPosition}>
       <Dialog open={isOpen} maxWidth={maxwidth}>
         <div className="modal-header">
-          <DialogTitle className="modal-title">{modalTitle}</DialogTitle>
+          <DialogTitle sx={{ fontWeight: "bold" }}>{modalTitle}</DialogTitle>
           <IconButton
             aria-label="close"
             onClick={toggleModal}
