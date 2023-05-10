@@ -17,9 +17,10 @@ interface ICustomTableProps {
   filterBodyTitle?: string;
   useCustomFetch: any;
   filterData?: any;
+  handleToggle?: any;
 }
 function CustomTable(props: ICustomTableProps) {
-  const { isOpen, handleToggle } = useToggle();
+  // const { isOpen, handleToggle } = useToggle();
   const {
     columnHeader,
     filterBody,
@@ -27,6 +28,7 @@ function CustomTable(props: ICustomTableProps) {
     filterBodyTitle,
     useCustomFetch,
     filterData,
+    handleToggle,
   } = props;
 
   const [searchValue, setSearchValue] = useState<string>("");
@@ -43,8 +45,7 @@ function CustomTable(props: ICustomTableProps) {
 
   const { data, isLoading, isError } = useCustomFetch({
     searchValue: searchTrigger,
-    departmentValue: filterData?.department,
-    schedulingStatusValue: filterData?.schedulingStatus === "scheduled",
+    ...filterData,
   });
 
   if (isLoading) {
@@ -72,6 +73,7 @@ function CustomTable(props: ICustomTableProps) {
             )} */}
           </>
         )}
+        {filterBody}
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <div className="datagrid-container">

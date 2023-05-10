@@ -10,6 +10,10 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import ModalComponent from "../../../shared/ModalComponent/component";
 import FilterForm from "./FilterForm";
 import { ConfigFilterFormInitialValues } from "../types";
+import FormikModalComponent from "../../../shared/FormikModalComponent/component";
+import useToggle from "../../../shared/CustomHooks/useToggle";
+import { IFormikProps, MAX_WIDTH } from "../../../shared/types";
+import { InitialValuesProps } from "../../CreateConfiguration/types";
 
 interface IProps {
   useCustomFetch: any;
@@ -17,14 +21,19 @@ interface IProps {
 
 export default function GetAllConfDataTable({ useCustomFetch }: IProps) {
   const [filterData, setFilterData] = React.useState<any>({});
-  const initialValues = {
+  const initialValues: any = {
     schedulingStatus: "",
     department: "",
   };
 
   const handleSubmit = (values: ConfigFilterFormInitialValues) => {
-    setFilterData(values);
+    setFilterData({
+      departmentValue: values?.department,
+      schedulingStatusValue: values?.schedulingStatus === "scheduled",
+    });
   };
+
+  const { isOpen, handleToggle } = useToggle();
 
   return (
     <div>
@@ -34,11 +43,26 @@ export default function GetAllConfDataTable({ useCustomFetch }: IProps) {
         filterBodyTitle="Filter Configurations"
         useCustomFetch={useCustomFetch}
         filterData={filterData}
+        handleToggle={handleToggle}
         filterBody={
-          <FilterForm
+          <FormikModalComponent
+            isOpen={isOpen}
             initialValues={initialValues}
-            handleSubmit={handleSubmit}
+            onSubmit={handleSubmit}
+            toggleModal={handleToggle}
+            modalTitle="filter config"
+            formClassName="form-align-style"
+            modalClassName="modal-align-style"
+            maxwidth={MAX_WIDTH.SM}
+            getFormBody={(formik: IFormikProps<any>) => {
+              return <FilterForm formik={formik} />;
+            }}
+            submitButtonLabel="Apply"
           />
+          // <FilterForm
+          //   initialValues={initialValues}
+          //   handleSubmit={handleSubmit}
+          // />
         }
       />
     </div>

@@ -5,6 +5,7 @@ import FormikContainer from "./FormikContainer";
 
 import { IFormikProps, MAX_WIDTH } from "../../types";
 import "./styles/styles.css";
+import { InitialValuesProps } from "../../../pages/CreateConfiguration/types";
 
 export interface IFormikModalProp {
   isOpen: boolean;
@@ -13,7 +14,7 @@ export interface IFormikModalProp {
   getFormBody: (formik: any) => JSX.Element;
   submitButtonLabel?: string;
   initialValues: any;
-  validationSchema: any;
+  validationSchema?: any;
   onSubmit: (values: any) => void;
   //To Define the size of Material UI Modal,They have maxwidth property which
   //takes values like "xs", "sm", "md", "lg", "xl".
