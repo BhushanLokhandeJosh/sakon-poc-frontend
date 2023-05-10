@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { Button } from "@mui/material";
-import useModal from "../CustomHooks/useModal";
 import SearchBox from "./SearchBox";
 import FilterBox from "./FilterBox";
 import ModalComponent from "../ModalComponent/component";
 import { dataGridStyleForColumnSortArrow } from "./constant";
 import "./style.css";
+import FormikModalComponent from "../FormikModalComponent/component";
+import useToggle from "../CustomHooks/useToggle";
 
 interface ICustomTableProps {
   columnHeader: GridColDef[];
@@ -18,7 +19,7 @@ interface ICustomTableProps {
   filterData?: any;
 }
 function CustomTable(props: ICustomTableProps) {
-  const { isOpen, toggleModal } = useModal();
+  const { isOpen, handleToggle } = useToggle();
   const {
     columnHeader,
     filterBody,
@@ -57,7 +58,7 @@ function CustomTable(props: ICustomTableProps) {
       <div className="input-btn-container">
         {isFilterVisible && (
           <>
-            <Button variant="contained" onClick={toggleModal}>
+            <Button variant="contained" onClick={handleToggle}>
               <FilterListIcon />
             </Button>
             {filterBody && (
@@ -65,8 +66,8 @@ function CustomTable(props: ICustomTableProps) {
                 isOpen={isOpen}
                 modalBody={<FilterBox filterBody={filterBody} />}
                 modalTitle={filterBodyTitle}
-                toggleModal={toggleModal}
-                modalStyle="filter-modal-style"
+                toggleModal={handleToggle}
+                modalPosition="filter-modal-style"
               />
             )}
           </>

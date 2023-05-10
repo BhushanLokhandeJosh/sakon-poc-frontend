@@ -1,19 +1,18 @@
 import { toast } from "react-toastify";
 
-import useModal from "../../shared/CustomHooks/useModal";
+import useToggle from "../../shared/CustomHooks/useToggle";
 import { useCreateConfiguration } from "../../hooks/useQueryhooks";
 
 import CreateConfigurationComponent from "./component";
 
 import { InitialValuesProps } from "./types";
 
-
 const CreateConfigContainer = () => {
-  const { isOpen, toggleModal } = useModal();
+  const { isOpen, handleToggle } = useToggle();
 
   const onSuccess = async (values: InitialValuesProps) => {
     toast.success("Configuration Added Successfully...");
-    toggleModal();
+    handleToggle();
   };
 
   const onError = (values: any) => {
@@ -33,7 +32,7 @@ const CreateConfigContainer = () => {
     <div>
       <CreateConfigurationComponent
         isOpen={isOpen}
-        toggleModal={toggleModal}
+        toggleModal={handleToggle}
         onSubmit={onSubmit}
       />
     </div>

@@ -2,18 +2,24 @@ import { ErrorMessage, Field } from "formik";
 
 import FormError from "./FormError";
 
-import { TimeElementProps } from "./types";
-
 import "./styles/styles.css";
+import { InputLabel } from "@mui/material";
 
-const Time = (props: TimeElementProps) => {
+interface ITimeElementProps {
+  label?: string;
+  name: string;
+  value?: string;
+  className?: string;
+}
+
+const Time = (props: ITimeElementProps) => {
   const { label, name, className } = props;
 
   return (
     <>
-      <label htmlFor={name} className="label-field-style">
+      <InputLabel htmlFor={name} sx={{ color: "black" }}>
         {label}
-      </label>
+      </InputLabel>
       <Field type="time" name={name} className={className}></Field>
       <ErrorMessage name={name} component={FormError} />
     </>

@@ -9,7 +9,6 @@ interface IProps {
 
 const PageComponent = (props: IProps) => {
   const { pageTitle, buttonLabel, pageBody } = props;
-
   const styles = {
     root: {
       display: "flex",
@@ -40,7 +39,6 @@ const PageComponent = (props: IProps) => {
           </Button>
         )}
       </Box>
-
       {pageBody}
     </Box>
   );
