@@ -41,7 +41,7 @@ const FormikContainer = (props: IFormikFormProps) => {
             >
               {getFormikForm(formik)}
 
-              <Grid item xs={11} sm={11} md={12} lg={12}>
+              <Grid item sm={11} lg={12}>
                 <div className="button-container">
                   <Button
                     type="reset"
