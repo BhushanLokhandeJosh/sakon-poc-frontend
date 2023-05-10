@@ -1,24 +1,23 @@
-import * as React from "react";
+import { useState } from "react";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-// import MenuIcon from '@mui/icons-material/Menu';
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Grid } from "@mui/material";
-// import AdbIcon from '@mui/icons-material/Adb';
+
 import AvatarImage from "../../assets/images/avatar-icon.jpeg";
 
 import "./styles/style.css";
+import { PAGE_MENU, SETTING_MENU } from "./constants";
 
-const pages = ["Home", "About Us", "Services", "Contact Us", "Products"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const sidebarMenu = [
   "Dashboard",
   " Carrier Details",
@@ -32,15 +31,13 @@ interface IProps {
   children?: React.ReactNode;
 }
 
+//TODO : Visit and checkout all components and also see check whether it is
+//  responsiveness or not.
 const LayoutComponent = (props: IProps) => {
   const { children } = props;
 
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -93,9 +90,7 @@ const LayoutComponent = (props: IProps) => {
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
                   color="inherit"
-                >
-                  {/* <MenuIcon /> */}
-                </IconButton>
+                ></IconButton>
                 <Menu
                   id="menu-appbar"
                   anchorEl={anchorElNav}
@@ -114,9 +109,9 @@ const LayoutComponent = (props: IProps) => {
                     display: { xs: "block", md: "none" },
                   }}
                 >
-                  {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}</Typography>
+                  {Object.values(PAGE_MENU).map((value) => (
+                    <MenuItem key={value} onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">{value}</Typography>
                     </MenuItem>
                   ))}
                 </Menu>
@@ -141,13 +136,13 @@ const LayoutComponent = (props: IProps) => {
                 LOGO
               </Typography>
               <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                {pages.map((page) => (
+                {Object.values(PAGE_MENU).map((value) => (
                   <Button
-                    key={page}
+                    key={value}
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: "white", display: "block" }}
                   >
-                    {page}
+                    {value}
                   </Button>
                 ))}
               </Box>
@@ -174,7 +169,7 @@ const LayoutComponent = (props: IProps) => {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  {settings.map((setting) => (
+                  {Object.values(SETTING_MENU).map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
                       <Typography textAlign="center">{setting}</Typography>
                     </MenuItem>
@@ -190,7 +185,9 @@ const LayoutComponent = (props: IProps) => {
           <div className="sidebar-container">
             <div className="sidebar-menu"></div>
             {sidebarMenu.map((item) => (
-              <div key={item} className="sidebar-menu">{item}</div>
+              <div key={item} className="sidebar-menu">
+                {item}
+              </div>
             ))}
           </div>
         </Grid>
