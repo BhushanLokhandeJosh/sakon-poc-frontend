@@ -12,5 +12,7 @@
 }
 
 .form-container {
+  width: 95%;
+  margin: auto;
   margin-top: 4%;
 }

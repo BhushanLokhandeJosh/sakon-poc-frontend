@@ -1,8 +1,9 @@
 import { Form, Formik } from "formik";
-import { Button, DialogActions, Grid } from "@mui/material";
-import { BUTTONS } from "../../constants";
+import { Button, Grid } from "@mui/material";
+import { BUTTONSLABLES } from "../../constants";
 
 import { IFormikProps } from "../../types";
+import "./styles/styles.css";
 
 interface IFormikFormProps {
   initialValues: any;
@@ -12,6 +13,9 @@ interface IFormikFormProps {
   toggleModal: () => void;
   submitButtonLabel?: string;
   getFormikForm: (formik: IFormikProps<any>) => JSX.Element;
+  handleReset: (formik: IFormikProps<any>) => void;
+  showResetButton?: boolean;
+  showCancelButton?: boolean;
 }
 
 const FormikContainer = (props: IFormikFormProps) => {
@@ -23,6 +27,9 @@ const FormikContainer = (props: IFormikFormProps) => {
     toggleModal,
     submitButtonLabel,
     getFormikForm,
+    handleReset,
+    showResetButton,
+    showCancelButton,
   } = props;
 
   return (
@@ -43,15 +50,27 @@ const FormikContainer = (props: IFormikFormProps) => {
 
               <Grid item sm={11} lg={12}>
                 <div className="button-container">
-                  <Button
-                    type="reset"
-                    variant="contained"
-                    color="error"
-                    onClick={toggleModal}
-                    sx={{ textTransform: "capitalize", marginRight: "2%" }}
-                  >
-                    {BUTTONS.CANCEL}
-                  </Button>
+                  {showResetButton && (
+                    <Button
+                      variant="outlined"
+                      color="error"
+                      onClick={() => handleReset(formik)}
+                      sx={{ textTransform: "capitalize", marginRight: "2%" }}
+                    >
+                      {BUTTONSLABLES.RESET}
+                    </Button>
+                  )}
+                  {showCancelButton && (
+                    <Button
+                      type="reset"
+                      variant="contained"
+                      color="error"
+                      onClick={toggleModal}
+                      sx={{ textTransform: "capitalize", marginRight: "2%" }}
+                    >
+                      {BUTTONSLABLES.CANCEL}
+                    </Button>
+                  )}
                   <Button
                     type="submit"
                     variant="contained"
@@ -70,8 +89,7 @@ const FormikContainer = (props: IFormikFormProps) => {
 };
 
 FormikContainer.defaultProps = {
-  submitButtonLabel : BUTTONS.SUBMIT
-}
-
+  submitButtonLabel: BUTTONSLABLES.SUBMIT,
+};
 
 export default FormikContainer;

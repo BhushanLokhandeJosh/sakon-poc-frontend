@@ -1,4 +1,5 @@
-export const BUTTONS = {
+export const BUTTONSLABLES = {
   SUBMIT: "Submit",
   CANCEL: "Cancel",
+  RESET : "Reset"
 };
