@@ -85,6 +85,8 @@
   text-align: left;
   font-size: 15px;
   border-radius: 4px rgb(117, 116, 116);
+  height: 5%;
+  overflow-y: none;
 }
 
 .month-style {

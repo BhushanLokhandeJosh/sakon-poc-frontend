@@ -1,10 +1,19 @@
-import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  PaperProps,
+  SxProps,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 import FormikContainer from "./FormikContainer";
 
 import { IFormikProps, MAX_WIDTH } from "../../types";
 import "./styles/styles.css";
+import styled from "@emotion/styled";
+import { useState } from "react";
 
 export interface IFormikModalProp {
   isOpen: boolean;
@@ -23,6 +32,7 @@ export interface IFormikModalProp {
 }
 
 const FormikModalComponent = (props: IFormikModalProp) => {
+  const [showRight, setShowRight] = useState<boolean>(false);
   const {
     isOpen,
     toggleModal,
@@ -38,9 +48,21 @@ const FormikModalComponent = (props: IFormikModalProp) => {
     formClassName,
   } = props;
 
+  const positionRight: SxProps = {
+    "& .MuiDialog-container": {
+      justifyContent: "flex-end",
+      alignItems: "flex-start",
+      margin: "10% 0% 0% 70%",
+    },
+  };
+
   return (
     <div className={modalClassName}>
-      <Dialog open={isOpen} maxWidth={maxwidth}>
+      <Dialog
+        open={isOpen}
+        maxWidth={maxwidth}
+        sx={showRight ? positionRight : {}}
+      >
         <div className="modal-header">
           <DialogTitle sx={{ fontWeight: "bold" }}>{modalTitle}</DialogTitle>
           <IconButton

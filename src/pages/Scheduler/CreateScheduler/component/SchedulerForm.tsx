@@ -124,7 +124,8 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
           className="form-control-timezone"
           isMulti={false}
           menuPlacement="bottom"
-          maxMenuHeight={80}
+          maxMenuHeight={70}
+          menuShouldScrollIntoView={true}
         />
       </Grid>
     </Grid>
