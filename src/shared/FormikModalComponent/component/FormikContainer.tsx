@@ -21,12 +21,12 @@ const FormikContainer = (props: IFormikFormProps) => {
     onSubmitHandler,
     formClassName,
     toggleModal,
-    submitButtonLabel = BUTTONS.SUBMIT,
+    submitButtonLabel,
     getFormikForm,
   } = props;
 
   return (
-    <div className={formClassName}>
+    <div className={`${formClassName} form-container`}>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -68,5 +68,10 @@ const FormikContainer = (props: IFormikFormProps) => {
     </div>
   );
 };
+
+FormikContainer.defaultProps = {
+  submitButtonLabel : BUTTONS.SUBMIT
+}
+
 
 export default FormikContainer;
