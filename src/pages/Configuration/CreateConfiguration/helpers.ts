@@ -1,19 +1,6 @@
 import * as Yup from "yup";
 import { IConfiguration } from "./types";
 
-export const initialConfigurationValues: IConfiguration = {
-  configurationName: "",
-  department: "",
-  email: "",
-  password: "",
-  carrierName: "",
-  sftpLogin: "",
-  sftpPassword: "",
-  sftpLocation: "",
-  downloadPath: "",
-  template: "",
-};
-
 export const validationSchema = Yup.object({
   configurationName: Yup.string().required("Configuration Name Required"),
   department: Yup.string().required("Department Required"),
@@ -36,6 +23,10 @@ export const validationSchema = Yup.object({
   downloadPath: Yup.string().required("Download Path Required"),
   template: Yup.string().required("Template Required"),
 });
+
+/* As encoding type were set to "multipart/form-data",FormData() Method 
+Provides a way to easily construct a set of key/value pairs representing
+form fields and their values.*/
 
 export const formDataMapping = (values: IConfiguration): FormData => {
   const {

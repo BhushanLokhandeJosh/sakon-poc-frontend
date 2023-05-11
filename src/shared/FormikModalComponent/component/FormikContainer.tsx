@@ -1,9 +1,10 @@
 import { Form, Formik } from "formik";
 import { Button, Grid } from "@mui/material";
-import { BUTTONS } from "../../constants";
+import { BUTTONSLABLES } from "../../constants";
 
 import { IFormikProps } from "../../types";
 import "./styles/styles.css";
+import { IConfiguration } from "../../../pages/Configuration/CreateConfiguration/types";
 
 interface IFormikFormProps {
   initialValues: any;
@@ -22,7 +23,7 @@ const FormikContainer = (props: IFormikFormProps) => {
     onSubmitHandler,
     formClassName,
     toggleModal,
-    submitButtonLabel = BUTTONS.SUBMIT,
+    submitButtonLabel,
     getFormikForm,
   } = props;
 
@@ -51,7 +52,7 @@ const FormikContainer = (props: IFormikFormProps) => {
                     onClick={toggleModal}
                     sx={{ textTransform: "capitalize", marginRight: "2%" }}
                   >
-                    {BUTTONS.CANCEL}
+                    {BUTTONSLABLES.CANCEL}
                   </Button>
                   <Button
                     type="submit"
@@ -68,6 +69,10 @@ const FormikContainer = (props: IFormikFormProps) => {
       </Formik>
     </div>
   );
+};
+
+FormikContainer.defaultProps = {
+  submitButtonLabel: BUTTONSLABLES.SUBMIT,
 };
 
 export default FormikContainer;

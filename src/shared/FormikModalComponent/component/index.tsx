@@ -5,6 +5,7 @@ import FormikContainer from "./FormikContainer";
 
 import { IFormikProps, MAX_WIDTH } from "../../types";
 import "./styles/styles.css";
+import { IConfiguration } from "../../../pages/Configuration/CreateConfiguration/types";
 
 export interface IFormikModalProp {
   isOpen: boolean;

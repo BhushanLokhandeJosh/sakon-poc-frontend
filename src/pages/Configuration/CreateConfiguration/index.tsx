@@ -1,17 +1,18 @@
 import { toast } from "react-toastify";
 import { AxiosError, AxiosResponse } from "axios";
 
-import CreateConfigurationComponent from "./component";
-
 import { useCreateConfiguration } from "../config-hooks";
-import useToggle from "../../../shared/CustomHooks/useModal";
+import useToggle from "../../../shared/CustomHooks/useToggle";
 
 import { IConfiguration } from "./types";
 import { formDataMapping } from "./helpers";
 
-const CreateConfigContainer = () => {
+import CreateConfiguration from "./component";
+
+const CreateConfigurationContainer = () => {
   const { isOpen, handleToggle } = useToggle();
 
+  //TODO -> WE HAVE TO DISCUSS AND FIX THIS ERROR AND SUCCESS HANDLING ISSUE.
   const onSuccess = (value: AxiosResponse) => {
     toast.success("Configuration Added Successfully...");
     handleToggle();
@@ -27,19 +28,17 @@ const CreateConfigContainer = () => {
   });
 
   const onSubmit = (values: IConfiguration) => {
-    let formData = formDataMapping(values);
+    const formData = formDataMapping(values);
     createConfiguration(formData);
   };
 
   return (
-    <div>
-      <CreateConfigurationComponent
-        isOpen={isOpen}
-        toggleModal={handleToggle}
-        onSubmit={onSubmit}
-      />
-    </div>
+    <CreateConfiguration
+      isOpen={isOpen}
+      toggleModal={handleToggle}
+      onSubmit={onSubmit}
+    />
   );
 };
 
-export default CreateConfigContainer;
+export default CreateConfigurationContainer;

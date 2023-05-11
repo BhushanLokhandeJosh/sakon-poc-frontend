@@ -1,15 +1,17 @@
-import CreateConfigContainer from "./pages/Configuration/CreateConfiguration";
-import LayoutComponent from "./shared/Navbar";
+import { Typography } from "@mui/material";
 
 import "./App.css";
 
+import CreateConfigurationContainer from "./pages/Configuration/CreateConfiguration";
+import LayoutComponent from "./shared/Navbar";
+
 function App() {
   return (
-    <div className="App">
+    <Typography>
       <LayoutComponent>
-        <CreateConfigContainer />
+        <CreateConfigurationContainer />
       </LayoutComponent>
-    </div>
+    </Typography>
   );
 }
 
