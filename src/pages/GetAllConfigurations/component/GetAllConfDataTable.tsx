@@ -32,7 +32,7 @@ export default function GetAllConfDataTable({ useCustomFetch }: IProps) {
         filterBodyTitle="Filter Configurations"
         useCustomFetch={useCustomFetch}
         initialValues={initialValues}
-        getFormBody={(formik: IFormikProps<any>) => {
+        getFormFilterBody={(formik: IFormikProps<any>) => {
           return <ConfifurationFilterForm formik={formik} />;
         }}
       />

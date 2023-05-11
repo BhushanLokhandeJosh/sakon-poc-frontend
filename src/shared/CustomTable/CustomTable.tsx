@@ -14,17 +14,17 @@ import { MAX_WIDTH } from "../types";
 import { ConfigFilterFormInitialValues } from "../../pages/GetAllConfigurations/types";
 
 interface ICustomTableProps {
-  columnHeaders: GridColDef[]; //yes
-  isFilterVisible: boolean; //
-  filterBodyTitle?: string; //
+  columnHeaders: GridColDef[];
+  isFilterVisible: boolean;
+  filterBodyTitle?: string;
   useCustomFetch: any;
-  filterData?: any; //
-  toggleFilterModal?: any; //
-  getFormBody?: any; //
-  isOpen?: any; //
-  initialValues?: any; //
-  onSubmit?: any; //
-  handleSubmit?: any; //
+  filterData?: any;
+  toggleFilterModal?: any;
+  getFormFilterBody?: any;
+  isOpen?: any;
+  initialValues?: any;
+  onSubmit?: any;
+  handleSubmit?: any;
 }
 
 const useStyles = makeStyles({
@@ -41,7 +41,7 @@ const CustomTable = (props: ICustomTableProps) => {
     isFilterVisible,
     useCustomFetch,
     toggleFilterModal,
-    getFormBody,
+    getFormFilterBody,
     initialValues,
   } = props;
 
@@ -97,7 +97,7 @@ const CustomTable = (props: ICustomTableProps) => {
               formClassName="form-align-style"
               modalClassName="modal-align-style"
               maxwidth={MAX_WIDTH.SM}
-              getFormBody={getFormBody}
+              getFormBody={getFormFilterBody}
               submitButtonLabel="Apply"
             />
           </>
