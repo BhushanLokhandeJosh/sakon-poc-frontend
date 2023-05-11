@@ -9,16 +9,17 @@ import "./styles/styles.css";
 interface ITextAreaElementProps {
   label?: string;
   name: string;
+  value?: string;
 }
 
 const TextArea = (props: ITextAreaElementProps): ReactElement => {
-  const { label, name } = props;
+  const { label, name, value } = props;
   return (
     <>
       <InputLabel htmlFor={name} sx={{ color: "black" }}>
         {label}
       </InputLabel>
-      <Field as="textarea" id={name} name={name} />
+      <Field as="textarea" id={name} name={name} value={value} />
       <ErrorMessage name={name} component={FormError} />
     </>
   );

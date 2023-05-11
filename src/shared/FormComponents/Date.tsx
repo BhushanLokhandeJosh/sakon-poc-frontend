@@ -8,10 +8,11 @@ import { InputLabel } from "@mui/material";
 interface IDateElementProps {
   label?: string;
   name: string;
+  value?:string
 }
 
 const Date = (props: IDateElementProps) => {
-  const { label, name } = props;
+  const { label, name, value } = props;
 
   return (
     <>
@@ -19,7 +20,7 @@ const Date = (props: IDateElementProps) => {
         {label}
       </InputLabel>
 
-      <Field id={name} type="date" name={name} className="form-control"></Field>
+      <Field id={name} type="date" name={name} value={value} className="form-control"></Field>
       <ErrorMessage name={name} component={FormError} />
     </>
   );

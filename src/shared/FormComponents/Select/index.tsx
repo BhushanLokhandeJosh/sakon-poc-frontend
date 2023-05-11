@@ -14,6 +14,7 @@ interface IMultiSelectProps {
   menuPlacement?: string;
   maxMenuHeight?: number;
   menuShouldScrollIntoView?: boolean;
+  value?:string
 }
 
 const Select = (props: IMultiSelectProps) => {
@@ -27,6 +28,7 @@ const Select = (props: IMultiSelectProps) => {
     menuPlacement,
     menuShouldScrollIntoView,
     maxMenuHeight,
+    value
   } = props;
   return (
     <>
@@ -44,6 +46,7 @@ const Select = (props: IMultiSelectProps) => {
         menuPlacement={menuPlacement}
         menuShouldScrollIntoView={menuShouldScrollIntoView}
         maxMenuHeight={maxMenuHeight}
+        value={value}
       />
       <ErrorMessage name={name} component={FormError} />
     </>
