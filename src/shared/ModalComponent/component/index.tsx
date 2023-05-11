@@ -16,7 +16,7 @@ export interface ICustomModalProp {
   modalTitle: string;
   label?: string;
   maxwidth?: any;
-  modalPosition?: string;
+  modalClassName?: string;
 }
 
 const ModalComponent = (props: ICustomModalProp) => {
@@ -26,11 +26,11 @@ const ModalComponent = (props: ICustomModalProp) => {
     modalBody,
     modalTitle,
     maxwidth,
-    modalPosition,
+    modalClassName,
   } = props;
 
   return (
-    <div className={modalPosition}>
+    <div className={`${modalClassName} modal-container`}>
       <Dialog open={isOpen} maxWidth={maxwidth}>
         <div className="modal-header">
           <DialogTitle sx={{ fontWeight: "bold" }}>{modalTitle}</DialogTitle>
