@@ -13,7 +13,7 @@ interface FilterFormProps {
   handleSubmit: (values: ConfigFilterFormInitialValues) => void;
 }
 
-function FilterForm(props: any) {
+function ConfifurationFilterForm(props: any) {
   console.log(props);
   const { data, isLoading, isError } = useGetDepartments();
   if (isLoading) {
@@ -131,4 +131,4 @@ function FilterForm(props: any) {
   );
 }
 
-export default FilterForm;
+export default ConfifurationFilterForm;

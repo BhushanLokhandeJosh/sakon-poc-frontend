@@ -11,7 +11,7 @@ function GetAllSchedulersDataTable({ useCustomFetch }: ISchedulers) {
     <div>
       <CustomTable
         isFilterVisible={false}
-        columnHeader={getAllSchedulerColumns}
+        columnHeaders={getAllSchedulerColumns}
         useCustomFetch={useCustomFetch}
       />
     </div>

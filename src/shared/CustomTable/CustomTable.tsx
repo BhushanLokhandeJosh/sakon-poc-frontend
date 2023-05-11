@@ -2,37 +2,54 @@ import { useEffect, useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { Button } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import SearchBox from "./SearchBox";
-import FilterBox from "./FilterBox";
+// import FilterBox from "./FilterBox";
 import ModalComponent from "../ModalComponent/component";
 import { dataGridStyleForColumnSortArrow } from "./constant";
 import "./style.css";
 import FormikModalComponent from "../FormikModalComponent/component";
 import useToggle from "../CustomHooks/useToggle";
+import { MAX_WIDTH } from "../types";
 
 interface ICustomTableProps {
-  columnHeader: GridColDef[];
-  filterBody?: JSX.Element;
+  columnHeaders: GridColDef[];
   isFilterVisible: boolean;
   filterBodyTitle?: string;
   useCustomFetch: any;
   filterData?: any;
-  handleToggle?: any;
+  toggleFilterModal?: any;
+  getFormBody?: any;
+  isOpen?: any;
+  initialValues?: any;
+  onSubmit?: any;
+  handleSubmit?: any;
 }
-function CustomTable(props: ICustomTableProps) {
-  // const { isOpen, handleToggle } = useToggle();
+
+const useStyles = makeStyles({
+  datagridContainer: {
+    height: "520px",
+    width: "auto",
+    marginRight: "20px",
+  },
+});
+
+const CustomTable = (props: ICustomTableProps) => {
   const {
-    columnHeader,
-    filterBody,
+    columnHeaders,
     isFilterVisible,
-    filterBodyTitle,
     useCustomFetch,
     filterData,
-    handleToggle,
+    toggleFilterModal,
+    getFormBody,
+    isOpen,
+    initialValues,
+    onSubmit,
   } = props;
 
-  const [searchValue, setSearchValue] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<string>(""); //Used whenever user try to search anything then automatically useEffect runs and also again hit customFetch to call api to get the data.
   const [searchTrigger, setSearchTrigger] = useState<string>("");
+  const classes = useStyles();
 
   useEffect(() => {
     if (searchTrigger !== searchValue) {
@@ -54,39 +71,42 @@ function CustomTable(props: ICustomTableProps) {
   if (isError) {
     return <>Error...</>;
   }
+
   return (
     <>
       <div className="input-btn-container">
         {isFilterVisible && (
           <>
-            <Button variant="contained" onClick={handleToggle}>
+            <Button variant="contained" onClick={toggleFilterModal}>
               <FilterListIcon />
             </Button>
-            {/* {filterBody && (
-              <ModalComponent
-                isOpen={isOpen}
-                modalBody={<FilterBox filterBody={filterBody} />}
-                modalTitle={filterBodyTitle}
-                toggleModal={handleToggle}
-                modalPosition="filter-modal-style"
-              />
-            )} */}
+            <FormikModalComponent
+              isOpen={isOpen}
+              initialValues={initialValues}
+              onSubmit={onSubmit}
+              toggleModal={toggleFilterModal}
+              modalTitle="filter config"
+              formClassName="form-align-style"
+              modalClassName="modal-align-style"
+              maxwidth={MAX_WIDTH.SM}
+              getFormBody={getFormBody}
+              submitButtonLabel="Apply"
+            />
           </>
         )}
-        {filterBody}
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
-      <div className="datagrid-container">
+      <div className={classes.datagridContainer}>
         <DataGrid
           disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.
           disableRowSelectionOnClick //Used to Remove statement: whenever we select rows it shows selected rows statement on UI.
           rows={data}
-          columns={columnHeader}
+          columns={columnHeaders}
           sx={dataGridStyleForColumnSortArrow}
         />
       </div>
     </>
   );
-}
+};
 
 export default CustomTable;
