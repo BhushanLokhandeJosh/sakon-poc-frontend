@@ -22,7 +22,7 @@ interface InputElementProps {
     | "radio";
   className?: string;
   placeholder?: string;
-  value?: string;
+  value: string | Blob;
 }
 
 const Input = (props: InputElementProps): ReactElement => {

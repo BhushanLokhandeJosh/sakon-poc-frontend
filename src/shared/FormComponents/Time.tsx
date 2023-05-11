@@ -13,14 +13,19 @@ interface ITimeElementProps {
 }
 
 const Time = (props: ITimeElementProps) => {
-  const { label, name, className } = props;
+  const { label, name, value, className } = props;
 
   return (
     <>
       <InputLabel htmlFor={name} sx={{ color: "black" }}>
         {label}
       </InputLabel>
-      <Field type="time" name={name} className={className}></Field>
+      <Field
+        type="time"
+        name={name}
+        className={className}
+        value={value}
+      ></Field>
       <ErrorMessage name={name} component={FormError} />
     </>
   );
