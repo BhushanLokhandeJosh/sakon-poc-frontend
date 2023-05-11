@@ -5,7 +5,6 @@ import { Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import SearchBox from "./SearchBox";
 // import FilterBox from "./FilterBox";
-import ModalComponent from "../ModalComponent/component";
 import { dataGridStyleForColumnSortArrow } from "./constant";
 import "./style.css";
 import FormikModalComponent from "../FormikModalComponent/component";
