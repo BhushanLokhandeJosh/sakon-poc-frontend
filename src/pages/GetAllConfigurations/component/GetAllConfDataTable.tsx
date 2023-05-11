@@ -19,19 +19,9 @@ interface IProps {
 }
 
 export default function GetAllConfDataTable({ useCustomFetch }: IProps) {
-  const { isOpen, handleToggle } = useToggle();
-  const [filterData, setFilterData] = React.useState<any>({});
   const initialValues: any = {
     schedulingStatus: "",
     department: "",
-  };
-
-  const handleSubmit = (values: ConfigFilterFormInitialValues) => {
-    setFilterData({
-      departmentValue: values?.department,
-      schedulingStatusValue: values?.schedulingStatus === "scheduled",
-    });
-    handleToggle();
   };
 
   return (
@@ -41,34 +31,10 @@ export default function GetAllConfDataTable({ useCustomFetch }: IProps) {
         columnHeaders={getAllConfigColumns}
         filterBodyTitle="Filter Configurations"
         useCustomFetch={useCustomFetch}
-        filterData={filterData}
-        toggleFilterModal={handleToggle}
-        isOpen={isOpen}
         initialValues={initialValues}
-        onSubmit={handleSubmit}
         getFormBody={(formik: IFormikProps<any>) => {
           return <ConfifurationFilterForm formik={formik} />;
         }}
-        // filterBody={
-        //   <FormikModalComponent
-        //     isOpen={isOpen}
-        //     initialValues={initialValues}
-        //     onSubmit={handleSubmit}
-        //     toggleModal={handleToggle}
-        //     modalTitle="filter config"
-        //     formClassName="form-align-style"
-        //     modalClassName="modal-align-style"
-        //     maxwidth={MAX_WIDTH.SM}
-        //     getFormBody={(formik: IFormikProps<any>) => {
-        //       return <ConfifurationFilterForm formik={formik} />;
-        //     }}
-        //     submitButtonLabel="Apply"
-        //   />
-        // <FilterForm
-        //   initialValues={initialValues}
-        //   handleSubmit={handleSubmit}
-        // />
-        // }
       />
     </div>
   );

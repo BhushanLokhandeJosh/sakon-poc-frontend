@@ -11,19 +11,20 @@ import "./style.css";
 import FormikModalComponent from "../FormikModalComponent/component";
 import useToggle from "../CustomHooks/useToggle";
 import { MAX_WIDTH } from "../types";
+import { ConfigFilterFormInitialValues } from "../../pages/GetAllConfigurations/types";
 
 interface ICustomTableProps {
-  columnHeaders: GridColDef[];
-  isFilterVisible: boolean;
-  filterBodyTitle?: string;
+  columnHeaders: GridColDef[]; //yes
+  isFilterVisible: boolean; //
+  filterBodyTitle?: string; //
   useCustomFetch: any;
-  filterData?: any;
-  toggleFilterModal?: any;
-  getFormBody?: any;
-  isOpen?: any;
-  initialValues?: any;
-  onSubmit?: any;
-  handleSubmit?: any;
+  filterData?: any; //
+  toggleFilterModal?: any; //
+  getFormBody?: any; //
+  isOpen?: any; //
+  initialValues?: any; //
+  onSubmit?: any; //
+  handleSubmit?: any; //
 }
 
 const useStyles = makeStyles({
@@ -39,17 +40,24 @@ const CustomTable = (props: ICustomTableProps) => {
     columnHeaders,
     isFilterVisible,
     useCustomFetch,
-    filterData,
     toggleFilterModal,
     getFormBody,
-    isOpen,
     initialValues,
-    onSubmit,
   } = props;
 
   const [searchValue, setSearchValue] = useState<string>(""); //Used whenever user try to search anything then automatically useEffect runs and also again hit customFetch to call api to get the data.
   const [searchTrigger, setSearchTrigger] = useState<string>("");
   const classes = useStyles();
+  const { isOpen, handleToggle } = useToggle();
+  const [filterData, setFilterData] = useState<any>({});
+
+  const onSubmit = (values: ConfigFilterFormInitialValues) => {
+    setFilterData({
+      departmentValue: values?.department,
+      schedulingStatusValue: values?.schedulingStatus === "scheduled",
+    });
+    handleToggle();
+  };
 
   useEffect(() => {
     if (searchTrigger !== searchValue) {
@@ -77,7 +85,7 @@ const CustomTable = (props: ICustomTableProps) => {
       <div className="input-btn-container">
         {isFilterVisible && (
           <>
-            <Button variant="contained" onClick={toggleFilterModal}>
+            <Button variant="contained" onClick={handleToggle}>
               <FilterListIcon />
             </Button>
             <FormikModalComponent
