@@ -1,8 +1,12 @@
-import "./App.css";
+import { Typography } from "@mui/material";
+import StepContainer from "./pages/Jobs/StepComponent";
 
 function App() {
-  return <div className="App">
-  </div>;
+  return (
+    <Typography sx={{ display: "flex", justifyContent: "center" }}>
+      <StepContainer />
+    </Typography>
+  );
 }
 
 export default App;
