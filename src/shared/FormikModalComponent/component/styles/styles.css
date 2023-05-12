@@ -1,0 +1,18 @@
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.form-container {
+  width: 95%;
+  margin: auto;
+  margin-top: 4%;
+}
