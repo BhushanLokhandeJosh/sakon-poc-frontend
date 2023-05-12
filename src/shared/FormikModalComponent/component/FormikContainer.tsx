@@ -3,6 +3,7 @@ import { Button, Grid } from "@mui/material";
 import { BUTTONS_LABLES } from "../../constants";
 
 import { IFormikProps } from "../../types";
+import "./styles/styles.css";
 
 interface IFormikFormProps {
   initialValues: any;
@@ -49,15 +50,27 @@ const FormikContainer = (props: IFormikFormProps) => {
 
               <Grid item sm={11} lg={12}>
                 <div className="button-container">
-                  <Button
-                    type="reset"
-                    variant="contained"
-                    color="error"
-                    onClick={toggleModal}
-                    sx={{ textTransform: "capitalize", marginRight: "2%" }}
-                  >
-                    {BUTTONS_LABLES.CANCEL}
-                  </Button>
+                  {showResetButton && (
+                    <Button
+                      variant="outlined"
+                      color="error"
+                      onClick={() => handleReset(formik)}
+                      sx={{ textTransform: "capitalize", marginRight: "2%" }}
+                    >
+                      {BUTTONS_LABLES.RESET}
+                    </Button>
+                  )}
+                  {showCancelButton && (
+                    <Button
+                      type="reset"
+                      variant="contained"
+                      color="error"
+                      onClick={toggleModal}
+                      sx={{ textTransform: "capitalize", marginRight: "2%" }}
+                    >
+                      {BUTTONS_LABLES.CANCEL}
+                    </Button>
+                  )}
                   <Button
                     type="submit"
                     variant="contained"
@@ -76,7 +89,7 @@ const FormikContainer = (props: IFormikFormProps) => {
 };
 
 FormikContainer.defaultProps = {
-  submitButtonLabel: BUTTONSLABLES.SUBMIT,
+  submitButtonLabel: BUTTONS_LABLES.SUBMIT,
 };
 
 export default FormikContainer;

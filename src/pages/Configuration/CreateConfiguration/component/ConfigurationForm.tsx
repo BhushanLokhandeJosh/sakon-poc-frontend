@@ -13,6 +13,7 @@ interface IConfigurationProps {
 }
 
 const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
+  const {values} = props.formik;
   return (
     <Form>
       <Grid container rowSpacing={4} columnSpacing={{ xs: 4 }}>
@@ -23,6 +24,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               label="Configuration Name"
               name="configurationName"
               className="input-field"
+              value={values.configurationName}
             />
           </div>
         </Grid>
@@ -34,6 +36,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               label="Carrier Name"
               name="carrierName"
               className="input-field"
+              value={values.carrierName}
             />
           </div>
         </Grid>
@@ -45,6 +48,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               label="Email"
               name="email"
               className="input-field"
+              value={values.email}
             />
           </div>
         </Grid>
@@ -55,6 +59,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               label="Password"
               name="password"
               className="input-field"
+              value={values.password}
             />
           </div>
         </Grid>
@@ -66,6 +71,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               label="Department"
               name="department"
               className="input-field"
+              value={values.department}
             />
           </div>
         </Grid>
@@ -76,6 +82,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               label="Sftp Location"
               name="sftpLocation"
               className="input-field"
+              value={values.sftpLocation}
             />
           </div>
         </Grid>
@@ -86,6 +93,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               label="Sftp Login"
               name="sftpLogin"
               className="input-field"
+              value={values.sftpLogin}
             />
           </div>
         </Grid>
@@ -96,6 +104,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               label="Sftp Password"
               name="sftpPassword"
               className="input-field"
+              value={values.sftpPassword}
             />
           </div>
         </Grid>
@@ -107,6 +116,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               label="Download Link"
               name="downloadPath"
               className="input-field"
+              value={values.downloadPath}
             />
           </div>
         </Grid>
@@ -117,6 +127,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               label="Template"
               name="template"
               className="input-file-field"
+              value={values.template}
             />
           </div>
         </Grid>
