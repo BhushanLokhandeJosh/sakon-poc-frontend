@@ -9,7 +9,7 @@ import "./styles/styles.css";
 export interface IFormikModalProp {
   isOpen: boolean;
   toggleModal: () => void;
-  modalTitle?: string;
+  modalTitle: string;
   getFormBody: (formik: any) => JSX.Element;
   submitButtonLabel?: string;
   initialValues: any;
