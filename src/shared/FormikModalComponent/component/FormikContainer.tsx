@@ -1,10 +1,8 @@
 import { Form, Formik } from "formik";
 import { Button, Grid } from "@mui/material";
-import { BUTTONSLABLES } from "../../constants";
+import { BUTTONS_LABLES } from "../../constants";
 
 import { IFormikProps } from "../../types";
-import "./styles/styles.css";
-import { IConfiguration } from "../../../pages/Configuration/CreateConfiguration/types";
 
 interface IFormikFormProps {
   initialValues: any;
@@ -14,6 +12,9 @@ interface IFormikFormProps {
   toggleModal: () => void;
   submitButtonLabel?: string;
   getFormikForm: (formik: IFormikProps<any>) => JSX.Element;
+  handleReset: (formik: IFormikProps<any>) => void;
+  showResetButton: boolean;
+  showCancelButton: boolean;
 }
 
 const FormikContainer = (props: IFormikFormProps) => {
@@ -25,10 +26,13 @@ const FormikContainer = (props: IFormikFormProps) => {
     toggleModal,
     submitButtonLabel,
     getFormikForm,
+    handleReset,
+    showResetButton,
+    showCancelButton,
   } = props;
 
   return (
-    <div className={formClassName}>
+    <div className={`${formClassName} form-container`}>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -52,7 +56,7 @@ const FormikContainer = (props: IFormikFormProps) => {
                     onClick={toggleModal}
                     sx={{ textTransform: "capitalize", marginRight: "2%" }}
                   >
-                    {BUTTONSLABLES.CANCEL}
+                    {BUTTONS_LABLES.CANCEL}
                   </Button>
                   <Button
                     type="submit"
