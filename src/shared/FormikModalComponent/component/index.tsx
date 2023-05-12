@@ -10,7 +10,7 @@ import { InitialValuesProps } from "../../../pages/CreateConfiguration/types";
 export interface IFormikModalProp {
   isOpen: boolean;
   toggleModal: () => void;
-  modalTitle: string;
+  modalTitle: string | undefined;
   getFormBody: (formik: any) => JSX.Element;
   submitButtonLabel?: string;
   initialValues: any;

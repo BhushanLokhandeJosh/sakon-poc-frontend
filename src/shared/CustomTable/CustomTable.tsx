@@ -8,21 +8,14 @@ import { dataGridStyleForColumnSortArrow } from "./constant";
 import "./style.css";
 import FormikModalComponent from "../FormikModalComponent/component";
 import useToggle from "../CustomHooks/useToggle";
-import { MAX_WIDTH } from "../types";
-import { ConfigFilterFormInitialValues } from "../../pages/GetAllConfigurations/types";
-
+import { IObjectWithAnyFields, MAX_WIDTH } from "../types";
 interface ICustomTableProps {
-  columnHeaders: GridColDef[];
   isFilterVisible: boolean;
+  columnHeaders: GridColDef[];
   filterBodyTitle?: string;
   useCustomFetch: any;
-  filterData?: any;
-  toggleFilterModal?: any;
-  getFormFilterBody?: any;
-  isOpen?: any;
   initialValues?: any;
-  onSubmit?: any;
-  handleSubmit?: any;
+  getFormFilterBody?: any;
 }
 
 const useStyles = makeStyles({
@@ -35,25 +28,22 @@ const useStyles = makeStyles({
 
 const CustomTable = (props: ICustomTableProps) => {
   const {
-    columnHeaders,
     isFilterVisible,
+    columnHeaders,
+    filterBodyTitle,
     useCustomFetch,
-    toggleFilterModal,
-    getFormFilterBody,
     initialValues,
+    getFormFilterBody,
   } = props;
 
   const [searchValue, setSearchValue] = useState<string>(""); //Used whenever user try to search anything then automatically useEffect runs and also again hit customFetch to call api to get the data.
   const [searchTrigger, setSearchTrigger] = useState<string>("");
-  const classes = useStyles();
   const { isOpen, handleToggle } = useToggle();
   const [filterData, setFilterData] = useState<any>({});
+  const classes = useStyles();
 
-  const onSubmit = (values: ConfigFilterFormInitialValues) => {
-    setFilterData({
-      departmentValue: values?.department,
-      schedulingStatusValue: values?.schedulingStatus === "scheduled",
-    });
+  const onSubmit = (values: IObjectWithAnyFields) => {
+    setFilterData(values);
     handleToggle();
   };
 
@@ -68,7 +58,7 @@ const CustomTable = (props: ICustomTableProps) => {
 
   const { data, isLoading, isError } = useCustomFetch({
     searchValue: searchTrigger,
-    ...filterData,
+    filterData,
   });
 
   if (isLoading) {
@@ -90,8 +80,8 @@ const CustomTable = (props: ICustomTableProps) => {
               isOpen={isOpen}
               initialValues={initialValues}
               onSubmit={onSubmit}
-              toggleModal={toggleFilterModal}
-              modalTitle="filter config"
+              toggleModal={handleToggle}
+              modalTitle={filterBodyTitle}
               formClassName="form-align-style"
               modalClassName="modal-align-style"
               maxwidth={MAX_WIDTH.SM}
