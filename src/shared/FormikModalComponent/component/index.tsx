@@ -20,8 +20,8 @@ export interface IFormikModalProp {
   maxwidth?: MAX_WIDTH;
   modalClassName?: string;
   formClassName?: string;
-  showResetButton?: boolean;
-  showCancelButton?: boolean;
+  showResetButton: boolean;
+  showCancelButton: boolean;
 }
 
 const FormikModalComponent = (props: IFormikModalProp) => {

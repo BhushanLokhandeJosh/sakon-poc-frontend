@@ -1,6 +1,6 @@
 import { Form, Formik } from "formik";
 import { Button, Grid } from "@mui/material";
-import { BUTTONSLABLES } from "../../constants";
+import { BUTTONS_LABLES } from "../../constants";
 
 import { IFormikProps } from "../../types";
 import "./styles/styles.css";
@@ -14,8 +14,8 @@ interface IFormikFormProps {
   submitButtonLabel?: string;
   getFormikForm: (formik: IFormikProps<any>) => JSX.Element;
   handleReset: (formik: IFormikProps<any>) => void;
-  showResetButton?: boolean;
-  showCancelButton?: boolean;
+  showResetButton: boolean;
+  showCancelButton: boolean;
 }
 
 const FormikContainer = (props: IFormikFormProps) => {
@@ -57,7 +57,7 @@ const FormikContainer = (props: IFormikFormProps) => {
                       onClick={() => handleReset(formik)}
                       sx={{ textTransform: "capitalize", marginRight: "2%" }}
                     >
-                      {BUTTONSLABLES.RESET}
+                      {BUTTONS_LABLES.RESET}
                     </Button>
                   )}
                   {showCancelButton && (
@@ -68,7 +68,7 @@ const FormikContainer = (props: IFormikFormProps) => {
                       onClick={toggleModal}
                       sx={{ textTransform: "capitalize", marginRight: "2%" }}
                     >
-                      {BUTTONSLABLES.CANCEL}
+                      {BUTTONS_LABLES.CANCEL}
                     </Button>
                   )}
                   <Button
@@ -89,7 +89,7 @@ const FormikContainer = (props: IFormikFormProps) => {
 };
 
 FormikContainer.defaultProps = {
-  submitButtonLabel: BUTTONSLABLES.SUBMIT,
+  submitButtonLabel: BUTTONS_LABLES.SUBMIT,
 };
 
 export default FormikContainer;
