@@ -8,18 +8,18 @@ export const getAllSchedulerColumns: GridColDef[] = [
   {
     field: "schedule_name",
     headerName: "Schedule Name",
-    width: 250,
+    width: 300,
     // sortable: false,
   },
   {
     field: "frequency",
     headerName: "Frequency",
-    width: 250,
+    width: 300,
   },
   {
     field: "configuration",
     headerName: "Configuration",
-    width: 250,
+    width: 300,
     sortable: false,
     renderCell: (params: any) => {
       const arr = params?.row.configuration;
@@ -29,7 +29,7 @@ export const getAllSchedulerColumns: GridColDef[] = [
   {
     field: "created_at",
     headerName: "Created At",
-    width: 250,
+    width: 300,
     sortable: false,
     renderCell: (params) => {
       const currentTime = params?.row.created_at;
