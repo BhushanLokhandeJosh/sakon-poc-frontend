@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import { Button } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Box, Button } from "@mui/material";
+
 import SearchBox from "./SearchBox";
 import { dataGridStyleForColumnSortArrow } from "./constant";
+import { IObjectWithAnyFields, MAX_WIDTH } from "../types";
+
 import "./style.css";
+
 import FormikModalComponent from "../FormikModalComponent/component";
 import useToggle from "../CustomHooks/useToggle";
-import { IObjectWithAnyFields, MAX_WIDTH } from "../types";
+
 interface ICustomTableProps {
   isFilterVisible: boolean;
   columnHeaders: GridColDef[];
@@ -17,14 +20,6 @@ interface ICustomTableProps {
   initialValues?: any;
   getFormFilterBody?: any;
 }
-
-const useStyles = makeStyles({
-  datagridContainer: {
-    height: "520px",
-    width: "auto",
-    marginRight: "20px",
-  },
-});
 
 const CustomTable = (props: ICustomTableProps) => {
   const {
@@ -40,7 +35,6 @@ const CustomTable = (props: ICustomTableProps) => {
   const [searchTrigger, setSearchTrigger] = useState<string>("");
   const { isOpen, handleToggle } = useToggle();
   const [filterData, setFilterData] = useState<any>({});
-  const classes = useStyles();
 
   const onSubmit = (values: IObjectWithAnyFields) => {
     setFilterData(values);
@@ -92,7 +86,7 @@ const CustomTable = (props: ICustomTableProps) => {
         )}
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
-      <div className={classes.datagridContainer}>
+      <Box sx={{ height: "650px", width: "auto", marginRight: "20px" }}>
         <DataGrid
           disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.
           disableRowSelectionOnClick //Used to Remove statement: whenever we select rows it shows selected rows statement on UI.
@@ -100,7 +94,7 @@ const CustomTable = (props: ICustomTableProps) => {
           columns={columnHeaders}
           sx={dataGridStyleForColumnSortArrow}
         />
-      </div>
+      </Box>
     </>
   );
 };
