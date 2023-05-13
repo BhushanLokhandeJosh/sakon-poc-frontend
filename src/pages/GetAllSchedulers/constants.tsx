@@ -4,23 +4,35 @@ import { Tooltip, TableCell } from "@mui/material";
 import { getTimeFromNow } from "../../shared/utils";
 
 export const getAllSchedulerColumns: GridColDef[] = [
-  { field: "id", headerName: "Id", width: 150 },
+  {
+    field: "id",
+    headerName: "Id",
+    width: 150,
+    headerAlign: "center",
+    align: "center",
+  },
   {
     field: "schedule_name",
     headerName: "Schedule Name",
     width: 300,
-    // sortable: false,
+
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "frequency",
     headerName: "Frequency",
     width: 300,
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "configuration",
     headerName: "Configuration",
     width: 300,
     sortable: false,
+    headerAlign: "center",
+    align: "center",
     renderCell: (params: any) => {
       const arr = params?.row.configuration;
       return <CustomColumnPopover arr={arr} />;
@@ -31,6 +43,8 @@ export const getAllSchedulerColumns: GridColDef[] = [
     headerName: "Created At",
     width: 300,
     sortable: false,
+    headerAlign: "center",
+    align: "center",
     renderCell: (params) => {
       const currentTime = params?.row.created_at;
       const date = new Date(params?.value);
