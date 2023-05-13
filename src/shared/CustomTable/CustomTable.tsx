@@ -18,6 +18,7 @@ interface ICustomTableProps {
   filterBodyTitle?: string;
   useCustomFetch: any;
   initialValues?: any;
+  validationSchema?:any;
   getFormFilterBody?: any;
 }
 
@@ -29,6 +30,7 @@ const CustomTable = (props: ICustomTableProps) => {
     useCustomFetch,
     initialValues,
     getFormFilterBody,
+    validationSchema
   } = props;
 
   const [searchValue, setSearchValue] = useState<string>(""); //Used whenever user try to search anything then automatically useEffect runs and also again hit customFetch to call api to get the data.
@@ -73,6 +75,7 @@ const CustomTable = (props: ICustomTableProps) => {
             <FormikModalComponent
               isOpen={isOpen}
               initialValues={initialValues}
+              validationSchema={validationSchema}
               onSubmit={onSubmit}
               toggleModal={handleToggle}
               modalTitle={filterBodyTitle}

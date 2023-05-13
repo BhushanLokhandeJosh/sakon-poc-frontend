@@ -34,7 +34,6 @@ const CreateConfiguration = (props: IConfigurationFormProps) => {
           initialValues={initialConfigurationValues}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
-          formClassName="form"
         />
       )}
     </div>
