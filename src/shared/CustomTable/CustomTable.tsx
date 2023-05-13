@@ -18,6 +18,7 @@ interface ICustomTableProps {
   filterBodyTitle?: string;
   useCustomFetch: any;
   initialValues?: any;
+  validationSchema?:any;
   getFormFilterBody?: any;
 }
 
@@ -28,6 +29,7 @@ const CustomTable = (props: ICustomTableProps) => {
     filterBodyTitle,
     useCustomFetch,
     initialValues,
+    validationSchema,
     getFormFilterBody,
   } = props;
 
@@ -73,6 +75,7 @@ const CustomTable = (props: ICustomTableProps) => {
             <FormikModalComponent
               isOpen={isOpen}
               initialValues={initialValues}
+              validationSchema={validationSchema}
               onSubmit={onSubmit}
               toggleModal={handleToggle}
               modalTitle={filterBodyTitle}
