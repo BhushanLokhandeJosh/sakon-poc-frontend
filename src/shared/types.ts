@@ -1,7 +1,6 @@
 import { FormikProps } from "formik";
 
 export enum MAX_WIDTH {
-<<<<<<< HEAD
   XS = "xs",
   SM = "sm",
   MD = "md",
@@ -17,13 +16,3 @@ export interface IFormikProps<T> extends FormikProps<T> {}
 export interface IObjectWithAnyFields {
   [key: string]: any;
 }
-=======
-    XS = "xs",
-    SM = "sm",
-    MD = "md",
-    LG = "lg",
-    XL = "xl"
-}
-
-export interface IFormikProps<T> extends FormikProps<T> {}
->>>>>>> e2b953c2d7abcf79b65ec4bd516bd43ef822361d
