@@ -18,7 +18,7 @@ interface ICustomTableProps {
   filterBodyTitle?: string;
   useCustomFetch: any;
   initialValues?: any;
-  validationSchema?:any;
+  validationSchema?: any;
   getFormFilterBody?: any;
 }
 
@@ -78,7 +78,6 @@ const CustomTable = (props: ICustomTableProps) => {
               validationSchema={validationSchema}
               onSubmit={onSubmit}
               toggleModal={handleToggle}
-              validationSchema={""}
               modalTitle={filterBodyTitle}
               formClassName="form-align-style"
               modalClassName="modal-align-style"
