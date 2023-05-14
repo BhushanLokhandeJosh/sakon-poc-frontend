@@ -1,126 +1,101 @@
-import {
-  DataGrid,
-  FilterColumnsArgs,
-  GetColumnForNewFilterArgs,
-  GridColDef,
-  GridToolbar,
-  GridToolbarQuickFilter,
-} from "@mui/x-data-grid";
-import React, { useState } from "react";
-import { getAllConfigColumns } from "../../pages/GetAllConfigurations/constants";
-import { Box, Hidden } from "@mui/material";
-import useFetchAllConfigurations from "../../hooks/useFetchAllConfig";
-// import "./style.css";
-// import { Box } from "@mui/material";
+import { useEffect, useState } from "react";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import { Box, Button } from "@mui/material";
 
-interface IProps {
-  data: any;
-  columnHeader: GridColDef[];
+import SearchBox from "./SearchBox";
+import { dataGridStyleForColumnSortArrow } from "./constant";
+import { IObjectWithAnyFields, MAX_WIDTH } from "../types";
+
+import "./style.css";
+
+import FormikModalComponent from "../FormikModalComponent/component";
+import useToggle from "../CustomHooks/useToggle";
+
+interface ICustomTableProps {
+  isFilterVisible: boolean;
+  columnHeaders: GridColDef[];
+  filterBodyTitle?: string;
+  useCustomFetch: any;
+  initialValues?: any;
+  getFormFilterBody?: any;
 }
-const CustomTable = (props: IProps) => {
-  const { data, columnHeader } = props;
 
-  /*
-  function QuickSearchToolbar() {
-  return (
-  <Box
-  sx={{
-  p: 0.5,
-  pb: 0,
-  }}
-  >
-  <GridToolbarQuickFilter />
-  </Box>
-  );
-  }
-  */
-  /*
-  const filterColumns = ({
-    field,
-    columns,
-    currentFilters,
-  }: FilterColumnsArgs) => {
-    // remove already filtered fields from list of columns
-    const filteredFields = currentFilters?.map((item) => item.field);
-    return columns
-      .filter(
-        (colDef: any) =>
-          colDef.filterable &&
-          (colDef.field === field || !filteredFields.includes(colDef.field))
-      )
-      .map((column: any) => column.field);
+const CustomTable = (props: ICustomTableProps) => {
+  const {
+    isFilterVisible,
+    columnHeaders,
+    filterBodyTitle,
+    useCustomFetch,
+    initialValues,
+    getFormFilterBody,
+  } = props;
+
+  const [searchValue, setSearchValue] = useState<string>(""); //Used whenever user try to search anything then automatically useEffect runs and also again hit customFetch to call api to get the data.
+  const [searchTrigger, setSearchTrigger] = useState<string>("");
+  const { isOpen, handleToggle } = useToggle();
+  const [filterData, setFilterData] = useState<any>({});
+
+  const onSubmit = (values: IObjectWithAnyFields) => {
+    setFilterData(values);
+    handleToggle();
   };
 
-  const getColumnForNewFilter = ({
-    currentFilters,
-    columns,
-  }: GetColumnForNewFilterArgs) => {
-    const filteredFields = currentFilters?.map(({ field }) => field);
-    const columnForNewFilter = columns
-      .filter(
-        (colDef: any) =>
-          colDef.filterable && !filteredFields.includes(colDef.field)
-      )
-      .find((colDef: any) => colDef.filterOperators?.length);
-    return columnForNewFilter?.field ?? null;
-  }; 
-  */
+  useEffect(() => {
+    if (searchTrigger !== searchValue) {
+      const delayDebounceFn = setTimeout(() => {
+        setSearchTrigger(searchValue);
+      }, 200);
+      return () => clearTimeout(delayDebounceFn);
+    }
+  }, [searchValue, searchTrigger, setSearchTrigger]);
 
-  // const [searchValue, setSearchValue] = useState<string>("");
-  // const [searchTrigger, setSearchTrigger] = useState<any>("");
+  const { data, isLoading, isError } = useCustomFetch({
+    searchValue: searchTrigger,
+    filterData,
+  });
 
-  // const { data, isLoading, isError } = useFetchAllConfigurations({
-  //   searchValue: searchTrigger,
-  // });
-
-  // console.log("sssss", data);
+  if (isLoading) {
+    return <>Loading...</>;
+  }
+  if (isError) {
+    return <>Error...</>;
+  }
 
   return (
-    <div style={{ height: "520px", width: "auto", marginRight: "20px" }}>
-      <DataGrid
-        // {...data} //Not needed
-        disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.
-        disableRowSelectionOnClick //Used to Remove statement: whenever we select rows it shows selected rows statement on UI.
-        rows={data}
-        columns={columnHeader}
-        // slots={{ toolbar: GridToolbar }}
-        // slotProps={{
-        // filterPanel: {
-        // filterFormProps: {
-        // filterColumns,
-        // },
-        // getColumnForNewFilter,
-        // },
-        // }}
-        // disableColumnSelector // Used to disable column selector.
-        // disableDensitySelector // Used to disable density selector.
-        sx={{
-          ".MuiDataGrid-iconButtonContainer": {
-            visibility: "visible",
-          },
-          ".MuiDataGrid-sortIcon": {
-            opacity: "inherit !important",
-          },
-        }}
-        // showCellVerticalBorder
-        // showColumnVerticalBorder
-
-        /*
-  slotProps={{
-  filterPanel: {
-  filterFormProps: {
-  // filterColumns,
-  },
-  // getColumnForNewFilter,
-  },
-  }}
-  slots={{ toolbar: QuickSearchToolbar }} // =>Used for searching on UI using material UI library
-  */
-
-        // pageSize={1}
-        // rowsPerPageOptions={[2]}
-      />
-    </div>
+    <>
+      <div className="input-btn-container">
+        {isFilterVisible && (
+          <>
+            <Button variant="contained" onClick={handleToggle}>
+              <FilterListIcon />
+            </Button>
+            <FormikModalComponent
+              isOpen={isOpen}
+              initialValues={initialValues}
+              onSubmit={onSubmit}
+              toggleModal={handleToggle}
+              modalTitle={filterBodyTitle}
+              formClassName="form-align-style"
+              modalClassName="modal-align-style"
+              maxwidth={MAX_WIDTH.SM}
+              getFormBody={getFormFilterBody}
+              submitButtonLabel="Apply"
+            />
+          </>
+        )}
+        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+      </div>
+      <Box sx={{ height: "650px", width: "auto", marginRight: "20px" }}>
+        <DataGrid
+          disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.
+          disableRowSelectionOnClick //Used to Remove statement: whenever we select rows it shows selected rows statement on UI.
+          rows={data}
+          columns={columnHeaders}
+          sx={dataGridStyleForColumnSortArrow}
+        />
+      </Box>
+    </>
   );
 };
 

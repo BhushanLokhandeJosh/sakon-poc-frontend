@@ -14,11 +14,20 @@ const getDepartments = () => {
 
 const useFetchAllConfigurations = ({
   searchValue,
+  filterData,
 }: {
   searchValue?: string;
+  filterData?: any;
 }) => {
-  return useQuery<GetAllConfig[]>(["getAllConfigurations", searchValue], () =>
-    getConfig({ carrierName_like: searchValue })
+  console.log("filterData", filterData);
+  return useQuery<GetAllConfig[]>(
+    ["getAllConfigurations", searchValue, filterData],
+    () =>
+      getConfig({
+        carrierName_like: searchValue,
+        department_like: filterData.department,
+        schedulingStatus_like: filterData.schedulingStatus === "scheduled",
+      })
   );
 };
 

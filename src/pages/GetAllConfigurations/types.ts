@@ -6,3 +6,8 @@ export interface GetAllConfig {
   department: string;
   schedulingStatus: string;
 }
+
+export interface ConfigFilterFormInitialValues {
+  schedulingStatus: string;
+  department: string;
+}

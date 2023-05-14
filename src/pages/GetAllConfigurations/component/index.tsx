@@ -2,34 +2,24 @@ import React, { Component, ComponentType, ElementType, ReactNode } from "react";
 import { Button } from "@mui/material";
 import GetAllConfDataTable from "./GetAllConfDataTable";
 import CustomTable from "../../../shared/CustomTable/CustomTable";
-import SearchBox from "../../../shared/SearchBox/SearchBox";
+import SearchBox from "../../../shared/CustomTable/SearchBox";
 import { Direction } from "react-toastify/dist/utils";
 import PageComponent from "../../../shared/PageComponent/PageComponent";
 
 interface IProps {
-  searchValue: string;
-  setSearchValue: Function;
-  data: any;
+  useCustomFetch: any;
 }
 
-const GetAllConfigurationComponent = (props: IProps) => {
-  const { searchValue, setSearchValue, data } = props;
-
+function GetAllConfigurationComponent({ useCustomFetch }: IProps) {
   return (
     <div>
       <PageComponent
         pageTitle="Configurations"
-        buttonLable="Create Configuration"
-        pageBody={
-          <GetAllConfDataTable
-            data={data}
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-          />
-        }
+        buttonLabel="Create Configuration"
+        pageBody={<GetAllConfDataTable useCustomFetch={useCustomFetch} />}
       />
     </div>
   );
-};
+}
 
 export default GetAllConfigurationComponent;

@@ -27,3 +27,65 @@
   background-color: rgb(27, 7, 27);
   text-decoration-line: underline;
 }
+
+/* TODO TO DO VISIT RESPONSIVENESS OF NAVBAR. */
+.navbar-style {
+  background-color: rgb(52, 54, 53);
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  color: red;
+}
+
+.sidebar-container {
+  background-color: rgb(27, 7, 27);
+  height: 200%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-menu {
+  font-size: 1.25vw;
+  padding: 25px 0px;
+  color: white;
+}
+
+.sidebar-menu:hover {
+  font-size: 1.25vw;
+  font-weight: 300;
+  padding: 25px 0px;
+  border: 0.5px solid rgb(32, 31, 31);
+  background-color: rgb(27, 7, 27);
+  text-decoration-line: underline;
+}
+
+/* TODO TO DO VISIT RESPONSIVENESS OF NAVBAR. */
+.navbar-style {
+  background-color: rgb(52, 54, 53);
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  color: red;
+}
+
+.sidebar-container {
+  background-color: rgb(27, 7, 27);
+  height: 200%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-menu {
+  font-size: 1.25vw;
+  padding: 25px 0px;
+  color: white;
+}
+
+.sidebar-menu:hover {
+  font-size: 1.25vw;
+  font-weight: 300;
+  padding: 25px 0px;
+  border: 0.5px solid rgb(32, 31, 31);
+  background-color: rgb(27, 7, 27);
+  text-decoration-line: underline;
+}

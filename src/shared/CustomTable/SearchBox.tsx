@@ -2,15 +2,16 @@ import React from "react";
 import "./style.css";
 
 interface IProps {
-  searchValue?: string;
+  searchValue: string;
   setSearchValue: Function;
 }
 
 const SearchBox = (props: IProps) => {
   const { searchValue, setSearchValue } = props;
+
   return (
     <input
-      className="search"
+      className="filter-style"
       type="text"
       value={searchValue}
       placeholder="Search..."
