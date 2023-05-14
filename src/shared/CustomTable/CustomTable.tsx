@@ -82,9 +82,12 @@ const CustomTable = (props: ICustomTableProps) => {
               getFormBody={getFormFilterBody}
               submitButtonLabel="Apply"
             />
+            <SearchBox
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+            />
           </>
         )}
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <Box sx={{ height: "650px", width: "auto", marginRight: "20px" }}>
         <DataGrid
