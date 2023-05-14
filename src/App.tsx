@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import LayoutComponent from "./shared/Navbar";
 import GetAllSchedulers from "./pages/GetAllSchedulers";
