@@ -5,28 +5,8 @@
   align-items: center;
 }
 
-.modal-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.modal-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.modal-title {
-  font-size: 30px;
-  font-weight: bold;
-  padding-left: 70px;
-  color: rgb(79, 78, 78);
-}
-
-.close-modal {
-  cursor: pointer;
-  padding-right: 50px;
-  font-weight: bold;
+.modal-container {
+  width: 95%;
+  margin: auto;
+  margin-top: 4%;
 }

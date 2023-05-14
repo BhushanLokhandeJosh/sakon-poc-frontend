@@ -9,17 +9,19 @@ import "./styles/styles.css";
 export interface IFormikModalProp {
   isOpen: boolean;
   toggleModal: () => void;
-  modalTitle: string | undefined;
+  modalTitle: string;
   getFormBody: (formik: any) => JSX.Element;
   submitButtonLabel?: string;
   initialValues: any;
-  validationSchema?: any;
+  validationSchema: any;
   onSubmit: (values: any) => void;
   //To Define the size of Material UI Modal,They have maxwidth property which
   //takes values like "xs", "sm", "md", "lg", "xl".
   maxwidth?: MAX_WIDTH;
   modalClassName?: string;
   formClassName?: string;
+  showResetButton: boolean;
+  showCancelButton: boolean;
 }
 
 const FormikModalComponent = (props: IFormikModalProp) => {
@@ -36,7 +38,13 @@ const FormikModalComponent = (props: IFormikModalProp) => {
     onSubmit,
     modalClassName,
     formClassName,
+    showResetButton,
+    showCancelButton,
   } = props;
+
+  const handleReset = (formik: IFormikProps<any>) => {
+    formik.resetForm();
+  };
 
   return (
     <div className={modalClassName}>
@@ -60,12 +68,21 @@ const FormikModalComponent = (props: IFormikModalProp) => {
             formClassName={formClassName}
             toggleModal={toggleModal}
             submitButtonLabel={submitButtonLabel}
+            showResetButton={showResetButton}
+            showCancelButton={showCancelButton}
             getFormikForm={(formik: IFormikProps<any>) => getFormBody(formik)}
+            handleReset={handleReset}
           />
         </DialogContent>
       </Dialog>
     </div>
   );
+};
+
+FormikModalComponent.defaultProps = {
+  showResetButton: false,
+  showCancelButton: true,
+  modalTitle: "",
 };
 
 export default FormikModalComponent;

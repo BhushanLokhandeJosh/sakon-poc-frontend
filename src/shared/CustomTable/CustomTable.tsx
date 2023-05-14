@@ -75,11 +75,13 @@ const CustomTable = (props: ICustomTableProps) => {
               initialValues={initialValues}
               onSubmit={onSubmit}
               toggleModal={handleToggle}
+              validationSchema={""}
               modalTitle={filterBodyTitle}
               formClassName="form-align-style"
               modalClassName="modal-align-style"
               maxwidth={MAX_WIDTH.SM}
               getFormBody={getFormFilterBody}
+              showResetButton={true}
               submitButtonLabel="Apply"
             />
           </>
