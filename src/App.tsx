@@ -1,17 +1,17 @@
-import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 import "./App.css";
 
-import CreateConfigurationContainer from "./pages/Configuration/CreateConfiguration";
+import CreateConfigurationsContainer from "./pages/Configuration/CreateConfiguration";
 import LayoutComponent from "./shared/Navbar";
 
 function App() {
   return (
-    <Typography>
+    <Box>
       <LayoutComponent>
-        <CreateConfigurationContainer />
+        <CreateConfigurationsContainer />
       </LayoutComponent>
-    </Typography>
+    </Box>
   );
 }
 

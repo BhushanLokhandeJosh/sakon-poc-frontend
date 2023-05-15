@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 import { validationSchema } from "../helpers";
 import { IConfiguration, IConfigurationFormProps } from "../types";
@@ -14,7 +14,7 @@ const CreateConfiguration = (props: IConfigurationFormProps) => {
   const { isOpen, toggleModal, onSubmit } = props;
 
   return (
-    <div>
+    <Box>
       <Button
         variant="contained"
         onClick={toggleModal}
@@ -36,7 +36,7 @@ const CreateConfiguration = (props: IConfigurationFormProps) => {
           onSubmit={onSubmit}
         />
       )}
-    </div>
+    </Box>
   );
 };
 

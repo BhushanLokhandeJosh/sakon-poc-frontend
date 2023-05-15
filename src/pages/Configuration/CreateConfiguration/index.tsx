@@ -9,7 +9,7 @@ import { formDataMapping } from "./helpers";
 
 import CreateConfiguration from "./component";
 
-const CreateConfigurationContainer = () => {
+const CreateConfigurationsContainer = () => {
   const { isOpen, handleToggle } = useToggle();
 
   //TODO -> WE HAVE TO DISCUSS AND FIX THIS ERROR AND SUCCESS HANDLING ISSUE.
@@ -41,4 +41,4 @@ const CreateConfigurationContainer = () => {
   );
 };
 
-export default CreateConfigurationContainer;
+export default CreateConfigurationsContainer;
