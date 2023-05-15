@@ -1,41 +1,44 @@
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
-import SchedulerForm from "./SchedulerForm";
-import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
+import { ICreateSchedulerProps, ISchedulerProps } from "../types";
 
-import { IFormikProps } from "../../../../shared/types";
-import { ISchedulerProps } from "../types";
-import { initialSchedulerValue, validationSchema } from "../helpers";
+import { validationSchema } from "../helpers";
+import { initialSchedulerValue } from "../constants";
 
 import "./styles/styles.css";
 
-const CreateSchedulerComponent = (props: any) => {
-  const { isOpen, toggleModal, onSubmit } = props;
+import SchedulerForm from "./SchedulerForm";
+import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
+import { IFormikProps } from "../../../../shared/types";
+
+const CreateScheduler = (props: ICreateSchedulerProps) => {
+  const { isOpen: isSchedulerModalOpen, toggleModal, onSubmit } = props;
 
   return (
-    <>
+    <Box>
       <Button
         variant="contained"
         onClick={toggleModal}
-        sx={{ margin: "5% 0% 0% 50%" }}
+        sx={{ margin: "5% 0% 0% 70%" }}
       >
         Create Scheduler
       </Button>
 
-      <FormikModalComponent
-        isOpen={isOpen}
-        toggleModal={toggleModal}
-        modalTitle="Create Scheduler"
-        getFormBody={(formik: IFormikProps<ISchedulerProps>) => {
-          return <SchedulerForm formik={formik} />;
-        }}
-        initialValues={initialSchedulerValue}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-        formClassName="form"
-      />
-    </>
+      {isSchedulerModalOpen && (
+        <FormikModalComponent
+          isOpen={isSchedulerModalOpen}
+          toggleModal={toggleModal}
+          modalTitle="Create Scheduler"
+          getFormBody={(formik: IFormikProps<ISchedulerProps>) => (
+            <SchedulerForm formik={formik} />
+          )}
+          initialValues={initialSchedulerValue}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+        />
+      )}
+    </Box>
   );
 };
 
-export default CreateSchedulerComponent;
+export default CreateScheduler;

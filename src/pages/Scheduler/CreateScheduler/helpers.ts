@@ -1,15 +1,4 @@
 import * as Yup from "yup";
-import { ISchedulerProps } from "./types";
-
-export const initialSchedulerValue: ISchedulerProps = {
-  configurations: [],
-  schedularName: "",
-  interval: "DAILY",
-  timeZone: "",
-  monthDay: "",
-  weekDay: [],
-  timeDuration: "12:00",
-};
 
 export const validationSchema = Yup.object({
   configurations: Yup.array().min(1).required("Choose configurations"),
@@ -47,18 +36,6 @@ export const Interval = [
   },
 ];
 
-export const minuteInterval = () => {
-  const allOptions = [];
-  for (let i = 5; i <= 60; i = i + 5) {
-    const obj = {
-      label: `${i}`,
-      value: `00:${i}`,
-    };
-    allOptions.push(obj);
-  }
-  return allOptions;
-};
-
 export const dayOfWeek = [
   {
     label: "Monday",
@@ -90,7 +67,8 @@ export const dayOfWeek = [
   },
 ];
 
-export const dayOfMonth = () => {
+
+const dayOfMonth = () => {
   const allDayOfMonths = [];
   for (let i = 1; i < 31; i++) {
     const obj = {
@@ -102,6 +80,8 @@ export const dayOfMonth = () => {
 
   return allDayOfMonths;
 };
+
+export const DaysOfMonth = dayOfMonth();
 
 export const timeZones = [
   {

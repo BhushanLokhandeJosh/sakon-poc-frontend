@@ -1,18 +1,19 @@
 import { Grid, InputLabel } from "@mui/material";
 
-import Input from "../../../../shared/FormComponents/Input";
-import Select from "../../../../shared/FormComponents/Select";
-import Time from "../../../../shared/FormComponents/Time";
-
 import {
+  DaysOfMonth,
   Interval,
   configurationOptions,
-  dayOfMonth,
   dayOfWeek,
   timeZones,
 } from "../helpers";
+
 import { IFormikProps } from "../../../../shared/types";
 import { ISchedulerProps } from "../types";
+
+import Input from "../../../../shared/FormComponents/Input";
+import Select from "../../../../shared/FormComponents/Select";
+import Time from "../../../../shared/FormComponents/Time";
 
 interface ISchedulerFormProps {
   formik: IFormikProps<ISchedulerProps>;
@@ -25,13 +26,11 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
     <Grid
       container
       rowSpacing={4}
-      columnSpacing={{ xs: 2, sm: 2, md: 2 }}
+      columnSpacing={{ xs: 2 }}
       className="grid-align-style"
     >
       <Grid item lg={3} md={4} sm={5} xs={12}>
-        <InputLabel sx={{ color: "black" }} classes={{}}>
-          Scheduler Name
-        </InputLabel>
+        <InputLabel sx={{ color: "black" }}>Scheduler Name</InputLabel>
       </Grid>
       <Grid item lg={9} md={8} sm={8} xs={12}>
         <Input
@@ -51,23 +50,22 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
           placeholder="Select Configuration"
           options={configurationOptions}
           className="configuration-style"
-          isMulti={true}
           menuPlacement="bottom"
           maxMenuHeight={100}
+          isMulti={true}
         />
       </Grid>
 
       <Grid item lg={3} md={4} sm={5} xs={12}>
         <InputLabel sx={{ color: "black" }}>Frequency</InputLabel>
       </Grid>
-      <Grid item lg={9} md={8} sm={8} xs={12}>
+      <Grid item lg={9} sm={8} xs={12}>
         <div className="card-style">
           <Select
             name="interval"
             placeholder="Interval"
             options={Interval}
             className="form-control"
-            isMulti={false}
           />
           {interval === "MONTHLY" ? (
             <>
@@ -78,11 +76,10 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
               <Select
                 name="monthDay"
                 placeholder="Select Date"
-                options={dayOfMonth()}
+                options={DaysOfMonth}
                 className="form-control-monthly"
                 menuPlacement="bottom"
                 maxMenuHeight={100}
-                isMulti={false}
               />
             </>
           ) : (
@@ -95,21 +92,17 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
                   name="weekDay"
                   placeholder="Select Day"
                   options={dayOfWeek}
-                  isMulti
                   menuPlacement="bottom"
                   maxMenuHeight={100}
                   className="form-control-weekly"
+                  isMulti={true}
                 />
               </>
             )
           )}
           <InputLabel sx={{ color: "black", padding: "0% 2%" }}>at</InputLabel>
 
-          <Time
-            name="timeDuration"
-            className="form-control-time"
-            value="12:00"
-          />
+          <Time name="timeDuration" className="form-control-time" />
         </div>
       </Grid>
 
@@ -122,7 +115,6 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
           placeholder="Select Timezone"
           options={timeZones}
           className="form-control-timezone"
-          isMulti={false}
           menuPlacement="bottom"
           maxMenuHeight={70}
           menuShouldScrollIntoView={true}

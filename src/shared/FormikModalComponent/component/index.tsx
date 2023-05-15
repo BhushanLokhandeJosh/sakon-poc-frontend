@@ -1,19 +1,10 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-  PaperProps,
-  SxProps,
-} from "@mui/material";
+import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-
-import FormikContainer from "./FormikContainer";
 
 import { IFormikProps, MAX_WIDTH } from "../../types";
 import "./styles/styles.css";
-import styled from "@emotion/styled";
-import { useState } from "react";
+
+import FormikContainer from "./FormikContainer";
 
 export interface IFormikModalProp {
   isOpen: boolean;
@@ -29,10 +20,11 @@ export interface IFormikModalProp {
   maxwidth?: MAX_WIDTH;
   modalClassName?: string;
   formClassName?: string;
+  showResetButton: boolean;
+  showCancelButton: boolean;
 }
 
 const FormikModalComponent = (props: IFormikModalProp) => {
-  const [showRight, setShowRight] = useState<boolean>(false);
   const {
     isOpen,
     toggleModal,
@@ -46,23 +38,17 @@ const FormikModalComponent = (props: IFormikModalProp) => {
     onSubmit,
     modalClassName,
     formClassName,
+    showResetButton,
+    showCancelButton,
   } = props;
 
-  const positionRight: SxProps = {
-    "& .MuiDialog-container": {
-      justifyContent: "flex-end",
-      alignItems: "flex-start",
-      margin: "10% 0% 0% 70%",
-    },
+  const handleReset = (formik: IFormikProps<any>) => {
+    formik.resetForm();
   };
 
   return (
     <div className={modalClassName}>
-      <Dialog
-        open={isOpen}
-        maxWidth={maxwidth}
-        sx={showRight ? positionRight : {}}
-      >
+      <Dialog open={isOpen} maxWidth={maxwidth}>
         <div className="modal-header">
           <DialogTitle sx={{ fontWeight: "bold" }}>{modalTitle}</DialogTitle>
           <IconButton
@@ -82,12 +68,21 @@ const FormikModalComponent = (props: IFormikModalProp) => {
             formClassName={formClassName}
             toggleModal={toggleModal}
             submitButtonLabel={submitButtonLabel}
+            showResetButton={showResetButton}
+            showCancelButton={showCancelButton}
             getFormikForm={(formik: IFormikProps<any>) => getFormBody(formik)}
+            handleReset={handleReset}
           />
         </DialogContent>
       </Dialog>
     </div>
   );
+};
+
+FormikModalComponent.defaultProps = {
+  showResetButton: false,
+  showCancelButton: true,
+  modalTitle: "",
 };
 
 export default FormikModalComponent;

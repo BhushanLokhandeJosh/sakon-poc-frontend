@@ -1,15 +1,16 @@
-import React from "react";
-import "./App.css";
+import { Box } from "@mui/material";
+
 import LayoutComponent from "./shared/Navbar";
 import CreateSchedulerContainer from "./pages/Scheduler/CreateScheduler";
 
+
 function App() {
   return (
-    <div className="App">
+    <Box>
       <LayoutComponent>
         <CreateSchedulerContainer />
       </LayoutComponent>
-    </div>
+    </Box>
   );
 }
 

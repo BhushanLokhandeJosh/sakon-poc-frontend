@@ -1,11 +1,12 @@
 import { toast } from "react-toastify";
 import { AxiosError, AxiosResponse } from "axios";
 
-import CreateSchedulerComponent from "./component";
 import useToggle from "../../../shared/CustomHooks/useToggle";
 import { useScheduleConfiguration } from "../scheduler-hooks";
 
 import { ISchedulerProps } from "./types";
+
+import CreateScheduler from "./component";
 
 const CreateSchedulerContainer = () => {
   const { isOpen, handleToggle } = useToggle();
@@ -30,13 +31,11 @@ const CreateSchedulerContainer = () => {
   };
 
   return (
-    <div>
-      <CreateSchedulerComponent
-        onSubmit={onSubmit}
-        isOpen={isOpen}
-        toggleModal={handleToggle}
-      />
-    </div>
+    <CreateScheduler
+      onSubmit={onSubmit}
+      isOpen={isOpen}
+      toggleModal={handleToggle}
+    />
   );
 };
 
