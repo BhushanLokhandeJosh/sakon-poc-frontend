@@ -73,6 +73,7 @@ const CustomTable = (props: ICustomTableProps) => {
             <FormikModalComponent
               isOpen={isOpen}
               initialValues={initialValues}
+              validationSchema={""}
               onSubmit={onSubmit}
               toggleModal={handleToggle}
               modalTitle={filterBodyTitle}
