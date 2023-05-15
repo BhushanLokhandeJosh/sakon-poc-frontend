@@ -18,7 +18,7 @@ interface ICustomTableProps {
   filterBodyTitle?: string;
   useCustomFetch: any;
   initialValues?: any;
-  validationSchema?:any
+  validationSchema?: any;
   getFormFilterBody?: any;
 }
 
@@ -47,7 +47,7 @@ const CustomTable = (props: ICustomTableProps) => {
     if (searchTrigger !== searchValue) {
       const delayDebounceFn = setTimeout(() => {
         setSearchTrigger(searchValue);
-      }, 200);
+      }, 500);
       return () => clearTimeout(delayDebounceFn);
     }
   }, [searchValue, searchTrigger, setSearchTrigger]);
@@ -64,7 +64,7 @@ const CustomTable = (props: ICustomTableProps) => {
     return <>Error...</>;
   }
 
-  console.log(data)
+  console.log(data);
 
   return (
     <>
@@ -87,11 +87,9 @@ const CustomTable = (props: ICustomTableProps) => {
               getFormBody={getFormFilterBody}
               submitButtonLabel="Apply"
             />
-            <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
           </>
-          
         )}
-        
+        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <Box sx={{ height: "650px", width: "auto", marginRight: "20px" }}>
         <DataGrid

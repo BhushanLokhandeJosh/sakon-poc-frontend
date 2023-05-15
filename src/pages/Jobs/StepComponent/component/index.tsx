@@ -1,18 +1,10 @@
-import React from "react";
-import TabPanel from "./TabPanel";
-import { Box, Tab, Tabs, Typography } from "@mui/material";
-import { a11yProps } from "../helpers";
+
+import { Box, Typography } from "@mui/material";
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
-import { getAllDownloadJobColumns, getAllFileValidatorJobColumns, getAllTemplateValidatorJobColumns, getAllUploadJobColumns } from "./constants";
-import { useFetchAllDownloadJobs, useFetchAllFileValidatorJobs, useFetchAllTemplateValidatorJobs, useFetchAllUploadJobs } from "../../jobs-hooks";
+import { getAllDownloadJobColumns } from "./constants";
+import { useFetchAllJobs } from "../../jobs-hooks";
 
-interface IStepComponentProps {
-  value: number;
-  handleChange: (event: React.SyntheticEvent, newValue: number) => void;
-}
-
-const StepComponent = (props: IStepComponentProps) => {
-  const { value, handleChange } = props;
+const StepComponent = () => {
   return (
     <Box
       sx={{
@@ -21,63 +13,26 @@ const StepComponent = (props: IStepComponentProps) => {
       }}
     >
       <Typography
-        sx={{ margin: "0% 0% 1% 1%", fontWeight: "bold", fontSize: "20px" }}
+        sx={{
+          margin: "0% 0% 1% 1%",
+          fontWeight: "bold",
+          fontSize: "20px",
+        }}
       >
         Jobs
       </Typography>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-          centered={true}
-        >
-          <Tab
-            sx={{ color: "black", fontSize: "15px" }}
-            label="Download"
-            {...a11yProps(0)}
-          />
-          <Tab
-            sx={{ color: "black" }}
-            label="File Validation"
-            {...a11yProps(1)}
-          />
-          <Tab
-            sx={{ color: "black" }}
-            label="Template Validation"
-            {...a11yProps(2)}
-          />
-          <Tab sx={{ color: "black" }} label="Upload" {...a11yProps(3)} />
-        </Tabs>
-      </Box>
-      <TabPanel value={value} index={0}>
+      <Box
+        sx={{
+          borderBottom: 1,
+          borderColor: "divider",
+        }}
+      >
         <CustomTable
           isFilterVisible={false}
           columnHeaders={getAllDownloadJobColumns}
-          useCustomFetch={useFetchAllDownloadJobs}
+          useCustomFetch={useFetchAllJobs}
         />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <CustomTable
-          isFilterVisible={false}
-          columnHeaders={getAllFileValidatorJobColumns}
-          useCustomFetch={useFetchAllFileValidatorJobs}
-        />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <CustomTable
-          isFilterVisible={false}
-          columnHeaders={getAllTemplateValidatorJobColumns}
-          useCustomFetch={useFetchAllTemplateValidatorJobs}
-        />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <CustomTable
-          isFilterVisible={false}
-          columnHeaders={getAllUploadJobColumns}
-          useCustomFetch={useFetchAllUploadJobs}
-        />
-      </TabPanel>
+      </Box>
     </Box>
   );
 };
