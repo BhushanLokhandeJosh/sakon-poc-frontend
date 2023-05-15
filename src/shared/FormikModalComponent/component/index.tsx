@@ -13,7 +13,7 @@ export interface IFormikModalProp {
   getFormBody: (formik: any) => JSX.Element;
   submitButtonLabel?: string;
   initialValues: any;
-  validationSchema: any;
+  validationSchema?: any;
   onSubmit: (values: any) => void;
   //To Define the size of Material UI Modal,They have maxwidth property which
   //takes values like "xs", "sm", "md", "lg", "xl".
