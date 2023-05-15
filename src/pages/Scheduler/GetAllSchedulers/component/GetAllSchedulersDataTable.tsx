@@ -1,5 +1,5 @@
 import React from "react";
-import CustomTable from "../../../shared/CustomTable/CustomTable";
+import CustomTable from "../../../../shared/CustomTable/CustomTable";
 import { getAllSchedulerColumns } from "../constants";
 import "./styles/style.css";
 

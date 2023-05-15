@@ -1,11 +1,11 @@
 import React from "react";
-import PageComponent from "../../../shared/PageComponent/PageComponent";
+import PageComponent from "../../../../shared/PageComponent/PageComponent";
 import GetAllSchedulersDataTable from "./GetAllSchedulersDataTable";
 
 interface IProps {
   useCustomFetch: any;
 }
-function GetAllSchedulerComponent({ useCustomFetch }: IProps) {
+function GetAllSchedulersComponent({ useCustomFetch }: IProps) {
   return (
     <div>
       <PageComponent
@@ -16,4 +16,4 @@ function GetAllSchedulerComponent({ useCustomFetch }: IProps) {
   );
 }
 
-export default GetAllSchedulerComponent;
+export default GetAllSchedulersComponent;

@@ -1,7 +1,9 @@
 import { GridColDef } from "@mui/x-data-grid";
-import CustomColumnPopover from "../../shared/ColumnPopover/CustomColumnPopover";
 import { Tooltip, TableCell } from "@mui/material";
+
 import { getTimeFromNow } from "./helper";
+
+import CustomColumnPopover from "../../../shared/ColumnPopover/CustomColumnPopover";
 
 export const getAllSchedulerColumns: GridColDef[] = [
   {

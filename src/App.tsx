@@ -1,12 +1,12 @@
 import "./App.css";
 import LayoutComponent from "./shared/Navbar";
-import GetAllSchedulers from "./pages/GetAllSchedulers";
+import GetAllSchedulersContainer from "./pages/Scheduler/GetAllSchedulers";
 
 function App() {
   return (
     <div className="App">
       <LayoutComponent>
-        <GetAllSchedulers />
+        <GetAllSchedulersContainer />
       </LayoutComponent>
     </div>
   );
