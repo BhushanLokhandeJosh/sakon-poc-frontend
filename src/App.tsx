@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
 import LayoutComponent from "./shared/Navbar";
-import GetAllConfigurations from "./pages/GetAllConfigurations";
+import GetAllConfigurationsContainer from "./pages/Configuration/GetAllConfigurations";
 
 function App() {
   return (
     <div className="App">
       <LayoutComponent>
-        <GetAllConfigurations />
+        <GetAllConfigurationsContainer />
       </LayoutComponent>
     </div>
   );

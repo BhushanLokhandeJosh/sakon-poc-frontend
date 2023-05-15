@@ -1,15 +1,9 @@
-import { Field, Form, Formik, FormikValues } from "formik";
-import React from "react";
-import { Button, Grid, InputLabel } from "@mui/material";
-import { useGetDepartments } from "../../../hooks/useFetchAllConfig";
-import { ConfigFilterFormInitialValues } from "../types";
-import Input from "../../../shared/FormComponents/Input";
-import Select from "../../../shared/FormComponents/Select";
+import { Grid, InputLabel } from "@mui/material";
 
-interface FilterFormProps {
-  initialValues: ConfigFilterFormInitialValues;
-  handleSubmit: (values: ConfigFilterFormInitialValues) => void;
-}
+import { useGetDepartments } from "../../config-hooks";
+
+import Input from "../../../../shared/FormComponents/Input";
+import Select from "../../../../shared/FormComponents/Select";
 
 function ConfifurationFilterForm(props: any) {
   console.log(props);

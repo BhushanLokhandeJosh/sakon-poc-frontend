@@ -1,17 +1,9 @@
-import React from "react";
 import { useQuery } from "react-query";
-import { GET } from "../services/api/axios";
-import { toast } from "react-toastify";
-import { GetAllConfig } from "../pages/GetAllConfigurations/types";
 
-const getConfig = (params: any) => {
-  return GET("/configDetails", params);
-};
+import { GetAllConfig } from "./GetAllConfigurations/types";
+import { getConfig, getDepartments } from "./config-services";
 
-const getDepartments = () => {
-  return GET("/departments");
-};
-
+//This hook is used to fetch all the configurations.
 const useFetchAllConfigurations = ({
   searchValue,
   filterData,
@@ -19,7 +11,6 @@ const useFetchAllConfigurations = ({
   searchValue?: string;
   filterData?: any;
 }) => {
-  console.log("filterData", filterData);
   return useQuery<GetAllConfig[]>(
     ["getAllConfigurations", searchValue, filterData],
     () =>
@@ -31,6 +22,7 @@ const useFetchAllConfigurations = ({
   );
 };
 
+//This hook is used to fetch all the departments.
 export const useGetDepartments = () => {
   return useQuery(["departments"], () => getDepartments());
 };
