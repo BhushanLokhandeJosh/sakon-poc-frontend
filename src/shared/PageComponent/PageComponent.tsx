@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 interface IProps {
   pageTitle: string;

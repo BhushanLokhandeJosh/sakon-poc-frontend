@@ -1,4 +1,4 @@
-export function getTimeFromNow(targetDate: any) {
+export const getTimeFromNow = (targetDate: any) => {
   const currentDate = new Date();
   const providedDate = new Date(targetDate);
 
@@ -22,4 +22,4 @@ export function getTimeFromNow(targetDate: any) {
   }
 
   return `${time?.days} days ${time?.hours} hours ${time?.minutes} minutes ago`;
-}
+};

@@ -1,5 +1,5 @@
-import React from "react";
 import PageComponent from "../../../../shared/PageComponent/PageComponent";
+
 import GetAllSchedulersDataTable from "./GetAllSchedulersDataTable";
 
 interface IProps {

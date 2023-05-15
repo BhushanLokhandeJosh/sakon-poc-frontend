@@ -1,4 +1,4 @@
-import { useFetchAllSchedulers } from "../../../hooks/useFetchAllSchedulers";
+import { useFetchAllSchedulers } from "../scheduler-hooks";
 import GetAllSchedulersComponent from "./component";
 
 const GetAllSchedulersContainer = () => {

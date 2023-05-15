@@ -1,7 +1,8 @@
-import React from "react";
-import CustomTable from "../../../../shared/CustomTable/CustomTable";
 import { getAllSchedulerColumns } from "../constants";
+
 import "./styles/style.css";
+
+import CustomTable from "../../../../shared/CustomTable/CustomTable";
 
 interface ISchedulers {
   useCustomFetch: any;
