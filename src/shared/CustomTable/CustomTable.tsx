@@ -19,6 +19,8 @@ interface ICustomTableProps {
   useCustomFetch: any;
   initialValues?: any;
   getFormFilterBody?: any;
+  tableClassName: string;
+  isSearchBoxVisible: boolean;
 }
 
 const CustomTable = (props: ICustomTableProps) => {
@@ -29,6 +31,8 @@ const CustomTable = (props: ICustomTableProps) => {
     useCustomFetch,
     initialValues,
     getFormFilterBody,
+    tableClassName,
+    isSearchBoxVisible,
   } = props;
 
   const [searchValue, setSearchValue] = useState<string>(""); //Used whenever user try to search anything then automatically useEffect runs and also again hit customFetch to call api to get the data.
@@ -87,9 +91,14 @@ const CustomTable = (props: ICustomTableProps) => {
             />
           </>
         )}
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+        {isSearchBoxVisible && (
+          <SearchBox
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
+        )}
       </div>
-      <Box sx={{ height: "650px", width: "auto", marginRight: "20px" }}>
+      <div className={tableClassName}>
         <DataGrid
           disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.
           disableRowSelectionOnClick //Used to Remove statement: whenever we select rows it shows selected rows statement on UI.
@@ -97,7 +106,7 @@ const CustomTable = (props: ICustomTableProps) => {
           columns={columnHeaders}
           sx={dataGridStyleForColumnSortArrow}
         />
-      </Box>
+      </div>
     </>
   );
 };
