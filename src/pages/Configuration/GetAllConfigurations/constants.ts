@@ -1,7 +1,11 @@
-import { GridColDef } from "@mui/x-data-grid";
+import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 
 //This getAllConfigColumns component is used to show all the column names in a table.
-export const getAllConfigColumns: GridColDef[] = [
+type RenderCellParams = {
+  value: boolean;
+};
+
+export const ConfigurationListColumns: GridColDef[] = [
   {
     field: "id",
     headerName: "Id",
@@ -47,8 +51,7 @@ export const getAllConfigColumns: GridColDef[] = [
     sortable: false,
     headerAlign: "center",
     align: "center",
-    renderCell: (params: any) => {
-      return params.value ? "scheduled" : "not scheduled";
-    },
+    renderCell: (params: GridRenderCellParams<RenderCellParams>) =>
+      params.value ? "scheduled" : "not scheduled",
   },
 ];

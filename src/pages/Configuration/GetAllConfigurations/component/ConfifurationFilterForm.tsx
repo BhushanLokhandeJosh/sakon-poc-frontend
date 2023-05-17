@@ -4,9 +4,9 @@ import { useGetDepartments } from "../../config-hooks";
 
 import Input from "../../../../shared/FormComponents/Input";
 import Select from "../../../../shared/FormComponents/Select";
+import { IObjectWithAnyFields } from "../../../../shared/types";
 
-function ConfifurationFilterForm(props: any) {
-  console.log(props);
+const ConfifurationFilterForm = (props: IObjectWithAnyFields) => {
   const { data, isLoading, isError } = useGetDepartments();
   if (isLoading) {
     return <>Loading...</>;
@@ -59,6 +59,6 @@ function ConfifurationFilterForm(props: any) {
       </Grid>
     </Grid>
   );
-}
+};
 
 export default ConfifurationFilterForm;

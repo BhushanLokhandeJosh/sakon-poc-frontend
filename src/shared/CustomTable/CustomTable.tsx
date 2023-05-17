@@ -11,6 +11,7 @@ import "./style.css";
 
 import FormikModalComponent from "../FormikModalComponent/component";
 import useToggle from "../CustomHooks/useToggle";
+import { ConfigurationFilterFormInitialValues } from "../../pages/Configuration/GetAllConfigurations/types";
 
 interface ICustomTableProps {
   isFilterVisible: boolean;
@@ -36,7 +37,7 @@ const CustomTable = (props: ICustomTableProps) => {
   const [searchValue, setSearchValue] = useState<string>(""); //Used whenever user try to search anything then automatically useEffect runs and also again hit customFetch to call api to get the data.
   const [searchTrigger, setSearchTrigger] = useState<string>("");
   const { isOpen, handleToggle } = useToggle();
-  const [filterData, setFilterData] = useState<any>({});
+  const [filterData, setFilterData] = useState<IObjectWithAnyFields>();
 
   const onSubmit = (values: IObjectWithAnyFields) => {
     setFilterData(values);

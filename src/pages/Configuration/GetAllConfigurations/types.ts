@@ -1,4 +1,4 @@
-export interface GetAllConfig {
+export interface ConfigurationsList {
   id: string;
   email: string;
   carrierName: string;
@@ -7,7 +7,7 @@ export interface GetAllConfig {
   schedulingStatus: string;
 }
 
-export interface ConfigFilterFormInitialValues {
+export interface ConfigurationFilterFormInitialValues {
   schedulingStatus: string;
   department: string;
 }
