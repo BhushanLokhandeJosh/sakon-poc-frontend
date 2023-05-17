@@ -8,5 +8,5 @@ export const GET = (
   url: string,
   params?: any
 ): Promise<AxiosResponse<string, any>> => {
-  return instance.get(url).then((res) => res.data);
+  return instance.get(url, { params }).then((res) => res.data);
 };

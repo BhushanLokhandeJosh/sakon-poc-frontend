@@ -1,8 +1,7 @@
 import { GridColDef } from "@mui/x-data-grid";
-import AutorenewIcon from '@mui/icons-material/Autorenew';
+import AutorenewIcon from "@mui/icons-material/Autorenew";
 import ErrorOutlineTwoToneIcon from "@mui/icons-material/ErrorOutlineTwoTone";
 import CheckCircleOutlineTwoToneIcon from "@mui/icons-material/CheckCircleOutlineTwoTone";
-
 
 export const getAllDownloadJobColumns: GridColDef[] = [
   {
@@ -17,6 +16,7 @@ export const getAllDownloadJobColumns: GridColDef[] = [
     field: "Scheduler_Name",
     headerName: "Scheduler Name",
     width: 300,
+    sortable: false,
     headerAlign: "center",
     align: "center",
   },
@@ -24,6 +24,7 @@ export const getAllDownloadJobColumns: GridColDef[] = [
     field: "Config_Name",
     headerName: "Configuration Name",
     width: 300,
+    sortable: false,
     headerAlign: "center",
     align: "center",
   },
@@ -54,9 +55,10 @@ export const getAllDownloadJobColumns: GridColDef[] = [
     width: 150,
     headerAlign: "center",
     align: "center",
+    sortable: false,
     renderCell: (params: any) => {
       if (params.value === "Pending") {
-        return <AutorenewIcon color="primary"/>;
+        return <AutorenewIcon color="primary" />;
       } else if (params.value === "Completed") {
         return <CheckCircleOutlineTwoToneIcon color="success" />;
       } else {

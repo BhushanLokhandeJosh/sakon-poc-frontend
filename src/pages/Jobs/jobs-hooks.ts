@@ -11,8 +11,10 @@ export const useFetchAllJobs = ({
   filterData?: any;
 }) => {
   return useQuery<any, any>(
-    ["getAllConfigurations", searchValue, filterData],
-    () => fetchAllJobs()
+    ["getAllJobs", searchValue, filterData],
+    () => fetchAllJobs({
+     Service_like: searchValue
+    })
   );
 };
 
