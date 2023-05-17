@@ -60,10 +60,10 @@ const CustomTable = (props: ICustomTableProps) => {
   const [searchValue, setSearchValue] = useState<string>(""); //Used whenever user try to search anything then automatically useEffect runs and also again hit customFetch to call api to get the data.
   const [searchTrigger, setSearchTrigger] = useState<string>("");
   const { isOpen, handleToggle } = useToggle();
-  const [payload, setPayload] = useState<any>({}); //We can pass any data in request body.
+  const [filterData, setFilterData] = useState<any>({});
 
   const onSubmit = (values: IObjectWithAnyFields) => {
-    setPayload(values);
+    setFilterData(values);
     handleToggle();
   };
 
@@ -78,7 +78,7 @@ const CustomTable = (props: ICustomTableProps) => {
 
   const { data, isLoading, isError } = useCustomFetch({
     searchValue: searchTrigger,
-    payload,
+    filterData,
   });
 
   if (isLoading) {
