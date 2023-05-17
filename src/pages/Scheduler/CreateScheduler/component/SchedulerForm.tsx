@@ -14,6 +14,7 @@ import { INTERVAL, ISchedulerProps } from "../types";
 import Input from "../../../../shared/FormComponents/Input";
 import Select from "../../../../shared/FormComponents/Select";
 import Time from "../../../../shared/FormComponents/Time";
+import { useEffect } from "react";
 
 interface ISchedulerFormProps {
   formik: IFormikProps<ISchedulerProps>;
@@ -21,8 +22,20 @@ interface ISchedulerFormProps {
 
 const SchedulerForm = (props: ISchedulerFormProps) => {
   const { interval } = props.formik.values;
+  const { setFieldValue } = props.formik;
   const isMonthly: boolean = interval === INTERVAL.MONTHLY;
   const isWeekly: boolean = interval === INTERVAL.WEEKLY;
+
+  useEffect(() => {
+    if (interval === INTERVAL.DAILY) {
+      setFieldValue("monthDay", "");
+      setFieldValue("weekDay", []);
+    } else if (interval === INTERVAL.WEEKLY) {
+      setFieldValue("monthDay", "");
+    } else if (interval === INTERVAL.MONTHLY) {
+      setFieldValue("weekDay", []);
+    }
+  }, [interval]);
 
   return (
     <Grid

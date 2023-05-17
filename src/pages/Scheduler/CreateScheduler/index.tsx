@@ -25,9 +25,10 @@ const CreateSchedulerContainer = () => {
     onError,
   });
 
-  const onSubmit = (values: ISchedulerProps) => {
+
+  const onSubmit = (values: any) => {
     console.log(values);
-    createScheduler(values);
+    // createScheduler(values);
   };
 
   return (

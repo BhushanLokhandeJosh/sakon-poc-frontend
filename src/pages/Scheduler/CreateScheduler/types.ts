@@ -12,7 +12,7 @@ export interface ISchedulerProps {
 export interface ICreateSchedulerProps {
   isOpen: boolean;
   toggleModal: () => void;
-  onSubmit: (values: ISchedulerProps) => void;
+  onSubmit: (values: any) => void;
 }
 
 export enum INTERVAL {
