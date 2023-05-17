@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikBag, FormikHelpers } from "formik";
 import { Button, Grid } from "@mui/material";
 import { BUTTONS_LABLES } from "../../constants";
 
@@ -8,7 +8,7 @@ import "./styles/styles.css";
 interface IFormikFormProps {
   initialValues: any;
   validationSchema?: any;
-  onSubmitHandler: (values: any, formikBag?: FormikBag<any, any>) => void | Promise<any>;
+  onSubmitHandler: (values: any, formikHelpers: FormikHelpers<any>) => void;
   formClassName?: string;
   toggleModal: () => void;
   submitButtonLabel?: string;
