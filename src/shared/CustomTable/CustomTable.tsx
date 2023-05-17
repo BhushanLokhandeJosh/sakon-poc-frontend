@@ -18,7 +18,10 @@ interface ICustomTableProps {
   initialValues?: any;
   validationSchema?: any;
   tableClassName?: string;
-
+  /**
+   * pass id or any other parameters to the query to fetch query related data.
+   */
+  queryArguments?: any;
   searchConfiguration: {
     isSearchBoxVisible: boolean;
     searchBoxClassName?: string;
@@ -44,6 +47,7 @@ const CustomTable = (props: ICustomTableProps) => {
     tableClassName,
     searchConfiguration,
     filterConfiguration,
+    queryArguments,
   } = props;
 
   //for search properties.
@@ -79,6 +83,7 @@ const CustomTable = (props: ICustomTableProps) => {
   const { data, isLoading, isError } = useCustomFetch({
     searchValue: searchTrigger,
     filterData,
+    queryArguments,
   });
 
   if (isLoading) {
