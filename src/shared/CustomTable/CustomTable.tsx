@@ -13,35 +13,57 @@ import FormikModalComponent from "../FormikModalComponent/component";
 import useToggle from "../CustomHooks/useToggle";
 
 interface ICustomTableProps {
-  isFilterVisible: boolean;
   columnHeaders: GridColDef[];
-  filterBodyTitle?: string;
   useCustomFetch: any;
   initialValues?: any;
-  getFormFilterBody?: any;
-  tableClassName: string;
-  isSearchBoxVisible: boolean;
+  validationSchema?: any;
+  tableClassName?: string;
+
+  searchConfiguration: {
+    isSearchBoxVisible: boolean;
+    searchBoxClassName?: string;
+    searchBoxFilterBoxClassName?: string;
+  };
+  filterConfiguration: {
+    isFilterVisible: boolean;
+    filterBodyTitle?: string;
+    getFormFilterBody?: any;
+  };
 }
+
+const defaultProps = {
+  tableClassName: "table-default-style",
+};
 
 const CustomTable = (props: ICustomTableProps) => {
   const {
-    isFilterVisible,
     columnHeaders,
-    filterBodyTitle,
     useCustomFetch,
     initialValues,
-    getFormFilterBody,
+    validationSchema,
     tableClassName,
-    isSearchBoxVisible,
+    searchConfiguration,
+    filterConfiguration,
   } = props;
+
+  //for search properties.
+  const {
+    isSearchBoxVisible,
+    searchBoxClassName = "search-style",
+    searchBoxFilterBoxClassName = "search-filter-container",
+  } = searchConfiguration;
+
+  //for filter properties.
+  const { isFilterVisible, filterBodyTitle, getFormFilterBody } =
+    filterConfiguration;
 
   const [searchValue, setSearchValue] = useState<string>(""); //Used whenever user try to search anything then automatically useEffect runs and also again hit customFetch to call api to get the data.
   const [searchTrigger, setSearchTrigger] = useState<string>("");
   const { isOpen, handleToggle } = useToggle();
-  const [filterData, setFilterData] = useState<any>({});
+  const [payload, setPayload] = useState<any>({}); //We can pass any data in request body.
 
   const onSubmit = (values: IObjectWithAnyFields) => {
-    setFilterData(values);
+    setPayload(values);
     handleToggle();
   };
 
@@ -56,7 +78,7 @@ const CustomTable = (props: ICustomTableProps) => {
 
   const { data, isLoading, isError } = useCustomFetch({
     searchValue: searchTrigger,
-    filterData,
+    payload,
   });
 
   if (isLoading) {
@@ -67,10 +89,10 @@ const CustomTable = (props: ICustomTableProps) => {
   }
 
   return (
-    <>
-      <div className="input-btn-container">
+    <Box>
+      <div className={searchBoxFilterBoxClassName}>
         {isFilterVisible && (
-          <>
+          <Box>
             <Button variant="contained" onClick={handleToggle}>
               <FilterListIcon />
             </Button>
@@ -79,7 +101,7 @@ const CustomTable = (props: ICustomTableProps) => {
               initialValues={initialValues}
               //TODO :->  WE WILL HANDLE WHOLE FILTER BOX IN SEPRATE COMPONENT IN WHICH WE WILL
               //REMOVE VALIDATIONSCHEMA OR KEEP IT OPTIONAL AS PER REQUIREMENTS.
-              validationSchema={""}
+              validationSchema={validationSchema}
               onSubmit={onSubmit}
               toggleModal={handleToggle}
               modalTitle={filterBodyTitle}
@@ -89,15 +111,17 @@ const CustomTable = (props: ICustomTableProps) => {
               getFormBody={getFormFilterBody}
               submitButtonLabel="Apply"
             />
-          </>
+          </Box>
         )}
         {isSearchBoxVisible && (
           <SearchBox
             searchValue={searchValue}
             setSearchValue={setSearchValue}
+            searchBoxStyle={searchBoxClassName}
           />
         )}
       </div>
+
       <div className={tableClassName}>
         <DataGrid
           disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.
@@ -107,8 +131,9 @@ const CustomTable = (props: ICustomTableProps) => {
           sx={dataGridStyleForColumnSortArrow}
         />
       </div>
-    </>
+    </Box>
   );
 };
+CustomTable.defaultProps = defaultProps;
 
 export default CustomTable;
