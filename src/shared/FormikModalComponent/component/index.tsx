@@ -5,6 +5,7 @@ import FormikContainer from "./FormikContainer";
 
 import { IFormikProps, MAX_WIDTH } from "../../types";
 import "./styles/styles.css";
+import { FormikBag } from "formik";
 
 export interface IFormikModalProp {
   isOpen: boolean;
@@ -14,7 +15,10 @@ export interface IFormikModalProp {
   submitButtonLabel?: string;
   initialValues: any;
   validationSchema?: any;
-  onSubmit: (values: any) => void;
+  onSubmit: (
+    values: any,
+    formikBag?: FormikBag<any, any>
+  ) => void | Promise<any>;
   //To Define the size of Material UI Modal,They have maxwidth property which
   //takes values like "xs", "sm", "md", "lg", "xl".
   maxwidth?: MAX_WIDTH;
@@ -82,7 +86,7 @@ const FormikModalComponent = (props: IFormikModalProp) => {
 FormikModalComponent.defaultProps = {
   showResetButton: false,
   showCancelButton: true,
-  modalTitle:""
+  modalTitle: "",
 };
 
 export default FormikModalComponent;
