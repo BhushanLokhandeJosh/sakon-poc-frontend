@@ -1,0 +1,12 @@
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-container {
+  width: 95%;
+  margin: auto;
+  margin-top: 4%;
+}
