@@ -1,6 +1,6 @@
 export const API_ROUTES = {
   CONFIGURATION: {
-    GET: "/configDetails",
+    GET: "/configurations",
   },
   DEPARTMENT: {
     GET: "/departments",

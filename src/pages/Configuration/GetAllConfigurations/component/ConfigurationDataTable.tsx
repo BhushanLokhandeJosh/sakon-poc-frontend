@@ -14,14 +14,21 @@ interface IProps {
 const ConfigurationDataTable = ({ useCustomFetch }: IProps) => {
   return (
     <CustomTable
-      isFilterVisible
+      filterConfiguration={{
+        isFilterVisible: true,
+        filterBodyTitle: "Filter Configurations",
+        getFormFilterBody: (formik: IFormikProps<any>) => (
+          <ConfifurationFilterForm formik={formik} />
+        ),
+      }}
+      searchConfiguration={{ isSearchBoxVisible: true }}
       columnHeaders={ConfigurationListColumns}
-      filterBodyTitle="Filter Configurations"
+      // filterBodyTitle="Filter Configurations"
       useCustomFetch={useCustomFetch}
       initialValues={configurationInitialValues}
-      getFormFilterBody={(formik: IFormikProps<any>) => (
-        <ConfifurationFilterForm formik={formik} />
-      )}
+      // getFormFilterBody={(formik: IFormikProps<any>) => (
+      //   <ConfifurationFilterForm formik={formik} />
+      // )}
     />
   );
 };
