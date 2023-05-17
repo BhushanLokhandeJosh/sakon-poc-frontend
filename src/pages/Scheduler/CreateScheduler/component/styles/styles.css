@@ -27,10 +27,10 @@
 .card-style {
   display: flex;
   flex-direction: row;
+  width: 80%;
+  flex-wrap: wrap;
   align-items: baseline;
   margin: 0;
-  width: auto;
-  overflow-wrap: normal;
 }
 
 @media (max-width: 768px) {
@@ -40,13 +40,6 @@
 
   .card-style {
     flex-direction: column;
-  }
-
-  .form-control-weekly {
-    width: 100%;
-    height: auto;
-    font-size: 15px;
-    background-color: blue;
   }
 
   .month-style {

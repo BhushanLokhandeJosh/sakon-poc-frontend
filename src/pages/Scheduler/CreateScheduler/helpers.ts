@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import { INTERVAL } from "./types";
 
 export const validationSchema = Yup.object({
   configurations: Yup.array().min(1).required("Choose configurations"),
@@ -7,13 +8,13 @@ export const validationSchema = Yup.object({
   timeZone: Yup.string().required("TimeZone Required"),
 
   monthDay: Yup.string().when("interval", {
-    is: (val: any) => val === "DAILY" || val === "WEEKLY",
+    is: (val: any) => val === INTERVAL.DAILY || val === INTERVAL.WEEKLY,
     then: (schema) => schema.notRequired(),
     otherwise: (schema) => schema.required("Month Required"),
   }),
 
   weekDay: Yup.array().when("interval", {
-    is: (val: any) => val === "DAILY" || val === "MONTHLY",
+    is: (val: any) => val === INTERVAL.DAILY || val === INTERVAL.MONTHLY,
     then: (schema) => schema.notRequired(),
     otherwise: (schema) => schema.min(1).required("Select Weekdays"),
   }),
@@ -24,15 +25,15 @@ export const validationSchema = Yup.object({
 export const Interval = [
   {
     label: "Daily",
-    value: "DAILY",
+    value: INTERVAL.DAILY,
   },
   {
     label: "Weekly",
-    value: "WEEKLY",
+    value: INTERVAL.WEEKLY,
   },
   {
     label: "Monthly",
-    value: "MONTHLY",
+    value: INTERVAL.MONTHLY,
   },
 ];
 
@@ -67,7 +68,8 @@ export const dayOfWeek = [
   },
 ];
 
-
+//Date of month will be taken from backend based on Month in which logged
+//in Happen.
 const dayOfMonth = () => {
   const allDayOfMonths = [];
   for (let i = 1; i < 31; i++) {
@@ -77,7 +79,6 @@ const dayOfMonth = () => {
     };
     allDayOfMonths.push(obj);
   }
-
   return allDayOfMonths;
 };
 

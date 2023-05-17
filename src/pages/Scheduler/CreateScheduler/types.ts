@@ -1,5 +1,3 @@
-import { IFormikProps } from "../../../shared/types";
-
 export interface ISchedulerProps {
   configurations: string[];
   schedularName: string;
@@ -15,4 +13,10 @@ export interface ICreateSchedulerProps {
   isOpen: boolean;
   toggleModal: () => void;
   onSubmit: (values: ISchedulerProps) => void;
+}
+
+export enum INTERVAL {
+  DAILY = "DAILY",
+  WEEKLY = "WEEKLY",
+  MONTHLY = "MONTHLY",
 }

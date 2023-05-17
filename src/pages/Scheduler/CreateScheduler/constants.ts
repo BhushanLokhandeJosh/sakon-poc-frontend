@@ -1,9 +1,9 @@
-import { ISchedulerProps } from "./types";
+import { INTERVAL, ISchedulerProps } from "./types";
 
 export const initialSchedulerValue: ISchedulerProps = {
   configurations: [],
   schedularName: "",
-  interval: "DAILY",
+  interval: INTERVAL.DAILY,
   timeZone: "",
   monthDay: "",
   weekDay: [],

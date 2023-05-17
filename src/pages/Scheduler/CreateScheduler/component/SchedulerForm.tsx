@@ -9,7 +9,7 @@ import {
 } from "../helpers";
 
 import { IFormikProps } from "../../../../shared/types";
-import { ISchedulerProps } from "../types";
+import { INTERVAL, ISchedulerProps } from "../types";
 
 import Input from "../../../../shared/FormComponents/Input";
 import Select from "../../../../shared/FormComponents/Select";
@@ -21,11 +21,13 @@ interface ISchedulerFormProps {
 
 const SchedulerForm = (props: ISchedulerFormProps) => {
   const { interval } = props.formik.values;
+  const isMonthly: boolean = interval === INTERVAL.MONTHLY;
+  const isWeekly: boolean = interval === INTERVAL.WEEKLY;
 
   return (
     <Grid
       container
-      rowSpacing={4}
+      rowSpacing={3}
       columnSpacing={{ xs: 2 }}
       className="grid-align-style"
     >
@@ -67,7 +69,7 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
             options={Interval}
             className="form-control"
           />
-          {interval === "MONTHLY" ? (
+          {isMonthly ? (
             <>
               <InputLabel sx={{ color: "black", padding: "0% 2%" }}>
                 Day of month
@@ -83,7 +85,7 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
               />
             </>
           ) : (
-            interval === "WEEKLY" && (
+            isWeekly && (
               <>
                 <InputLabel sx={{ color: "black", padding: "0% 2%" }}>
                   on
