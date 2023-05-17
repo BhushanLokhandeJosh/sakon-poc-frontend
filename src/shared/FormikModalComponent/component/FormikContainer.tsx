@@ -8,7 +8,7 @@ import "./styles/styles.css";
 interface IFormikFormProps {
   initialValues: any;
   validationSchema?: any;
-  onSubmitHandler: (values: any, formikHelpers: FormikHelpers<any>) => void;
+  onSubmitHandler: (values: any) => void;
   formClassName?: string;
   toggleModal: () => void;
   submitButtonLabel?: string;
