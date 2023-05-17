@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { GridColDef } from "@mui/x-data-grid";
 
 //This getAllConfigColumns component is used to show all the column names in a table.
@@ -10,7 +11,8 @@ export const getAllConfigColumns: GridColDef[] = [
     align: "center",
   },
   {
-    field: "configurationName",
+    // field: "configurationName",
+    field: "name",
     headerName: "Configuration Name",
     width: 270,
     sortable: false,
@@ -18,14 +20,14 @@ export const getAllConfigColumns: GridColDef[] = [
     align: "center",
   },
   {
-    field: "department",
+    field: "dept_name",
     headerName: "Department",
     width: 270,
     headerAlign: "center",
     align: "center",
   },
   {
-    field: "carrierName",
+    field: "carrier_name",
     headerName: "Carrier Name",
     width: 270,
     headerAlign: "center",
@@ -39,16 +41,12 @@ export const getAllConfigColumns: GridColDef[] = [
     headerAlign: "center",
     align: "center",
   },
-
   {
-    field: "schedulingStatus",
+    field: "is_scheduled",
     headerName: "Scheduling Status",
     width: 270,
     sortable: false,
     headerAlign: "center",
     align: "center",
-    renderCell: (params: any) => {
-      return params.value ? "scheduled" : "not scheduled";
-    },
   },
 ];
