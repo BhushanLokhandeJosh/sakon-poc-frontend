@@ -1,4 +1,4 @@
-import GetAllConfDataTable from "./GetAllConfDataTable";
+import ConfigurationDataTable from "./ConfigurationDataTable";
 
 import PageComponent from "../../../../shared/PageComponent/PageComponent";
 
@@ -8,13 +8,11 @@ interface IProps {
 
 function GetAllConfigurations({ useCustomFetch }: IProps) {
   return (
-    <div>
-      <PageComponent
-        pageTitle="Configurations"
-        buttonLabel="Create Configuration"
-        pageBody={<GetAllConfDataTable useCustomFetch={useCustomFetch} />}
-      />
-    </div>
+    <PageComponent
+      pageTitle="Configurations"
+      buttonLabel="Create Configuration"
+      pageBody={<ConfigurationDataTable useCustomFetch={useCustomFetch} />}
+    />
   );
 }
 

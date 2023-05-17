@@ -1,8 +1,8 @@
-import useFetchAllConfigurations from "../config-hooks";
+import useFetchConfigurations from "../config-hooks";
 import GetAllConfigurations from "./component";
 
-const GetAllConfigurationsContainer = () => {
-  return <GetAllConfigurations useCustomFetch={useFetchAllConfigurations} />;
+const ConfigurationsContainer = () => {
+  return <GetAllConfigurations useCustomFetch={useFetchConfigurations} />;
 };
 
-export default GetAllConfigurationsContainer;
+export default ConfigurationsContainer;

@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { GridColDef } from "@mui/x-data-grid";
 
 //This getAllConfigColumns component is used to show all the column names in a table.
-export const getAllConfigColumns: GridColDef[] = [
+export const ConfigurationListColumns: GridColDef[] = [
   {
     field: "id",
     headerName: "Id",
