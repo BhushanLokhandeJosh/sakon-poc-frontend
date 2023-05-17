@@ -14,7 +14,7 @@ export interface ICustomSelectProps extends FieldProps {
   className?: string;
   placeholder?: string;
   menuShouldScrollIntoView?: boolean;
-  maxMenuHeight?:number
+  maxMenuHeight?: number;
 }
 
 export const CustomSelect = ({
@@ -25,7 +25,7 @@ export const CustomSelect = ({
   options,
   isMulti = false,
   menuShouldScrollIntoView,
-  maxMenuHeight
+  maxMenuHeight,
 }: ICustomSelectProps) => {
   /*onChange function handles:
   1.isMulti is true then just set field value of formik field with mapping over 
@@ -68,6 +68,7 @@ export const CustomSelect = ({
       isMulti={isMulti}
       maxMenuHeight={maxMenuHeight}
       menuShouldScrollIntoView={menuShouldScrollIntoView}
+      maxMenuHeight={maxMenuHeight}
     />
   );
 };
