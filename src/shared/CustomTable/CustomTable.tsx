@@ -21,7 +21,7 @@ interface ICustomTableProps {
   /**
    * pass id or any other parameters to the query to fetch query related data.
    */
-  queryArguments?: any;
+  queryArguments?: IObjectWithAnyFields;
   searchConfiguration: {
     isSearchBoxVisible: boolean;
     searchBoxClassName?: string;
