@@ -10,7 +10,7 @@ export interface IFormikModalProp {
   isOpen: boolean;
   toggleModal: () => void;
   modalTitle: string;
-  getFormBody: (formik: any) => JSX.Element;
+  getFormBody: any;
   submitButtonLabel?: string;
   initialValues: any;
   validationSchema: any;

@@ -5,7 +5,7 @@ import { Box, Button } from "@mui/material";
 
 import SearchBox from "./SearchBox";
 import { dataGridStyleForColumnSortArrow } from "./constant";
-import { IObjectWithAnyFields, MAX_WIDTH } from "../types";
+import { IFormikProps, IObjectWithAnyFields, MAX_WIDTH } from "../types";
 
 import "./style.css";
 
@@ -30,7 +30,7 @@ interface ICustomTableProps {
   filterConfiguration: {
     isFilterVisible: boolean;
     filterBodyTitle?: string;
-    getFormFilterBody?: any;
+    getFormFilterBody?: (formik: IFormikProps<any>) => JSX.Element;
   };
 }
 
