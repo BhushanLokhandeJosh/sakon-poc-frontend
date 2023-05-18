@@ -21,7 +21,7 @@ interface ISchedulerFormProps {
 }
 
 const SchedulerForm = (props: ISchedulerFormProps) => {
-  const { interval } = props.formik.values;
+  const { interval, schedularName,timeDuration } = props.formik.values;
   const { setFieldValue } = props.formik;
   const isMonthly: boolean = interval === INTERVAL.MONTHLY;
   const isWeekly: boolean = interval === INTERVAL.WEEKLY;
@@ -53,6 +53,7 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
           name="schedularName"
           className="form-control-input"
           placeholder="Schedular Name"
+          value={schedularName}
         />
       </Grid>
 
@@ -117,7 +118,11 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
           )}
           <InputLabel sx={{ color: "black", padding: "0% 2%" }}>at</InputLabel>
 
-          <Time name="timeDuration" className="form-control-time" />
+          <Time
+            name="timeDuration"
+            className="form-control-time"
+            value={timeDuration}
+          />
         </div>
       </Grid>
 

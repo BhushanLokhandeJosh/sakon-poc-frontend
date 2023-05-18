@@ -68,7 +68,6 @@ export const CustomSelect = ({
       isMulti={isMulti}
       maxMenuHeight={maxMenuHeight}
       menuShouldScrollIntoView={menuShouldScrollIntoView}
-      maxMenuHeight={maxMenuHeight}
     />
   );
 };

@@ -9,3 +9,4 @@ export const initialSchedulerValue: ISchedulerProps = {
   weekDay: [],
   timeDuration: "12:00",
 };
+

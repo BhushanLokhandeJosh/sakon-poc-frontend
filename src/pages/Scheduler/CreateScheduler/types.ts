@@ -9,6 +9,7 @@ export interface ISchedulerProps {
   timeDuration?: string;
 }
 
+
 export interface ICreateSchedulerProps {
   isOpen: boolean;
   toggleModal: () => void;
