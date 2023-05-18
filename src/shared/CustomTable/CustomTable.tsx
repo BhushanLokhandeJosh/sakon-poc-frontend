@@ -27,16 +27,18 @@ interface ICustomTableProps {
     searchBoxClassName?: string;
     searchBoxFilterBoxClassName?: string;
   };
-  filterConfiguration: {
-    isFilterVisible: boolean;
-    filterBodyTitle?: string;
-    getFormFilterBody?: any;
-  };
+  filterConfiguration?:
+    | {
+        isFilterVisible: true;
+        filterBodyTitle?: string;
+        getFormFilterBody: (fomrik: any) => JSX.Element;
+      }
+    | {
+        isFilterVisible: false;
+        filterBodyTitle?: never;
+        getFormFilterBody?: never;
+      };
 }
-
-const defaultProps = {
-  tableClassName: "table-default-style",
-};
 
 const CustomTable = (props: ICustomTableProps) => {
   const {
@@ -51,15 +53,17 @@ const CustomTable = (props: ICustomTableProps) => {
   } = props;
 
   //for search properties.
-  const {
-    isSearchBoxVisible,
-    searchBoxClassName = "search-style",
-    searchBoxFilterBoxClassName = "search-filter-container",
-  } = searchConfiguration;
+  const isSearchBoxVisible = searchConfiguration?.isSearchBoxVisible || false;
+  const searchBoxClassName =
+    searchConfiguration?.searchBoxClassName || "search-style";
+  const searchBoxFilterBoxClassName =
+    searchConfiguration?.searchBoxFilterBoxClassName ||
+    "search-filter-container";
 
   //for filter properties.
-  const { isFilterVisible, filterBodyTitle, getFormFilterBody } =
-    filterConfiguration;
+  const isFilterVisible = filterConfiguration?.isFilterVisible || false;
+  const filterBodyTitle = filterConfiguration?.filterBodyTitle || "";
+  const getFormFilterBody = filterConfiguration?.getFormFilterBody;
 
   const [searchValue, setSearchValue] = useState<string>(""); //Used whenever user try to search anything then automatically useEffect runs and also again hit customFetch to call api to get the data.
   const [searchTrigger, setSearchTrigger] = useState<string>("");
@@ -96,7 +100,7 @@ const CustomTable = (props: ICustomTableProps) => {
   return (
     <Box>
       <div className={searchBoxFilterBoxClassName}>
-        {isFilterVisible && (
+        {isFilterVisible && getFormFilterBody && (
           <Box>
             <Button variant="contained" onClick={handleToggle}>
               <FilterListIcon />
@@ -139,6 +143,7 @@ const CustomTable = (props: ICustomTableProps) => {
     </Box>
   );
 };
-CustomTable.defaultProps = defaultProps;
-
+CustomTable.defaultProps = {
+  tableClassName: "table-default-style",
+};
 export default CustomTable;
