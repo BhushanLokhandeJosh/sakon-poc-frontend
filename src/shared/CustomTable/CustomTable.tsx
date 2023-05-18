@@ -31,7 +31,7 @@ interface ICustomTableProps {
     | {
         isFilterVisible: true;
         filterBodyTitle?: string;
-        getFormFilterBody: (fomrik: any) => JSX.Element;
+        getFormFilterBody: (formik: any) => JSX.Element;
       }
     | {
         isFilterVisible: false;
