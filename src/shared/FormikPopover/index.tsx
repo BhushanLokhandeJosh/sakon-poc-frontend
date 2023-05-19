@@ -19,6 +19,10 @@ export interface IFormikModalProp {
   showCancelButton: boolean;
 }
 
+//TODO:We have to check this component with Column Popover component later,
+// In order to avoid redundancy and enhancing functionality of custom shared
+//popover component.
+
 const FormikPopoverComponent = (props: IFormikModalProp) => {
   const {
     id,
