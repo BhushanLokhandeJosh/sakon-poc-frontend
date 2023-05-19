@@ -10,7 +10,7 @@ interface IFormikFormProps {
   validationSchema: any;
   onSubmitHandler: (values: any) => void;
   formClassName?: string;
-  toggleModal: () => void;
+  toggleModal?: () => void;
   submitButtonLabel?: string;
   getFormikForm: (formik: IFormikProps<any>) => JSX.Element;
   handleReset: (formik: IFormikProps<any>) => void;
