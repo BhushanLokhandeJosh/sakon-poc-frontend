@@ -4,8 +4,8 @@ export interface ISchedulerProps {
   //Interval -> DAILY,WEEKLY,MONTHLY
   interval: string;
   timeZone: string;
-  weekDay?: string[];
-  monthDay?: string;
+  weekDay?: string;
+  monthDay?: number;
   timeDuration?: string;
 }
 

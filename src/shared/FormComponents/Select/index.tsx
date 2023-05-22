@@ -7,7 +7,7 @@ import CustomSelect from "./CustomSelect";
 interface IMultiSelectProps {
   className?: string;
   name: string;
-  options?: { label: string; value: string }[];
+  options?: { label: string; value: string | number }[];
   placeholder?: string;
   isMulti?: boolean;
   label?: string;

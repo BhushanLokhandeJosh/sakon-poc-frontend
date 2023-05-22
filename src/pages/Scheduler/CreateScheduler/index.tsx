@@ -27,7 +27,7 @@ const CreateSchedulerContainer = () => {
 
 
   const onSubmit = (values: any) => {
-    values.emp_id = "1";
+    values.emp = "1";
     console.log(values);
     createScheduler(values);
   };

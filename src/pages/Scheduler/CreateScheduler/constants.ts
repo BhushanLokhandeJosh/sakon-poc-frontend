@@ -5,8 +5,7 @@ export const initialSchedulerValue: ISchedulerProps = {
   schedularName: "",
   interval: INTERVAL.DAILY,
   timeZone: "",
-  monthDay: "",
-  weekDay: [],
+  monthDay: 0,
+  weekDay: "",
   timeDuration: "12:00",
 };
-

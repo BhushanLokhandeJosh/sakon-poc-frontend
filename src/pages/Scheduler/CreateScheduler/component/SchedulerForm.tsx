@@ -21,19 +21,19 @@ interface ISchedulerFormProps {
 }
 
 const SchedulerForm = (props: ISchedulerFormProps) => {
-  const { interval, schedularName,timeDuration } = props.formik.values;
+  const { interval, schedularName, timeDuration } = props.formik.values;
   const { setFieldValue } = props.formik;
   const isMonthly: boolean = interval === INTERVAL.MONTHLY;
   const isWeekly: boolean = interval === INTERVAL.WEEKLY;
 
   useEffect(() => {
     if (interval === INTERVAL.DAILY) {
-      setFieldValue("monthDay", "");
-      setFieldValue("weekDay", []);
+      setFieldValue("monthDay", null);
+      setFieldValue("weekDay", null);
     } else if (interval === INTERVAL.WEEKLY) {
-      setFieldValue("monthDay", "");
+      setFieldValue("monthDay", null);
     } else if (interval === INTERVAL.MONTHLY) {
-      setFieldValue("weekDay", []);
+      setFieldValue("weekDay", null);
     }
   }, [interval]);
 
@@ -111,7 +111,7 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
                   menuPlacement="bottom"
                   maxMenuHeight={100}
                   className="form-control-weekly"
-                  isMulti={true}
+                  // isMulti={true}
                 />
               </>
             )

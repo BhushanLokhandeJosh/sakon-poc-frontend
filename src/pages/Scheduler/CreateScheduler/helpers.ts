@@ -7,13 +7,13 @@ export const validationSchema = Yup.object({
   interval: Yup.string().required("Day Interval Required"),
   timeZone: Yup.string().required("TimeZone Required"),
 
-  monthDay: Yup.string().when("interval", {
+  monthDay: Yup.number().when("interval", {
     is: (val: any) => val === INTERVAL.DAILY || val === INTERVAL.WEEKLY,
     then: (schema) => schema.notRequired(),
     otherwise: (schema) => schema.required("Month Required"),
   }),
 
-  weekDay: Yup.array().when("interval", {
+  weekDay: Yup.string().when("interval", {
     is: (val: any) => val === INTERVAL.DAILY || val === INTERVAL.MONTHLY,
     then: (schema) => schema.notRequired(),
     otherwise: (schema) => schema.min(1).required("Select Weekdays"),
@@ -75,7 +75,7 @@ const dayOfMonth = () => {
   for (let i = 1; i < 31; i++) {
     const obj = {
       label: `${i}`,
-      value: `${i}`,
+      value: i,
     };
     allDayOfMonths.push(obj);
   }
