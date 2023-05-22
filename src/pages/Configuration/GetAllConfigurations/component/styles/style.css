@@ -16,3 +16,9 @@
 .form-align-style {
   margin-top: 2%;
 }
+
+.page-button {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+}

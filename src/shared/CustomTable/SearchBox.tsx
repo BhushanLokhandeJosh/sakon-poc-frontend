@@ -3,7 +3,7 @@ import "./style.css";
 interface IProps {
   searchValue: string;
   setSearchValue: Function;
-  searchBoxStyle: string;
+  searchBoxStyle?: string;
 }
 
 const SearchBox = (props: IProps) => {

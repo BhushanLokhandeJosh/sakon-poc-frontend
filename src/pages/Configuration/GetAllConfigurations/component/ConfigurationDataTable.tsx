@@ -23,12 +23,8 @@ const ConfigurationDataTable = ({ useCustomFetch }: IProps) => {
       }}
       searchConfiguration={{ isSearchBoxVisible: true }}
       columnHeaders={ConfigurationListColumns}
-      // filterBodyTitle="Filter Configurations"
       useCustomFetch={useCustomFetch}
       initialValues={configurationInitialValues}
-      // getFormFilterBody={(formik: IFormikProps<any>) => (
-      //   <ConfifurationFilterForm formik={formik} />
-      // )}
     />
   );
 };
