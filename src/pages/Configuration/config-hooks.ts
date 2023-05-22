@@ -3,7 +3,6 @@ import { useQuery } from "react-query";
 import { DEPARTMENTS, GET_ALL_CONFIGURATIONS } from "./constants";
 import {
   ConfigurationFilterFormInitialValues,
-  ConfigurationsList,
 } from "./GetAllConfigurations/types";
 import { getConfigurations, getDepartments } from "./config-services";
 
@@ -15,7 +14,7 @@ const useFetchConfigurations = ({
   searchValue?: string;
   filterData?: ConfigurationFilterFormInitialValues;
 }) => {
-  return useQuery<ConfigurationsList[]>(
+  const response = useQuery<any>(
     [GET_ALL_CONFIGURATIONS, searchValue, filterData],
     () =>
       getConfigurations({
@@ -24,6 +23,12 @@ const useFetchConfigurations = ({
         schedulingStatus_like: filterData?.schedulingStatus === "scheduled",
       })
   );
+  
+  return {
+    data: response?.data?.configurations,
+    isLoading: response.isLoading,
+    isError: response.isError,
+  };
 };
 
 //This hook is used to fetch all the departments.
