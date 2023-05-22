@@ -1,12 +1,21 @@
-import { Popover, Typography } from "@mui/material";
+import { Popover, Typography, Button } from "@mui/material";
+
 import { IFormikProps } from "../types";
+
+import "./styles/styles.css";
+
 import FormikContainer from "../FormikModalComponent/component/FormikContainer";
 
 export interface IFormikModalProp {
   id: string;
   isOpen: boolean;
-  anchorEl: any;
-  handleClose: any;
+  anchorEl: HTMLButtonElement | null;
+  handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleClose: () => void;
+  popoverButtonClassName: string;
+  popoverButtonTitle: string;
+  popoverButtonIcon?: any;
+  popoverClassName?: string;
   popoverTitle: string;
   submitButtonLabel?: string;
   onSubmit: (values: any) => void;
@@ -14,22 +23,25 @@ export interface IFormikModalProp {
   initialValues: any;
   //filter Box may not have validationSchema.
   validationSchema?: any;
-  popoverClassName?: string;
   formClassName?: string;
   showResetButton: boolean;
   showCancelButton: boolean;
 }
 
-//TODO:We have to check this component with Column Popover component later,
+// TODO:We have to check this component with Column Popover component later,
 // In order to avoid redundancy and enhancing functionality of custom shared
-//popover component.
+// popover component.
 
 const FormikPopoverComponent = (props: IFormikModalProp) => {
   const {
     id,
     isOpen,
     anchorEl,
+    handleClick,
     handleClose,
+    popoverButtonTitle,
+    popoverButtonIcon,
+    popoverButtonClassName,
     submitButtonLabel,
     popoverTitle,
     getFormBody,
@@ -48,6 +60,13 @@ const FormikPopoverComponent = (props: IFormikModalProp) => {
 
   return (
     <div className={popoverClassName}>
+      <div className={popoverButtonClassName}>
+        <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+          {popoverButtonTitle}
+          {popoverButtonIcon}
+        </Button>
+      </div>
+
       <Popover
         id={id}
         open={isOpen}
@@ -62,7 +81,12 @@ const FormikPopoverComponent = (props: IFormikModalProp) => {
           horizontal: "center",
         }}
       >
-        <Typography variant="h3">{popoverTitle}</Typography>
+        <Typography
+          variant="h5"
+          sx={{ margin: "1% 0% 1% 1%", fontWeight: "bold" }}
+        >
+          {popoverTitle}
+        </Typography>
         <FormikContainer
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -83,6 +107,8 @@ const FormikPopoverComponent = (props: IFormikModalProp) => {
 FormikPopoverComponent.defaultProps = {
   showResetButton: false,
   showCancelButton: true,
+  popoverButtonTitle: "Open Popover",
+  popoverButtonClassName: "popover-button-style",
   popoverTitle: "",
 };
 
