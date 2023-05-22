@@ -16,13 +16,13 @@ const PageComponent = (props: IProps) => {
       justifyContent: "space-between",
     },
     title: {
-      marginTop: "15px",
-      fontWeight: "15px",
+      marginTop: "1rem",
+      fontWeight: "bold",
     },
     button: {
       margin: "2% 4% 0% 0%",
-      padding: "10px",
-      height: "30px",
+      padding: "1rem",
+      height: "2.5rem",
     },
   };
 
