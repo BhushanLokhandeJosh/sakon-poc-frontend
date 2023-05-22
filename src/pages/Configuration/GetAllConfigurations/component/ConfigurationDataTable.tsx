@@ -7,11 +7,9 @@ import "./styles/style.css";
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
 import { configurationInitialValues } from "../../constants";
 
-interface IProps {
-  useCustomFetch: any;
-}
+import useFetchConfigurations from "../../config-hooks";
 
-const ConfigurationDataTable = ({ useCustomFetch }: IProps) => {
+const ConfigurationDataTable = () => {
   return (
     <CustomTable
       filterConfiguration={{
@@ -23,8 +21,9 @@ const ConfigurationDataTable = ({ useCustomFetch }: IProps) => {
       }}
       searchConfiguration={{ isSearchBoxVisible: true }}
       columnHeaders={ConfigurationListColumns}
-      useCustomFetch={useCustomFetch}
+      useCustomFetch={useFetchConfigurations}
       initialValues={configurationInitialValues}
+      tableClassName="table-style"
     />
   );
 };

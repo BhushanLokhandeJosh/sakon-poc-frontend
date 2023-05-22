@@ -1,18 +1,4 @@
 {
-  "configuration": [
-    {
-      "email": "harshal@gmail.com",
-      "password": "Harshal@123",
-      "carrierName": "dhefhrle",
-      "sftpLogin": "qwefjrh",
-      "sftpPassword": "qwjfdhj",
-      "sftpLocation": "qwesfdhj",
-      "downloadPath": "qWASDHFJ",
-      "template": "C:\\fakepath\\labelIcon.png",
-      "id": 4
-    }
-  ],
-
   "configDetails": [
     {
       "id": 1,

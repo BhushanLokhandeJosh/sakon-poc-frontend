@@ -22,3 +22,8 @@
   top: 1rem;
   right: 2rem;
 }
+
+.table-style {
+  height: 700px;
+  width: auto;
+}

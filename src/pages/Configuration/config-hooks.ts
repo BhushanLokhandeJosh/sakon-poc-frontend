@@ -1,9 +1,7 @@
 import { useQuery } from "react-query";
 
 import { DEPARTMENTS, GET_ALL_CONFIGURATIONS } from "./constants";
-import {
-  ConfigurationFilterFormInitialValues,
-} from "./GetAllConfigurations/types";
+import { ConfigurationFilterFormInitialValues } from "./GetAllConfigurations/types";
 import { getConfigurations, getDepartments } from "./config-services";
 
 //This hook is used to fetch all the configurations.
@@ -20,12 +18,13 @@ const useFetchConfigurations = ({
       getConfigurations({
         carrierName_like: searchValue,
         department_like: filterData?.department,
-        schedulingStatus_like: filterData?.schedulingStatus === "scheduled",
+        schedulingStatus_like: filterData?.schedulingStatus,
       })
   );
-  
+  console.log(response?.data?.data);
+
   return {
-    data: response?.data?.configurations,
+    data: response?.data?.data,
     isLoading: response.isLoading,
     isError: response.isError,
   };
