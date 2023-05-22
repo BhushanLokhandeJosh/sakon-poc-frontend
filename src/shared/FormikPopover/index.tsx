@@ -12,7 +12,8 @@ export interface IFormikModalProp {
   onSubmit: (values: any) => void;
   getFormBody: (formik: any) => JSX.Element;
   initialValues: any;
-  validationSchema: any;
+  //filter Box may not have validationSchema.
+  validationSchema?: any;
   popoverClassName?: string;
   formClassName?: string;
   showResetButton: boolean;
@@ -37,8 +38,8 @@ const FormikPopoverComponent = (props: IFormikModalProp) => {
     onSubmit,
     popoverClassName,
     formClassName,
-    showCancelButton,
     showResetButton,
+    showCancelButton,
   } = props;
 
   const handleReset = (formik: IFormikProps<any>) => {
@@ -67,6 +68,7 @@ const FormikPopoverComponent = (props: IFormikModalProp) => {
           validationSchema={validationSchema}
           onSubmitHandler={onSubmit}
           formClassName={formClassName}
+          toggle={handleClose}
           submitButtonLabel={submitButtonLabel}
           showResetButton={showResetButton}
           showCancelButton={showCancelButton}
