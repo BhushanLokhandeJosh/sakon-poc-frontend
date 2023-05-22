@@ -6,9 +6,9 @@ interface IProps {
   pageTitle: string;
   buttonLabel?: string;
   pageBody: ReactNode;
-  pageHeadingStyle: string;
-  pageTitleStyle: string;
-  pageButtonStyle: string;
+  pageHeadingClassName: string;
+  pageTitleClassName: string;
+  pageButtonClassName: string;
 }
 
 const PageComponent = (props: IProps) => {
@@ -16,16 +16,16 @@ const PageComponent = (props: IProps) => {
     pageTitle,
     buttonLabel,
     pageBody,
-    pageHeadingStyle,
-    pageTitleStyle,
-    pageButtonStyle,
+    pageHeadingClassName,
+    pageTitleClassName,
+    pageButtonClassName,
   } = props;
   return (
     <div>
-      <div className={pageHeadingStyle}>
-        <h1 className={pageTitleStyle}>{pageTitle}</h1>
+      <div className={pageHeadingClassName}>
+        <h1 className={pageTitleClassName}>{pageTitle}</h1>
         {buttonLabel && (
-          <Button variant="contained" className={pageButtonStyle}>
+          <Button variant="contained" className={pageButtonClassName}>
             {buttonLabel}
           </Button>
         )}
@@ -36,9 +36,9 @@ const PageComponent = (props: IProps) => {
 };
 
 PageComponent.defaultProps = {
-  pageRootStyle: "page-heading-style",
-  pageTitleStyle: "page-title-style",
-  pageButtonStyle: "page-button-style",
+  pageRootClassName: "page-heading",
+  pageTitleClassName: "page-title",
+  pageButtonClassName: "page-button",
 };
 
 export default PageComponent;
