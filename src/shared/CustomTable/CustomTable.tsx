@@ -13,23 +13,57 @@ import FormikModalComponent from "../FormikModalComponent/component";
 import useToggle from "../CustomHooks/useToggle";
 
 interface ICustomTableProps {
-  isFilterVisible: boolean;
   columnHeaders: GridColDef[];
-  filterBodyTitle?: string;
   useCustomFetch: any;
   initialValues?: any;
-  getFormFilterBody?: any;
+  validationSchema?: any;
+  tableClassName?: string;
+  /**
+   * pass id or any other parameters to the query to fetch query related data.
+   */
+  queryArguments?: IObjectWithAnyFields;
+  searchConfiguration: {
+    isSearchBoxVisible: boolean;
+    searchBoxClassName?: string;
+    searchBoxFilterBoxClassName?: string;
+  };
+  filterConfiguration?:
+    | {
+        isFilterVisible: true;
+        filterBodyTitle?: string;
+        getFormFilterBody: (formik: any) => JSX.Element;
+      }
+    | {
+        isFilterVisible: false;
+        filterBodyTitle?: never;
+        getFormFilterBody?: never;
+      };
 }
 
 const CustomTable = (props: ICustomTableProps) => {
   const {
-    isFilterVisible,
     columnHeaders,
-    filterBodyTitle,
     useCustomFetch,
     initialValues,
-    getFormFilterBody,
+    validationSchema,
+    tableClassName,
+    searchConfiguration,
+    filterConfiguration,
+    queryArguments,
   } = props;
+
+  //for search properties.
+  const isSearchBoxVisible = searchConfiguration?.isSearchBoxVisible || false;
+  const searchBoxClassName =
+    searchConfiguration?.searchBoxClassName || "search-style";
+  const searchBoxFilterBoxClassName =
+    searchConfiguration?.searchBoxFilterBoxClassName ||
+    "search-filter-container";
+
+  //for filter properties.
+  const isFilterVisible = filterConfiguration?.isFilterVisible || false;
+  const filterBodyTitle = filterConfiguration?.filterBodyTitle || "";
+  const getFormFilterBody = filterConfiguration?.getFormFilterBody;
 
   const [searchValue, setSearchValue] = useState<string>(""); //Used whenever user try to search anything then automatically useEffect runs and also again hit customFetch to call api to get the data.
   const [searchTrigger, setSearchTrigger] = useState<string>("");
@@ -53,6 +87,7 @@ const CustomTable = (props: ICustomTableProps) => {
   const { data, isLoading, isError } = useCustomFetch({
     searchValue: searchTrigger,
     filterData,
+    queryArguments,
   });
 
   if (isLoading) {
@@ -63,17 +98,19 @@ const CustomTable = (props: ICustomTableProps) => {
   }
 
   return (
-    <>
-      <div className="input-btn-container">
-        {isFilterVisible && (
-          <>
+    <Box>
+      <div className={searchBoxFilterBoxClassName}>
+        {isFilterVisible && getFormFilterBody && (
+          <Box>
             <Button variant="contained" onClick={handleToggle}>
               <FilterListIcon />
             </Button>
             <FormikModalComponent
               isOpen={isOpen}
               initialValues={initialValues}
-              validationSchema={""}
+              //TODO :->  WE WILL HANDLE WHOLE FILTER BOX IN SEPRATE COMPONENT IN WHICH WE WILL
+              //REMOVE VALIDATIONSCHEMA OR KEEP IT OPTIONAL AS PER REQUIREMENTS.
+              validationSchema={validationSchema}
               onSubmit={onSubmit}
               toggleModal={handleToggle}
               modalTitle={filterBodyTitle}
@@ -83,11 +120,18 @@ const CustomTable = (props: ICustomTableProps) => {
               getFormBody={getFormFilterBody}
               submitButtonLabel="Apply"
             />
-          </>
+          </Box>
         )}
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+        {isSearchBoxVisible && (
+          <SearchBox
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            searchBoxStyle={searchBoxClassName}
+          />
+        )}
       </div>
-      <Box sx={{ height: "650px", width: "auto", marginRight: "20px" }}>
+
+      <div className={tableClassName}>
         <DataGrid
           disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.
           disableRowSelectionOnClick //Used to Remove statement: whenever we select rows it shows selected rows statement on UI.
@@ -95,9 +139,11 @@ const CustomTable = (props: ICustomTableProps) => {
           columns={columnHeaders}
           sx={dataGridStyleForColumnSortArrow}
         />
-      </Box>
-    </>
+      </div>
+    </Box>
   );
 };
-
+CustomTable.defaultProps = {
+  tableClassName: "table-default-style",
+};
 export default CustomTable;
