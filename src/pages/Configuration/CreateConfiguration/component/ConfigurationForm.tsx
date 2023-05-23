@@ -15,7 +15,7 @@ interface IConfigurationProps {
 const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
   const {values} = props.formik;
   return (
-    <Form>
+    <Form encType="multipart/form-data">
       <Grid container rowSpacing={4} columnSpacing={{ xs: 4 }}>
         <Grid item xs={12} md={10} lg={6}>
           <div>

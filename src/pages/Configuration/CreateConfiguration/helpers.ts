@@ -42,16 +42,16 @@ export const formDataMapping = (values: IConfiguration): FormData => {
     sftpPassword,
   } = values;
   let form = new FormData();
-  form.append("config-name", configurationName);
-  form.append("dept-name", department);
+  form.append("name", configurationName);
+  form.append("dept_name", department);
   form.append("email", email);
   form.append("password", password);
-  form.append("created-by-empid", "1");
-  form.append("carrier-name", carrierName);
-  form.append("website-url", downloadPath);
+  form.append("emp", "1");
+  form.append("carrier", carrierName);
+  form.append("website_url", downloadPath);
   form.append("template", template);
-  form.append("sftp-path", sftpLocation);
-  form.append("sftp-login", sftpLogin);
-  form.append("sftp-password", sftpPassword);
+  form.append("sftp_path", sftpLocation);
+  form.append("sftp_login", sftpLogin);
+  form.append("sftp_password", sftpPassword);
   return form;
 };
