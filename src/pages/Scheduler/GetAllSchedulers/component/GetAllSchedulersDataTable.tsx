@@ -11,9 +11,10 @@ function GetAllSchedulersDataTable({ useCustomFetch }: ISchedulers) {
   return (
     <div>
       <CustomTable
-        isFilterVisible={false}
+        searchConfiguration={{ isSearchBoxVisible: true }}
         columnHeaders={getAllSchedulerColumns}
         useCustomFetch={useCustomFetch}
+        tableClassName="table-style"
       />
     </div>
   );

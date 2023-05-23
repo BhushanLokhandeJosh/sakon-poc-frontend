@@ -1,5 +1,6 @@
 export const API_ROUTES = {
   SCHEDULER: {
-    GET: "/schedulers",
+    GET: "/schedules",
+    //GET: "/schedulers",
   },
 };

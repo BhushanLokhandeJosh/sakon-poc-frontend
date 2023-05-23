@@ -22,7 +22,7 @@ export const getAllSchedulerColumns: GridColDef[] = [
     align: "center",
   },
   {
-    field: "frequency",
+    field: "interval",
     headerName: "Frequency",
     width: 300,
     headerAlign: "center",
