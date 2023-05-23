@@ -138,11 +138,6 @@ const CustomTable = (props: ICustomTableProps) => {
           rows={data}
           columns={columnHeaders}
           sx={dataGridStyleForColumnSortArrow}
-          // initialState={{
-          //   pagination: { paginationModel: { pageSize: 10 } },
-          // }}
-          // pageSizeOptions={[10, 15, 25]}
-          // scrollbarSize={10}
         />
       </div>
     </Box>
