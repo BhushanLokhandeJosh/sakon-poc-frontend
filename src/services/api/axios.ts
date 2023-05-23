@@ -10,4 +10,8 @@ export const POST = (url: string, body: FormData | any) => {
   return instance.post(url, body).then((res) => res);
 };
 
-//TODO :- Add other methods like GET,POST,PUT,PATCH,DELETE Api Methods Later.
+export const GET = (url: string, params?: any) => {
+  return instance.get(url, { params }).then((res) => res.data);
+};
+
+//TODO :- Add other methods like POST,PUT,PATCH,DELETE Api Methods Later.

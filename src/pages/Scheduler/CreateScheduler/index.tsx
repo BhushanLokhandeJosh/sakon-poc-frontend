@@ -4,8 +4,6 @@ import { AxiosError, AxiosResponse } from "axios";
 import useToggle from "../../../shared/CustomHooks/useToggle";
 import { useScheduleConfiguration } from "../scheduler-hooks";
 
-import { ISchedulerProps } from "./types";
-
 import CreateScheduler from "./component";
 
 const CreateSchedulerContainer = () => {
