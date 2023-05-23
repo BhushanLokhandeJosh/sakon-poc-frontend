@@ -1,47 +1,44 @@
-import { Box, Button, Typography } from "@mui/material";
-import React, { ReactNode } from "react";
+import { Button } from "@mui/material";
+import { ReactNode } from "react";
 
+import "./style/styles.css";
 interface IProps {
   pageTitle: string;
   buttonLabel?: string;
   pageBody: ReactNode;
+  pageHeadingClassName: string;
+  pageTitleClassName: string;
+  pageButtonClassName: string;
 }
 
 const PageComponent = (props: IProps) => {
-  const { pageTitle, buttonLabel, pageBody } = props;
-  const styles = {
-    root: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
-    },
-    title: {
-      marginTop: "15px",
-      fontWeight: "15px",
-    },
-    button: {
-      margin: "2% 4% 0% 0%",
-      padding: "10px",
-      height: "30px",
-    },
-  };
-
+  const {
+    pageTitle,
+    buttonLabel,
+    pageBody,
+    pageHeadingClassName,
+    pageTitleClassName,
+    pageButtonClassName,
+  } = props;
   return (
-    <Box>
-      <Box sx={styles.root}>
-        <Typography variant="h4" sx={styles.title}>
-          {pageTitle}
-        </Typography>
-
+    <div>
+      <div className={pageHeadingClassName}>
+        <h1 className={pageTitleClassName}>{pageTitle}</h1>
         {buttonLabel && (
-          <Button variant="contained" sx={styles.button}>
+          <Button variant="contained" className={pageButtonClassName}>
             {buttonLabel}
           </Button>
         )}
-      </Box>
+      </div>
       {pageBody}
-    </Box>
+    </div>
   );
+};
+
+PageComponent.defaultProps = {
+  pageRootClassName: "page-heading",
+  pageTitleClassName: "page-title",
+  pageButtonClassName: "page-button",
 };
 
 export default PageComponent;

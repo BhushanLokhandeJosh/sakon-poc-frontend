@@ -82,7 +82,7 @@ const FormikModalComponent = (props: IFormikModalProp) => {
 FormikModalComponent.defaultProps = {
   showResetButton: false,
   showCancelButton: true,
-  modalTitle:""
+  modalTitle: "",
 };
 
 export default FormikModalComponent;
