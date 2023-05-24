@@ -16,8 +16,3 @@ export interface IFormikProps<T> extends FormikProps<T> {}
 export interface IObjectWithAnyFields {
   [key: string]: any;
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 1d1550bf35371fb414468bbf278ecdc5c7901dd2
