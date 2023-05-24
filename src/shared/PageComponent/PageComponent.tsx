@@ -36,7 +36,7 @@ const PageComponent = (props: IProps) => {
 };
 
 PageComponent.defaultProps = {
-  pageRootClassName: "page-heading",
+  pageHeadingClassName: "page-heading",
   pageTitleClassName: "page-title",
   pageButtonClassName: "page-button",
 };
