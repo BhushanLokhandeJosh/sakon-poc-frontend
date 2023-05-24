@@ -66,7 +66,7 @@ const FormikModalComponent = (props: IFormikModalProp) => {
             validationSchema={validationSchema}
             onSubmitHandler={onSubmit}
             formClassName={formClassName}
-            toggleModal={toggleModal}
+            toggle={toggleModal}
             submitButtonLabel={submitButtonLabel}
             showResetButton={showResetButton}
             showCancelButton={showCancelButton}
