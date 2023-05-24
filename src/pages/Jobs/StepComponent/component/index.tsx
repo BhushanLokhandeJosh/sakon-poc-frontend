@@ -1,7 +1,7 @@
 
 import { Box, Typography } from "@mui/material";
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
-import { getAllDownloadJobColumns } from "./constants";
+import { getAllJobsColumns } from "./constants";
 import { useFetchAllJobs } from "../../jobs-hooks";
 
 const StepComponent = () => {
@@ -29,7 +29,7 @@ const StepComponent = () => {
       >
         <CustomTable
           isFilterVisible={false}
-          columnHeaders={getAllDownloadJobColumns}
+          columnHeaders={getAllJobsColumns}
           useCustomFetch={useFetchAllJobs}
         />
       </Box>

@@ -3,7 +3,7 @@ import AutorenewIcon from "@mui/icons-material/Autorenew";
 import ErrorOutlineTwoToneIcon from "@mui/icons-material/ErrorOutlineTwoTone";
 import CheckCircleOutlineTwoToneIcon from "@mui/icons-material/CheckCircleOutlineTwoTone";
 
-export const getAllDownloadJobColumns: GridColDef[] = [
+export const getAllJobsColumns: GridColDef[] = [
   {
     field: "id",
     headerName: "Job Id",
@@ -21,7 +21,7 @@ export const getAllDownloadJobColumns: GridColDef[] = [
     align: "center",
   },
   {
-    field: "Config_Name",
+    field: "Configuration_Name",
     headerName: "Configuration Name",
     width: 300,
     sortable: false,
@@ -29,7 +29,7 @@ export const getAllDownloadJobColumns: GridColDef[] = [
     align: "center",
   },
   {
-    field: "Dept_No",
+    field: "Department_Name",
     headerName: "Department Name",
     width: 200,
     headerAlign: "center",
