@@ -22,7 +22,8 @@ interface InputElementProps {
     | "radio";
   className?: string;
   placeholder?: string;
-  value: string | Blob;
+  value: string | Blob ;
+  onChange?:Function
 }
 
 const Input = (props: InputElementProps): ReactElement => {
@@ -36,11 +37,11 @@ const Input = (props: InputElementProps): ReactElement => {
       <div>
         <Field
           id={name}
+          value={value}
           name={name}
           className={className}
           type={type}
           placeholder={placeholder}
-          value={value}
         />
         <ErrorMessage name={name} component={FormError} />
       </div>

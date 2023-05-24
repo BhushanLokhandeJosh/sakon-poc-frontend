@@ -10,5 +10,5 @@ export const initialConfigurationValues: IConfiguration = {
   sftpPassword: "",
   sftpLocation: "",
   downloadPath: "",
-  template: "",
+  template: '',
 };

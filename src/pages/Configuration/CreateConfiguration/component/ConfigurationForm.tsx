@@ -1,4 +1,5 @@
-import { Form } from "formik";
+import { ChangeEvent } from "react";
+import { ErrorMessage, Form } from "formik";
 import { Grid } from "@mui/material";
 
 import { IConfiguration } from "../types";
@@ -7,13 +8,18 @@ import { IFormikProps } from "../../../../shared/types";
 import "./styles/styles.css";
 
 import Input from "../../../../shared/FormComponents/Input";
+import FormError from "../../../../shared/FormComponents/FormError";
 
 interface IConfigurationProps {
   formik: IFormikProps<IConfiguration>;
 }
 
 const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
-  const { values } = props.formik;
+  const { values, setFieldValue } = props.formik;
+
+  const handleFileChange = (event: any) => {
+    setFieldValue("template", event.currentTarget.files[0]);
+  };
   return (
     <Form>
       <Grid container rowSpacing={4} columnSpacing={{ xs: 4 }}>
@@ -122,13 +128,26 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         </Grid>
         <Grid item xs={12} md={10} lg={6}>
           <div>
-            <Input
+            <label htmlFor="template">Template</label>
+            <input
+              type="file"
+              id="template"
+              name="template"
+              className="input-file-field"
+              onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                handleFileChange(event)
+              }
+            />
+            <ErrorMessage name={"template"} component={FormError} />
+
+            {/* <Input
               type="file"
               label="Template"
               name="template"
               className="input-file-field"
               value={values.template}
-            />
+              onChange={(event: any) => handleFileChange(event)}
+            /> */}
           </div>
         </Grid>
       </Grid>

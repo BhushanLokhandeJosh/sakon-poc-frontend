@@ -28,7 +28,9 @@ const CreateConfigurationsContainer = () => {
   });
 
   const onSubmit = (values: IConfiguration) => {
+    console.log(values);
     const formData = formDataMapping(values);
+    // console.log(formData);
     createConfiguration(formData);
   };
 
