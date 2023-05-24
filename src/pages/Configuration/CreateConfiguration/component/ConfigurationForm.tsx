@@ -3,7 +3,7 @@ import { ErrorMessage, Form } from "formik";
 import { Grid } from "@mui/material";
 
 import { IConfiguration } from "../types";
-import { IFormikProps } from "../../../../shared/types";
+import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
 
 import "./styles/styles.css";
 
@@ -17,16 +17,13 @@ interface IConfigurationProps {
 const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
   const { values, setFieldValue } = props.formik;
 
-  const handleFileChange = (event: any) => {
-    setFieldValue("template", event.currentTarget.files[0]);
-  };
   return (
     <Form>
       <Grid container rowSpacing={4} columnSpacing={{ xs: 4 }}>
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Configuration Name"
               name="configurationName"
               className="input-field"
@@ -38,7 +35,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Carrier Name"
               name="carrierName"
               className="input-field"
@@ -50,7 +47,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Email"
               name="email"
               className="input-field"
@@ -61,7 +58,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="password"
+              type={INPUT_TYPE.PASSWORD}
               label="Password"
               name="password"
               className="input-field"
@@ -73,7 +70,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Department"
               name="department"
               className="input-field"
@@ -84,7 +81,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Sftp Location"
               name="sftpLocation"
               className="input-field"
@@ -95,7 +92,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Sftp Login"
               name="sftpLogin"
               className="input-field"
@@ -106,7 +103,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="password"
+              type={INPUT_TYPE.PASSWORD}
               label="Sftp Password"
               name="sftpPassword"
               className="input-field"
@@ -118,7 +115,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Download Link"
               name="downloadPath"
               className="input-field"
@@ -128,26 +125,14 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         </Grid>
         <Grid item xs={12} md={10} lg={6}>
           <div>
-            <label htmlFor="template">Template</label>
-            <input
-              type="file"
-              id="template"
-              name="template"
-              className="input-file-field"
-              onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                handleFileChange(event)
-              }
-            />
-            <ErrorMessage name={"template"} component={FormError} />
-
-            {/* <Input
-              type="file"
+            <Input
+              type={INPUT_TYPE.FILE}
               label="Template"
               name="template"
               className="input-file-field"
               value={values.template}
-              onChange={(event: any) => handleFileChange(event)}
-            /> */}
+              formikSetFieldValue={setFieldValue}
+            />
           </div>
         </Grid>
       </Grid>
