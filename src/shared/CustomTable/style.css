@@ -1,10 +1,23 @@
-.filter-style {
-  padding: 8px;
-  margin-right: 5px;
+/* default style to the search box  */
+.search-style {
+  padding-left: 20px;
+  width: 15%;
+  color: rgb(9, 35, 35);
+  height: 2rem;
 }
-.input-btn-container {
+
+/* default style to the table search box and filter box( which is Wrapped inside div component) */
+.search-filter-container {
   display: flex;
   flex-direction: row-reverse;
+  gap: 1rem;
+  align-items: center;
   margin: 22px;
   height: 40px;
+}
+
+/* default style to the table */
+.table-default-style {
+  height: 800px;
+  width: auto;
 }

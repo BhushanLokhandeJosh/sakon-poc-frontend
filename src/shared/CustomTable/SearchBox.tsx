@@ -3,14 +3,15 @@ import "./style.css";
 interface IProps {
   searchValue: string;
   setSearchValue: Function;
+  searchBoxStyle?: string;
 }
 
 const SearchBox = (props: IProps) => {
-  const { searchValue, setSearchValue } = props;
+  const { searchValue, setSearchValue, searchBoxStyle } = props;
 
   return (
     <input
-      className="filter-style"
+      className={searchBoxStyle}
       type="text"
       value={searchValue}
       placeholder="Search..."
