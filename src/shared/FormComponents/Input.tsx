@@ -7,18 +7,31 @@ import FormError from "./FormError";
 import "./styles/styles.css";
 import { INPUT_TYPE } from "../types";
 
-interface InputElementProps {
+interface CommonProps {
   label?: string;
   name: string;
-  type: INPUT_TYPE;
   className?: string;
   placeholder?: string;
   value: string | Blob;
-  onChange?: Function;
-  formikSetFieldValue?: any;
 }
 
-const Input = (props: InputElementProps): ReactElement => {
+interface InputElementProps extends CommonProps {
+  type: Exclude<INPUT_TYPE, INPUT_TYPE.FILE>;
+  formikSetFieldValue?: never;
+}
+
+interface FileElementProps extends CommonProps {
+  type: INPUT_TYPE.FILE;
+  formikSetFieldValue: (
+    field: string,
+    value: any,
+    shouldValidate?: boolean
+  ) => void;
+}
+
+type InputComponentProps = InputElementProps | FileElementProps;
+
+const Input = (props: InputComponentProps): ReactElement => {
   const {
     label,
     name,
@@ -30,7 +43,8 @@ const Input = (props: InputElementProps): ReactElement => {
   } = props;
 
   const handleFileChange = (fileNameAttribute: string, event: any) => {
-    formikSetFieldValue(fileNameAttribute, event.currentTarget.files[0]);
+    formikSetFieldValue &&
+      formikSetFieldValue(fileNameAttribute, event.currentTarget.files[0]);
   };
 
   return (
