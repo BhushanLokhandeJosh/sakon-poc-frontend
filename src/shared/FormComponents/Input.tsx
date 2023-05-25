@@ -14,7 +14,8 @@ interface InputElementProps {
   className?: string;
   placeholder?: string;
   value: string | Blob;
-  formikSetFieldValue: (
+  // This Formik Props only for handling file.
+  formikSetFieldValue?: (
     field: string,
     value: any,
     shouldValidate?: boolean
