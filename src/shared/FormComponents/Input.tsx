@@ -34,7 +34,8 @@ const Input = (props: InputElementProps): ReactElement => {
   } = props;
 
   const handleFileChange = (fileNameAttribute: string, event: any) => {
-    formikSetFieldValue(fileNameAttribute, event.currentTarget.files[0]);
+    formikSetFieldValue &&
+      formikSetFieldValue(fileNameAttribute, event.currentTarget.files[0]);
   };
 
   return (

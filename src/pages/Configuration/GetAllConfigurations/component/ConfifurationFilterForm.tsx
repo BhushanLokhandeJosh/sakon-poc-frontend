@@ -4,7 +4,7 @@ import { useGetDepartments } from "../../config-hooks";
 
 import Input from "../../../../shared/FormComponents/Input";
 import Select from "../../../../shared/FormComponents/Select";
-import { IObjectWithAnyFields } from "../../../../shared/types";
+import { INPUT_TYPE, IObjectWithAnyFields } from "../../../../shared/types";
 
 const ConfifurationFilterForm = (props: IObjectWithAnyFields) => {
   const { data, isLoading, isError } = useGetDepartments();
@@ -37,7 +37,11 @@ const ConfifurationFilterForm = (props: IObjectWithAnyFields) => {
           flexDirection: "row",
         }}
       >
-        <Input type="radio" name="schedulingStatus" value="scheduled" />
+        <Input
+          type={INPUT_TYPE.RADIO}
+          name="schedulingStatus"
+          value="scheduled"
+        />
         <InputLabel>Scheduled</InputLabel>
       </Grid>
 
@@ -49,7 +53,11 @@ const ConfifurationFilterForm = (props: IObjectWithAnyFields) => {
           flexDirection: "row",
         }}
       >
-        <Input type="radio" name="schedulingStatus" value="not scheduled" />
+        <Input
+          type={INPUT_TYPE.RADIO}
+          name="schedulingStatus"
+          value="not scheduled"
+        />
         <InputLabel>Not Scheduled</InputLabel>
       </Grid>
 

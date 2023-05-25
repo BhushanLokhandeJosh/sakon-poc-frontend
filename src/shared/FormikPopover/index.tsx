@@ -9,7 +9,7 @@ import FormikContainer from "../FormikModalComponent/component/FormikContainer";
 
 export interface IFormikModalProp {
   popoverButtonTitle: string;
-  popoverButtonIcon: JSX.Element;
+  popoverButtonIcon?: JSX.Element;
   popoverTitle: string;
   submitButtonLabel?: string;
   onSubmit: (values: any, handleClose: Function) => void;
