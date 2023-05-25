@@ -8,6 +8,13 @@ import { IObjectWithAnyFields } from "../../../../shared/types";
 
 const ConfifurationFilterForm = (props: IObjectWithAnyFields) => {
   const { data, isLoading, isError } = useGetDepartments();
+
+  const departmentData = data?.data?.map((department: any) => ({
+    label: department.name,
+    value: department.name,
+  }));
+  console.log("department data", departmentData);
+
   if (isLoading) {
     return <>Loading...</>;
   }
@@ -51,7 +58,7 @@ const ConfifurationFilterForm = (props: IObjectWithAnyFields) => {
       </Grid>
       <Grid item xs={7}>
         <Select
-          options={data}
+          options={departmentData}
           placeholder="Select One"
           isMulti={false}
           name="department"
