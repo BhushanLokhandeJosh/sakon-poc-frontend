@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "react-query";
 import { AxiosError, AxiosResponse } from "axios";
 
-import { getSchedulers, scheduleConfiguration } from "./scheduler-services";
+import { scheduleConfiguration } from "./scheduler-services";
 
 interface IScheduleResponseProps {
   onSuccess: (values: AxiosResponse) => void;
@@ -14,17 +14,4 @@ export const useScheduleConfiguration = (props: IScheduleResponseProps) => {
     onSuccess,
     onError,
   });
-};
-
-
-export const useFetchAllSchedulers = ({
-  searchValue,
-}: {
-  searchValue?: string;
-}) => {
-  return useQuery(["getAllSchedulers", searchValue], () =>
-    getSchedulers({
-      schedule_name_like: searchValue,
-    })
-  );
 };
