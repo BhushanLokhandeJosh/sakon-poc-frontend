@@ -3,9 +3,9 @@ import { Field, ErrorMessage } from "formik";
 import { InputLabel } from "@mui/material";
 
 import FormError from "./FormError";
+import { INPUT_TYPE } from "../types";
 
 import "./styles/styles.css";
-import { INPUT_TYPE } from "../types";
 
 interface InputElementProps {
   label?: string;
@@ -14,8 +14,11 @@ interface InputElementProps {
   className?: string;
   placeholder?: string;
   value: string | Blob;
-  onChange?: Function;
-  formikSetFieldValue?: any;
+  formikSetFieldValue: (
+    field: string,
+    value: any,
+    shouldValidate?: boolean
+  ) => void;
 }
 
 const Input = (props: InputElementProps): ReactElement => {
@@ -50,11 +53,12 @@ const Input = (props: InputElementProps): ReactElement => {
             placeholder={placeholder}
           />
         ) : (
+          // This input type For Handling Files in input forms.
           <input
-            type="file"
-            id="template"
-            name="template"
-            className="input-file-field"
+            type={INPUT_TYPE.FILE}
+            id={name}
+            name={name}
+            className={className}
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               handleFileChange(name, event)
             }
