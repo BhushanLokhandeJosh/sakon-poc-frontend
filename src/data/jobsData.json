@@ -1,0 +1,139 @@
+{
+  "jobDetails": [
+    {
+      "id": 1,
+      "Scheduler_Name": "Daily Josh DE BU Scheduler",
+      "Configuration_Name": "Josh/DEBU",
+      "Department_Name": "IT",
+      "Service": "Download",
+      "Status": "Pending",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 2,
+      "Scheduler_Name": "Weekly Josh JAS BU Scheduler",
+      "Configuration_Name": "Josh/JASBU",
+      "Department_Name": "CS",
+      "Service": "File Validation",
+      "Status": "Failed",
+      "Triggered_At": "10 Dec 2023 At 12:32:00"
+    },
+    {
+      "id": 3,
+      "Scheduler_Name": "Weekly Josh HR BU Scheduler",
+      "Configuration_Name": "Josh/HRBU",
+      "Department_Name": "IT",
+      "Service": "File Validation",
+      "Status": "Pending",
+      "Triggered_At": "10 Dec 2023 At 12:20:00"
+    },
+    {
+      "id": 4,
+      "Scheduler_Name": "Monthly Josh IT BU Scheduler",
+      "Configuration_Name": "Josh/ITBU",
+      "Department_Name": "CS",
+      "Status": "Failed",
+      "Service": "Upload",
+      "Triggered_At": "10 Dec 2023 At 12:21:00"
+    },
+    {
+      "id": 5,
+      "Scheduler_Name": "Daily Josh JAS BU Scheduler",
+      "Configuration_Name": "Josh/JASBU",
+      "Department_Name": "FINANCE",
+      "Status": "Pending",
+      "Service": "Download",
+      "Triggered_At": "10 Dec 2023 At 12:32:00"
+    },
+    {
+      "id": 6,
+      "Scheduler_Name": "Daily Josh IT BU Scheduler",
+      "Configuration_Name": "Josh/ITBU",
+      "Department_Name": "IT",
+      "Status": "Failed",
+      "Service": "Template Validation",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 7,
+      "Scheduler_Name": "Monthly Josh BFSI BU Scheduler",
+      "Configuration_Name": "Josh/BFSIBU",
+      "Department_Name": "HR",
+      "Status": "Completed",
+      "Service": "File Validation",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 8,
+      "Scheduler_Name": "Monthly Josh HR BU Scheduler",
+      "Configuration_Name": "Josh/HRBU",
+      "Department_Name": "IT",
+      "Status": "Pending",
+      "Service": "Template Validation",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 9,
+      "Scheduler_Name": "Weekly Josh IT BU Scheduler",
+      "Configuration_Name": "Josh/ITBU",
+      "Department_Name": "FINANCE",
+      "Status": "Completed",
+      "Service": "Download",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 10,
+      "Scheduler_Name": "Monthly Josh DE BU Scheduler",
+      "Configuration_Name": "Josh/DEBU",
+      "Department_Name": "IT",
+      "Status": "Completed",
+      "Service": "Template Validation",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 11,
+      "Scheduler_Name": "Daily Josh BFSI BU Scheduler",
+      "Configuration_Name": "Josh/BFSIBU",
+      "Department_Name": "TAD",
+      "Status": "Pending",
+      "Service": "File Validation",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 12,
+      "Scheduler_Name": "Weekly Josh DE BU Scheduler",
+      "Configuration_Name": "Josh/DEBU",
+      "Department_Name": "IT",
+      "Status": "Completed",
+      "Service": "Upload",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 13,
+      "Scheduler_Name": "Daily Josh HR BU Scheduler",
+      "Configuration_Name": "Josh/HRBU",
+      "Department_Name": "HR",
+      "Status": "Completed",
+      "Service": "File Validation",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 14,
+      "Scheduler_Name": "Weekly Josh BFSI BU Scheduler",
+      "Configuration_Name": "Josh/BFSIBU",
+      "Department_Name": "IT",
+      "Status": "Pending",
+      "Service": "Download",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 15,
+      "Scheduler_Name": "Monthly Josh DE BU Scheduler",
+      "Configuration_Name": "Josh/DEBU",
+      "Department_Name": "TAD",
+      "Status": "Completed",
+      "Service": "Upload",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    }
+  ]
+}

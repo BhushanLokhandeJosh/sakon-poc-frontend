@@ -1,3 +1,4 @@
+
 export const API_ROUTES = {
   SCHEDULERS: {
     CREATE: "/schedules",
@@ -5,6 +6,9 @@ export const API_ROUTES = {
   },
   CONFIGURATION: {
     CREATE: "/configurations",
+  },
+   JOBS: {
+    GET: "/jobs",
   },
 };
 
