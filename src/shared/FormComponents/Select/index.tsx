@@ -15,7 +15,7 @@ interface IMultiSelectProps {
   menuPlacement?: string;
   maxMenuHeight?: number;
   menuShouldScrollIntoView?: boolean;
-  value?:string
+  value?: string;
 }
 
 const Select = (props: IMultiSelectProps) => {
@@ -29,7 +29,7 @@ const Select = (props: IMultiSelectProps) => {
     menuPlacement,
     menuShouldScrollIntoView,
     maxMenuHeight,
-    value
+    value,
   } = props;
   return (
     <>

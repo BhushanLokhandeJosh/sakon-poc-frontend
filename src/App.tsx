@@ -5,6 +5,7 @@ import CreateSchedulerContainer from "./pages/Scheduler/CreateScheduler";
 
 import CreateConfigurationsContainer from "./pages/Configuration/CreateConfiguration";
 import StepContainer from "./pages/Jobs/StepComponent";
+import ConfigurationsContainer from "./pages/Configuration/GetAllConfigurations";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         {/* <CreateConfigurationsContainer /> */}
         {/* <CreateSchedulerContainer /> */}
         {/* <StepContainer /> */}
+        <ConfigurationsContainer />
       </LayoutComponent>
     </Box>
   );

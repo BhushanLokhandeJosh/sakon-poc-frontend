@@ -16,6 +16,7 @@ const queryClient = new QueryClient();
 root.render(
   <QueryClientProvider client={queryClient}>
     <ToastContainer />
+    <ToastContainer />
     <App />
   </QueryClientProvider>
 );

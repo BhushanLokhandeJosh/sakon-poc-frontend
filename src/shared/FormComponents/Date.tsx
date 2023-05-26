@@ -8,7 +8,7 @@ import { InputLabel } from "@mui/material";
 interface IDateElementProps {
   label?: string;
   name: string;
-  value?:string
+  value?: string;
 }
 
 const Date = (props: IDateElementProps) => {

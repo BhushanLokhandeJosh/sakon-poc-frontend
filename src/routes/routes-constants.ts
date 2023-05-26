@@ -1,14 +1,19 @@
-
 export const API_ROUTES = {
+  CONFIGURATIONS: {
+    GET: "/configurations", // GET: "/configDetails",
+    CREATE: "/configurations",
+  },
+  DEPARTMENT: {
+    GET: "/departments",
+  },
   SCHEDULERS: {
     CREATE: "/schedules",
     GET: "/schedulers",
   },
-  CONFIGURATION: {
-    CREATE: "/configurations",
-  },
-   JOBS: {
+  JOBS: {
     GET: "/jobs",
   },
 };
+
+
 

@@ -11,11 +11,12 @@ export const POST = (
   return instance.post(url, body).then((res) => res);
 };
 
-//TODO -> Other API calls like GET,PUT,DELETE have yet to be implemented.
-
-export const GET = (
-  url: string,
-  params?: any
-): Promise<AxiosResponse<string, any>> => {
+export const GET = (url: string, params?: any) => {
   return instance.get(url, { params }).then((res) => res.data);
 };
+
+
+//TODO -> Other API calls like GET,PUT,DELETE have yet to be implemented.
+
+
+
