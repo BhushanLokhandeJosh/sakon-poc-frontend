@@ -16,7 +16,7 @@ const useFetchConfigurations = ({
     [GET_ALL_CONFIGURATIONS, searchValue, filterData],
     () =>
       getConfigurations({
-        carrierName_like: searchValue,
+        carrier_name: searchValue, // carrierName_like: searchValue,
         department_like: filterData?.department,
         schedulingStatus_like: filterData?.schedulingStatus,
       })
