@@ -15,8 +15,4 @@ export const GET = (url: string, params?: any) => {
   return instance.get(url, { params }).then((res) => res.data);
 };
 
-
 //TODO -> Other API calls like GET,PUT,DELETE have yet to be implemented.
-
-
-

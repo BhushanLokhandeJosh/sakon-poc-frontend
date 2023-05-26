@@ -3,6 +3,25 @@ import { AxiosError, AxiosResponse } from "axios";
 
 import { getSchedulers, scheduleConfiguration } from "./scheduler-services";
 
+//This hook is used to fetch all scheduling list.
+export const useFetchAllSchedulers = ({
+  searchValue,
+}: {
+  searchValue?: string;
+}) => {
+  const response = useQuery(["getAllSchedulers", searchValue], () =>
+    getSchedulers({
+      schedule_name: searchValue, // schedule_name_like: searchValue,
+    })
+  );
+
+  return {
+    data: response?.data?.data,
+    isLoading: response.isLoading,
+    isError: response.isError,
+  };
+};
+
 interface IScheduleResponseProps {
   onSuccess: (values: AxiosResponse) => void;
   onError: (values: AxiosError) => void;
@@ -14,17 +33,4 @@ export const useScheduleConfiguration = (props: IScheduleResponseProps) => {
     onSuccess,
     onError,
   });
-};
-
-
-export const useFetchAllSchedulers = ({
-  searchValue,
-}: {
-  searchValue?: string;
-}) => {
-  return useQuery(["getAllSchedulers", searchValue], () =>
-    getSchedulers({
-      schedule_name_like: searchValue,
-    })
-  );
 };

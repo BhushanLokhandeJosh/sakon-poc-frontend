@@ -12,6 +12,6 @@ export const scheduleConfiguration = (
 };
 
 export const getSchedulers = (params: any) => {
-  console.log("Hook Called",params);
+  console.log("Hook Called", params);
   return GET(`${API_ROUTES.SCHEDULERS.GET}`, params);
 };

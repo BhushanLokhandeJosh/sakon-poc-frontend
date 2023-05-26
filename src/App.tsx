@@ -7,6 +7,8 @@ import CreateConfigurationsContainer from "./pages/Configuration/CreateConfigura
 import StepContainer from "./pages/Jobs/StepComponent";
 import ConfigurationsContainer from "./pages/Configuration/GetAllConfigurations";
 
+import GetAllSchedulersContainer from "./pages/Scheduler/GetAllSchedulers";
+
 function App() {
   return (
     <Box>
@@ -14,7 +16,8 @@ function App() {
         {/* <CreateConfigurationsContainer /> */}
         {/* <CreateSchedulerContainer /> */}
         {/* <StepContainer /> */}
-        <ConfigurationsContainer />
+        {/* <ConfigurationsContainer /> */}
+        <GetAllSchedulersContainer />
       </LayoutComponent>
     </Box>
   );

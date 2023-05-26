@@ -8,12 +8,9 @@ export const API_ROUTES = {
   },
   SCHEDULERS: {
     CREATE: "/schedules",
-    GET: "/schedulers",
+    GET: "/schedules", // GET: "/schedulers",
   },
   JOBS: {
     GET: "/jobs",
   },
 };
-
-
-
