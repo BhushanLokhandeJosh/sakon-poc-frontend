@@ -1,6 +1,8 @@
 import { Box } from "@mui/material";
 
-import "./App.css";
+import LayoutComponent from "./shared/Navbar";
+import CreateSchedulerContainer from "./pages/Scheduler/CreateScheduler";
+
 
 import CreateConfigurationsContainer from "./pages/Configuration/CreateConfiguration";
 import LayoutComponent from "./shared/Navbar";
@@ -9,7 +11,7 @@ function App() {
   return (
     <Box>
       <LayoutComponent>
-        <CreateConfigurationsContainer />
+        <CreateSchedulerContainer />
       </LayoutComponent>
     </Box>
   );

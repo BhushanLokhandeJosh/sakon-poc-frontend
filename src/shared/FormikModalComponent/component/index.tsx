@@ -1,11 +1,11 @@
 import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-import FormikContainer from "./FormikContainer";
-
 import { IFormikProps, MAX_WIDTH } from "../../types";
 import "./styles/styles.css";
 import { IConfiguration } from "../../../pages/Configuration/CreateConfiguration/types";
+
+import FormikContainer from "./FormikContainer";
 
 export interface IFormikModalProp {
   isOpen: boolean;
