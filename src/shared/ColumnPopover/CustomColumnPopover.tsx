@@ -1,5 +1,6 @@
 import { Button, Popover } from "@mui/material";
 import { useState } from "react";
+import "./style.css";
 
 interface CustomColumnPopoverProps {
   arr: string[];
