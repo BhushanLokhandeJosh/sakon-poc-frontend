@@ -2,7 +2,7 @@ import { Form } from "formik";
 import { Grid } from "@mui/material";
 
 import { IConfiguration } from "../types";
-import { IFormikProps } from "../../../../shared/types";
+import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
 
 import "./styles/styles.css";
 
@@ -20,7 +20,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Configuration Name"
               name="configurationName"
               className="input-field"
@@ -32,7 +32,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Carrier Name"
               name="carrierName"
               className="input-field"
@@ -44,7 +44,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+type={INPUT_TYPE.TEXT}
               label="Email"
               name="email"
               className="input-field"
@@ -55,7 +55,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="password"
+              type={INPUT_TYPE.PASSWORD}
               label="Password"
               name="password"
               className="input-field"
@@ -67,7 +67,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Department"
               name="department"
               className="input-field"
@@ -78,7 +78,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Sftp Location"
               name="sftpLocation"
               className="input-field"
@@ -89,7 +89,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Sftp Login"
               name="sftpLogin"
               className="input-field"
@@ -100,7 +100,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="password"
+              type={INPUT_TYPE.PASSWORD}
               label="Sftp Password"
               name="sftpPassword"
               className="input-field"
@@ -112,7 +112,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="text"
+              type={INPUT_TYPE.TEXT}
               label="Download Link"
               name="downloadPath"
               className="input-field"
@@ -123,7 +123,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-              type="file"
+              type={INPUT_TYPE.FILE}
               label="Template"
               name="template"
               className="input-file-field"

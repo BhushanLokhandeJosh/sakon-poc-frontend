@@ -17,8 +17,6 @@ interface ICustomTableProps {
   useCustomFetch: any;
   initialValues?: any;
   validationSchema?: any;
-  getFormFilterBody?: any;
-  validationSchema?: any;
   tableClassName?: string;
   /**
    * pass id or any other parameters to the query to fetch query related data.
@@ -48,7 +46,10 @@ const CustomTable = (props: ICustomTableProps) => {
     useCustomFetch,
     initialValues,
     validationSchema,
-    getFormFilterBody,
+    tableClassName,
+    searchConfiguration,
+    filterConfiguration,
+    queryArguments,
   } = props;
 
   //for search properties.
@@ -78,7 +79,7 @@ const CustomTable = (props: ICustomTableProps) => {
     if (searchTrigger !== searchValue) {
       const delayDebounceFn = setTimeout(() => {
         setSearchTrigger(searchValue);
-      }, 500);
+      }, 200);
       return () => clearTimeout(delayDebounceFn);
     }
   }, [searchValue, searchTrigger, setSearchTrigger]);
@@ -95,8 +96,6 @@ const CustomTable = (props: ICustomTableProps) => {
   if (isError) {
     return <>Error...</>;
   }
-
-  console.log(data);
 
   return (
     <Box>
