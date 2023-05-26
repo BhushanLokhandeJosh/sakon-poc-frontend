@@ -43,7 +43,8 @@ const Input = (props: InputComponentProps): ReactElement => {
   } = props;
 
   const handleFileChange = (fileNameAttribute: string, event: any) => {
-    //TODO : We have to look over this.
+    //TODO : We have to check this formikSetFieldValue condition as we are
+    //using conditional props to handle it but still we have this bug.
     formikSetFieldValue &&
       formikSetFieldValue(fileNameAttribute, event.currentTarget.files[0]);
   };
