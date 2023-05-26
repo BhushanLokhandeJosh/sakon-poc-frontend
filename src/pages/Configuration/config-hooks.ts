@@ -16,12 +16,12 @@ const useFetchConfigurations = ({
     [GET_ALL_CONFIGURATIONS, searchValue, filterData],
     () =>
       getConfigurations({
-        carrierName_like: searchValue, // carrierName_like: searchValue,
+        carrierName_like: searchValue,
         department_like: filterData?.department,
         schedulingStatus_like: filterData?.schedulingStatus,
       })
   );
-  console.log("dataa", searchValue);
+  console.log("dataa", response?.data?.data);
 
   return {
     data: response?.data?.data,
