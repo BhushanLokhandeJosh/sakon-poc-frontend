@@ -12,7 +12,7 @@ function App() {
       <LayoutComponent>
         {/* <CreateConfigurationsContainer /> */}
         {/* <CreateSchedulerContainer /> */}
-        <StepContainer />
+        {/* <StepContainer /> */}
       </LayoutComponent>
     </Box>
   );
