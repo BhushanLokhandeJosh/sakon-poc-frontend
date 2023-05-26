@@ -1,7 +1,5 @@
 import { useQuery } from "react-query";
-import {
-  fetchAllJobs,
-} from "./job-services";
+import { fetchAllJobs } from "./job-services";
 
 export const useFetchAllJobs = ({
   searchValue,
@@ -10,11 +8,19 @@ export const useFetchAllJobs = ({
   searchValue?: string;
   filterData?: any;
 }) => {
-  return useQuery<any, any>(
+  const response = useQuery<any, any>(
     ["getAllJobs", searchValue, filterData],
-    () => fetchAllJobs({
-     Service_like: searchValue
-    })
+    () =>
+      fetchAllJobs({
+        Service_like: searchValue,
+      })
   );
-};
 
+  console.log(response.data?.data);
+  return {
+    data: response.data?.data,
+    isLoading: response.isLoading,
+    isErrot: response.isError,
+  };
+  // return response;
+};
