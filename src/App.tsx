@@ -10,8 +10,8 @@ function App() {
   return (
     <Box>
       <LayoutComponent>
-        {/* <CreateConfigurationsContainer />
-        <CreateSchedulerContainer /> */}
+        {/* <CreateConfigurationsContainer /> */}
+        {/* <CreateSchedulerContainer /> */}
         <StepContainer />
       </LayoutComponent>
     </Box>

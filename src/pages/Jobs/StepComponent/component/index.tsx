@@ -1,4 +1,3 @@
-
 import { Box, Typography } from "@mui/material";
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
 import { getAllJobsColumns } from "./constants";
@@ -16,7 +15,7 @@ const StepComponent = () => {
         sx={{
           margin: "0% 0% 1% 1%",
           fontWeight: "bold",
-          fontSize: "20px",
+          fontSize: "30px",
         }}
       >
         Jobs
@@ -28,7 +27,7 @@ const StepComponent = () => {
         }}
       >
         <CustomTable
-          isFilterVisible={false}
+          searchConfiguration={{ isSearchBoxVisible: false }}
           columnHeaders={getAllJobsColumns}
           useCustomFetch={useFetchAllJobs}
         />

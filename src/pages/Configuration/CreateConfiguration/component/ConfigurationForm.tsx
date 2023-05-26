@@ -13,7 +13,7 @@ interface IConfigurationProps {
 }
 
 const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
-  const { values } = props.formik;
+  const { values, setFieldValue } = props.formik;
   return (
     <Form>
       <Grid container rowSpacing={4} columnSpacing={{ xs: 4 }}>
@@ -44,7 +44,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
         <Grid item xs={12} md={10} lg={6}>
           <div>
             <Input
-type={INPUT_TYPE.TEXT}
+              type={INPUT_TYPE.TEXT}
               label="Email"
               name="email"
               className="input-field"
@@ -128,6 +128,7 @@ type={INPUT_TYPE.TEXT}
               name="template"
               className="input-file-field"
               value={values.template}
+              formikSetFieldValue={setFieldValue}
             />
           </div>
         </Grid>

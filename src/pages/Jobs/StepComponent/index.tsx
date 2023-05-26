@@ -5,19 +5,21 @@ import StepComponent from "./component";
 import { getAllJobsColumns } from "./component/constants";
 
 const StepContainer = () => {
-  return <StepComponent/>
-  // return (
-  //   <PageComponent
-  //     pageTitle="Jobs"
-  //     pageBody={
-  //       <CustomTable
-  //         isFilterVisible={false}
-  //         columnHeaders={getAllJobsColumns}
-  //         useCustomFetch={useFetchAllJobs}
-  //       />
-  //     }
-  //   />
-  // );
+  // return <StepComponent/>
+  return (
+    <PageComponent
+      pageTitle="Jobs"
+      pageBody={
+        <CustomTable
+          searchConfiguration={{
+            isSearchBoxVisible: true,
+          }}
+          columnHeaders={getAllJobsColumns}
+          useCustomFetch={useFetchAllJobs}
+        />
+      }
+    />
+  );
 };
 
 export default StepContainer;

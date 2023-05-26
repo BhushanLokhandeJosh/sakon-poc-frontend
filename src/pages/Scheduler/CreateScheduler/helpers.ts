@@ -119,25 +119,25 @@ export const timeZones = [
   },
 ];
 
-export const configurationOptions = [
-  {
-    value: "1",
-    label: "Josh/DEBU/Verizone",
-  },
-  {
-    value: "2",
-    label: "Josh/JASBU/Idea",
-  },
-  {
-    value: "3",
-    label: "Josh/BFSIBU/Airtel",
-  },
-  {
-    value: "4",
-    label: "Josh/HROPBU/Vodafone",
-  },
-  {
-    value: "5",
-    label: "Josh/SFBU/Jio",
-  },
-];
+// export const configurationOptions = [
+//   {
+//     value: "9",
+//     label: "Josh/DEBU/Verizone",
+//   },
+//   {
+//     value: "10",
+//     label: "Josh/JASBU/Idea",
+//   },
+//   {
+//     value: "11",
+//     label: "Josh/BFSIBU/Airtel",
+//   },
+//   {
+//     value: "12",
+//     label: "Josh/HROPBU/Vodafone",
+//   },
+//   {
+//     value: "13",
+//     label: "Josh/SFBU/Jio",
+//   },
+// ];

@@ -12,7 +12,7 @@ import FormikModalComponent from "../../../../shared/FormikModalComponent/compon
 import { IFormikProps } from "../../../../shared/types";
 
 const CreateScheduler = (props: ICreateSchedulerProps) => {
-  const { isOpen: isSchedulerModalOpen, toggleModal, onSubmit } = props;
+  const { configurationOptions,isOpen: isSchedulerModalOpen, toggleModal, onSubmit } = props;
 
   return (
     <Box>
@@ -30,7 +30,7 @@ const CreateScheduler = (props: ICreateSchedulerProps) => {
           toggleModal={toggleModal}
           modalTitle="Create Scheduler"
           getFormBody={(formik: IFormikProps<ISchedulerProps>) => (
-            <SchedulerForm formik={formik} />
+            <SchedulerForm formik={formik} configurationOptions={configurationOptions} />
           )}
           initialValues={initialSchedulerValue}
           validationSchema={validationSchema}

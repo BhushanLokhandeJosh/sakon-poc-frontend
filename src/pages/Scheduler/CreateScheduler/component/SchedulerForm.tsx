@@ -1,14 +1,8 @@
 import { Grid, InputLabel } from "@mui/material";
 
-import {
-  DaysOfMonth,
-  Interval,
-  configurationOptions,
-  dayOfWeek,
-  timeZones,
-} from "../helpers";
+import { DaysOfMonth, Interval, dayOfWeek, timeZones } from "../helpers";
 
-import { IFormikProps } from "../../../../shared/types";
+import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
 import { INTERVAL, ISchedulerProps } from "../types";
 
 import Input from "../../../../shared/FormComponents/Input";
@@ -18,9 +12,11 @@ import { useEffect } from "react";
 
 interface ISchedulerFormProps {
   formik: IFormikProps<ISchedulerProps>;
+  configurationOptions: any;
 }
 
 const SchedulerForm = (props: ISchedulerFormProps) => {
+  const { configurationOptions } = props;
   const { interval, schedularName, timeDuration } = props.formik.values;
   const { setFieldValue } = props.formik;
   const isMonthly: boolean = interval === INTERVAL.MONTHLY;
@@ -49,7 +45,7 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
       </Grid>
       <Grid item lg={9} md={8} sm={8} xs={12}>
         <Input
-          type="text"
+          type={INPUT_TYPE.TEXT}
           name="schedularName"
           className="form-control-input"
           placeholder="Schedular Name"
