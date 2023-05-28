@@ -8,11 +8,17 @@ export enum MAX_WIDTH {
   XL = "xl",
 }
 
-export interface IFormikProps<T> extends FormikProps<T> {}
-
-/**
- *  Used for object with any fields when key of of type string and value with any type.
- */
-export interface IObjectWithAnyFields {
-  [key: string]: any;
+export enum INPUT_TYPE {
+  TEXT = "text",
+  DATE = "date",
+  TIME = "time",
+  TEXTAREA = "textarea",
+  SELECT = "select",
+  EMAIL = "email",
+  PASSWORD = "password",
+  NUMBER = "number",
+  FILE = "file",
+  RADIO = "radio",
 }
+
+export interface IFormikProps<T> extends FormikProps<T> {}
