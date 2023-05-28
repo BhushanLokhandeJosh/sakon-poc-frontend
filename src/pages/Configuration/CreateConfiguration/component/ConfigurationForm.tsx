@@ -1,5 +1,4 @@
-import { ChangeEvent } from "react";
-import { ErrorMessage, Form } from "formik";
+import { Form } from "formik";
 import { Grid } from "@mui/material";
 
 import { IConfiguration } from "../types";
@@ -8,7 +7,6 @@ import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
 import "./styles/styles.css";
 
 import Input from "../../../../shared/FormComponents/Input";
-import FormError from "../../../../shared/FormComponents/FormError";
 
 interface IConfigurationProps {
   formik: IFormikProps<IConfiguration>;
