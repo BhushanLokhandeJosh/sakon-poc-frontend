@@ -2,6 +2,7 @@ import LayoutComponent from "./shared/Navbar";
 
 import "./App.css";
 
+import CreateSchedulerContainer from "./pages/Scheduler/CreateScheduler";
 import GetAllSchedulersContainer from "./pages/Scheduler/GetAllSchedulers";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <div className="App">
       <LayoutComponent>
         <GetAllSchedulersContainer />
+        {/* <CreateSchedulerContainer /> */}
       </LayoutComponent>
     </div>
   );
