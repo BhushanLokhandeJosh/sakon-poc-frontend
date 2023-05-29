@@ -3,26 +3,35 @@ import { Field, ErrorMessage } from "formik";
 import { InputLabel } from "@mui/material";
 
 import FormError from "./FormError";
-import { INPUT_TYPE } from "../types";
 
 import "./styles/styles.css";
+import { INPUT_TYPE } from "../types";
 
-interface InputElementProps {
+interface CommonProps {
   label?: string;
   name: string;
-  type: INPUT_TYPE;
   className?: string;
   placeholder?: string;
   value: string | Blob;
-  // This Formik Props only for handling file.
-  formikSetFieldValue?: (
+}
+
+interface InputElementProps extends CommonProps {
+  type: Exclude<INPUT_TYPE, INPUT_TYPE.FILE>;
+  formikSetFieldValue?: never;
+}
+
+interface FileElementProps extends CommonProps {
+  type: INPUT_TYPE.FILE;
+  formikSetFieldValue: (
     field: string,
     value: any,
     shouldValidate?: boolean
   ) => void;
 }
 
-const Input = (props: InputElementProps): ReactElement => {
+type InputComponentProps = InputElementProps | FileElementProps;
+
+const Input = (props: InputComponentProps): ReactElement => {
   const {
     label,
     name,
@@ -34,6 +43,8 @@ const Input = (props: InputElementProps): ReactElement => {
   } = props;
 
   const handleFileChange = (fileNameAttribute: string, event: any) => {
+    //TODO : We have to check this formikSetFieldValue condition as we are
+    //using conditional props to handle it but still we have this bug.
     formikSetFieldValue &&
       formikSetFieldValue(fileNameAttribute, event.currentTarget.files[0]);
   };
