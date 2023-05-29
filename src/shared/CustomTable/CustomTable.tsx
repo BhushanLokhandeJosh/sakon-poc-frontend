@@ -102,8 +102,8 @@ const CustomTable = (props: ICustomTableProps) => {
 
   return (
     <Box>
-      <div className={searchBoxFilterBoxClassName}>
-        {isFilterVisible && getFormFilterBody && (
+      {isFilterVisible && getFormFilterBody && (
+        <div className={searchBoxFilterBoxClassName}>
           <Box>
             <Button variant="contained" onClick={handleToggle}>
               <FilterListIcon />
@@ -122,15 +122,16 @@ const CustomTable = (props: ICustomTableProps) => {
               submitButtonLabel="Apply"
             />
           </Box>
-        )}
-        {isSearchBoxVisible && (
-          <SearchBox
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-            searchBoxStyle={searchBoxClassName}
-          />
-        )}
-      </div>
+        </div>
+      )}
+      {isSearchBoxVisible && (
+        <SearchBox
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          searchBoxStyle={searchBoxClassName}
+        />
+      )}
+
       <div className={tableClassName}>
         <DataGrid
           disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.

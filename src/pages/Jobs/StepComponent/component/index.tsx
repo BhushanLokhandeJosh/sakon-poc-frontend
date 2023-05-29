@@ -44,8 +44,8 @@ const StepComponent = () => {
     //   </Typography>
     <Box>
       <PageComponent
-        // pageTitleClassName="title-style"
         pageTitle="Jobs"
+        pageTitleClassName="title-style"
         pageBody={
           <CustomTable
             // searchConfiguration={{
