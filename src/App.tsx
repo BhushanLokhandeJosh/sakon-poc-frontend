@@ -17,7 +17,7 @@ function App() {
         {/* <CreateSchedulerContainer /> */}
         {/* <StepContainer /> */}
         {/* <ConfigurationsContainer /> */}
-        <GetAllSchedulersContainer />
+        {/* <GetAllSchedulersContainer /> */}
       </LayoutComponent>
     </Box>
   );
