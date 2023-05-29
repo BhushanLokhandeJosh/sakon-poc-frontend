@@ -102,8 +102,8 @@ const CustomTable = (props: ICustomTableProps) => {
 
   return (
     <Box>
-      {isFilterVisible && getFormFilterBody && (
-        <div className={searchBoxFilterBoxClassName}>
+      <div className={searchBoxFilterBoxClassName}>
+        {isFilterVisible && getFormFilterBody && (
           <Box>
             <Button variant="contained" onClick={handleToggle}>
               <FilterListIcon />
@@ -122,15 +122,15 @@ const CustomTable = (props: ICustomTableProps) => {
               submitButtonLabel="Apply"
             />
           </Box>
-        </div>
-      )}
-      {isSearchBoxVisible && (
-        <SearchBox
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-          searchBoxStyle={searchBoxClassName}
-        />
-      )}
+        )}
+        {isSearchBoxVisible && (
+          <SearchBox
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            searchBoxStyle={searchBoxClassName}
+          />
+        )}
+      </div>
 
       <div className={tableClassName}>
         <DataGrid

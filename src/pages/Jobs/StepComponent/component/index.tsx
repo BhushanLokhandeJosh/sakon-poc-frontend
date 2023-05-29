@@ -45,12 +45,13 @@ const StepComponent = () => {
     <Box>
       <PageComponent
         pageTitle="Jobs"
-        pageTitleClassName="title-style"
+        // pageTitleClassName="title-style"
         pageBody={
           <CustomTable
-            // searchConfiguration={{
-            //   isSearchBoxVisible: true,
-            // }}
+            searchConfiguration={{
+              isSearchBoxVisible: false,
+              // searchBoxFilterBoxClassName: "",
+            }}
             // filterConfiguration={{ isFilterVisible: true }}
             isPaginationVisible={true}
             columnHeaders={getAllDownloadJobColumns}
