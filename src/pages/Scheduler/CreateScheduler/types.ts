@@ -9,8 +9,8 @@ export interface ISchedulerProps {
   timeDuration?: string;
 }
 
-
 export interface ICreateSchedulerProps {
+  configurationOptions?: { value: string; label: string }[] ;
   isOpen: boolean;
   toggleModal: () => void;
   onSubmit: (values: any) => void;
