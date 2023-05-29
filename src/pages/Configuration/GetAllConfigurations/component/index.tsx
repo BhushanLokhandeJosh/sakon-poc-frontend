@@ -6,7 +6,7 @@ function GetAllConfigurations() {
   return (
     <PageComponent
       pageTitle="Configurations"
-      buttonLabel="Create Configuration"
+      // buttonLabel="Create Configuration"
       pageBody={<ConfigurationDataTable />}
     />
   );
