@@ -1,11 +1,21 @@
-import { useQuery } from "react-query";
+import { useQuery,useMutation } from "react-query";
+
+import { AxiosError, AxiosResponse } from "axios";
 
 import { DEPARTMENTS, GET_ALL_CONFIGURATIONS } from "./constants";
 import { ConfigurationFilterFormInitialValues } from "./GetAllConfigurations/types";
 import { getConfigurations, getDepartments } from "./config-services";
 
+import { createConfiguration } from "./config-services";
+
+
+interface IResponseProps {
+  onSuccess: (values: AxiosResponse) => void;
+  onError: (values: AxiosError) => void;
+}
+
 //This hook is used to fetch all the configurations.
-const useFetchConfigurations = ({
+export const useFetchConfigurations = ({
   searchValue,
   filterData,
 }: {
@@ -35,4 +45,12 @@ export const useGetDepartments = () => {
   return useQuery([DEPARTMENTS], () => getDepartments());
 };
 
-export default useFetchConfigurations;
+
+
+export const useCreateConfiguration = (props: IResponseProps) => {
+  const { onSuccess, onError } = props;
+  return useMutation(createConfiguration, {
+    onSuccess,
+    onError,
+  });
+};

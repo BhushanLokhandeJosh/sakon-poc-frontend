@@ -7,7 +7,7 @@ import "./styles/style.css";
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
 import { configurationInitialValues } from "../../constants";
 
-import useFetchConfigurations from "../../config-hooks";
+import { useFetchConfigurations } from "../../config-hooks";
 
 const ConfigurationDataTable = () => {
   return (

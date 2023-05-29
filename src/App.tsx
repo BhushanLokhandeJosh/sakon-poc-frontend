@@ -1,14 +1,17 @@
+import { Box } from "@mui/material";
+
 import "./App.css";
+
+import CreateConfigurationsContainer from "./pages/Configuration/CreateConfiguration";
 import LayoutComponent from "./shared/Navbar";
-import ConfigurationsContainer from "./pages/Configuration/GetAllConfigurations";
 
 function App() {
   return (
-    <div className="App">
+    <Box>
       <LayoutComponent>
-        <ConfigurationsContainer />
+        <CreateConfigurationsContainer />
       </LayoutComponent>
-    </div>
+    </Box>
   );
 }
 
