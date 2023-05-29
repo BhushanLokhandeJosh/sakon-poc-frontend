@@ -1,19 +1,10 @@
 import PageComponent from "../../../../shared/PageComponent/PageComponent";
+import SchedulersDataTable from "./SchedulersDataTable";
 
-import GetAllSchedulersDataTable from "./GetAllSchedulersDataTable";
-
-interface IProps {
-  useCustomFetch: any;
-}
-function GetAllSchedulersComponent({ useCustomFetch }: IProps) {
+const SchedulersComponent = () => {
   return (
-    <div>
-      <PageComponent
-        pageTitle="Schedulers"
-        pageBody={<GetAllSchedulersDataTable useCustomFetch={useCustomFetch} />}
-      />
-    </div>
+    <PageComponent pageTitle="Schedulers" pageBody={<SchedulersDataTable />} />
   );
-}
+};
 
-export default GetAllSchedulersComponent;
+export default SchedulersComponent;

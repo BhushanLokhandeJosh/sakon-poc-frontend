@@ -1,8 +1,7 @@
-import { useFetchAllSchedulers } from "../scheduler-hooks";
-import GetAllSchedulersComponent from "./component";
+import SchedulersComponent from "./component";
 
-const GetAllSchedulersContainer = () => {
-  return <GetAllSchedulersComponent useCustomFetch={useFetchAllSchedulers} />; //Passing useFetchAllSchedulers hook to the component.
+const SchedulersContainer = () => {
+  return <SchedulersComponent />;
 };
 
-export default GetAllSchedulersContainer;
+export default SchedulersContainer;

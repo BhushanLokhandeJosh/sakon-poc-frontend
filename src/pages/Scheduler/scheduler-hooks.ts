@@ -26,7 +26,7 @@ export const useFetchAllSchedulers = ({
 }) => {
   const response = useQuery(["getAllSchedulers", searchValue], () =>
     getSchedulers({
-      schedule_name: searchValue, // schedule_name_like: searchValue,
+      schedule_name: searchValue,
       is_scheduled,
     })
   );

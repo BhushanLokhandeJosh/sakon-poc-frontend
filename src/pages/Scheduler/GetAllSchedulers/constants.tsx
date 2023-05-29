@@ -3,9 +3,10 @@ import { Tooltip, TableCell } from "@mui/material";
 
 import { getTimeFromNow } from "./helper";
 
+import { IObjectWithAnyFields } from "../../../shared/types";
 import CustomColumnPopover from "../../../shared/ColumnPopover/CustomColumnPopover";
 
-export const getAllSchedulerColumns: GridColDef[] = [
+export const SchedulerColumns: GridColDef[] = [
   {
     field: "id",
     headerName: "Id",
@@ -35,9 +36,8 @@ export const getAllSchedulerColumns: GridColDef[] = [
     sortable: false,
     headerAlign: "center",
     align: "center",
-    renderCell: (params: any) => {
-      const arr = params?.row.configuration;
-      return <CustomColumnPopover arr={arr} />;
+    renderCell: (params: IObjectWithAnyFields) => {
+      return <CustomColumnPopover arr={params?.row.configuration} />;
     },
   },
   {
