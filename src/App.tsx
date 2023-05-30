@@ -5,10 +5,12 @@ import JobsDetails from "../src/pages/Jobs/StepComponent/component/JobsDetails";
 function App() {
   return (
     <BrowserRouter>
+      {/* <Typography sx={{ display: "flex", justifyContent: "center" }}> */}
       <Routes>
         <Route path="/" element={<StepContainer />} />
         <Route path="/jobs/:id" element={<JobsDetails />} />
       </Routes>
+      {/* </Typography> */}
     </BrowserRouter>
   );
 }

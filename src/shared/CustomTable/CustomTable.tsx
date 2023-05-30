@@ -131,7 +131,6 @@ const CustomTable = (props: ICustomTableProps) => {
           />
         )}
       </div>
-
       <div className={tableClassName}>
         <DataGrid
           disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.

@@ -152,12 +152,19 @@
       "triggered_at": "10 Dec 2023 At 12:04:00",
       "attempts": "0 of 3",
       "timeout": "2hrs"
+    },
+    {
+      "id": 2,
+      "step": "def",
+      "triggered_at": "1 Dec 2023 At 12:04:00",
+      "attempts": "0 of 3",
+      "timeout": "2hrs"
     }
   ],
   "templateValidators": [
     {
       "id": 1,
-      "step": "abc",
+      "step": "xyz",
       "triggered_at": "10 Dec 2023 At 12:04:00",
       "attempts": "0 of 3",
       "timeout": "2hrs",
