@@ -3,7 +3,7 @@ import LayoutComponent from "./shared/Navbar";
 import "./App.css";
 
 import CreateSchedulerContainer from "./pages/Scheduler/CreateScheduler";
-import SchedulersContainer from "./pages/Scheduler/GetAllSchedulers";
+import SchedulersContainer from "./pages/Scheduler/SchedulersList";
 
 function App() {
   return (
