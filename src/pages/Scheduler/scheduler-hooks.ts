@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "react-query";
+import { useQuery, useMutation } from "react-query";
 import { AxiosError, AxiosResponse } from "axios";
 
 import { getSchedulers, scheduleConfiguration } from "./scheduler-services";
@@ -26,7 +26,7 @@ export const useFetchAllSchedulers = ({
 }) => {
   const response = useQuery(["getAllSchedulers", searchValue], () =>
     getSchedulers({
-      schedule_name: searchValue, // schedule_name_like: searchValue,
+      schedule_name: searchValue,
       is_scheduled,
     })
   );
