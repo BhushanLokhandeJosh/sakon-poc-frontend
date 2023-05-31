@@ -1,18 +1,17 @@
-import { Typography } from "@mui/material";
-import StepContainer from "./pages/Jobs/StepComponent";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import JobsDetails from "../src/pages/Jobs/StepComponent/component/JobsDetails";
-function App() {
+
+import JobListingContainer from "./pages/Jobs/JobListing/component";
+import JobsDetailsContainer from "./pages/Jobs/JobDetails/component";
+
+const App = () => {
   return (
     <BrowserRouter>
-      {/* <Typography sx={{ display: "flex", justifyContent: "center" }}> */}
       <Routes>
-        <Route path="/" element={<StepContainer />} />
-        <Route path="/jobs/:id" element={<JobsDetails />} />
+        <Route path="/" element={<JobListingContainer />} />
+        <Route path="/job-details/:id" element={<JobsDetailsContainer />} />
       </Routes>
-      {/* </Typography> */}
     </BrowserRouter>
   );
-}
+};
 
 export default App;

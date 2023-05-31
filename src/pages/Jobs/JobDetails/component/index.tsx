@@ -1,28 +1,28 @@
 import { Box } from "@mui/material";
-import React from "react";
 import { useParams } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CustomTable from "../../../../shared/CustomTable/CustomTable";
-import "../component/style/styles.css";
 
-import {
-  getAllDownloads,
-  getAllFileValidators,
-  getAllTemplateValidators,
-  getAllUploads,
-} from "./constants";
 import {
   useFetchDownloads,
   useFetchFileValidators,
   useFetchTemplateValidators,
   useFetchUploads,
 } from "../../jobs-hooks";
-import PageComponent from "../../../../shared/PageComponent/PageComponent";
+import {
+  DownloadsColumns,
+  FileValidatorColumns,
+  TemplateValidatorColumns,
+  UploadColumns,
+} from "./constants";
 
-const JobsDetails = () => {
+import "./style/styles.css";
+
+import PageComponent from "../../../../shared/PageComponent/PageComponent";
+import CustomTable from "../../../../shared/CustomTable/CustomTable";
+
+const JobsDetailsContainer = () => {
   const { id } = useParams();
-  console.log(typeof id);
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -34,7 +34,7 @@ const JobsDetails = () => {
               pageBody={
                 <CustomTable
                   useCustomFetch={useFetchDownloads}
-                  columnHeaders={getAllDownloads}
+                  columnHeaders={DownloadsColumns}
                   queryArguments={{ id }}
                   tableClassName="table-styles"
                 />
@@ -50,7 +50,7 @@ const JobsDetails = () => {
               pageBody={
                 <CustomTable
                   useCustomFetch={useFetchFileValidators}
-                  columnHeaders={getAllFileValidators}
+                  columnHeaders={FileValidatorColumns}
                   tableClassName="table-styles"
                 />
               }
@@ -65,7 +65,7 @@ const JobsDetails = () => {
               pageBody={
                 <CustomTable
                   useCustomFetch={useFetchTemplateValidators}
-                  columnHeaders={getAllTemplateValidators}
+                  columnHeaders={TemplateValidatorColumns}
                   tableClassName="table-styles"
                 />
               }
@@ -80,7 +80,7 @@ const JobsDetails = () => {
               pageBody={
                 <CustomTable
                   useCustomFetch={useFetchUploads}
-                  columnHeaders={getAllUploads}
+                  columnHeaders={UploadColumns}
                   tableClassName="table-styles"
                 />
               }
@@ -92,4 +92,4 @@ const JobsDetails = () => {
   );
 };
 
-export default JobsDetails;
+export default JobsDetailsContainer;

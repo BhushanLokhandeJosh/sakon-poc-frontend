@@ -101,8 +101,6 @@ const CustomTable = (props: ICustomTableProps) => {
     <div>Error</div>;
   }
 
-  console.log(data);
-
   return (
     <Box>
       <div className={searchBoxFilterBoxClassName}>

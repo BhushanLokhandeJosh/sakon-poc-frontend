@@ -2,138 +2,138 @@
   "jobDetails": [
     {
       "id": 1,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/jas",
-      "Dept_No": "IT",
-      "Service": "Download",
-      "Status": "Pending",
-      "Triggered_At": "10 Dec 2023 At 12:04:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/jas",
+      "department_no": "IT",
+      "service": "Download",
+      "status": "Pending",
+      "triggered_at": "10 Dec 2023 At 12:04:00"
     },
     {
       "id": 2,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/DE",
-      "Dept_No": "CS",
-      "Service": "File Validation",
-      "Status": "Failed",
-      "Triggered_At": "10 Dec 2023 At 12:32:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/DE",
+      "department_no": "CS",
+      "service": "File Validation",
+      "status": "Failed",
+      "triggered_at": "10 Dec 2023 At 12:32:00"
     },
     {
       "id": 3,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "IT",
-      "Service": "File Validation",
-      "Status": "Pending",
-      "Triggered_At": "10 Dec 2023 At 12:20:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "IT",
+      "service": "File Validation",
+      "status": "Pending",
+      "triggered_at": "10 Dec 2023 At 12:20:00"
     },
     {
       "id": 4,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "CS",
-      "Status": "Failed",
-      "Service": "Upload",
-      "Triggered_At": "10 Dec 2023 At 12:21:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "CS",
+      "status": "Failed",
+      "service": "Upload",
+      "triggered_at": "10 Dec 2023 At 12:21:00"
     },
     {
       "id": 5,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "FINANCE",
-      "Status": "Pending",
-      "Service": "Download",
-      "Triggered_At": "10 Dec 2023 At 12:32:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "FINANCE",
+      "status": "Pending",
+      "service": "Download",
+      "triggered_at": "10 Dec 2023 At 12:32:00"
     },
     {
       "id": 6,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "IT",
-      "Status": "Failed",
-      "Service": "Template Validation",
-      "Triggered_At": "10 Dec 2023 At 12:04:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "IT",
+      "status": "Failed",
+      "service": "Template Validation",
+      "triggered_at": "10 Dec 2023 At 12:04:00"
     },
     {
       "id": 7,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "HR",
-      "Status": "Completed",
-      "Service": "File Validation",
-      "Triggered_At": "10 Dec 2023 At 12:04:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "HR",
+      "status": "Completed",
+      "service": "File Validation",
+      "triggered_at": "10 Dec 2023 At 12:04:00"
     },
     {
       "id": 8,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "IT",
-      "Status": "Pending",
-      "Service": "Template Validation",
-      "Triggered_At": "10 Dec 2023 At 12:04:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "IT",
+      "status": "Pending",
+      "service": "Template Validation",
+      "triggered_at": "10 Dec 2023 At 12:04:00"
     },
     {
       "id": 9,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "FINANCE",
-      "Status": "Completed",
-      "Service": "Download",
-      "Triggered_At": "10 Dec 2023 At 12:04:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "FINANCE",
+      "status": "Completed",
+      "service": "Download",
+      "triggered_at": "10 Dec 2023 At 12:04:00"
     },
     {
       "id": 10,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "IT",
-      "Status": "Completed",
-      "Service": "Template Validation",
-      "Triggered_At": "10 Dec 2023 At 12:04:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "IT",
+      "status": "Completed",
+      "service": "Template Validation",
+      "triggered_at": "10 Dec 2023 At 12:04:00"
     },
     {
       "id": 11,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "TAD",
-      "Status": "Pending",
-      "Service": "File Validation",
-      "Triggered_At": "10 Dec 2023 At 12:04:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "TAD",
+      "status": "Pending",
+      "service": "File Validation",
+      "triggered_at": "10 Dec 2023 At 12:04:00"
     },
     {
       "id": 12,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "IT",
-      "Status": "Completed",
-      "Service": "Upload",
-      "Triggered_At": "10 Dec 2023 At 12:04:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "IT",
+      "status": "Completed",
+      "service": "Upload",
+      "triggered_at": "10 Dec 2023 At 12:04:00"
     },
     {
       "id": 13,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "HR",
-      "Status": "Completed",
-      "Service": "File Validation",
-      "Triggered_At": "10 Dec 2023 At 12:04:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "HR",
+      "status": "Completed",
+      "service": "File Validation",
+      "triggered_at": "10 Dec 2023 At 12:04:00"
     },
     {
       "id": 14,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "IT",
-      "Status": "Pending",
-      "Service": "Download",
-      "Triggered_At": "10 Dec 2023 At 12:04:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "IT",
+      "status": "Pending",
+      "service": "Download",
+      "triggered_at": "10 Dec 2023 At 12:04:00"
     },
     {
       "id": 15,
-      "Scheduler_Name": "Daily Scheduler",
-      "Config_Name": "josh/bfsi",
-      "Dept_No": "TAD",
-      "Status": "Completed",
-      "Service": "Upload",
-      "Triggered_At": "10 Dec 2023 At 12:04:00"
+      "scheduler_name": "Daily Scheduler",
+      "configuration_name": "josh/bfsi",
+      "department_no": "TAD",
+      "status": "Completed",
+      "service": "Upload",
+      "triggered_at": "10 Dec 2023 At 12:04:00"
     }
   ],
   "downloads": [

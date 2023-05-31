@@ -1,4 +1,5 @@
 import { useQuery } from "react-query";
+
 import {
   fetchAllDownloads,
   fetchAllJobs,
@@ -51,7 +52,6 @@ export const useFetchUploads = () => {
 //       })
 //   );
 
-//   console.log(response.data?.data);
 //   return {
 //     data: response.data?.data,
 //     isLoading: response.isLoading,

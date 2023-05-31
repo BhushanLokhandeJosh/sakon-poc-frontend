@@ -4,11 +4,6 @@
   margin-right: 20px;
 } */
 
-.table-styles {
-  height: auto;
-  width: auto;
-}
-
 /* page component styles */
 .root {
   display: "flex";
