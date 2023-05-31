@@ -43,3 +43,19 @@ export const useFetchTemplateValidators = () => {
 export const useFetchUploads = () => {
   return useQuery<any, any>(["getUploads"], () => fetchUploads());
 };
+//   const response = useQuery<any, any>(
+//     ["getAllJobs", searchValue, filterData],
+//     () =>
+//       fetchAllJobs({
+//         Service_like: searchValue,
+//       })
+//   );
+
+//   console.log(response.data?.data);
+//   return {
+//     data: response.data?.data,
+//     isLoading: response.isLoading,
+//     isErrot: response.isError,
+//   };
+//   // return response;
+// };

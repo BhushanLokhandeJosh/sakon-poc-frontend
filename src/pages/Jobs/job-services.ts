@@ -12,3 +12,5 @@ export const fetchTemplateValidators = () =>
   GET(API_ROUTES.TEMPLATEVALIDATORS.GET);
 
 export const fetchUploads = () => GET(API_ROUTES.UPLOADS.GET);
+
+// export const fetchAllJobs = (params: any) => GET(API_ROUTES.JOBS.GET, params);

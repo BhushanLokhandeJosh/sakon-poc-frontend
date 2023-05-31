@@ -40,6 +40,7 @@ interface ICustomTableProps {
       };
 
   isPaginationVisible?: boolean;
+  getFormFilterBody?: any;
 }
 
 const CustomTable = (props: ICustomTableProps) => {
@@ -99,6 +100,8 @@ const CustomTable = (props: ICustomTableProps) => {
   if (isError) {
     <div>Error</div>;
   }
+
+  console.log(data);
 
   return (
     <Box>

@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
 import { DownloadJobColumns } from "./constants";
 import { useFetchAllJobs } from "../../jobs-hooks";
