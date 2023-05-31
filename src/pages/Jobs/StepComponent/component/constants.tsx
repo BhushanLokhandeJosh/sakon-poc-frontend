@@ -4,7 +4,7 @@ import ErrorOutlineTwoToneIcon from "@mui/icons-material/ErrorOutlineTwoTone";
 import CheckCircleOutlineTwoToneIcon from "@mui/icons-material/CheckCircleOutlineTwoTone";
 import { Link } from "react-router-dom";
 
-export const getAllDownloadJobColumns: GridColDef[] = [
+export const DownloadJobColumns: GridColDef[] = [
   {
     field: "id",
     headerName: "Job Id",

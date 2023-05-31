@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
-import { getAllDownloadJobColumns } from "./constants";
+import { DownloadJobColumns } from "./constants";
 import { useFetchAllJobs } from "../../jobs-hooks";
 import PageComponent from "../../../../shared/PageComponent/PageComponent";
 import "../component/style/styles.css";
@@ -14,7 +14,7 @@ const StepComponent = () => {
         pageBody={
           <CustomTable
             isPaginationVisible={true}
-            columnHeaders={getAllDownloadJobColumns}
+            columnHeaders={DownloadJobColumns}
             useCustomFetch={useFetchAllJobs}
           />
         }
