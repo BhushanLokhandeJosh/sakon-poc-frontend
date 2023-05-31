@@ -1,16 +1,21 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 import JobListingContainer from "./pages/Jobs/JobListing/component";
 import JobsDetailsContainer from "./pages/Jobs/JobDetails/component";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<JobListingContainer />} />
-        <Route path="/job-details/:id" element={<JobsDetailsContainer />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<JobListingContainer />} />
+          <Route path="/job-details/:id" element={<JobsDetailsContainer />} />
+        </Routes>
+      </Router>
+    </div>
   );
 };
 
