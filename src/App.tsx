@@ -1,11 +1,13 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
+import { NAVIGATION_ROUTES } from "./shared/constants";
+
 import "./App.css";
 
-import LayoutComponent from "./shared/Navbar";
 import Home from "./pages/Home";
 import CreateSchedulerContainer from "./pages/Scheduler/CreateScheduler";
 import SchedulersContainer from "./pages/Scheduler/SchedulersList";
+import LayoutComponent from "./shared/Navbar";
 
 function App() {
   return (
@@ -15,10 +17,13 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route element={<LayoutComponent />}>
             <Route
-              path="/createScheduler"
+              path={NAVIGATION_ROUTES.CREATE_SCHEDULER}
               element={<CreateSchedulerContainer />}
             />
-            <Route path="/schedulingList" element={<SchedulersContainer />} />
+            <Route
+              path={NAVIGATION_ROUTES.SCHEDULING_LIST}
+              element={<SchedulersContainer />}
+            />
           </Route>
         </Routes>
       </Router>

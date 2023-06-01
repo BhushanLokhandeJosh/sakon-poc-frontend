@@ -1,8 +1,10 @@
-import CustomTable from "../../../shared/CustomTable/CustomTable";
-import PageComponent from "../../../shared/PageComponent/PageComponent";
 import { useFetchAllSchedulers } from "../scheduler-hooks";
 import { SchedulerColumns } from "./constants";
+
 import "./styles/style.css";
+
+import CustomTable from "../../../shared/CustomTable/CustomTable";
+import PageComponent from "../../../shared/PageComponent/PageComponent";
 
 const SchedulersContainer = () => {
   return (
