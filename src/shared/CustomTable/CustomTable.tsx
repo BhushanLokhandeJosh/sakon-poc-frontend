@@ -73,6 +73,7 @@ const CustomTable = (props: ICustomTableProps) => {
   const [searchTrigger, setSearchTrigger] = useState<string>("");
   const { isOpen, handleToggle } = useToggle();
   const [filterData, setFilterData] = useState<any>({});
+
   const onSubmit = (values: IObjectWithAnyFields) => {
     setFilterData(values);
     handleToggle();
@@ -87,11 +88,18 @@ const CustomTable = (props: ICustomTableProps) => {
     }
   }, [searchValue, searchTrigger, setSearchTrigger]);
 
-  const { data, isLoading, isError } = useCustomFetch({
+  const { data, isLoading, isError, refetch } = useCustomFetch({
     searchValue: searchTrigger,
     filterData,
     queryArguments,
   });
+
+  /**
+   * This function is used to refetch the api call.
+   */
+  const handleRefresh = () => {
+    refetch();
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -103,6 +111,12 @@ const CustomTable = (props: ICustomTableProps) => {
 
   return (
     <Box>
+      <div>
+        <Button variant="contained" onClick={handleRefresh}>
+          Refresh
+        </Button>
+      </div>
+
       <div className={searchBoxFilterBoxClassName}>
         {isFilterVisible && getFormFilterBody && (
           <Box>
