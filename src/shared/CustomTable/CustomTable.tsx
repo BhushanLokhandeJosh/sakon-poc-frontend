@@ -11,6 +11,7 @@ import "./style.css";
 
 import FormikModalComponent from "../FormikModalComponent/component";
 import useToggle from "../CustomHooks/useToggle";
+import RefreshIcon from "@mui/icons-material/Refresh";
 
 interface ICustomTableProps {
   columnHeaders: GridColDef[];
@@ -41,6 +42,7 @@ interface ICustomTableProps {
 
   isPaginationVisible?: boolean;
   getFormFilterBody?: any;
+  isRefreshButtonVisible?: boolean;
 }
 
 const CustomTable = (props: ICustomTableProps) => {
@@ -54,6 +56,7 @@ const CustomTable = (props: ICustomTableProps) => {
     filterConfiguration,
     queryArguments,
     isPaginationVisible,
+    isRefreshButtonVisible,
   } = props;
 
   //For search properties.
@@ -111,11 +114,19 @@ const CustomTable = (props: ICustomTableProps) => {
 
   return (
     <Box>
-      <div>
-        <Button variant="contained" onClick={handleRefresh}>
-          Refresh
-        </Button>
-      </div>
+      {isRefreshButtonVisible && (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row-reverse",
+            marginRight: "1%",
+          }}
+        >
+          <Button variant="contained" onClick={handleRefresh}>
+            Refresh
+          </Button>
+        </Box>
+      )}
 
       <div className={searchBoxFilterBoxClassName}>
         {isFilterVisible && getFormFilterBody && (

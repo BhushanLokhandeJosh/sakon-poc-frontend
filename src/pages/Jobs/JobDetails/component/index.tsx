@@ -20,6 +20,7 @@ import "./style/styles.css";
 
 import PageComponent from "../../../../shared/PageComponent/PageComponent";
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
+import LayoutComponent from "../../../../shared/Navbar";
 
 const JobsDetailsContainer = () => {
   const { id } = useParams();

@@ -16,6 +16,7 @@ const JobListingContainer = () => {
           isPaginationVisible={true}
           columnHeaders={DownloadJobColumns}
           useCustomFetch={useFetchAllJobs}
+          isRefreshButtonVisible
         />
       }
     ></PageComponent>

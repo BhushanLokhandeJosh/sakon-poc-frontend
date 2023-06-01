@@ -1,6 +1,6 @@
 export const API_ROUTES = {
   JOBS: {
-    GET: "/jobDetails",
+    GET: "/jobs", //GET: "/jobDetails",
   },
   DOWNLOADS: {
     GET: "/downloads",
