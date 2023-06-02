@@ -1,3 +1,7 @@
+export const ROUTES = {
+  PUBLIC: {},
+  PRIVATE: {},
+};
 export const API_ROUTES = {
   CONFIGURATION: {
     GET: "/configurations", // GET: "/configDetails",
