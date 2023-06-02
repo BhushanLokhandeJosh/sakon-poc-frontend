@@ -82,7 +82,7 @@ const FormikPopoverComponent = (props: IFormikModalProp) => {
             validationSchema={validationSchema}
             onSubmitHandler={(values) => onSubmit(values, handleClose)}
             formClassName={formClassName}
-            toggle={handleClose}
+            toggleModal={handleClose}
             submitButtonLabel={submitButtonLabel}
             showResetButton={showResetButton}
             showCancelButton={showCancelButton}

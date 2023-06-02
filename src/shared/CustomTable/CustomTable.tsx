@@ -11,6 +11,7 @@ import "./style.css";
 
 import FormikModalComponent from "../FormikModalComponent/component";
 import useToggle from "../CustomHooks/useToggle";
+import RefreshIcon from "@mui/icons-material/Refresh";
 
 interface ICustomTableProps {
   columnHeaders: GridColDef[];
@@ -40,6 +41,8 @@ interface ICustomTableProps {
       };
 
   isPaginationVisible?: boolean;
+  getFormFilterBody?: any;
+  isRefreshButtonVisible?: boolean;
 }
 
 const CustomTable = (props: ICustomTableProps) => {
@@ -53,6 +56,7 @@ const CustomTable = (props: ICustomTableProps) => {
     filterConfiguration,
     queryArguments,
     isPaginationVisible,
+    isRefreshButtonVisible,
   } = props;
 
   //For search properties.
@@ -86,11 +90,18 @@ const CustomTable = (props: ICustomTableProps) => {
     }
   }, [searchValue, searchTrigger, setSearchTrigger]);
 
-  const { data, isLoading, isError } = useCustomFetch({
+  const { data, isLoading, isError, refetch } = useCustomFetch({
     searchValue: searchTrigger,
     filterData,
     queryArguments,
   });
+
+  /**
+   * This function is used to refetch the api call.
+   */
+  const handleRefresh = () => {
+    refetch();
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -102,6 +113,20 @@ const CustomTable = (props: ICustomTableProps) => {
 
   return (
     <Box>
+      {isRefreshButtonVisible && (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row-reverse",
+            marginRight: "1%",
+          }}
+        >
+          <Button variant="contained" onClick={handleRefresh}>
+            Refresh
+          </Button>
+        </Box>
+      )}
+
       <div className={searchBoxFilterBoxClassName}>
         {isFilterVisible && getFormFilterBody && (
           <Box>
@@ -111,8 +136,6 @@ const CustomTable = (props: ICustomTableProps) => {
             <FormikModalComponent
               isOpen={isOpen}
               initialValues={initialValues}
-              //TODO :->  WE WILL HANDLE WHOLE FILTER BOX IN SEPRATE COMPONENT IN WHICH WE WILL
-              //REMOVE VALIDATIONSCHEMA OR KEEP IT OPTIONAL AS PER REQUIREMENTS.
               validationSchema={validationSchema}
               onSubmit={onSubmit}
               toggleModal={handleToggle}
@@ -133,7 +156,6 @@ const CustomTable = (props: ICustomTableProps) => {
           />
         )}
       </div>
-
       <div className={tableClassName}>
         <DataGrid
           disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.

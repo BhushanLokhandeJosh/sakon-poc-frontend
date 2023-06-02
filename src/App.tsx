@@ -1,7 +1,6 @@
 import "./App.css";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { NAVIGATION_ROUTES } from "./shared/constants";
-
 import Home from "./pages/Home";
 import CreateSchedulerContainer from "./pages/Scheduler/CreateScheduler";
 import SchedulersContainer from "./pages/Scheduler/SchedulersList";
@@ -9,35 +8,44 @@ import LayoutComponent from "./shared/Navbar";
 
 import CreateConfigurationsContainer from "./pages/Configuration/CreateConfiguration";
 import ConfigurationsContainer from "./pages/Configuration/GetAllConfigurations";
+import JobListingContainer from "./pages/Jobs/JobListing/component";
+import JobsDetailsContainer from "./pages/Jobs/JobDetails/component";
+import { useEffect } from "react";
+import { GET } from "./services/api/axios";
 
-function App() {
+const App = () => {
+  // useEffect(() => {
+  //   GET("/run_thread");
+  // }, []);
+
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          {/* <Route path="/" element={<Home />}></Route> */}
+
           <Route element={<LayoutComponent />}>
             <Route
-              path={NAVIGATION_ROUTES.CREATE_SCHEDULER}
-              element={<CreateSchedulerContainer />}
-            />
-            <Route
-              path={NAVIGATION_ROUTES.SCHEDULING_LIST}
-              element={<SchedulersContainer />}
-            />
-            <Route
-              path="/create-configuration"
+              path="create-configuration"
               element={<CreateConfigurationsContainer />}
             />
             <Route
-              path="get-configurations"
+              path="/" // path="get-configurations"
               element={<ConfigurationsContainer />}
             />
+            <Route
+              path="/createScheduler"
+              element={<CreateSchedulerContainer />}
+            />
+            <Route path="/schedulingList" element={<SchedulersContainer />} />
+
+            <Route path="/job-listing" element={<JobListingContainer />} />
+            <Route path="/job-details/:id" element={<JobsDetailsContainer />} />
           </Route>
         </Routes>
       </Router>
     </div>
   );
-}
+};
 
 export default App;

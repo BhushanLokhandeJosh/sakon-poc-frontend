@@ -1,15 +1,15 @@
-.page-heading {
+.root {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.page-title {
+.title {
   margin-top: 1.5rem;
   font-weight: bold;
 }
 
-.page-button {
+.button {
   margin: 2% 4% 0% 0%;
   padding: 1rem;
   height: 2.5rem;

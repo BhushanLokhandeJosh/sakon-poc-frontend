@@ -12,8 +12,8 @@
   flex-direction: row-reverse;
   gap: 1rem;
   align-items: center;
-  margin: 22px;
-  height: 40px;
+  margin: 10px;
+  /* height: 40px; */
 }
 
 /* default style to the table */

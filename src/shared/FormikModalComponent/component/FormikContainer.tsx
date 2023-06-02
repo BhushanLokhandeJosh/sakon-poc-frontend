@@ -10,12 +10,12 @@ interface IFormikFormProps {
   validationSchema: any;
   onSubmitHandler: (values: any) => void;
   formClassName?: string;
-  toggle: () => void;
+  toggleModal: () => void;
   submitButtonLabel?: string;
   getFormikForm: (formik: IFormikProps<any>) => JSX.Element;
   handleReset: (formik: IFormikProps<any>) => void;
   showResetButton: boolean;
-  showCancelButton?: boolean;
+  showCancelButton: boolean;
 }
 
 const FormikContainer = (props: IFormikFormProps) => {
@@ -24,7 +24,7 @@ const FormikContainer = (props: IFormikFormProps) => {
     validationSchema,
     onSubmitHandler,
     formClassName,
-    toggle,
+    toggleModal,
     submitButtonLabel,
     getFormikForm,
     handleReset,
@@ -65,7 +65,7 @@ const FormikContainer = (props: IFormikFormProps) => {
                       type="reset"
                       variant="contained"
                       color="error"
-                      onClick={toggle}
+                      onClick={toggleModal}
                       sx={{ textTransform: "capitalize", marginRight: "2%" }}
                     >
                       {BUTTONS_LABLES.CANCEL}

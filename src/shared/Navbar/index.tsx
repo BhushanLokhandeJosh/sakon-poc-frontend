@@ -21,11 +21,11 @@ import { Outlet } from "react-router-dom";
 
 const sidebarMenu = [
   "Dashboard",
-  " Carrier Details",
-  " Reports",
-  " Variance",
-  "File Status",
-  "Log Out",
+  " Create Configuration",
+  " Configurations List",
+  " Create Scheduler",
+  "Schedulers List",
+  "Job Listing",
 ];
 
 interface IProps {
