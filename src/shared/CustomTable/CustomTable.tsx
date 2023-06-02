@@ -5,7 +5,7 @@ import { Box, Button } from "@mui/material";
 
 import SearchBox from "./SearchBox";
 import { dataGridStyleForColumnSortArrow } from "./constant";
-import { IFormikProps, IObjectWithAnyFields, MAX_WIDTH } from "../types";
+import { IObjectWithAnyFields, MAX_WIDTH } from "../types";
 
 import "./style.css";
 
@@ -19,10 +19,10 @@ interface ICustomTableProps {
   validationSchema?: any;
   tableClassName?: string;
   /**
-   * pass id or any other parameters to the query to fetch query related data.
+   * passing id or any other parameters to the queryArguments.
    */
   queryArguments?: IObjectWithAnyFields;
-  searchConfiguration: {
+  searchConfiguration?: {
     isSearchBoxVisible: boolean;
     searchBoxClassName?: string;
     searchBoxFilterBoxClassName?: string;
@@ -31,13 +31,17 @@ interface ICustomTableProps {
     | {
         isFilterVisible: true;
         filterBodyTitle?: string;
-        getFormFilterBody: (formik: IFormikProps<any>) => JSX.Element;
+        getFormFilterBody: (formik: any) => JSX.Element;
       }
     | {
         isFilterVisible: false;
         filterBodyTitle?: never;
         getFormFilterBody?: never;
       };
+
+  isPaginationVisible?: boolean;
+  getFormFilterBody?: any;
+  isRefreshButtonVisible?: boolean;
 }
 
 const CustomTable = (props: ICustomTableProps) => {
@@ -50,9 +54,11 @@ const CustomTable = (props: ICustomTableProps) => {
     searchConfiguration,
     filterConfiguration,
     queryArguments,
+    isPaginationVisible,
+    isRefreshButtonVisible,
   } = props;
 
-  //for search properties.
+  //For search properties.
   const isSearchBoxVisible = searchConfiguration?.isSearchBoxVisible || false;
   const searchBoxClassName =
     searchConfiguration?.searchBoxClassName || "search-style";
@@ -60,7 +66,7 @@ const CustomTable = (props: ICustomTableProps) => {
     searchConfiguration?.searchBoxFilterBoxClassName ||
     "search-filter-container";
 
-  //for filter properties.
+  //For filter properties.
   const isFilterVisible = filterConfiguration?.isFilterVisible || false;
   const filterBodyTitle = filterConfiguration?.filterBodyTitle || "";
   const getFormFilterBody = filterConfiguration?.getFormFilterBody;
@@ -79,26 +85,48 @@ const CustomTable = (props: ICustomTableProps) => {
     if (searchTrigger !== searchValue) {
       const delayDebounceFn = setTimeout(() => {
         setSearchTrigger(searchValue);
-      }, 200);
+      }, 500);
       return () => clearTimeout(delayDebounceFn);
     }
   }, [searchValue, searchTrigger, setSearchTrigger]);
 
-  const { data, isLoading, isError } = useCustomFetch({
+  const { data, isLoading, isError, refetch } = useCustomFetch({
     searchValue: searchTrigger,
     filterData,
     queryArguments,
   });
 
+  /**
+   * This function is used to refetch the api call.
+   */
+  const handleRefresh = () => {
+    refetch();
+  };
+
   if (isLoading) {
-    return <>Loading...</>;
+    return <div>Loading...</div>;
   }
+
   if (isError) {
-    return <>Error...</>;
+    <div>Error</div>;
   }
 
   return (
     <Box>
+      {isRefreshButtonVisible && (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row-reverse",
+            marginRight: "1%",
+          }}
+        >
+          <Button variant="contained" onClick={handleRefresh}>
+            Refresh
+          </Button>
+        </Box>
+      )}
+
       <div className={searchBoxFilterBoxClassName}>
         {isFilterVisible && getFormFilterBody && (
           <Box>
@@ -108,8 +136,6 @@ const CustomTable = (props: ICustomTableProps) => {
             <FormikModalComponent
               isOpen={isOpen}
               initialValues={initialValues}
-              //TODO :->  WE WILL HANDLE WHOLE FILTER BOX IN SEPRATE COMPONENT IN WHICH WE WILL
-              //REMOVE VALIDATIONSCHEMA OR KEEP IT OPTIONAL AS PER REQUIREMENTS.
               validationSchema={validationSchema}
               onSubmit={onSubmit}
               toggleModal={handleToggle}
@@ -130,7 +156,6 @@ const CustomTable = (props: ICustomTableProps) => {
           />
         )}
       </div>
-
       <div className={tableClassName}>
         <DataGrid
           disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.
@@ -138,12 +163,15 @@ const CustomTable = (props: ICustomTableProps) => {
           rows={data}
           columns={columnHeaders}
           sx={dataGridStyleForColumnSortArrow}
+          hideFooter={!isPaginationVisible}
         />
       </div>
     </Box>
   );
 };
+
 CustomTable.defaultProps = {
   tableClassName: "table-default-style",
 };
+
 export default CustomTable;
