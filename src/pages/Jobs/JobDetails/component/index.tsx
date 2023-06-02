@@ -28,6 +28,7 @@ const JobsDetailsContainer = () => {
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
       <Box sx={{ minWidth: 300 }}>
+        <br />
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
             <PageComponent
@@ -43,6 +44,7 @@ const JobsDetailsContainer = () => {
             ></PageComponent>
           </CardContent>
         </Card>
+        <br />
         <br />
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
@@ -60,6 +62,7 @@ const JobsDetailsContainer = () => {
           </CardContent>
         </Card>
         <br />
+        <br />
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
             <PageComponent
@@ -75,6 +78,7 @@ const JobsDetailsContainer = () => {
             ></PageComponent>
           </CardContent>
         </Card>
+        <br />
         <br />
         <Card sx={{ minWidth: 275 }}>
           <CardContent>

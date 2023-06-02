@@ -26,7 +26,7 @@ const App = () => {
 
           <Route element={<LayoutComponent />}>
             <Route
-              path="create-configuration"
+              path="/create-configuration"
               element={<CreateConfigurationsContainer />}
             />
             <Route
@@ -40,7 +40,10 @@ const App = () => {
             <Route path="/schedulingList" element={<SchedulersContainer />} />
 
             <Route path="/job-listing" element={<JobListingContainer />} />
-            <Route path="/job-details/:id" element={<JobsDetailsContainer />} />
+            <Route
+              path="/job-listing/job-details/:id"
+              element={<JobsDetailsContainer />}
+            />
           </Route>
         </Routes>
       </Router>

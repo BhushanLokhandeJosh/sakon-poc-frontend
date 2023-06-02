@@ -17,15 +17,15 @@ import AvatarImage from "../../assets/images/avatar-icon.jpeg";
 
 import "./styles/style.css";
 import { PAGE_MENU, SETTING_MENU } from "./constants";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const sidebarMenu = [
-  "Dashboard",
-  " Create Configuration",
-  " Configurations List",
-  " Create Scheduler",
-  "Schedulers List",
-  "Job Listing",
+  { link: "/", label: "Dashboard" },
+  // { link: "create-configuration", label: " Create Configuration" },
+  { link: "/", label: " Configurations List" },
+  // { link: "/createScheduler", label: " Create Scheduler" },
+  { link: "/schedulingList", label: "Schedulers List" },
+  { link: "/job-listing", label: "Job Listing" },
 ];
 
 interface IProps {
@@ -186,9 +186,9 @@ const LayoutComponent = (props: IProps) => {
           <div className="sidebar-container">
             <div className="sidebar-menu"></div>
             {sidebarMenu.map((item) => (
-              <div key={item} className="sidebar-menu">
-                {item}
-              </div>
+              <Link to={item.link} key={item.label} className="sidebar-menu">
+                {item.label}
+              </Link>
             ))}
           </div>
         </Grid>
