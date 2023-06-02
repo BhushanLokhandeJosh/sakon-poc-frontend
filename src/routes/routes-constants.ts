@@ -3,15 +3,15 @@ export const API_ROUTES = {
     GET: "/jobs", //GET: "/jobDetails",
   },
   DOWNLOADS: {
-    GET: "/downloads",
+    GET: "/jobs/report/download", // GET: "/downloads",
   },
   FILEVALIDATORS: {
-    GET: "/fileValidators",
+    GET: "/jobs/report/filevalidation", // GET: "/fileValidators",
   },
   TEMPLATEVALIDATORS: {
-    GET: "/templateValidators",
+    GET: "/jobs/report/templatevalidation", //GET: "/templateValidators",
   },
   UPLOADS: {
-    GET: "/uploads",
+    GET: "/jobs/report/upload", // GET: "/uploads",
   },
 };

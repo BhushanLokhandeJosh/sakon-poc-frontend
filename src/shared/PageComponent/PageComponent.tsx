@@ -1,5 +1,5 @@
-import { Box, Button, Typography } from "@mui/material";
-import React, { ReactNode } from "react";
+import { Button } from "@mui/material";
+import { ReactNode } from "react";
 import "../PageComponent/style/styles.css";
 
 interface IProps {

@@ -20,10 +20,10 @@ import "./style/styles.css";
 
 import PageComponent from "../../../../shared/PageComponent/PageComponent";
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
-import LayoutComponent from "../../../../shared/Navbar";
 
 const JobsDetailsContainer = () => {
   const { id } = useParams();
+  const jobId = Number(id);
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -36,7 +36,7 @@ const JobsDetailsContainer = () => {
                 <CustomTable
                   useCustomFetch={useFetchDownloads}
                   columnHeaders={DownloadsColumns}
-                  queryArguments={{ id }}
+                  queryArguments={{ jobId }}
                   tableClassName="table-styles"
                 />
               }
@@ -52,6 +52,7 @@ const JobsDetailsContainer = () => {
                 <CustomTable
                   useCustomFetch={useFetchFileValidators}
                   columnHeaders={FileValidatorColumns}
+                  queryArguments={{ jobId }}
                   tableClassName="table-styles"
                 />
               }
@@ -67,6 +68,7 @@ const JobsDetailsContainer = () => {
                 <CustomTable
                   useCustomFetch={useFetchTemplateValidators}
                   columnHeaders={TemplateValidatorColumns}
+                  queryArguments={{ jobId }}
                   tableClassName="table-styles"
                 />
               }
@@ -82,6 +84,7 @@ const JobsDetailsContainer = () => {
                 <CustomTable
                   useCustomFetch={useFetchUploads}
                   columnHeaders={UploadColumns}
+                  queryArguments={{ jobId }}
                   tableClassName="table-styles"
                 />
               }

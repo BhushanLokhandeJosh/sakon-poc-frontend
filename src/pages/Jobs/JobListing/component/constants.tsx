@@ -8,7 +8,7 @@ export const DownloadJobColumns: GridColDef[] = [
   {
     field: "id",
     headerName: "Job Id",
-    width: 150,
+    width: 200,
     sortable: false,
     headerAlign: "center",
     align: "center",
@@ -17,16 +17,16 @@ export const DownloadJobColumns: GridColDef[] = [
     ),
   },
   {
-    field: "Scheduler_Same",
+    field: "Scheduler_Name",
     headerName: "Scheduler Name",
-    width: 300,
+    width: 200,
     headerAlign: "center",
     align: "center",
   },
   {
     field: "Configuration_Name",
     headerName: "Configuration Name",
-    width: 300,
+    width: 200,
     headerAlign: "center",
     align: "center",
   },
@@ -40,7 +40,7 @@ export const DownloadJobColumns: GridColDef[] = [
   {
     field: "Triggered_At",
     headerName: "Triggered At",
-    width: 350,
+    width: 300,
     headerAlign: "center",
     align: "center",
   },
@@ -54,7 +54,7 @@ export const DownloadJobColumns: GridColDef[] = [
   {
     field: "Status",
     headerName: "Status",
-    width: 150,
+    width: 200,
     headerAlign: "center",
     align: "center",
     renderCell: (params: any) => {

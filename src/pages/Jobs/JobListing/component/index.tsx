@@ -17,6 +17,7 @@ const JobListingContainer = () => {
           columnHeaders={DownloadJobColumns}
           useCustomFetch={useFetchAllJobs}
           isRefreshButtonVisible
+          tableClassName="table-style"
         />
       }
     ></PageComponent>

@@ -15,34 +15,64 @@ export const useFetchAllJobs = ({
   searchValue?: string;
   filterData?: any;
 }) => {
-  return useQuery<any, any>(
+  const response = useQuery<any, any>(
     ["getAllConfigurations", searchValue, filterData],
     () => fetchAllJobs()
   );
+  return {
+    data: response.data?.data,
+    isLoading: response.isLoading,
+    isError: response.isError,
+    refetch: response.refetch,
+  };
 };
 
 //downloads
 export const useFetchDownloads = (queryArguments: any) => {
-  return useQuery<any, any>(["getAllDownloads"], () =>
-    fetchAllDownloads(queryArguments.id)
+  const response = useQuery<any, any>(["getAllDownloads"], () =>
+    fetchAllDownloads(queryArguments?.queryArguments?.jobId)
   );
+  return {
+    data: response.data?.data,
+    isLoading: response.isLoading,
+    isError: response.isError,
+  };
 };
 
 //fileValidators
-export const useFetchFileValidators = () => {
-  return useQuery<any, any>(["getFileValidators"], () => fetchFileValidators());
+export const useFetchFileValidators = (queryArguments: any) => {
+  const response = useQuery<any, any>(["getFileValidators"], () =>
+    fetchFileValidators(queryArguments?.queryArguments?.jobId)
+  );
+  return {
+    data: response.data?.data,
+    isLoading: response.isLoading,
+    isError: response.isError,
+  };
 };
 
 //templateValidators
-export const useFetchTemplateValidators = () => {
-  return useQuery<any, any>(["getTemplateValidators"], () =>
-    fetchTemplateValidators()
+export const useFetchTemplateValidators = (queryArguments: any) => {
+  const response = useQuery<any, any>(["getTemplateValidators"], () =>
+    fetchTemplateValidators(queryArguments?.queryArguments?.jobId)
   );
+  return {
+    data: response.data?.data,
+    isLoading: response.isLoading,
+    isError: response.isError,
+  };
 };
 
 //uploads
-export const useFetchUploads = () => {
-  return useQuery<any, any>(["getUploads"], () => fetchUploads());
+export const useFetchUploads = (queryArguments: any) => {
+  const response = useQuery<any, any>(["getUploads"], () =>
+    fetchUploads(queryArguments?.queryArguments?.jobId)
+  );
+  return {
+    data: response.data?.data,
+    isLoading: response.isLoading,
+    isError: response.isError,
+  };
 };
 //   const response = useQuery<any, any>(
 //     ["getAllJobs", searchValue, filterData],

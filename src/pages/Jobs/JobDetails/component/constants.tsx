@@ -18,7 +18,7 @@ export const DownloadsColumns: GridColDef[] = [
     align: "center",
   },
   {
-    field: "triggered_at",
+    field: "Triggered_At",
     headerName: "Triggered At",
     width: 180,
     headerAlign: "center",
@@ -58,7 +58,7 @@ export const FileValidatorColumns: GridColDef[] = [
     align: "center",
   },
   {
-    field: "triggered_at",
+    field: "Triggered_At",
     headerName: "Triggered At",
     width: 180,
     headerAlign: "center",
@@ -98,7 +98,7 @@ export const TemplateValidatorColumns: GridColDef[] = [
     align: "center",
   },
   {
-    field: "triggered_at",
+    field: "Triggered_At",
     headerName: "Triggered At",
     width: 180,
     headerAlign: "center",
@@ -143,7 +143,7 @@ export const UploadColumns: GridColDef[] = [
     align: "center",
   },
   {
-    field: "triggered_at",
+    field: "Triggered_At",
     headerName: "Triggered At",
     width: 180,
     headerAlign: "center",
