@@ -38,8 +38,6 @@ interface ICustomTableProps {
         filterBodyTitle?: never;
         getFormFilterBody?: never;
       };
-
-  isPaginationVisible?: boolean;
 }
 
 const CustomTable = (props: ICustomTableProps) => {
@@ -52,7 +50,6 @@ const CustomTable = (props: ICustomTableProps) => {
     searchConfiguration,
     filterConfiguration,
     queryArguments,
-    isPaginationVisible,
   } = props;
 
   //For search properties.
@@ -139,7 +136,7 @@ const CustomTable = (props: ICustomTableProps) => {
           rows={data}
           columns={columnHeaders}
           sx={dataGridStyleForColumnSortArrow}
-          hideFooter={!isPaginationVisible}
+          hideFooter
         />
       </div>
     </Box>

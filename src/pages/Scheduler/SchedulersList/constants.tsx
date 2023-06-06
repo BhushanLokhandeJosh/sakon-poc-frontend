@@ -10,32 +10,32 @@ export const SchedulerColumns: GridColDef[] = [
   {
     field: "id",
     headerName: "Id",
-    width: 150,
-    headerAlign: "center",
-    align: "center",
+    width: 200,
+    headerAlign: "left",
+    align: "left",
   },
   {
     field: "schedule_name",
     headerName: "Schedule Name",
     width: 300,
 
-    headerAlign: "center",
-    align: "center",
+    headerAlign: "left",
+    align: "left",
   },
   {
     field: "interval",
     headerName: "Frequency",
     width: 300,
-    headerAlign: "center",
-    align: "center",
+    headerAlign: "left",
+    align: "left",
   },
   {
     field: "configuration",
     headerName: "Configuration",
     width: 300,
     sortable: false,
-    headerAlign: "center",
-    align: "center",
+    headerAlign: "left",
+    align: "left",
     renderCell: (params: IObjectWithAnyFields) => {
       return <CustomColumnPopover arr={params?.row.configuration} />;
     },
@@ -45,8 +45,8 @@ export const SchedulerColumns: GridColDef[] = [
     headerName: "Created At",
     width: 300,
     sortable: false,
-    headerAlign: "center",
-    align: "center",
+    headerAlign: "left",
+    align: "left",
     renderCell: (params) => {
       const currentTime = params?.row.created_at;
       const date = new Date(params?.value);
