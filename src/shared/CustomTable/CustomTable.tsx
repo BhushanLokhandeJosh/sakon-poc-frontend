@@ -113,7 +113,7 @@ const CustomTable = (props: ICustomTableProps) => {
             marginRight: "1%",
           }}
         >
-          <Button variant="contained" onClick={() => refetch()}>
+          <Button variant="contained" onClick={refetch}>
             {BUTTONS_LABLES.REFRESH}
           </Button>
         </Box>
