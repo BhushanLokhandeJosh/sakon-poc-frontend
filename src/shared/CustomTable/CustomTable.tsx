@@ -5,6 +5,7 @@ import { Box, Button } from "@mui/material";
 
 import SearchBox from "./SearchBox";
 import { dataGridStyleForColumnSortArrow } from "./constant";
+import { BUTTONS_LABLES } from "../constants";
 import { IObjectWithAnyFields, MAX_WIDTH } from "../types";
 
 import "./style.css";
@@ -39,7 +40,6 @@ interface ICustomTableProps {
         getFormFilterBody?: never;
       };
 
-  isPaginationVisible?: boolean;
   getFormFilterBody?: any;
   isRefreshButtonVisible?: boolean;
 }
@@ -54,7 +54,6 @@ const CustomTable = (props: ICustomTableProps) => {
     searchConfiguration,
     filterConfiguration,
     queryArguments,
-    isPaginationVisible,
     isRefreshButtonVisible,
   } = props;
 
@@ -96,13 +95,6 @@ const CustomTable = (props: ICustomTableProps) => {
     queryArguments,
   });
 
-  /**
-   * This function is used to refetch the api call.
-   */
-  const handleRefresh = () => {
-    refetch();
-  };
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -121,8 +113,8 @@ const CustomTable = (props: ICustomTableProps) => {
             marginRight: "1%",
           }}
         >
-          <Button variant="contained" onClick={handleRefresh}>
-            Refresh
+          <Button variant="contained" onClick={() => refetch()}>
+            {BUTTONS_LABLES.REFRESH}
           </Button>
         </Box>
       )}
@@ -163,7 +155,6 @@ const CustomTable = (props: ICustomTableProps) => {
           rows={data}
           columns={columnHeaders}
           sx={dataGridStyleForColumnSortArrow}
-          hideFooter={!isPaginationVisible}
         />
       </div>
     </Box>
