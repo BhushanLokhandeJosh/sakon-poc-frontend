@@ -71,8 +71,15 @@ export const dayOfWeek = [
 //Date of month will be taken from backend based on Month in which logged
 //in Happen.
 const dayOfMonth = () => {
+  let date = new Date();
+  let lastDateOfMonth = new Date(
+    date.getFullYear(),
+    date.getMonth() + 1,
+    0
+  ).getDate();
+
   const allDayOfMonths = [];
-  for (let i = 1; i < 31; i++) {
+  for (let i = 1; i <= lastDateOfMonth; i++) {
     const obj = {
       label: `${i}`,
       value: i,
@@ -140,7 +147,7 @@ export const configurationOptions = [
     value: "13",
     label: "Josh/TAD/Jio",
   },
-    {
+  {
     value: "14",
     label: "Josh/DEBU/Airtel",
   },
