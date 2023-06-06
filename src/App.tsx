@@ -12,6 +12,7 @@ import JobListingContainer from "./pages/Jobs/JobListing/component";
 import JobsDetailsContainer from "./pages/Jobs/JobDetails/component";
 import { useEffect } from "react";
 import { GET } from "./services/api/axios";
+import EditSchedule from "./pages/Scheduler/SchedulersList/component/EditSchedule";
 
 const App = () => {
   // useEffect(() => {
@@ -45,6 +46,7 @@ const App = () => {
               element={<JobsDetailsContainer />}
             />
           </Route>
+          <Route path="edit-schedule/:id" element={<EditSchedule />}></Route>
         </Routes>
       </Router>
     </div>

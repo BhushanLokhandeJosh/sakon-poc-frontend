@@ -1,5 +1,5 @@
-import { GridColDef } from "@mui/x-data-grid";
-
+import { GridCellParams, GridColDef } from "@mui/x-data-grid";
+import { IconButton } from "@mui/material";
 //This getAllConfigColumns component is used to show all the column names in a table.
 export const ConfigurationListColumns: GridColDef[] = [
   {

@@ -2,6 +2,7 @@ import { useQuery, useMutation } from "react-query";
 import { AxiosError, AxiosResponse } from "axios";
 
 import { getSchedulers, scheduleConfiguration } from "./scheduler-services";
+import { fetchSingleScheduler } from "../Jobs/job-services";
 
 interface IScheduleResponseProps {
   onSuccess: (values: AxiosResponse) => void;
@@ -36,4 +37,12 @@ export const useFetchAllSchedulers = ({
     isLoading: response.isLoading,
     isError: response.isError,
   };
+};
+
+export const useFetchSingleScheduler = (queryArguments: any) => {
+  console.log("in a single scheduler", queryArguments);
+
+  return useQuery<any, any>(["getSingleScheduler"], () =>
+    fetchSingleScheduler(queryArguments)
+  );
 };

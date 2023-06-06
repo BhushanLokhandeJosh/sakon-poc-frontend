@@ -4,6 +4,7 @@ import {
   fetchAllDownloads,
   fetchAllJobs,
   fetchFileValidators,
+  fetchSingleScheduler,
   fetchTemplateValidators,
   fetchUploads,
 } from "./job-services";
@@ -74,18 +75,3 @@ export const useFetchUploads = (queryArguments: any) => {
     isError: response.isError,
   };
 };
-//   const response = useQuery<any, any>(
-//     ["getAllJobs", searchValue, filterData],
-//     () =>
-//       fetchAllJobs({
-//         Service_like: searchValue,
-//       })
-//   );
-
-//   return {
-//     data: response.data?.data,
-//     isLoading: response.isLoading,
-//     isErrot: response.isError,
-//   };
-//   // return response;
-// };

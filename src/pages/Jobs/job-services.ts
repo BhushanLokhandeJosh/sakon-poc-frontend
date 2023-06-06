@@ -30,3 +30,7 @@ export const fetchUploads = (jobId: number) =>
   GET(`${API_ROUTES.UPLOADS.GET}/${jobId}`);
 
 // export const fetchAllJobs = (params: any) => GET(API_ROUTES.JOBS.GET, params);
+
+export const fetchSingleScheduler = (jobId: any) => {
+  GET(`/schedulingList/${jobId}`);
+};
