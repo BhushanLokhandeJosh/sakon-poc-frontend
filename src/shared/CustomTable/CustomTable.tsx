@@ -5,6 +5,7 @@ import { Box, Button } from "@mui/material";
 
 import SearchBox from "./SearchBox";
 import { dataGridStyleForColumnSortArrow } from "./constant";
+import { BUTTONS_LABLES } from "../constants";
 import { IObjectWithAnyFields, MAX_WIDTH } from "../types";
 
 import "./style.css";
@@ -38,6 +39,9 @@ interface ICustomTableProps {
         filterBodyTitle?: never;
         getFormFilterBody?: never;
       };
+
+  getFormFilterBody?: any;
+  isRefreshButtonVisible?: boolean;
 }
 
 const CustomTable = (props: ICustomTableProps) => {
@@ -50,6 +54,7 @@ const CustomTable = (props: ICustomTableProps) => {
     searchConfiguration,
     filterConfiguration,
     queryArguments,
+    isRefreshButtonVisible,
   } = props;
 
   //For search properties.
@@ -83,7 +88,7 @@ const CustomTable = (props: ICustomTableProps) => {
     }
   }, [searchValue, searchTrigger, setSearchTrigger]);
 
-  const { data, isLoading, isError } = useCustomFetch({
+  const { data, isLoading, isError, refetch } = useCustomFetch({
     searchValue: searchTrigger,
     filterData,
     queryArguments,
@@ -99,6 +104,20 @@ const CustomTable = (props: ICustomTableProps) => {
 
   return (
     <Box>
+      {isRefreshButtonVisible && (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row-reverse",
+            marginRight: "1%",
+          }}
+        >
+          <Button variant="contained" onClick={refetch}>
+            {BUTTONS_LABLES.REFRESH}
+          </Button>
+        </Box>
+      )}
+
       <div className={searchBoxFilterBoxClassName}>
         {isFilterVisible && getFormFilterBody && (
           <Box>
@@ -128,7 +147,6 @@ const CustomTable = (props: ICustomTableProps) => {
           />
         )}
       </div>
-
       <div className={tableClassName}>
         <DataGrid
           disableColumnMenu //used to disabling column menu's which is used to sort a column as per requirment.
