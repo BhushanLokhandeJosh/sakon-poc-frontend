@@ -1,7 +1,8 @@
 import { AxiosResponse } from "axios";
 
 import { GET, POST } from "../../services/api/axios";
-import { API_ROUTES } from "../../routes/routes-constants";
+
+import { API_ROUTES } from "../../shared/constants";
 import { IObjectWithAnyFields } from "../../shared/types";
 
 export const getConfigurations = (params: IObjectWithAnyFields) => {
