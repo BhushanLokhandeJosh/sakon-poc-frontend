@@ -1,9 +1,10 @@
-import React from "react";
-import CreateSchedulerComponent from "./component";
-import { initialSchedulerValue } from "./constants";
 import { useScheduleConfiguration } from "../scheduler-hooks";
 import useToggle from "../../../shared/CustomHooks/useToggle";
+
+import { initialSchedulerValue } from "./constants";
 import { CONFIGURATION_SUCCESS_MESSAGE, FAILURE_MESSAGE } from "../constant";
+
+import CreateSchedulerComponent from "./component";
 
 const CreateSchedulerContainer = () => {
   const { isOpen, handleToggle } = useToggle();

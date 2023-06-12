@@ -1,16 +1,12 @@
 import { GridCellParams, GridColDef } from "@mui/x-data-grid";
-import { Tooltip, TableCell, IconButton } from "@mui/material";
+import { Tooltip, TableCell } from "@mui/material";
 
 import { getTimeFromNow } from "./helper";
-
-import { IObjectWithAnyFields } from "../../../shared/types";
 import CustomColumnPopover from "../../../shared/ColumnPopover/CustomColumnPopover";
 
+import { IObjectWithAnyFields } from "../../../shared/types";
+
 import EditScheduler from "./component/EditScheduler";
-import CreateScheduler from "../CreateScheduler/component/CreateScheduler";
-import CreateSchedulerComponent from "../CreateScheduler/component";
-import { useUpdateScheduler } from "../scheduler-hooks";
-import useToggle from "../../../shared/CustomHooks/useToggle";
 
 export const SchedulerColumns: GridColDef[] = [
   {
