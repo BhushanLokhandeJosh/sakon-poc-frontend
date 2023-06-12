@@ -5,9 +5,9 @@ import { NAVIGATION_ROUTES } from "./shared/constants";
 import "./App.css";
 
 import Home from "./pages/Home";
-import CreateSchedulerContainer from "./pages/Scheduler/CreateScheduler";
-import SchedulersContainer from "./pages/Scheduler/SchedulersList";
 import LayoutComponent from "./shared/Navbar";
+import SchedulersContainer from "./pages/Scheduler/SchedulersList";
+import CreateSchedulerContainer from "./pages/Scheduler/CreateScheduler";
 
 function App() {
   return (

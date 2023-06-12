@@ -1,23 +1,29 @@
-import { GridColDef } from "@mui/x-data-grid";
-import { Tooltip, TableCell } from "@mui/material";
+import { GridCellParams, GridColDef } from "@mui/x-data-grid";
+import { Tooltip, TableCell, IconButton } from "@mui/material";
 
 import { getTimeFromNow } from "./helper";
 
 import { IObjectWithAnyFields } from "../../../shared/types";
 import CustomColumnPopover from "../../../shared/ColumnPopover/CustomColumnPopover";
 
+import EditScheduler from "./component/EditScheduler";
+import CreateScheduler from "../CreateScheduler/component/CreateScheduler";
+import CreateSchedulerComponent from "../CreateScheduler/component";
+import { useUpdateScheduler } from "../scheduler-hooks";
+import useToggle from "../../../shared/CustomHooks/useToggle";
+
 export const SchedulerColumns: GridColDef[] = [
   {
     field: "id",
     headerName: "Id",
-    width: 200,
+    width: 150,
     headerAlign: "left",
     align: "left",
   },
   {
     field: "schedule_name",
     headerName: "Schedule Name",
-    width: 300,
+    width: 250,
 
     headerAlign: "left",
     align: "left",
@@ -32,7 +38,7 @@ export const SchedulerColumns: GridColDef[] = [
   {
     field: "configuration",
     headerName: "Configuration",
-    width: 300,
+    width: 200,
     sortable: false,
     headerAlign: "left",
     align: "left",
@@ -43,7 +49,7 @@ export const SchedulerColumns: GridColDef[] = [
   {
     field: "created_at",
     headerName: "Created At",
-    width: 300,
+    width: 350,
     sortable: false,
     headerAlign: "left",
     align: "left",
@@ -68,6 +74,16 @@ export const SchedulerColumns: GridColDef[] = [
           <TableCell>{getTimeFromNow(currentTime)}</TableCell>
         </Tooltip>
       );
+    },
+  },
+  {
+    field: "edit",
+    headerName: "Edit",
+    description: "Edit actions column.",
+    sortable: false,
+    width: 100,
+    renderCell: (params: GridCellParams) => {
+      return <EditScheduler job={params} />;
     },
   },
 ];

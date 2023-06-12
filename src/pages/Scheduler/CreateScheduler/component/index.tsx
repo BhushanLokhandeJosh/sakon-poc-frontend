@@ -1,53 +1,63 @@
-import { Box, Button } from "@mui/material";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+import { AxiosError, AxiosResponse } from "axios";
 
-import { ICreateSchedulerProps, ISchedulerProps } from "../types";
+import { useFetchAllSchedulers } from "../../scheduler-hooks";
 
-import { validationSchema } from "../helpers";
-import { initialSchedulerValue } from "../constants";
+import CreateScheduler from "./CreateScheduler";
 
-import "./styles/styles.css";
+const CreateSchedulerComponent = ({
+  useCustomHook,
+  initialSchedulerValue,
+  isOpen,
+  handleToggle,
+  successMessage,
+  errorMessage,
+}: any) => {
+  // todo => dependancy for configuration(endpoint) api in configuration page for showing configuration(in dropdown menu) in scheduler form.
+  const [configOptions, setConfigOptions] =
+    useState<{ value: string; label: string }[]>();
+  const { data, isLoading, isError } = useFetchAllSchedulers({
+    is_scheduled: true,
+  });
 
-import { IFormikProps } from "../../../../shared/types";
+  useEffect(() => {
+    setConfigOptions(
+      data?.map((obj: any) => ({
+        value: JSON.stringify(obj.id),
+        label: obj.configuration,
+      }))
+    );
+  }, [data]);
 
-import SchedulerForm from "./SchedulerForm";
-import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
+  const onSuccess = async (values: AxiosResponse) => {
+    toast.success(successMessage);
+    handleToggle();
+  };
 
-const CreateScheduler = (props: ICreateSchedulerProps) => {
-  const {
-    configurationOptions,
-    isOpen: isSchedulerModalOpen,
-    toggleModal,
-    onSubmit,
-  } = props;
+  const onError = (values: AxiosError) => {
+    toast.error(errorMessage);
+  };
+
+  const { mutate: createScheduler } = useCustomHook({
+    onSuccess,
+    onError,
+  });
+
+  const onSubmit = (values: any) => {
+    values.emp = "1"; //todo hardcoded for now since no employee id
+    createScheduler(values);
+  };
 
   return (
-    <Box>
-      <Button
-        variant="contained"
-        onClick={toggleModal}
-        sx={{ margin: "5% 0% 0% 70%" }}
-      >
-        Create Scheduler
-      </Button>
-
-      {isSchedulerModalOpen && (
-        <FormikModalComponent
-          isOpen={isSchedulerModalOpen}
-          toggleModal={toggleModal}
-          modalTitle="Create Scheduler"
-          getFormBody={(formik: IFormikProps<ISchedulerProps>) => (
-            <SchedulerForm
-              formik={formik}
-              configurationOptions={configurationOptions}
-            />
-          )}
-          initialValues={initialSchedulerValue}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
-        />
-      )}
-    </Box>
+    <CreateScheduler
+      configurationOptions={configOptions}
+      onSubmit={onSubmit}
+      isOpen={isOpen}
+      toggleModal={handleToggle}
+      initialSchedulerValue={initialSchedulerValue}
+    />
   );
 };
 
-export default CreateScheduler;
+export default CreateSchedulerComponent;

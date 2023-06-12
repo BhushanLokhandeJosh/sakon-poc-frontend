@@ -1,4 +1,4 @@
-import { GET, POST } from "../../services/api/axios";
+import { GET, POST, PUT } from "../../services/api/axios";
 import { AxiosResponse } from "axios";
 import { ISchedulerProps } from "./CreateScheduler/types";
 import { IObjectWithAnyFields } from "../../shared/types";
@@ -12,4 +12,10 @@ export const scheduleConfiguration = (
   payload: ISchedulerProps
 ): Promise<AxiosResponse<string, any>> => {
   return POST(API_ROUTES.SCHEDULERS.CREATE, payload);
+};
+
+export const updateScheduler = (
+  payload: ISchedulerProps
+): Promise<AxiosResponse<string, any>> => {
+  return PUT(`${API_ROUTES.SCHEDULERS.PUT}/${payload.id}`, payload);
 };
