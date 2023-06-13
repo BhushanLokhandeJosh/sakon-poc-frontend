@@ -5,6 +5,8 @@ import { AxiosError, AxiosResponse } from "axios";
 import { useFetchAllSchedulers } from "../../scheduler-hooks";
 
 import CreateScheduler from "./CreateScheduler";
+import { useQueryClient } from "react-query";
+import { GET_ALL_SCHEDULERS } from "../../constant";
 
 const CreateSchedulerComponent = ({
   useCustomHook,
@@ -15,8 +17,10 @@ const CreateSchedulerComponent = ({
   errorMessage,
 }: any) => {
   // todo => dependancy for configuration(endpoint) api in configuration page for showing configuration(in dropdown menu) in scheduler form.
+  const queryClient = useQueryClient();
   const [configOptions, setConfigOptions] =
     useState<{ value: string; label: string }[]>();
+
   const { data, isLoading, isError } = useFetchAllSchedulers({
     is_scheduled: true,
   });
@@ -31,6 +35,9 @@ const CreateSchedulerComponent = ({
   }, [data]);
 
   const onSuccess = async (values: AxiosResponse) => {
+    // Invalidate queries here to refetch the data
+    queryClient.invalidateQueries([GET_ALL_SCHEDULERS]);
+
     toast.success(successMessage);
     handleToggle();
   };
@@ -46,7 +53,7 @@ const CreateSchedulerComponent = ({
 
   const onSubmit = (values: any) => {
     values.emp = "1"; //todo hardcoded for now since no employee id
-    createScheduler(values);
+    createScheduler(values); // or update scheduler also.
   };
 
   return (

@@ -8,15 +8,15 @@ import { FAILURE_MESSAGE, SCHEDULER_UPDATED_MESSAGE } from "../../constant";
 
 import CreateSchedulerComponent from "../../CreateScheduler/component";
 
-const EditScheduler = ({ job }: any) => {
+const EditScheduler = ({ scheduler }: any) => {
   const { isOpen, handleToggle } = useToggle();
 
   const initialData = {
-    ...job.row,
-    configurations: job.row.configuration,
-    schedularName: job.row.schedule_name,
-    interval: job.row.interval,
-    timeDuration: job.row.time,
+    ...scheduler.row,
+    configurations: scheduler.row.configuration,
+    schedularName: scheduler.row.schedule_name,
+    interval: scheduler.row.interval,
+    timeDuration: scheduler.row.time,
   };
 
   return (

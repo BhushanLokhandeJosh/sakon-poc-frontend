@@ -1,8 +1,8 @@
 import { GridCellParams, GridColDef } from "@mui/x-data-grid";
 import { Tooltip, TableCell } from "@mui/material";
 
-import { getTimeFromNow } from "./helper";
 import CustomColumnPopover from "../../../shared/ColumnPopover/CustomColumnPopover";
+import { getTimeFromNow } from "./helper";
 
 import { IObjectWithAnyFields } from "../../../shared/types";
 
@@ -79,7 +79,7 @@ export const SchedulerColumns: GridColDef[] = [
     sortable: false,
     width: 100,
     renderCell: (params: GridCellParams) => {
-      return <EditScheduler job={params} />;
+      return <EditScheduler scheduler={params} />;
     },
   },
 ];
