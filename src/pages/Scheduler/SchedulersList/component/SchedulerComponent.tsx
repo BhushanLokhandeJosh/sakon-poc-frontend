@@ -7,7 +7,7 @@ import { useFetchAllSchedulers } from "../../scheduler-hooks";
 import { IFormikProps } from "../../../../shared/types";
 import {
   ICreateSchedulerProps,
-  ISchedulerPayload,
+  ICreateSchedulerPayload,
 } from "../../SchedulerModal/types";
 
 import { initialSchedulerValue } from "../../SchedulerModal/constants";
@@ -24,14 +24,15 @@ import SchedulerForm from "../../SchedulerModal/component/SchedulerForm";
 const SchedulerComponent = ({ onSubmit }: ICreateSchedulerProps) => {
   const { isOpen: isSchedulerModalOpen, handleToggle: toggleModal } =
     useToggle();
-  const [configOptions, setConfigOptions] =
+  const [configurationOptions, setConfigurationOptions] =
     useState<{ value: string; label: string }[]>();
-  const { data, isLoading, isError } = useFetchAllSchedulers({
+
+  const { data } = useFetchAllSchedulers({
     is_scheduled: false,
   });
 
   useEffect(() => {
-    setConfigOptions(
+    setConfigurationOptions(
       data?.map((obj: any) => ({
         value: JSON.stringify(obj.id),
         label: obj.ConfigurationName,
@@ -46,10 +47,10 @@ const SchedulerComponent = ({ onSubmit }: ICreateSchedulerProps) => {
           isOpen={isSchedulerModalOpen}
           toggleModal={toggleModal}
           modalTitle="Create Scheduler"
-          getFormBody={(formik: IFormikProps<ISchedulerPayload>) => (
+          getFormBody={(formik: IFormikProps<ICreateSchedulerPayload>) => (
             <SchedulerForm
               formik={formik}
-              configurationOptions={configOptions}
+              configurationOptions={configurationOptions}
             />
           )}
           initialValues={initialSchedulerValue}

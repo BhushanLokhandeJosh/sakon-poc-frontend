@@ -1,4 +1,4 @@
-export interface ISchedulerPayload {
+export interface ICreateSchedulerPayload {
   configurations: string[];
   schedularName: string;
   //Interval -> DAILY,WEEKLY,MONTHLY
@@ -9,7 +9,7 @@ export interface ISchedulerPayload {
   timeDuration?: string;
 }
 
-export interface IUpdateSchedulerpayload extends ISchedulerPayload {
+export interface IUpdateSchedulerPayload extends ICreateSchedulerPayload {
   id: number;
 }
 
@@ -17,6 +17,7 @@ export interface ICreateSchedulerProps {
   configurationOptions?: { value: string; label: string }[];
   onSubmit: (values: any) => void;
   initialSchedulerValue?: any;
+  // TODO : need to check initialSchedulerValue.
 }
 
 export enum INTERVAL {
