@@ -14,6 +14,5 @@ export const API_ROUTES = {
 };
 
 export const NAVIGATION_ROUTES = {
-  CREATE_SCHEDULER: "/createScheduler",
   SCHEDULING_LIST: "/schedulingList",
 };

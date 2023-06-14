@@ -9,6 +9,7 @@ interface IProps {
   pageHeadingClassName: string;
   pageTitleClassName: string;
   pageButtonClassName: string;
+  handleButtonAction: () => void;
 }
 
 const PageComponent = (props: IProps) => {
@@ -19,13 +20,18 @@ const PageComponent = (props: IProps) => {
     pageHeadingClassName,
     pageTitleClassName,
     pageButtonClassName,
+    handleButtonAction,
   } = props;
   return (
     <div>
       <div className={pageHeadingClassName}>
         <h1 className={pageTitleClassName}>{pageTitle}</h1>
         {buttonLabel && (
-          <Button variant="contained" className={pageButtonClassName}>
+          <Button
+            variant="contained"
+            className={pageButtonClassName}
+            onClick={handleButtonAction}
+          >
             {buttonLabel}
           </Button>
         )}

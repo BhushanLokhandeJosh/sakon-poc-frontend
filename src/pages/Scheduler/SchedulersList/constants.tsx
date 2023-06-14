@@ -6,8 +6,6 @@ import { getTimeFromNow } from "./helper";
 
 import { IObjectWithAnyFields } from "../../../shared/types";
 
-import EditScheduler from "./component/EditScheduler";
-
 export const SchedulerColumns: GridColDef[] = [
   {
     field: "id",
@@ -78,8 +76,8 @@ export const SchedulerColumns: GridColDef[] = [
     description: "Edit actions column.",
     sortable: false,
     width: 100,
-    renderCell: (params: GridCellParams) => {
-      return <EditScheduler scheduler={params} />;
-    },
+    // renderCell: (params: GridCellParams) => {
+    //   return {} />;
+    // },
   },
 ];

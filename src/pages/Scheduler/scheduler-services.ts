@@ -1,6 +1,6 @@
 import { GET, POST, PUT } from "../../services/api/axios";
 import { AxiosResponse } from "axios";
-import { ISchedulerProps } from "./CreateScheduler/types";
+import { ISchedulerProps } from "./ModalScheduler/types";
 import { IObjectWithAnyFields } from "../../shared/types";
 import { API_ROUTES } from "../../shared/constants";
 
