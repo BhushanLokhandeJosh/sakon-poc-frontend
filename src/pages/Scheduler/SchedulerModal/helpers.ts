@@ -125,38 +125,3 @@ export const timeZones = [
     value: "Asia/Bangkok",
   },
 ];
-
-export const configurationOptions = [
-  {
-    value: "9",
-    label: "Josh/HR/Verizone",
-  },
-  {
-    value: "10",
-    label: "Josh/HR/Idea",
-  },
-  {
-    value: "11",
-    label: "Josh/SALES/Airtel",
-  },
-  {
-    value: "12",
-    label: "Josh/HRBP/Vodafone",
-  },
-  {
-    value: "13",
-    label: "Josh/TAD/Jio",
-  },
-  {
-    value: "14",
-    label: "Josh/DEBU/Airtel",
-  },
-  {
-    value: "15",
-    label: "Josh/BFSIBU/Vodafone",
-  },
-  {
-    value: "16",
-    label: "Josh/ECOMBU/Jio",
-  },
-];

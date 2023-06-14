@@ -6,12 +6,12 @@ import { Box, Button } from "@mui/material";
 import SearchBox from "./SearchBox";
 import { dataGridStyleForColumnSortArrow } from "./constant";
 import { BUTTONS_LABLES } from "../constants";
-import { IObjectWithAnyFields, MAX_WIDTH } from "../types";
 
 import "./style.css";
 
 import FormikModalComponent from "../FormikModalComponent/component";
 import useToggle from "../CustomHooks/useToggle";
+import { IObjectWithAnyFields, MAX_WIDTH } from "../types";
 
 interface ICustomTableProps {
   columnHeaders: GridColDef[];
