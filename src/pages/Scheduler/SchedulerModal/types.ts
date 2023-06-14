@@ -1,5 +1,4 @@
-export interface ISchedulerProps {
-  id?: any;
+export interface ISchedulerPayload {
   configurations: string[];
   schedularName: string;
   //Interval -> DAILY,WEEKLY,MONTHLY
@@ -8,6 +7,10 @@ export interface ISchedulerProps {
   weekDay?: string;
   monthDay?: number;
   timeDuration?: string;
+}
+
+export interface IUpdateSchedulerpayload extends ISchedulerPayload {
+  id: number;
 }
 
 export interface ICreateSchedulerProps {

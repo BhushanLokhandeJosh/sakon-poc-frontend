@@ -1,6 +1,6 @@
-import { INTERVAL, ISchedulerProps } from "./types";
+import { INTERVAL, ISchedulerPayload } from "./types";
 
-export const initialSchedulerValue: ISchedulerProps = {
+export const initialSchedulerValue: ISchedulerPayload = {
   configurations: [],
   schedularName: "",
   interval: INTERVAL.DAILY,

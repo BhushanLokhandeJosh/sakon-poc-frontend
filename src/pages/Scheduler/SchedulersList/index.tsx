@@ -1,29 +1,13 @@
-import { useEffect, useState } from "react";
-import SchedulerComponent from "./component";
-import useToggle from "../../../shared/CustomHooks/useToggle";
-import {
-  useFetchAllSchedulers,
-  useScheduleConfiguration,
-} from "../scheduler-hooks";
-import { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
+import { AxiosError, AxiosResponse } from "axios";
+
+import { useScheduleConfiguration } from "../scheduler-hooks";
+import useToggle from "../../../shared/CustomHooks/useToggle";
+
+import SchedulerComponent from "./component/SchedulerComponent";
 
 const SchedulersContainer = () => {
   const { isOpen, handleToggle } = useToggle();
-  const [configOptions, setConfigOptions] =
-    useState<{ value: string; label: string }[]>();
-  const { data, isLoading, isError } = useFetchAllSchedulers({
-    is_scheduled: false,
-  });
-
-  useEffect(() => {
-    setConfigOptions(
-      data?.map((obj: any) => ({
-        value: JSON.stringify(obj.id),
-        label: obj.ConfigurationName,
-      }))
-    );
-  }, [data]);
 
   const onSuccess = async (values: AxiosResponse) => {
     toast.success("Configuration Added Successfully...");
@@ -40,15 +24,12 @@ const SchedulersContainer = () => {
   });
 
   const onSubmit = (values: any) => {
+    // TODO: Currently, there is only one employee defined. Therefore hardcoded as "1".
     values.emp = "1";
     createScheduler(values);
   };
-  return (
-    <SchedulerComponent
-      configurationOptions={configOptions}
-      onSubmit={onSubmit}
-    />
-  );
+
+  return <SchedulerComponent onSubmit={onSubmit} />;
 };
 
 export default SchedulersContainer;

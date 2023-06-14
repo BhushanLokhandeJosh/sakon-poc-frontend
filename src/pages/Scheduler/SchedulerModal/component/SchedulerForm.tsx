@@ -4,14 +4,14 @@ import { Grid, InputLabel } from "@mui/material";
 import { DaysOfMonth, Interval, dayOfWeek, timeZones } from "../helpers";
 
 import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
-import { INTERVAL, ISchedulerProps } from "../types";
+import { INTERVAL, ISchedulerPayload } from "../types";
 
 import Input from "../../../../shared/FormComponents/Input";
 import Select from "../../../../shared/FormComponents/Select";
 import Time from "../../../../shared/FormComponents/Time";
 
 interface ISchedulerFormProps {
-  formik: IFormikProps<ISchedulerProps>;
+  formik: IFormikProps<ISchedulerPayload>;
   configurationOptions?: { value: string; label: string }[];
 }
 
