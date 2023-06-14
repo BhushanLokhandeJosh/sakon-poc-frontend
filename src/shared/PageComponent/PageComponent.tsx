@@ -28,6 +28,7 @@ const PageComponent = (props: IProps) => {
         <h1 className={pageTitleClassName}>{pageTitle}</h1>
         {buttonLabel && (
           <Button
+            sx={{ margin: "2% 2% -4%", padding: "1%" }}
             variant="contained"
             className={pageButtonClassName}
             onClick={handleButtonAction}
