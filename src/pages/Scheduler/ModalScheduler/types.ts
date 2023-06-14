@@ -12,8 +12,6 @@ export interface ISchedulerProps {
 
 export interface ICreateSchedulerProps {
   configurationOptions?: { value: string; label: string }[];
-  isOpen: boolean;
-  toggleModal: () => void;
   onSubmit: (values: any) => void;
   initialSchedulerValue?: any;
 }

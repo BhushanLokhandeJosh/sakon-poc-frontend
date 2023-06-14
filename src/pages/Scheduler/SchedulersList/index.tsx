@@ -47,8 +47,6 @@ const SchedulersContainer = () => {
     <SchedulerComponent
       configurationOptions={configOptions}
       onSubmit={onSubmit}
-      isOpen={isOpen}
-      toggleModal={handleToggle}
     />
   );
 };
