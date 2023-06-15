@@ -1,16 +1,17 @@
+import { Box } from "@mui/material";
+
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+
+import LayoutComponent from "./shared/Navbar";
+import CreateDepartmentContainer from "./pages/Department/CreateDepartment";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-        </Routes>
-      </Router>
-    </div>
+    <Box>
+      <LayoutComponent>
+        <CreateDepartmentContainer />
+      </LayoutComponent>
+    </Box>
   );
 }
 
