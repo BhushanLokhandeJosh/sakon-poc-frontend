@@ -5,6 +5,9 @@ export const BUTTONS_LABLES = {
   REFRESH: "Refresh",
 };
 
+/**
+ *  All Navigation Routes
+ */
 export const NAVIGATION_ROUTES = {
   CONFIGURATION_LIST: "/configurationList",
 };

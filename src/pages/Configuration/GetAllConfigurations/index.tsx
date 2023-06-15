@@ -42,7 +42,7 @@ const ConfigurationsContainer = () => {
     <ConfigurationComponent
       onSubmit={onSubmit}
       isOpen={isOpen}
-      handleToggle={handleToggle}
+      toggleModal={handleToggle}
     />
   );
 };

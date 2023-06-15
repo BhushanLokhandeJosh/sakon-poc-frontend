@@ -9,7 +9,7 @@ interface IProps {
   pageHeadingClassName: string;
   pageTitleClassName: string;
   pageButtonClassName: string;
-  handleButtonAction?: () => void;
+  handleButtonAction: () => void;
 }
 
 const PageComponent = (props: IProps) => {

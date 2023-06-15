@@ -12,8 +12,8 @@ export interface IConfiguration {
   // template: FileList | null;
 }
 
-export interface IConfigurationFormProps {
-  handleToggle: () => void;
+export interface IConfigurationFormPayload {
+  toggleModal: () => void;
   onSubmit: (values: IConfiguration) => void;
   isOpen: boolean;
 }

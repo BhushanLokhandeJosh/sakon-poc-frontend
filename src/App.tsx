@@ -14,10 +14,6 @@ function App() {
           <Route path="/" element={<Home />}></Route>
 
           <Route element={<LayoutComponent />}>
-            {/* <Route
-              path="/create-configuration"
-              element={<CreateConfigurationsContainer />}
-            /> */}
             <Route
               path={NAVIGATION_ROUTES.CONFIGURATION_LIST}
               element={<ConfigurationsContainer />}
