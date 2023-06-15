@@ -11,7 +11,6 @@ export const configurationInitialValues: ConfigurationFilterFormInitialValues =
 export const GET_ALL_CONFIGURATIONS = "getAllConfigurations";
 export const DEPARTMENTS = "departments";
 
-
 export const initialConfigurationValues: IConfiguration = {
   configurationName: "",
   department: "",
@@ -22,5 +21,9 @@ export const initialConfigurationValues: IConfiguration = {
   sftpPassword: "",
   sftpLocation: "",
   downloadPath: "",
-  template: '',
+  template: "",
 };
+
+//toast messages
+export const CONFIGURATION_SUCCESS_MESSAGE =
+  "Configuration Added Successfully...";

@@ -8,12 +8,12 @@ export interface IConfiguration {
   sftpPassword: string;
   sftpLocation: string;
   downloadPath: string;
-  template: string | Blob ;
+  template: string | Blob;
   // template: FileList | null;
 }
 
 export interface IConfigurationFormProps {
-  toggleModal: () => void;
+  handleToggle: () => void;
   onSubmit: (values: IConfiguration) => void;
   isOpen: boolean;
 }

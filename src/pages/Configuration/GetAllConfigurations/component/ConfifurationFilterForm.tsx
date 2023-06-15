@@ -13,7 +13,6 @@ const ConfifurationFilterForm = (props: IObjectWithAnyFields) => {
     label: department.name,
     value: department.name,
   }));
-  console.log("department data", departmentData);
 
   if (isLoading) {
     return <>Loading...</>;
