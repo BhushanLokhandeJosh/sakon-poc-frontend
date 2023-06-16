@@ -1,35 +1,41 @@
-import { toast } from "react-toastify";
-import { AxiosError, AxiosResponse } from "axios";
+import { useState } from "react";
+import { GridCellParams } from "@mui/x-data-grid";
 
-import { useScheduleConfiguration } from "../scheduler-hooks";
 import useToggle from "../../../shared/CustomHooks/useToggle";
-
+import SchedulerModal from "./component/SchedulerModal";
 import SchedulerComponent from "./component/SchedulerComponent";
 
 const SchedulersContainer = () => {
   const { isOpen, handleToggle } = useToggle();
+  const [scheduler, setScheduler] = useState<any>();
 
-  const onSuccess = async (values: AxiosResponse) => {
-    toast.success("Configuration Added Successfully...");
+  const handleToggleWithSchedulerReset = () => {
+    handleToggle();
+    if (scheduler) {
+      setScheduler(undefined);
+    }
+  };
+
+  const handleEditScheduler = (value: GridCellParams) => {
+    setScheduler(value);
     handleToggle();
   };
 
-  const onError = (values: AxiosError) => {
-    toast.error("Something Went Wrong...");
-  };
-
-  const { mutate: createScheduler } = useScheduleConfiguration({
-    onSuccess,
-    onError,
-  });
-
-  const onSubmit = (values: any) => {
-    // TODO: Currently, there is only one employee defined. Therefore hardcoded as "1".
-    values.emp = "1";
-    createScheduler(values);
-  };
-
-  return <SchedulerComponent onSubmit={onSubmit} />;
+  return (
+    <>
+      {isOpen && (
+        <SchedulerModal
+          isOpen={isOpen}
+          toggleModal={handleToggleWithSchedulerReset}
+          scheduler={scheduler}
+        />
+      )}
+      <SchedulerComponent
+        toggleModal={handleToggleWithSchedulerReset}
+        handleEditScheduler={handleEditScheduler}
+      />
+    </>
+  );
 };
 
 export default SchedulersContainer;

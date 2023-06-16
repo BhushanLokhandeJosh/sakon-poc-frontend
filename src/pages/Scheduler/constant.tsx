@@ -3,7 +3,7 @@ export const GET_ALL_SCHEDULERS = "getAllSchedulers";
 
 //These constants used for showing toast's messages.
 export const CONFIGURATION_SUCCESS_MESSAGE =
-  "Configuration Added Successfully...";
+  "Scheduler Created Successfully...";
 
 export const FAILURE_MESSAGE = "Something Went Wrong...";
 
