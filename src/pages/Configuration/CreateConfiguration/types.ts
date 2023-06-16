@@ -12,7 +12,7 @@ export interface IConfiguration {
   // template: FileList | null;
 }
 
-export interface IConfigurationFormPayload {
+export interface IConfigurationFormInfo {
   toggleModal: () => void;
   onSubmit: (values: IConfiguration) => void;
   isOpen: boolean;

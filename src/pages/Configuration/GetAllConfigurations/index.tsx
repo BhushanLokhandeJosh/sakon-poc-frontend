@@ -38,6 +38,7 @@ const ConfigurationsContainer = () => {
     const formData = formDataMapping(values);
     createConfiguration(formData);
   };
+
   return (
     <ConfigurationComponent
       onSubmit={onSubmit}

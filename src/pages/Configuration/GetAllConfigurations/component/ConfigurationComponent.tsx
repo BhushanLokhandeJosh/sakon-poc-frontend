@@ -6,7 +6,7 @@ import { useFetchConfigurations } from "../../config-hooks";
 import { IFormikProps } from "../../../../shared/types";
 import {
   IConfiguration,
-  IConfigurationFormPayload,
+  IConfigurationFormInfo,
 } from "../../CreateConfiguration/types";
 
 import { ConfigurationListColumns } from "../constants";
@@ -25,7 +25,7 @@ const ConfigurationComponent = ({
   onSubmit,
   isOpen,
   toggleModal,
-}: IConfigurationFormPayload) => {
+}: IConfigurationFormInfo) => {
   return (
     <Box>
       {isOpen && (
