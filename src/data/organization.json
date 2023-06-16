@@ -1,3 +1,13 @@
 {
-  "configurations": []
+  "organizations": [
+    {
+      "name": "Tata",
+      "department_count": 54,
+      "service_providers": [
+        "VI",
+        "Verizone"
+      ],
+      "id": 1
+    }
+  ]
 }
