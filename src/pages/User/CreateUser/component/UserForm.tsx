@@ -1,7 +1,7 @@
 import { Form } from "formik";
 import { Grid, InputLabel } from "@mui/material";
 
-import { ADMIN, IUser } from "../types";
+import { ADMIN, IUser, SUPER_ADMIN } from "../types";
 import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
 
 import "./styles/styles.css";
@@ -88,19 +88,23 @@ const UserForm = (props: IOrganizationProps): JSX.Element => {
           </>
         )}
 
-        <Grid item lg={3} md={4} sm={5} xs={12}>
-          <InputLabel sx={{ color: "black" }}>Organization</InputLabel>
-        </Grid>
-        <Grid item lg={9} md={8} sm={8} xs={12}>
-          <div>
-            <Input
-              type={INPUT_TYPE.TEXT}
-              name="org"
-              className="form-control-input"
-              value={values.org}
-            />
-          </div>
-        </Grid>
+        {values.role === SUPER_ADMIN && (
+          <>
+            <Grid item lg={3} md={4} sm={5} xs={12}>
+              <InputLabel sx={{ color: "black" }}>Organization</InputLabel>
+            </Grid>
+            <Grid item lg={9} md={8} sm={8} xs={12}>
+              <div>
+                <Input
+                  type={INPUT_TYPE.TEXT}
+                  name="org"
+                  className="form-control-input"
+                  value={values.org}
+                />
+              </div>
+            </Grid>
+          </>
+        )}
       </Grid>
     </Form>
   );

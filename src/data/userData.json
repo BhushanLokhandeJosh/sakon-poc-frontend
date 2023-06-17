@@ -2,11 +2,19 @@
   "employees": [
     {
       "name": "Dinesh",
-      "email": "dinesh@gmail.com",
-      "role": "ADMIN",
-      "department": "IT",
+      "email": "akshay@gmail.com",
+      "role": "SUPERADMIN",
+      "department": "",
       "org": "Josh",
       "id": 1
+    },
+    {
+      "name": "Bhushan",
+      "email": "bhushan@gmail.com",
+      "role": "ADMIN",
+      "department": "IT",
+      "org": "",
+      "id": 2
     }
   ]
 }
