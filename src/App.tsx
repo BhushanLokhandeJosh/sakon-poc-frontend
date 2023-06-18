@@ -1,17 +1,28 @@
-import { Box } from "@mui/material";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+
+import { API_ROUTES } from "./routes/routes-constants";
 
 import "./App.css";
 
-import CreateOrganizationsContainer from "./pages/Organization/CreateOrganization";
+import Home from "./pages/Home";
 import LayoutComponent from "./shared/Navbar";
+import OrganizationsContainer from "./pages/Organization/OrganizationList";
 
 function App() {
   return (
-    <Box>
-      <LayoutComponent>
-        <CreateOrganizationsContainer />
-      </LayoutComponent>
-    </Box>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route element={<LayoutComponent />}>
+            <Route
+              path={API_ROUTES.ORGANIZATION_LIST}
+              element={<OrganizationsContainer />}
+            />
+          </Route>
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

@@ -1,29 +1,33 @@
 import { Form } from "formik";
 import { Grid, InputLabel } from "@mui/material";
 
-import { IOrganization } from "../types";
+import { IOrganizationPayload } from "../types";
 import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
 
 import "./styles/styles.css";
 
 import Input from "../../../../shared/FormComponents/Input";
 import Select from "../../../../shared/FormComponents/Select";
-import { serviceProviders } from "../helpers";
 
 interface IOrganizationProps {
-  formik: IFormikProps<IOrganization>;
+  serviceProviders?: { label: string; value: string }[];
+  formik: IFormikProps<IOrganizationPayload>;
 }
 
 const OrganizationForm = (props: IOrganizationProps): JSX.Element => {
   const { values } = props.formik;
-  console.log(values);
+  const { serviceProviders } = props;
+  console.log(values, "values");
+  console.log(serviceProviders, "serviceProviders");
 
   return (
     <Form>
-      <Grid container
-      rowSpacing={3}
-      columnSpacing={{ xs: 2 }}
-      className="grid-align-style">
+      <Grid
+        container
+        rowSpacing={3}
+        columnSpacing={{ xs: 2 }}
+        className="grid-align-style"
+      >
         <Grid item lg={3} md={4} sm={5} xs={12}>
           <InputLabel sx={{ color: "black" }}>Organization</InputLabel>
         </Grid>
@@ -63,7 +67,7 @@ const OrganizationForm = (props: IOrganizationProps): JSX.Element => {
             options={serviceProviders}
             className="multiselect-style"
             menuPlacement="bottom"
-            maxMenuHeight={100}
+            maxMenuHeight={80}
             isMulti={true}
           />
         </Grid>
