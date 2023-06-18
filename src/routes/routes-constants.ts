@@ -3,11 +3,8 @@ export const API_ROUTES = {
     GET: "/configurations", // GET: "/configDetails",
     CREATE: "/configurations",
   },
-  DEPARTMENT: {
-    GET: "/departments",
-    CREATE:"/departments"
-  },
+  DEPARTMENT_LIST: "/departments",
   ORGANIZATION: {
-    CREATE: "/organizations"
+    CREATE: "/organizations",
   },
 };

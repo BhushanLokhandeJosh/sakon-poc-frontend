@@ -1,7 +1,7 @@
 import { Form } from "formik";
 import { Grid, InputLabel } from "@mui/material";
 
-import { IDepartment } from "../types";
+import { IDepartmentPayload } from "../types";
 import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
 
 import "./styles/styles.css";
@@ -9,7 +9,7 @@ import "./styles/styles.css";
 import Input from "../../../../shared/FormComponents/Input";
 
 interface IDepartmentProps {
-  formik: IFormikProps<IDepartment>;
+  formik: IFormikProps<IDepartmentPayload>;
 }
 
 const DepartmentForm = (props: IDepartmentProps): JSX.Element => {
@@ -35,21 +35,6 @@ const DepartmentForm = (props: IDepartmentProps): JSX.Element => {
               name="name"
               className="form-control-input"
               value={values.name}
-            />
-          </div>
-        </Grid>
-
-        <Grid item lg={3} md={4} sm={5} xs={12}>
-          <InputLabel sx={{ color: "black" }}>Organization</InputLabel>
-        </Grid>
-        <Grid item lg={9} md={8} sm={8} xs={12}>
-          <div>
-            <Input
-              type={INPUT_TYPE.TEXT}
-              placeholder="organization"
-              name="org"
-              className="form-control-input"
-              value={values.org}
             />
           </div>
         </Grid>
