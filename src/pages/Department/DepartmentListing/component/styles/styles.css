@@ -4,7 +4,7 @@
 }
 
 .form-control-input {
-  width: 90%;
+  width: 100%;
   padding: 10px 10px;
   text-align: left;
   font-size: 15px;
@@ -13,6 +13,6 @@
 }
 
 .department-listing-style {
-  width: 50%;
+  width: 60%;
   margin: auto;
 }

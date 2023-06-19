@@ -77,7 +77,6 @@ const DepartmentModal = (props: IDepartmentFormProps) => {
       getFormBody={(formik: IFormikProps<IDepartmentPayload>) => (
         <DepartmentForm formik={formik} />
       )}
-      showResetButton={true}
       initialValues={!isEdit ? initialDepartmentValues : updateDepartmentValues}
       validationSchema={departmentValidationSchema}
       onSubmit={onSubmit}
