@@ -1,12 +1,28 @@
 {
   "employees": [
     {
+      "id": 1,
       "name": "Dinesh",
-      "email": "akshay@gmail.com",
+      "email": "akshay@gmail.in",
       "role": "SUPERADMIN",
       "department": "",
-      "org": "Josh",
-      "id": 1
+      "org": "Joshila"
+    },
+    {
+      "id": 2,
+      "name": "Bhushan Lokhande",
+      "email": "bhushan@gmail.com",
+      "role": "ADMIN",
+      "department": "IT",
+      "org": ""
+    },
+    {
+      "name": "Maaz",
+      "email": "maaz@gmail.com",
+      "role": "SUPERADMIN",
+      "department": "",
+      "org": "Deutsche",
+      "id": 3
     },
     {
       "name": "Bhushan",
@@ -14,7 +30,7 @@
       "role": "ADMIN",
       "department": "IT",
       "org": "",
-      "id": 2
+      "id": 4
     }
   ]
 }

@@ -1,7 +1,7 @@
 import { Form } from "formik";
 import { Grid, InputLabel } from "@mui/material";
 
-import { ADMIN, IUser, SUPER_ADMIN } from "../types";
+import { ADMIN, IUserPayload, SUPER_ADMIN } from "../types";
 import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
 
 import "./styles/styles.css";
@@ -9,7 +9,7 @@ import "./styles/styles.css";
 import Input from "../../../../shared/FormComponents/Input";
 
 interface IOrganizationProps {
-  formik: IFormikProps<IUser>;
+  formik: IFormikProps<IUserPayload>;
 }
 
 const UserForm = (props: IOrganizationProps): JSX.Element => {

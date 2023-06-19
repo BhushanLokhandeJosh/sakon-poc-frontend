@@ -7,9 +7,7 @@ export const API_ROUTES = {
     GET: "/departments",
   },
   ORGANIZATION: {
-    CREATE: "/organizations"
+    CREATE: "/organizations",
   },
-  USER:{
-    CREATE:"/employees"
-  }
+  USER_LISTING: "/employees",
 };
