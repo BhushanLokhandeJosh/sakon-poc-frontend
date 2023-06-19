@@ -4,3 +4,10 @@ export const BUTTONS_LABLES = {
   RESET: "Reset",
   REFRESH: "Refresh",
 };
+
+/**
+ *  All Navigation Routes
+ */
+export const NAVIGATION_ROUTES = {
+  CONFIGURATION_LIST: "/configurationList",
+};

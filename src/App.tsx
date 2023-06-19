@@ -1,12 +1,10 @@
-import { Box } from "@mui/material";
-
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 
-import CreateConfigurationsContainer from "./pages/Configuration/CreateConfiguration";
 import LayoutComponent from "./shared/Navbar";
 import ConfigurationsContainer from "./pages/Configuration/GetAllConfigurations";
+import { NAVIGATION_ROUTES } from "./shared/constants";
 
 function App() {
   return (
@@ -17,11 +15,7 @@ function App() {
 
           <Route element={<LayoutComponent />}>
             <Route
-              path="/create-configuration"
-              element={<CreateConfigurationsContainer />}
-            />
-            <Route
-              path="get-configurations"
+              path={NAVIGATION_ROUTES.CONFIGURATION_LIST}
               element={<ConfigurationsContainer />}
             />
           </Route>

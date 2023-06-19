@@ -1,4 +1,4 @@
-import { useQuery,useMutation } from "react-query";
+import { useQuery, useMutation } from "react-query";
 
 import { AxiosError, AxiosResponse } from "axios";
 
@@ -7,7 +7,6 @@ import { ConfigurationFilterFormInitialValues } from "./GetAllConfigurations/typ
 import { getConfigurations, getDepartments } from "./config-services";
 
 import { createConfiguration } from "./config-services";
-
 
 interface IResponseProps {
   onSuccess: (values: AxiosResponse) => void;
@@ -31,7 +30,6 @@ export const useFetchConfigurations = ({
         schedulingStatus_like: filterData?.schedulingStatus,
       })
   );
-  console.log("dataa", response?.data?.data);
 
   return {
     data: response?.data?.data,
@@ -44,8 +42,6 @@ export const useFetchConfigurations = ({
 export const useGetDepartments = () => {
   return useQuery([DEPARTMENTS], () => getDepartments());
 };
-
-
 
 export const useCreateConfiguration = (props: IResponseProps) => {
   const { onSuccess, onError } = props;
