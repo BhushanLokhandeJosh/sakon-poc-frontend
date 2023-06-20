@@ -27,7 +27,9 @@ export const useFetchDepartment = ({
 }: {
   searchValue?: string;
 }) => {
-  const response = useQuery(GET_ALL_DEPARTMENT, () => getDepartment());
+  const response = useQuery(GET_ALL_DEPARTMENT, () =>
+    getDepartment({ search: searchValue })
+  );
   return {
     data: response?.data?.results,
     isLoading: response.isLoading,

@@ -10,8 +10,8 @@ export const createDepartment = (
   return POST(`${API_ROUTES.DEPARTMENT_LIST}`, payload);
 };
 
-export const getDepartment = () => {
-  return GET(API_ROUTES.DEPARTMENT_LIST);
+export const getDepartment = (params: any) => {
+  return GET(API_ROUTES.DEPARTMENT_LIST, params);
 };
 
 export const updateDepartment = (
