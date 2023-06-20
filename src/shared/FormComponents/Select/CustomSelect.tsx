@@ -36,8 +36,8 @@ export const CustomSelect = ({
     form.setFieldValue(
       field.name,
       isMulti
-        ? (option as Option[]).map((item: Option) => item.value)
-        : (option as Option).value
+        ? (option as Option[])?.map((item: Option) => item?.value)
+        : (option as Option)?.value
     );
   };
 
@@ -50,8 +50,8 @@ export const CustomSelect = ({
   const getValue = () => {
     if (options) {
       return isMulti
-        ? options.filter((option) => field.value?.indexOf(option.value) >= 0)
-        : options.find((option) => option.value === field.value);
+        ? options?.filter((option) => field.value?.indexOf(option.value) >= 0)
+        : options?.find((option) => option.value === field.value);
     } else {
       return isMulti ? [] : ("" as any);
     }

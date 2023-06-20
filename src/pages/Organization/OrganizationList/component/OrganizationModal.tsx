@@ -25,14 +25,13 @@ const OrganizationModal = ({
   toggleModal,
   organization,
 }: IOrganizationModalProps) => {
+
   const [serviceProviders, setServiceProviders] = useState<
     {
       label: string;
       value: string;
     }[]
   >();
-
-  console.log("Org", organization);
 
   const { data } = useFetchServiceProviders();
 
@@ -55,7 +54,18 @@ const OrganizationModal = ({
       }
       setServiceProviders(arr);
     } else {
-      setServiceProviders(data);
+      let arr = [];
+      const length = data?.results.length;
+
+      for (let i = 0; i < length; i++) {
+        arr.push({
+          value: data?.results[i].name,
+          label: data?.results[i].name,
+        });
+      }
+
+      console.log("Serviec array", arr);
+      setServiceProviders(arr);
     }
   }, [data]);
 

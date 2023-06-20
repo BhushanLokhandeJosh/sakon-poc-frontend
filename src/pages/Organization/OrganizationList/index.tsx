@@ -8,6 +8,8 @@ import OrganizationListing from "./component";
 import OrganizationModal from "./component/OrganizationModal";
 
 const OrganizationsContainer = () => {
+  console.log("In Org Container");
+  
   const { isOpen, handleToggle } = useToggle();
   const [organization, setOrganization] = useState<any>();
 

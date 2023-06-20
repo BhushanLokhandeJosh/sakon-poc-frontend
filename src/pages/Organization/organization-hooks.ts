@@ -27,8 +27,9 @@ export const useFetchOrganization = () => {
   // const { onSuccess, onError } = props;
 
   const response = useQuery(GET_ALL_ORGANIZATION, () => getOrganization());
+  console.log("Fetch Response",response);
   return {
-    data: response?.data,
+    data: response?.data?.results,
     isLoading: response.isLoading,
     isError: response.isError,
   };

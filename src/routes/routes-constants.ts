@@ -7,5 +7,5 @@ export const API_ROUTES = {
     GET: "/departments",
   },
   ORGANIZATION_LIST: "/organizations",
-  SERVICE_PROVIDERS : "/serviceProviders"
+  SERVICE_PROVIDERS : "/serviceprovider"
 };

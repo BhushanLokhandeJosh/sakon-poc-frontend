@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "http://127.0.0.1:8000",
 });
 
 export const GET = (url: string, params?: any) => {
