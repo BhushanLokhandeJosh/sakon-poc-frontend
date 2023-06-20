@@ -13,7 +13,7 @@ export const GET_ALL_DEPARTMENT = "getAllDepartment";
 
 export const initialDepartmentValues: IDepartmentPayload = {
   name: "",
-  org: "",
+  org: undefined,
 };
 
 export const DepartmentColumns = (

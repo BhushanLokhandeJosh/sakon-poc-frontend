@@ -17,5 +17,10 @@ export const getDepartment = () => {
 export const updateDepartment = (
   payload: IDepartmentPayload
 ): Promise<AxiosResponse<string, any>> => {
-  return PUT(`${API_ROUTES.DEPARTMENT_LIST}/${payload.id}`, payload);
+  console.log("Updatedept", payload.id);
+  const data = {
+    name: payload.name,
+    org: payload.org,
+  };
+  return PUT(`${API_ROUTES.DEPARTMENT_LIST}/${payload.id}`, data);
 };

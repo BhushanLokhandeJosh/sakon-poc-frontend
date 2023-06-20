@@ -25,7 +25,7 @@ export const useCreateDepartment = (props: IResponseProps) => {
 export const useFetchDepartment = () => {
   const response = useQuery(GET_ALL_DEPARTMENT, () => getDepartment());
   return {
-    data: response?.data,
+    data: response?.data?.results,
     isLoading: response.isLoading,
     isError: response.isError,
   };
