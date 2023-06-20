@@ -7,14 +7,17 @@ import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
 import "./styles/styles.css";
 
 import Input from "../../../../shared/FormComponents/Input";
+import Select from "../../../../shared/FormComponents/Select";
 
 interface IOrganizationProps {
   formik: IFormikProps<IUserPayload>;
+  departmentOptions?: { label: string; value: string }[];
+  organizationsOptions?: { label: number; value: string }[];
 }
 
 const UserForm = (props: IOrganizationProps): JSX.Element => {
   const { values } = props.formik;
-  console.log(values);
+  const { departmentOptions, organizationsOptions } = props;
 
   return (
     <Form>
@@ -76,12 +79,14 @@ const UserForm = (props: IOrganizationProps): JSX.Element => {
             </Grid>
             <Grid item lg={9} md={8} sm={8} xs={12}>
               <div>
-                <Input
-                  type={INPUT_TYPE.TEXT}
-                  placeholder="Enter Department"
-                  name="department"
-                  className="form-control-input"
-                  value={values.department}
+                <Select
+                  name="Department"
+                  placeholder="Select Department"
+                  options={departmentOptions}
+                  className="multiselect-style"
+                  menuPlacement="bottom"
+                  maxMenuHeight={80}
+                  isMulti={false}
                 />
               </div>
             </Grid>
@@ -91,15 +96,18 @@ const UserForm = (props: IOrganizationProps): JSX.Element => {
         {values.role === SUPER_ADMIN && (
           <>
             <Grid item lg={3} md={4} sm={5} xs={12}>
-              <InputLabel sx={{ color: "black" }}>Organization</InputLabel>
+              <InputLabel sx={{ color: "black" }}>Organizations</InputLabel>
             </Grid>
             <Grid item lg={9} md={8} sm={8} xs={12}>
               <div>
-                <Input
-                  type={INPUT_TYPE.TEXT}
+                <Select
                   name="org"
-                  className="form-control-input"
-                  value={values.org}
+                  placeholder="Select Organization"
+                  options={organizationsOptions}
+                  className="multiselect-style"
+                  menuPlacement="bottom"
+                  maxMenuHeight={80}
+                  isMulti={false}
                 />
               </div>
             </Grid>

@@ -8,18 +8,21 @@ export const initialUserValues: IUserPayload = {
   name: "",
   email: "",
   role: "",
-  department: "",
-  org: "",
+  Department: 0,
+  org: 0,
 };
 
-export const UPDATE_USER_MESSAGE =
-  "Organization Updated Successfully...";
+export const UPDATE_USER_MESSAGE = "Organization Updated Successfully...";
 
 export const CREATE_USER_MESSAGE = "Organization Added Successfully...";
 
-export const ERROR_MESSAGE = "Something Went Wrong..."
+export const ERROR_MESSAGE = "Something Went Wrong...";
 
 export const GET_ALL_USER = "getAllUser";
+
+export const GET_ALL_ORG = "getAllOrganization";
+
+export const GET_ORG_DEPT = "getOrganizationDepartment";
 
 export const UserColumns = (handleEditUser: Function): GridColDef[] => {
   return [
@@ -33,19 +36,19 @@ export const UserColumns = (handleEditUser: Function): GridColDef[] => {
     {
       field: "name",
       headerName: "UserName",
-      width: 200,
+      width: 300,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "email",
       headerName: "Email",
-      width: 200,
+      width: 300,
       headerAlign: "center",
       align: "center",
     },
     {
-      field: "department",
+      field: "Department",
       headerName: "Department",
       width: 200,
       sortable: false,

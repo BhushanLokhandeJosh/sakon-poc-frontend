@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
 import { IFormikProps } from "../../../../shared/types";
 import { IUserPayload } from "../types";
 import UserForm from "./UserForm";
 import { userValidationSchema } from "../helpers";
-import { useCreateUser, useUpdateUser } from "../../organization-hooks";
+import {
+  useCreateUser,
+  useFetchDepartmentList,
+  useFetchOrganization,
+  useUpdateUser,
+} from "../../user-hooks";
 import {
   CREATE_USER_MESSAGE,
   ERROR_MESSAGE,
@@ -15,13 +20,60 @@ import {
 import { toast } from "react-toastify";
 import { AxiosError, AxiosResponse } from "axios";
 import { useQueryClient } from "react-query";
+import { Console, log } from "console";
 
 const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
+  const [departmentOptions, SetDepartmentOptions] = useState<
+    {
+      label: string;
+      value: string;
+    }[]
+  >();
+
+  const [organizationOptions, SetOrganizationOptions] = useState<
+    {
+      label: number;
+      value: string;
+    }[]
+  >();
+
   const queryClient = useQueryClient();
+
+  const { data: departments } = useFetchDepartmentList({ org_id: 1 });
+
+  const { data: organizations } = useFetchOrganization();
+  console.log("Org", organizations?.results);
 
   const isEdit = user ? true : false;
 
   let updateUserValues;
+
+  useEffect(() => {
+    if (!isEdit) {
+      let arr1 = [];
+      let arr2 = [];
+
+      const length1 = departments?.length;
+      const length2 = organizations?.results?.length;
+
+      for (let i = 0; i < length1; i++) {
+        arr1.push({
+          label: departments[i].name,
+          value: departments[i].id,
+        });
+      }
+
+      for (let i = 0; i < length2; i++) {
+        arr2.push({
+          label: organizations?.results[i].name,
+          value: organizations?.results[i].id,
+        });
+      }
+
+      SetDepartmentOptions(arr1);
+      SetOrganizationOptions(arr2);
+    }
+  }, [departments, organizations]);
 
   if (isEdit) {
     updateUserValues = {
@@ -58,15 +110,32 @@ const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
   });
 
   const onSubmit = (values: any) => {
-    !isEdit ? createUser(values) : updateUser(values);
+    if (!isEdit) {
+      if (values.role === "ADMIN") {
+        delete values.org;
+      } else if (values.role === "SUPERADMIN") {
+        delete values.Department;
+      }
+      createUser(values);
+    } else {
+      updateUser(values);
+    }
   };
+
+  console.log(organizationOptions);
+  console.log(departmentOptions);
+
   return (
     <FormikModalComponent
       isOpen={isModalOpen}
       toggleModal={toggleModal}
       modalTitle={isEdit ? "Edit User" : "Create User"}
       getFormBody={(formik: IFormikProps<IUserPayload>) => (
-        <UserForm formik={formik} />
+        <UserForm
+          formik={formik}
+          departmentOptions={departmentOptions}
+          organizationsOptions={organizationOptions}
+        />
       )}
       initialValues={!isEdit ? initialUserValues : updateUserValues}
       validationSchema={userValidationSchema}

@@ -10,8 +10,16 @@ export const createUser = (
   return POST(`${API_ROUTES.USER_LISTING}`, payload);
 };
 
-export const getUserList = () => {
-  return GET(API_ROUTES.USER_LISTING);
+export const getUserList = (params: any) => {
+  return GET(API_ROUTES.USER_LISTING, params);
+};
+
+export const getDepartmentList = (params: any) => {
+  return GET(API_ROUTES.DEPARTMENTS, params);
+};
+
+export const getOrganizations = () => {
+  return GET(API_ROUTES.ORGANIZATION);
 };
 
 export const updateUser = (

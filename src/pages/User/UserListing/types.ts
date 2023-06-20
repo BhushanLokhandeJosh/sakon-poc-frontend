@@ -6,8 +6,8 @@ export interface IUserPayload {
   name: string;
   email: string;
   role: string;
-  department: string;
-  org: string;
+  Department: number;
+  org: number;
 }
 
 export interface IUserFormProps {

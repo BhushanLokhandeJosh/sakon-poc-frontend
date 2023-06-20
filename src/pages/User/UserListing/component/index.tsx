@@ -5,7 +5,7 @@ import "./styles/styles.css";
 import PageComponent from "../../../../shared/PageComponent/PageComponent";
 
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
-import { useFetchUserList } from "../../organization-hooks";
+import { useFetchUserList } from "../../user-hooks";
 import { UserColumns } from "../../constants";
 
 const UserListing = ({ toggleModal, handleEditUser }: any) => {
