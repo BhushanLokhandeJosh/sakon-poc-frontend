@@ -27,3 +27,6 @@ export const initialConfigurationValues: IConfiguration = {
 //toast messages
 export const CONFIGURATION_SUCCESS_MESSAGE =
   "Configuration Added Successfully...";
+
+export const CONFIGURATION_UPDATED_MESSAGE =
+  "Configuration Updated Successfully...";

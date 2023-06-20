@@ -22,13 +22,12 @@ import ConfifurationFilterForm from "./ConfifurationFilterForm";
 import ConfigurationForm from "../../CreateConfiguration/component/ConfigurationForm";
 
 const ConfigurationComponent = ({
-  onSubmit,
-  isOpen,
   toggleModal,
-}: IConfigurationFormInfo) => {
+  handleEditConfiguration,
+}: any) => {
   return (
     <Box>
-      {isOpen && (
+      {/* {isOpen && (
         <FormikModalComponent
           isOpen={isOpen}
           toggleModal={toggleModal}
@@ -40,7 +39,7 @@ const ConfigurationComponent = ({
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         />
-      )}
+      )} */}
       <PageComponent
         pageTitle="Configurations"
         buttonLabel="Create Configuration"
@@ -55,7 +54,7 @@ const ConfigurationComponent = ({
               ),
             }}
             searchConfiguration={{ isSearchBoxVisible: true }}
-            columnHeaders={ConfigurationListColumns}
+            columnHeaders={ConfigurationListColumns(handleEditConfiguration)}
             useCustomFetch={useFetchConfigurations}
             initialValues={configurationInitialValues}
           />

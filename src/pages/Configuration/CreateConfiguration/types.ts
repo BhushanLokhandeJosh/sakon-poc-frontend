@@ -1,4 +1,5 @@
 export interface IConfiguration {
+  id?: any;
   configurationName: string;
   department: string;
   email: string;
@@ -14,6 +15,6 @@ export interface IConfiguration {
 
 export interface IConfigurationFormInfo {
   toggleModal: () => void;
-  onSubmit: (values: IConfiguration) => void;
   isOpen: boolean;
+  configuration: any;
 }

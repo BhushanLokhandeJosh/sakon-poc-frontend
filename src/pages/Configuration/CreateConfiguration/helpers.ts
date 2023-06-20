@@ -9,13 +9,13 @@ export const validationSchema = Yup.object({
     .lowercase()
     .email("Invalid email format")
     .required("Email Required"),
-  password: Yup.string()
-    .trim()
-    .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Minimum eight characters, at least one letter, one number and one special character"
-    )
-    .required("Password Required"),
+  // password: Yup.string()
+  //   .trim()
+  //   .matches(
+  //     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+  //     "Minimum eight characters, at least one letter, one number and one special character"
+  //   )
+  //   .required("Password Required"),
   carrierName: Yup.string().required("Carrier Name is Must"),
   sftpLogin: Yup.string().required("Login Credential is Required"),
   sftpPassword: Yup.string().required("Sftp Password Required"),
@@ -42,6 +42,19 @@ export const formDataMapping = (values: IConfiguration): FormData => {
     sftpPassword,
   } = values;
   let form = new FormData();
+  console.log("Form helper", {
+    configurationName,
+    department,
+    email,
+    password,
+    carrierName,
+    downloadPath,
+    template,
+    sftpLocation,
+    sftpLogin,
+    sftpPassword,
+  });
+
   form.append("name", configurationName);
   form.append("dept_name", department);
   form.append("email", email);
@@ -53,5 +66,6 @@ export const formDataMapping = (values: IConfiguration): FormData => {
   form.append("sftp_path", sftpLocation);
   form.append("sftp_login", sftpLogin);
   form.append("sftp_password", sftpPassword);
+  console.log("Form helper", form);
   return form;
 };

@@ -14,37 +14,41 @@ import {
 
 import useToggle from "../../../shared/CustomHooks/useToggle";
 import ConfigurationComponent from "./component/ConfigurationComponent";
+import { useState } from "react";
+import { boolean } from "yup";
+import { GridCellParams } from "@mui/x-data-grid";
+import ConfigurationModal from "./component/ConfigurationModal";
 
 const ConfigurationsContainer = () => {
   const { isOpen, handleToggle } = useToggle();
-  const queryClient = useQueryClient();
+  const [configuration, setConfiguration] = useState<any>();
 
-  const onSuccess = (value: AxiosResponse) => {
+  const handleToggleWithConfigurationReset = () => {
     handleToggle();
-    toast.success(CONFIGURATION_SUCCESS_MESSAGE);
-    queryClient.invalidateQueries([GET_ALL_CONFIGURATIONS]);
+    if (configuration) {
+      setConfiguration(undefined);
+    }
   };
 
-  const onError = (values: AxiosError) => {
-    toast.error(values.message);
-  };
-
-  const { mutate: createConfiguration } = useCreateConfiguration({
-    onSuccess,
-    onError,
-  });
-
-  const onSubmit = (values: IConfiguration) => {
-    const formData = formDataMapping(values);
-    createConfiguration(formData);
+  const handleEditConfiguration = (value: GridCellParams) => {
+    setConfiguration(value);
+    handleToggle();
   };
 
   return (
-    <ConfigurationComponent
-      onSubmit={onSubmit}
-      isOpen={isOpen}
-      toggleModal={handleToggle}
-    />
+    <>
+      {isOpen && (
+        <ConfigurationModal
+          isOpen={isOpen}
+          toggleModal={handleToggleWithConfigurationReset}
+          configuration={configuration}
+        />
+      )}
+      <ConfigurationComponent
+        toggleModal={handleToggleWithConfigurationReset}
+        handleEditConfiguration={handleEditConfiguration}
+      />
+    </>
   );
 };
 
