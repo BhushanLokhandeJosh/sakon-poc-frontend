@@ -1,0 +1,12 @@
+{
+  "signup": [
+    {
+      "id": 1,
+      "email": "bhushan@gmail.com",
+      "organization": "Tata",
+      "department_count": 54,
+      "designation": "HR ADMIN",
+      "service_providers": ["VI", "Verizone"]
+    }
+  ]
+}

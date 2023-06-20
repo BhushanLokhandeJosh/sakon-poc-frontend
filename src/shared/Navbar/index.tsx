@@ -17,6 +17,7 @@ import AvatarImage from "../../assets/images/avatar-icon.jpeg";
 
 import "./styles/style.css";
 import { PAGE_MENU, SETTING_MENU } from "./constants";
+import { Outlet } from "react-router-dom";
 
 const sidebarMenu = [
   "Dashboard",
@@ -35,6 +36,7 @@ interface IProps {
 //  responsiveness or not.
 const LayoutComponent = (props: IProps) => {
   const { children } = props;
+  console.log(children)
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -192,7 +194,9 @@ const LayoutComponent = (props: IProps) => {
           </div>
         </Grid>
         <Grid item xs={10}>
-          <div>{children}</div>
+          <div>
+            <Outlet/>
+          </div>
         </Grid>
       </Grid>
     </div>
