@@ -1,23 +1,10 @@
-import { useQueryClient } from "react-query";
-import { toast } from "react-toastify";
-import { AxiosError, AxiosResponse } from "axios";
-
-import { formDataMapping } from "../CreateConfiguration/helpers";
-import { useCreateConfiguration } from "../config-hooks";
-
-import { IConfiguration } from "../CreateConfiguration/types";
-
-import {
-  CONFIGURATION_SUCCESS_MESSAGE,
-  GET_ALL_CONFIGURATIONS,
-} from "../constants";
+import { useState } from "react";
+import { GridCellParams } from "@mui/x-data-grid";
 
 import useToggle from "../../../shared/CustomHooks/useToggle";
-import ConfigurationComponent from "./component/ConfigurationComponent";
-import { useState } from "react";
-import { boolean } from "yup";
-import { GridCellParams } from "@mui/x-data-grid";
 import ConfigurationModal from "./component/ConfigurationModal";
+
+import ConfigurationComponent from "./component/ConfigurationComponent";
 
 const ConfigurationsContainer = () => {
   const { isOpen, handleToggle } = useToggle();

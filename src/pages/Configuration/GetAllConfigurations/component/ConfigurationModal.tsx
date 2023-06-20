@@ -1,28 +1,31 @@
-import React from "react";
+import { AxiosError, AxiosResponse } from "axios";
+import { toast } from "react-toastify";
+import { useQueryClient } from "react-query";
+
 import {
-  IConfiguration,
-  IConfigurationFormInfo,
-} from "../../CreateConfiguration/types";
-import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
-import { IFormikProps } from "../../../../shared/types";
-import ConfigurationForm from "../../CreateConfiguration/component/ConfigurationForm";
+  formDataMapping,
+  validationSchema,
+} from "../../CreateConfiguration/helpers";
+import {
+  useCreateConfiguration,
+  useUpdateConfiguration,
+} from "../../config-hooks";
+
 import {
   CONFIGURATION_SUCCESS_MESSAGE,
   CONFIGURATION_UPDATED_MESSAGE,
   GET_ALL_CONFIGURATIONS,
   initialConfigurationValues,
 } from "../../constants";
+
+import { IFormikProps } from "../../../../shared/types";
 import {
-  formDataMapping,
-  validationSchema,
-} from "../../CreateConfiguration/helpers";
-import { useQueryClient } from "react-query";
-import {
-  useCreateConfiguration,
-  useUpdateConfiguration,
-} from "../../config-hooks";
-import { AxiosError, AxiosResponse } from "axios";
-import { toast } from "react-toastify";
+  IConfiguration,
+  IConfigurationFormInfo,
+} from "../../CreateConfiguration/types";
+
+import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
+import ConfigurationForm from "../../CreateConfiguration/component/ConfigurationForm";
 
 const ConfigurationModal = ({
   isOpen: isConfigurationModalOpen,
@@ -86,7 +89,7 @@ const ConfigurationModal = ({
     <FormikModalComponent
       isOpen={isConfigurationModalOpen}
       toggleModal={toggleModal}
-      modalTitle="Create Configuration"
+      modalTitle={isEdit ? "Edit Configuration" : "Create Configuration"}
       getFormBody={(formik: IFormikProps<IConfiguration>) => (
         <ConfigurationForm formik={formik} />
       )}

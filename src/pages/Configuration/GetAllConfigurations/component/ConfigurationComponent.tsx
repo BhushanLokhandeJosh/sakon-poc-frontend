@@ -1,25 +1,15 @@
 import { Box } from "@mui/material";
 
-import { validationSchema } from "../../CreateConfiguration/helpers";
 import { useFetchConfigurations } from "../../config-hooks";
 
 import { IFormikProps } from "../../../../shared/types";
-import {
-  IConfiguration,
-  IConfigurationFormInfo,
-} from "../../CreateConfiguration/types";
 
 import { ConfigurationListColumns } from "../constants";
-import {
-  configurationInitialValues,
-  initialConfigurationValues,
-} from "../../constants";
+import { configurationInitialValues } from "../../constants";
 
 import PageComponent from "../../../../shared/PageComponent/PageComponent";
-import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
 import ConfifurationFilterForm from "./ConfifurationFilterForm";
-import ConfigurationForm from "../../CreateConfiguration/component/ConfigurationForm";
 
 const ConfigurationComponent = ({
   toggleModal,
@@ -27,19 +17,6 @@ const ConfigurationComponent = ({
 }: any) => {
   return (
     <Box>
-      {/* {isOpen && (
-        <FormikModalComponent
-          isOpen={isOpen}
-          toggleModal={toggleModal}
-          modalTitle="Create Configuration"
-          getFormBody={(formik: IFormikProps<IConfiguration>) => (
-            <ConfigurationForm formik={formik} />
-          )}
-          initialValues={initialConfigurationValues}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
-        />
-      )} */}
       <PageComponent
         pageTitle="Configurations"
         buttonLabel="Create Configuration"

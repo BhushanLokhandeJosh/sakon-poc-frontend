@@ -1,5 +1,4 @@
 export interface IConfiguration {
-  id?: any;
   configurationName: string;
   department: string;
   email: string;
