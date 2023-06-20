@@ -22,7 +22,11 @@ export const useCreateDepartment = (props: IResponseProps) => {
   });
 };
 
-export const useFetchDepartment = () => {
+export const useFetchDepartment = ({
+  searchValue,
+}: {
+  searchValue?: string;
+}) => {
   const response = useQuery(GET_ALL_DEPARTMENT, () => getDepartment());
   return {
     data: response?.data?.results,
