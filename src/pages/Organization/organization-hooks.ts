@@ -23,11 +23,15 @@ export const useCreateOrganization = (props: IResponseProps) => {
   });
 };
 
-export const useFetchOrganization = () => {
+export const useFetchOrganization = ({
+  searchValue,
+}: {
+  searchValue?: string;
+}) => {
   // const { onSuccess, onError } = props;
 
-  const response = useQuery(GET_ALL_ORGANIZATION, () => getOrganization());
-  console.log("Fetch Response",response);
+  const response = useQuery(GET_ALL_ORGANIZATION, () => getOrganization({search:searchValue}));
+  console.log("Fetch Response", response);
   return {
     data: response?.data?.results,
     isLoading: response.isLoading,

@@ -12,14 +12,14 @@ export const createOrganization = (
   return POST(`${API_ROUTES.ORGANIZATION_LIST}`, payload);
 };
 
-export const getOrganization = () => {
-  return GET(API_ROUTES.ORGANIZATION_LIST);
+export const getOrganization = (params: any) => {
+  return GET(API_ROUTES.ORGANIZATION_LIST, params);
 };
 
 export const updateOrganization = (
   payload: IOrganizationPayload
 ): Promise<AxiosResponse<string, any>> => {
-  console.log(payload.id,"id");
+  console.log(payload.id, "id");
   return PUT(`${API_ROUTES.ORGANIZATION_LIST}/${payload.id}`, payload);
 };
 
