@@ -13,11 +13,12 @@ interface IOrganizationProps {
   formik: IFormikProps<IUserPayload>;
   departmentOptions?: { label: string; value: string }[];
   organizationsOptions?: { label: number; value: string }[];
+  isEdit: boolean;
 }
 
 const UserForm = (props: IOrganizationProps): JSX.Element => {
   const { values } = props.formik;
-  const { departmentOptions, organizationsOptions } = props;
+  const { departmentOptions, organizationsOptions, isEdit } = props;
 
   return (
     <Form>
@@ -57,20 +58,24 @@ const UserForm = (props: IOrganizationProps): JSX.Element => {
           </div>
         </Grid>
 
-        <Grid item lg={3} md={4} sm={5} xs={12}>
-          <InputLabel sx={{ color: "black" }}>Role</InputLabel>
-        </Grid>
-        <Grid item lg={9} md={8} sm={8} xs={12}>
-          <div>
-            <Input
-              type={INPUT_TYPE.TEXT}
-              placeholder="Enter Name"
-              name="role"
-              className="form-control-input"
-              value={values.role}
-            />
-          </div>
-        </Grid>
+        {!isEdit && (
+          <>
+            <Grid item lg={3} md={4} sm={5} xs={12}>
+              <InputLabel sx={{ color: "black" }}>Role</InputLabel>
+            </Grid>
+            <Grid item lg={9} md={8} sm={8} xs={12}>
+              <div>
+                <Input
+                  type={INPUT_TYPE.TEXT}
+                  placeholder="Enter Name"
+                  name="role"
+                  className="form-control-input"
+                  value={values.role}
+                />
+              </div>
+            </Grid>
+          </>
+        )}
 
         {values.role === ADMIN && (
           <>

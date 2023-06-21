@@ -135,6 +135,7 @@ const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
           formik={formik}
           departmentOptions={departmentOptions}
           organizationsOptions={organizationOptions}
+          isEdit={isEdit}
         />
       )}
       initialValues={!isEdit ? initialUserValues : updateUserValues}

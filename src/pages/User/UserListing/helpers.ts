@@ -4,7 +4,7 @@ import { ADMIN, SUPER_ADMIN } from "./types";
 export const userValidationSchema = Yup.object({
   name: Yup.string().required("Organization Name Required"),
   email: Yup.string().email("Not a proper email"),
-  role: Yup.string().required("Role Required"),
+  role: Yup.string().notRequired(),
 
   Department: Yup.number().when("role", {
     is: (val: any) => val === ADMIN,
