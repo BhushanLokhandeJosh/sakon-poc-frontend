@@ -74,7 +74,7 @@ const DepartmentModal = (props: IDepartmentFormProps) => {
     <FormikModalComponent
       isOpen={isOpen}
       toggleModal={toggleModal}
-      modalTitle="Create Department"
+      modalTitle={isEdit ? "Edit Department" : "Create Department"}
       getFormBody={(formik: IFormikProps<IDepartmentPayload>) => (
         <DepartmentForm formik={formik} />
       )}

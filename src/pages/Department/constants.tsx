@@ -30,7 +30,7 @@ export const DepartmentColumns = (
     {
       field: "name",
       headerName: "Department Name",
-      width: 300,
+      width: 900,
       headerAlign: "center",
       align: "center",
     },
