@@ -110,7 +110,7 @@ const SignUpModal = ({
     <FormikModalComponent
       isOpen={isModalOpen}
       toggleModal={toggleModal}
-      modalTitle={isEdit ? "Edit Organization" : "Create Organization"}
+      modalTitle={isEdit ? "Edit Enquiry" : "Create Enquiry"}
       getFormBody={(formik: IFormikProps<ISignupPayload>) => (
         <SignUpUserForm formik={formik} serviceProviders={serviceProviders} />
       )}
