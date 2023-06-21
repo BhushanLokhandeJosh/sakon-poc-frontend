@@ -23,7 +23,6 @@ const ServiceProviderListing = ({
             searchConfiguration={{ isSearchBoxVisible: true }}
             columnHeaders={ServiceProvidersColumns(handleEditServiceProviders)}
             useCustomFetch={useFetchServiceProviders}
-            tableClassName="listing-style"
           />
         }
       />
