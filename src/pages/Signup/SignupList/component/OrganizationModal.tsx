@@ -76,6 +76,7 @@ const SignUpModal = ({
     updateSignupValues = {
       id: signupuser.id,
       email: signupuser.email,
+      organization: signupuser.organization,
       designation: signupuser.designation,
       department_count: signupuser.department_count,
       service_providers: signupuser.service_providers,
@@ -106,6 +107,7 @@ const SignUpModal = ({
   });
 
   const onSubmit = (values: any) => {
+    console.log(values, "values");
     !isEdit ? createSignupUser(values) : updateSignupUser(values);
   };
 

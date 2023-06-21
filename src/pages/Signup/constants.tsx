@@ -9,7 +9,6 @@ import { ISignupPayload } from "./SignupList/types";
 import { IObjectWithAnyFields } from "../../shared/types";
 
 export const initialSignUpUserValues: ISignupPayload = {
-  id: 0,
   email: "",
   organization: "",
   designation: "",

@@ -19,7 +19,7 @@ export const getSignUpUserList = () => {
 export const updateSignUp = (
   payload: ISignupPayload
 ): Promise<AxiosResponse<string, any>> => {
-  console.log(payload.id, "id");
+  console.log(payload, "id");
   return PUT(`${API_ROUTES.SIGNUP}/${payload.id}`, payload);
 };
 

@@ -28,7 +28,7 @@ export const useFetchSignupUserList = () => {
 
   const response = useQuery(GET_ALL_SIGNUP, () => getSignUpUserList());
   return {
-    data: response?.data,
+    data: response?.data?.results,
     isLoading: response.isLoading,
     isError: response.isError,
   };

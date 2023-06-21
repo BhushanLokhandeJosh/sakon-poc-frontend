@@ -12,7 +12,7 @@ const SignUpUserListing = ({ toggleModal, handleEditSignup }: any) => {
   return (
     <Box>
       <PageComponent
-        pageTitle="User Signup"
+        pageTitle="Signup"
         buttonLabel="SignUp"
         handleButtonAction={toggleModal}
         pageBody={
