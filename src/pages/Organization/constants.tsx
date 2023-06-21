@@ -33,14 +33,14 @@ export const OrganizationColumns = (
     {
       field: "id",
       headerName: "Id",
-      width: 150,
+      width: 200,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "name",
       headerName: "Organization Name",
-      width: 300,
+      width: 350,
 
       headerAlign: "center",
       align: "center",
@@ -48,14 +48,14 @@ export const OrganizationColumns = (
     {
       field: "department_count",
       headerName: "Dept. Count",
-      width: 300,
+      width: 350,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "service_providers",
       headerName: "Service Providers",
-      width: 300,
+      width: 350,
       sortable: false,
       headerAlign: "center",
       align: "center",

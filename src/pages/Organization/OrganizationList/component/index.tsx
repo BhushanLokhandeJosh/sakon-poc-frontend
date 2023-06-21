@@ -1,7 +1,5 @@
 import { Box } from "@mui/material";
 
-// import { useFetchAllSchedulers } from "../../scheduler-hooks";
-
 import { OrganizationColumns } from "../../constants";
 
 import "./styles/styles.css";
@@ -9,7 +7,6 @@ import "./styles/styles.css";
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
 import PageComponent from "../../../../shared/PageComponent/PageComponent";
 import { useFetchOrganization } from "../../organization-hooks";
-
 
 const OrganizationListing = ({ toggleModal, handleEditOrganization }: any) => {
   return (
@@ -23,7 +20,6 @@ const OrganizationListing = ({ toggleModal, handleEditOrganization }: any) => {
             searchConfiguration={{ isSearchBoxVisible: true }}
             columnHeaders={OrganizationColumns(handleEditOrganization)}
             useCustomFetch={useFetchOrganization}
-            tableClassName="organization-listing-style"
           />
         }
       />
