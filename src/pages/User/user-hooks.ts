@@ -28,6 +28,7 @@ export const useFetchUserList = ({ searchValue }: { searchValue?: string }) => {
   const response = useQuery(GET_ALL_USER, () =>
     getUserList({ search: searchValue })
   );
+  console.log("response", response);
   return {
     data: response?.data?.results,
     isLoading: response.isLoading,

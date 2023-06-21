@@ -36,14 +36,14 @@ export const UserColumns = (handleEditUser: Function): GridColDef[] => {
     {
       field: "name",
       headerName: "UserName",
-      width: 300,
+      width: 350,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "email",
       headerName: "Email",
-      width: 300,
+      width: 350,
       headerAlign: "center",
       align: "center",
     },
@@ -58,7 +58,7 @@ export const UserColumns = (handleEditUser: Function): GridColDef[] => {
     {
       field: "org",
       headerName: "Organization",
-      width: 200,
+      width: 250,
       sortable: false,
       headerAlign: "center",
       align: "center",
