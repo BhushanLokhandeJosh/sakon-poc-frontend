@@ -5,7 +5,7 @@ import { Box } from "@mui/material";
 import useToggle from "../../../shared/CustomHooks/useToggle";
 
 import SignUpUserListing from "./component";
-import SignUpModal from "./component/OrganizationModal";
+import SignUpModal from "./component/SignUpModal";
 
 const SignupContainer = () => {
   const { isOpen, handleToggle } = useToggle();

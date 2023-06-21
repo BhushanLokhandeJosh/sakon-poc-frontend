@@ -24,8 +24,6 @@ export const useCreateSignup = (props: IResponseProps) => {
 };
 
 export const useFetchSignupUserList = () => {
-  // const { onSuccess, onError } = props;
-
   const response = useQuery(GET_ALL_SIGNUP, () => getSignUpUserList());
   return {
     data: response?.data?.results,
@@ -33,10 +31,8 @@ export const useFetchSignupUserList = () => {
     isError: response.isError,
   };
 };
-// getServiceProviders
 
 export const useFetchServiceProviders = () => {
-  // const { onSuccess, onError } = props;
   return useQuery(GET_ALL_SERVICE_PROVIDERS, () => getServiceProviders());
 };
 

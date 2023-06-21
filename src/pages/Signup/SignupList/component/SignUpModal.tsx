@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
 import { IFormikProps } from "../../../../shared/types";
 import { ISignUpModalProps, ISignupPayload } from "../types";
-import OrganizationForm from "./SignUpUserForm";
 import {
   CREATE_ORGANIZATION_MESSAGE,
   ERROR_MESSAGE,
@@ -33,11 +32,7 @@ const SignUpModal = ({
     }[]
   >();
 
-  console.log("Org", signupuser);
-
   const { data: services } = useFetchServiceProviders();
-
-  console.log("Service", services?.results);
 
   const queryClient = useQueryClient();
 

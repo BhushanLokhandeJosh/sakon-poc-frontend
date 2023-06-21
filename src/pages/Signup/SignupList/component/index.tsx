@@ -12,8 +12,8 @@ const SignUpUserListing = ({ toggleModal, handleEditSignup }: any) => {
   return (
     <Box>
       <PageComponent
-        pageTitle="Signup"
-        buttonLabel="SignUp"
+        pageTitle="User Enquiry"
+        buttonLabel="SignUp User"
         handleButtonAction={toggleModal}
         pageBody={
           <CustomTable

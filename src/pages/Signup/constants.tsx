@@ -32,14 +32,14 @@ export const SignUpUserColumns = (handleEditSignup: Function): GridColDef[] => {
     {
       field: "id",
       headerName: "Id",
-      width: 150,
+      width: 100,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "email",
       headerName: "Email",
-      width: 250,
+      width: 300,
       headerAlign: "center",
       align: "center",
     },
@@ -53,7 +53,7 @@ export const SignUpUserColumns = (handleEditSignup: Function): GridColDef[] => {
     {
       field: "designation",
       headerName: "Designation",
-      width: 250,
+      width: 350,
       headerAlign: "center",
       align: "center",
     },
@@ -67,7 +67,7 @@ export const SignUpUserColumns = (handleEditSignup: Function): GridColDef[] => {
     {
       field: "service_providers",
       headerName: "Service Providers",
-      width: 200,
+      width: 250,
       sortable: false,
       headerAlign: "center",
       align: "center",
