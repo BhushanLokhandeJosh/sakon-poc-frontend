@@ -193,7 +193,10 @@ const LayoutComponent = (props: IProps) => {
           </div>
         </Grid>
         <Grid item xs={10}>
-          <div>{<Outlet />}</div>
+          {/* <div>{children}</div> */}
+          <div>
+            <Outlet />
+          </div>
         </Grid>
       </Grid>
     </div>

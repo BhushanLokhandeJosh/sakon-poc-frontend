@@ -1,6 +1,6 @@
 import CustomPieChart from "../../../shared/Charts/CustomPieChart";
-import LineGraph from "../../../shared/Charts/CustomLineGraph";
-
+import { useGetOrganizations } from "../config-hooks";
+import BarGraph from "../../../shared/Charts/CustomLineGraph";
 const DashboardComponent = () => {
   const data1 = [
     { name: "Success", value: 400 },
@@ -10,19 +10,38 @@ const DashboardComponent = () => {
     { name: "Success", value: 300 },
     { name: "Failures", value: 400 },
   ];
-  const data3 = [
-    { time: "12:00 AM", error: 0 },
-    { time: "03:00 AM", error: 2 },
-    { time: "06:00 AM", error: 1 },
-    { time: "09:00 AM", error: 4 },
-    { time: "12:00 PM", error: 3 },
-    { time: "03:00 PM", error: 2 },
-    { time: "06:00 PM", error: 1 },
-    { time: "09:00 PM", error: 0 },
-  ];
+
+  // todo => call the hook to get download, upload, line graph data.
+
+  const { data: organizationNames, isLoading, isError } = useGetOrganizations();
+
+  if (isLoading) {
+    return <>Loading...</>;
+  }
+  if (isError) {
+    return <>Error</>;
+  }
+
+  const hanldleChangeOrganization = (e: any) => {
+    console.log("selected value", e.target.value);
+  };
 
   return (
     <>
+      {/* <Formik initialValues={initialValue} onSubmit={onSubmit} onCh>
+        <Select name="organisation" label="organisation" options={OPTIONS} />
+      </Formik> */}
+      <label>Organization: </label>
+      <select
+        name="organization"
+        id="organization"
+        onChange={hanldleChangeOrganization}
+      >
+        {organizationNames?.map((organization: any) => (
+          <option value={organization.name}>{organization.name}</option>
+        ))}
+      </select>
+
       <div style={{ display: "flex" }}>
         {/* <span
           style={{
@@ -44,6 +63,7 @@ const DashboardComponent = () => {
           outerRadius={150}
           data={data1}
           label="upload"
+          Select
         />
         {/* <span
           style={{
@@ -74,7 +94,7 @@ const DashboardComponent = () => {
         >
           Jobs
         </span> */}
-        <LineGraph width={1000} height={400} data={data3}></LineGraph>
+        <BarGraph></BarGraph>
       </div>
     </>
   );

@@ -1,14 +1,7 @@
 import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Label } from "recharts";
+import { COLORS, RADIAN } from "./constants";
 
-// const data = [
-//   { name: "Group A", value: 400 },
-//   { name: "Group B", value: 300 },
-// ];
-
-const COLORS = ["#0088FE", "#00C49F"];
-
-const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
   cx,
   cy,
@@ -34,15 +27,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-const CustomPieChart = ({
-  width,
-  height,
-  cx,
-  cy,
-  outerRadius,
-  data,
-  label,
-}: any) => {
+const CustomPieChart = ({ width, height, cx, cy, outerRadius, data }: any) => {
   return (
     <PieChart width={width} height={height}>
       <Pie
@@ -58,11 +43,6 @@ const CustomPieChart = ({
         {data.map((entry: any, index: any) => (
           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
         ))}
-        {/* <Label
-          value={label}
-          position="outside"
-          style={{ fontSize: "16px", fontWeight: "bold" }}
-        /> */}
       </Pie>
       <Tooltip />
     </PieChart>
