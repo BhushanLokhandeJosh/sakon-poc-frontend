@@ -29,3 +29,11 @@ export interface IFormikProps<T> extends FormikProps<T> {}
 export interface IObjectWithAnyFields {
   [key: string]: any;
 }
+
+/**
+ * Used for object with label of type string and value of type number.
+ */
+export interface IDataOption {
+  label: string;
+  value: number;
+}

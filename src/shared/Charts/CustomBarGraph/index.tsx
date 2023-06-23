@@ -7,17 +7,24 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { IDataOption } from "../../types";
 
-interface ICustomBargraphProps {
+interface IProps {
+  /**
+   * considering data as actual data.
+   */
+  data: IDataOption[];
+  /**
+   *  Width are required to manage bar graph horizontally.
+   */
   width: number;
+  /**
+   *  Height are required to manage bar graph vertically.
+   */
   height: number;
-  data: Array<{ label: string; value: number }>;
 }
 
-const CustomBarGraph = ({ data, width, height }: ICustomBargraphProps) => {
-  /**
-   * considering data as actual data, and width and height required to manage bar graph.
-   */
+const CustomBarGraph = ({ data, width, height }: IProps) => {
   return (
     <BarChart width={width} height={height} data={data}>
       <CartesianGrid strokeDasharray="3 3" />
