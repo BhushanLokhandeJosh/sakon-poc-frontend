@@ -33,7 +33,7 @@ export interface IObjectWithAnyFields {
 /**
  * Used for object with label of type string and value of type number.
  */
-export interface IDataOption {
+export interface IOption<T> {
   label: string;
-  value: number;
+  value: T;
 }

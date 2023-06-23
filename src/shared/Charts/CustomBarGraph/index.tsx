@@ -7,13 +7,13 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { IDataOption } from "../../types";
+import { IOption } from "../../types";
 
 interface IProps {
   /**
    * considering data as actual data.
    */
-  data: IDataOption[];
+  data: IOption<number>[];
   /**
    *  Width are required to manage bar graph horizontally.
    */
