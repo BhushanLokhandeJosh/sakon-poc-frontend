@@ -91,7 +91,7 @@ const UserForm = (props: IOrganizationProps): JSX.Element => {
                   className="multiselect-style"
                   menuPlacement="bottom"
                   maxMenuHeight={80}
-                  isMulti={false}
+                  isMulti={true}
                 />
               </div>
             </Grid>

@@ -6,7 +6,7 @@ export interface IUserPayload {
   name: string;
   email: string;
   role: string;
-  Department: number;
+  Department: number[];
   org: number;
 }
 

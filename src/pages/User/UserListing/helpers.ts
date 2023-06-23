@@ -6,7 +6,7 @@ export const userValidationSchema = Yup.object({
   email: Yup.string().email("Not a proper email"),
   role: Yup.string().notRequired(),
 
-  Department: Yup.number().when("role", {
+  Department: Yup.array().when("role", {
     is: (val: any) => val === ADMIN,
     then: (schema) => schema.required("Department Required"),
     otherwise: (schema) => schema.notRequired(),

@@ -3,12 +3,14 @@ import { IUserPayload } from "./UserListing/types";
 import { IconButton, Tooltip } from "@mui/material";
 
 import EditIcon from "@mui/icons-material/Edit";
+import CustomColumnPopover from "../../shared/ColumnPopover/CustomColumnPopover";
+import { IObjectWithAnyFields } from "../../shared/types";
 
 export const initialUserValues: IUserPayload = {
   name: "",
   email: "",
   role: "",
-  Department: 0,
+  Department: [],
   org: 0,
 };
 
@@ -36,7 +38,7 @@ export const UserColumns = (handleEditUser: Function): GridColDef[] => {
     {
       field: "name",
       headerName: "UserName",
-      width: 350,
+      width: 250,
       headerAlign: "center",
       align: "center",
     },
@@ -50,10 +52,13 @@ export const UserColumns = (handleEditUser: Function): GridColDef[] => {
     {
       field: "Department",
       headerName: "Department",
-      width: 200,
+      width: 300,
       sortable: false,
       headerAlign: "center",
       align: "center",
+      renderCell: (params: IObjectWithAnyFields) => {
+        return <CustomColumnPopover arr={params?.row.Department} />;
+      },
     },
     {
       field: "org",

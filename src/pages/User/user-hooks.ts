@@ -30,7 +30,7 @@ export const useFetchUserList = ({ searchValue }: { searchValue?: string }) => {
   );
   console.log("response", response);
   return {
-    data: response?.data?.results,
+    data: response?.data?.employee_info,
     isLoading: response.isLoading,
     isError: response.isError,
   };
