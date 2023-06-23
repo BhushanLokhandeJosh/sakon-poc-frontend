@@ -18,6 +18,7 @@ const DashboardComponent = () => {
   // todo => call the hook to get download, upload, line graph data.
 
   const { data: organizationNames, isLoading, isError } = useGetOrganizations();
+  console.log(organizationNames);
 
   if (isLoading) {
     return <>Loading...</>;
