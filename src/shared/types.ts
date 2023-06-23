@@ -30,7 +30,23 @@ export interface IObjectWithAnyFields {
   [key: string]: any;
 }
 
+/**
+ * Used for object with label of type string and value of type number.
+ */
+export interface IOption<T> {
+  label: string;
+  value: T;
+}
+
 export interface IChartDataOption {
   name: string;
   value: number;
+}
+
+/**
+ * Used for object with label of type string and value of type number.
+ */
+export interface IOption<T> {
+  label: string;
+  value: T;
 }
