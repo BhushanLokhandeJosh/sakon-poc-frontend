@@ -1,0 +1,89 @@
+.grid-align-style {
+  align-items: baseline;
+  padding: 1rem;
+}
+
+.form-control-input {
+  width: 80%;
+  padding: 10px 10px;
+  text-align: left;
+  font-size: 15px;
+  border: 0.5px solid rgb(213, 212, 212);
+  border-radius: 5px;
+}
+
+.multiselect-style {
+  width: 83.5%;
+  height: fit-content;
+  text-align: left;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.organization-listing-style {
+  width: 90%;
+  margin: auto;
+}
+
+/* ..... */
+
+.login-page,
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.login-form,
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+button.toggle-button {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
