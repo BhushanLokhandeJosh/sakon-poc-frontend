@@ -13,14 +13,11 @@ const SignUpUserListing = ({ toggleModal, handleEditSignup }: any) => {
     <Box>
       <PageComponent
         pageTitle="User Enquiry"
-        buttonLabel="SignUp User"
         handleButtonAction={toggleModal}
         pageBody={
           <CustomTable
-            searchConfiguration={{ isSearchBoxVisible: true }}
             columnHeaders={SignUpUserColumns(handleEditSignup)}
             useCustomFetch={useFetchSignupUserList}
-            tableClassName=""
           />
         }
       />

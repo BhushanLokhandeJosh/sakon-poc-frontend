@@ -25,13 +25,13 @@ const SignupContainer = () => {
 
   return (
     <Box>
-      {isOpen && (
+      {/* {isOpen && (
         <SignUpModal
           isOpen={isOpen}
           toggleModal={handleSignupReset}
           signupuser={signupuser}
         />
-      )}
+      )} */}
       <SignUpUserListing
         toggleModal={handleSignupReset}
         handleEditSignup={handleEditSignup}
