@@ -1,8 +1,7 @@
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import { COLORS } from "./constants";
-import renderCustomizedLabel from "./renderCustomizedLabel";
+import RenderCustomizedLabel from "./RenderCustomizedLabel";
 import { ICustomPieChartProps } from "./types";
-import { useState } from "react";
 
 const CustomPieChart = ({
   width,
@@ -20,7 +19,7 @@ const CustomPieChart = ({
         cx={cx}
         cy={cy}
         labelLine={false}
-        label={renderCustomizedLabel}
+        label={RenderCustomizedLabel}
         outerRadius={outerRadius}
         fill="#8884d8"
         dataKey={dataKey}
@@ -32,6 +31,9 @@ const CustomPieChart = ({
       <Tooltip />
     </PieChart>
   );
+};
+CustomPieChart.defaultValue = {
+  dataKey: "value",
 };
 
 export default CustomPieChart;

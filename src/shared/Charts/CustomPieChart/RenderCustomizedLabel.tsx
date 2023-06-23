@@ -1,22 +1,21 @@
 import { RADIAN } from "./constants";
 
-const renderCustomizedLabel = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-}: {
+interface IRenderCustomizedLabelProps {
   cx: number;
   cy: number;
   midAngle: number;
   innerRadius: number;
   outerRadius: number;
   percent: number;
-}) => {
-  console.log(cx, cy, midAngle, innerRadius, outerRadius, percent);
-
+}
+const RenderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+}: IRenderCustomizedLabelProps) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -34,4 +33,4 @@ const renderCustomizedLabel = ({
   );
 };
 
-export default renderCustomizedLabel;
+export default RenderCustomizedLabel;
