@@ -1,8 +1,10 @@
 import { useQuery } from "react-query";
 import { getAllOrganizations, getPieChartData } from "./config-services";
 
-export const useFetchPieChartData = () => {
-  const response = useQuery(["getPieChartDetails"], () => getPieChartData());
+export const useFetchPieChartData = (values: any) => {
+  const response = useQuery(["getPieChartDetails"], () =>
+    getPieChartData(values)
+  );
   return {
     // to check data.
     data: response?.data?.data,

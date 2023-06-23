@@ -99,7 +99,7 @@ const Example = () => {
       {/* <ResponsiveContainer width="100%" height="100%"> */}
       <BarChart
         width={1000}
-        height={350}
+        height={300}
         data={data}
         // margin={{
         //   top: 5,

@@ -4,6 +4,7 @@ import BarGraph from "../../../shared/Charts/CustomLineGraph";
 import { Formik, Form } from "formik";
 import { Button, Grid, InputLabel } from "@mui/material";
 import Select from "../../../shared/FormComponents/Select";
+import { useFetchPieChartData } from "../config-hooks";
 const DashboardComponent = () => {
   const data1 = [
     { name: "Success", value: 400 },
@@ -29,8 +30,13 @@ const DashboardComponent = () => {
     console.log("selected value", e.target.value);
   };
 
+  const getUploadDetails = (values: any) => {
+    // const { data, isLoading, isError } = useFetchPieChartData(values);
+  };
+
   const onSubmit = (values: any) => {
-    console.log(values);
+    console.log("org values", values);
+    // getUploadDetails(values);
   };
 
   const selectOptions: { label: string; value: string }[] = [];
@@ -59,7 +65,7 @@ const DashboardComponent = () => {
             <Grid xs={6}>
               <Select
                 name="select"
-                placeholder="Select Configuration"
+                placeholder="Select Organization"
                 options={selectOptions}
                 className="configuration-style"
                 menuPlacement="bottom"
