@@ -17,7 +17,6 @@ function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log("Location", location);
   //@ts-ignore
   const { loggedInUser } = useSelector((state) => state.AuthReducer);
   console.log(loggedInUser, "In App");
