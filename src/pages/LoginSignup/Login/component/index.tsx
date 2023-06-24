@@ -1,115 +1,39 @@
-import React from "react";
-import "./styles/styles.css";
-import { Form, Formik } from "formik";
-import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
-import { Button, Grid, InputLabel } from "@mui/material";
-import * as Yup from "yup";
-import Input from "../../../../shared/FormComponents/Input";
+// import { AxiosError, AxiosResponse } from "axios";
+// import LoginPage from "./LoginForm";
+// import { toast } from "react-toastify";
+// import { useLoginUser } from "../../../loginsignup-hooks";
+import LoginForm from "./LoginForm";
+import { useDispatch } from "react-redux";
+import { loginStart } from "../../../../redux/actions/action";
 
-const LoginPage = () => {
-  const initialValues = {
-    email: "",
-    password: "",
-  };
+const LoginPageContainer = () => {
+  const dispatch = useDispatch();
+  // const onSuccess = (value: AxiosResponse) => {
+  //   toast.success("User Login Added Successfully...");
+  // };
 
-  const validationSchema = Yup.object({
-    email: Yup.string().required("Email Required"),
-    password: Yup.string().required("Password Required"),
-  });
+  // const onError = (values: AxiosError) => {
+  //   toast.error(values.message);
+  // };
 
-  const onSubmitHandler = (values: any) => {
+  // const { mutate: loginUser } = useLoginUser({
+  //   onSuccess,
+  //   onError,
+  // });
+
+  const onSubmit = (values: any) => {
     console.log("Form Submitted", values);
+    const loginCredentials = {
+      email: values.email,
+      password: values.password,
+    };
+
+    dispatch(loginStart(loginCredentials));
+
+    // loginUser(values);
   };
 
-  return (
-    <div className="login-page">
-      <h1>Login</h1>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmitHandler}
-      >
-        {(formik: IFormikProps<any>) => {
-          console.log(formik.values);
-          return (
-            <Form>
-              <Grid
-                container
-                rowSpacing={2}
-                columnSpacing={{ xs: 2 }}
-                className="grid-align-style"
-              >
-                <Grid item lg={9} md={8} sm={8} xs={12}>
-                  <InputLabel sx={{ color: "black", marginLeft: "5rem" }}>
-                    Email
-                  </InputLabel>
-                </Grid>
-                <Grid item lg={9} md={8} sm={8} xs={12}>
-                  <Input
-                    type={INPUT_TYPE.TEXT}
-                    name="email"
-                    className="form-control-input"
-                    placeholder="Email"
-                    value={formik.values.email}
-                  />
-                </Grid>
-
-                <Grid item lg={9} md={8} sm={8} xs={12}>
-                  <InputLabel sx={{ color: "black", marginLeft: "5rem" }}>
-                    Password
-                  </InputLabel>
-                </Grid>
-                <Grid item lg={9} md={8} sm={8} xs={12}>
-                  <Input
-                    type={INPUT_TYPE.PASSWORD}
-                    name="password"
-                    className="form-control-input"
-                    placeholder="Password"
-                    value={formik.values.password}
-                  />
-                </Grid>
-              </Grid>
-
-              <Grid item lg={9} md={8} sm={8} xs={12}>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  sx={{
-                    textTransform: "capitalize",
-                    display: "flex",
-                    marginLeft: "27rem",
-                  }}
-                >
-                  Submit
-                </Button>
-              </Grid>
-            </Form>
-          );
-        }}
-      </Formik>
-    </div>
-  );
-
-  // return (
-  //   <div className="login-page">
-  //
-  //     <div className="login-form">
-  //       <input
-  //         type="email"
-  //         placeholder="Email"
-  //         value={email}
-  //         onChange={(e) => setEmail(e.target.value)}
-  //       />
-  //       <input
-  //         type="password"
-  //         placeholder="Password"
-  //         value={password}
-  //         onChange={(e) => setPassword(e.target.value)}
-  //       />
-  //       <button onClick={handleLogin}>Log In</button>
-  //     </div>
-  //   </div>
-  // );
+  return <LoginForm onSubmitHandler={onSubmit} />;
 };
 
-export default LoginPage;
+export default LoginPageContainer;

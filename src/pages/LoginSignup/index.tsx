@@ -1,15 +1,15 @@
-import { useState } from "react";
-import LoginPage from "./Login/component";
-import SignupPage from "./Signup/component";
 import "../../App.css";
-import { Box } from "@mui/material";
-import { Direction } from "react-toastify/dist/utils";
+import { Box, Button } from "@mui/material";
+
+import useToggle from "../../shared/CustomHooks/useToggle";
+import LoginPageContainer from "./Login/component";
+import SignupPageContainer from "./Signup/component";
 
 const LoginContainer = () => {
-  const [showLogin, setShowLogin] = useState(true);
+  const { isOpen, handleToggle } = useToggle();
 
   const togglePage = () => {
-    setShowLogin(!showLogin);
+    handleToggle();
   };
 
   return (
@@ -22,12 +22,20 @@ const LoginContainer = () => {
         height: "100vh",
       }}
     >
-      {showLogin ? <LoginPage /> : <SignupPage />}
+      {!isOpen ? (
+        <LoginPageContainer />
+      ) : (
+        <SignupPageContainer toggleModal={togglePage} isOpen={isOpen} />
+      )}
       <p>
-        {showLogin ? "Don't have an account?" : "Already have an account?"}
-        <button onClick={togglePage} style={{ marginLeft: "2rem" }}>
-          {showLogin ? "Sign up" : "Log in"}
-        </button>
+        {!isOpen ? "Don't have an account?" : "Already have an account?"}
+        <Button
+          variant="contained"
+          onClick={togglePage}
+          style={{ marginLeft: "2rem" }}
+        >
+          {!isOpen ? "Sign up" : "Log in"}
+        </Button>
       </p>
     </Box>
   );

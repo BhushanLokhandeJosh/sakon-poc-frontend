@@ -80,7 +80,7 @@ const LayoutComponent = (props: IProps) => {
                   textDecoration: "none",
                 }}
               >
-                LOGO
+                BOT
               </Typography>
 
               <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

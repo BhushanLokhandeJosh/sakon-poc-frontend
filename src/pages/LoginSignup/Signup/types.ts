@@ -1,21 +1,14 @@
-export interface IOrganizationPayload {
-  id: number;
-  name: string;
-  department_count: 0;
+export interface ISignupPayload {
+  id?: number;
+  email: string;
+  organization: string;
+  department_count: number;
+  designation: string;
   service_providers: string[];
 }
 
-interface modalPropsTypes {
+export interface ISignUpModalProps {
   isOpen: boolean;
   toggleModal: () => void;
-}
-
-export interface IOrganizationFormProps extends modalPropsTypes {
-  onSubmit: (values: IOrganizationPayload) => void;
-}
-
-export interface IOrganizationModalProps extends modalPropsTypes {
-  isOpen: boolean;
-  toggleModal: () => void;
-  organization: IOrganizationPayload;
+  signupuser: ISignupPayload;
 }

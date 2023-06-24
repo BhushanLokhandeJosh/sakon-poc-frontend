@@ -5,6 +5,9 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 
+import store from "../src/redux/saga/store";
+import { Provider } from "react-redux";
+
 import App from "./App";
 
 const root = ReactDOM.createRoot(
@@ -14,8 +17,10 @@ const root = ReactDOM.createRoot(
 const queryClient = new QueryClient();
 
 root.render(
-  <QueryClientProvider client={queryClient}>
-    <ToastContainer />
-    <App />
-  </QueryClientProvider>
+  <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+      <ToastContainer />
+      <App />
+    </QueryClientProvider>
+  </Provider>
 );
