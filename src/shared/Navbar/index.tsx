@@ -17,6 +17,7 @@ import AvatarImage from "../../assets/images/avatar-icon.jpeg";
 
 import "./styles/style.css";
 import { PAGE_MENU, SETTING_MENU } from "./constants";
+import SideNavBar from "../SideNavBar";
 import { Outlet } from "react-router-dom";
 
 const sidebarMenu = [
@@ -30,12 +31,13 @@ const sidebarMenu = [
 
 interface IProps {
   children?: React.ReactNode;
+  sideBarMenus: { text: string; icon: string }[];
 }
 
 //TODO : Visit and checkout all components and also see check whether it is
 //  responsiveness or not.
 const LayoutComponent = (props: IProps) => {
-  const { children } = props;
+  const { children, sideBarMenus } = props;
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -183,14 +185,7 @@ const LayoutComponent = (props: IProps) => {
       </div>
       <Grid container spacing={2}>
         <Grid item xs={2}>
-          <div className="sidebar-container">
-            <div className="sidebar-menu"></div>
-            {sidebarMenu.map((item) => (
-              <div key={item} className="sidebar-menu">
-                {item}
-              </div>
-            ))}
-          </div>
+          <SideNavBar sideBarMenus={sideBarMenus} />
         </Grid>
         <Grid item xs={10}>
           <div>
