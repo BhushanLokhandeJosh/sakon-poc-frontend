@@ -4,6 +4,7 @@ import { BiAnalyse } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
 import { AiFillHeart } from "react-icons/ai";
 import { BsCartCheck } from "react-icons/bs";
+import { RiServiceFill } from "react-icons/ri";
 import { API_ROUTES } from "../../routes/routes-constants";
 
 export const sideBarMenus = {
@@ -74,9 +75,9 @@ export const sideBarMenus = {
       icon: <FaUser />,
     },
     {
-      path: "/messages",
-      name: "Messages",
-      icon: <MdMessage />,
+      path: API_ROUTES.SERVICE_PROVIDERS,
+      name: "Service Providers",
+      icon: <RiServiceFill />,
     },
     {
       path: "/analytics",

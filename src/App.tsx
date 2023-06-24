@@ -13,6 +13,7 @@ import { sideBarMenus } from "./shared/Sidebar/constants";
 import { commonNavBarMenus, navBarMenus } from "./shared/Navbar/constants";
 import { logoutStart } from "./redux/actions/authActions";
 import SignupContainer from "./pages/Signup/SignupList";
+import ServiceProvidersContainer from "./pages/ServiceProviders/ServiceProviderList";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,10 @@ function App() {
           <Route path="/logout" element={<LoginContainer />} />
           <Route path="/home" element={<HomePage />} />
           <Route path={API_ROUTES.SIGNUP} element={<SignupContainer />} />
+          <Route
+            path={API_ROUTES.SERVICE_PROVIDERS}
+            element={<ServiceProvidersContainer />}
+          />
         </Routes>
       </LayoutComponent>
     </div>
