@@ -4,6 +4,7 @@ import { BiAnalyse } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
 import { AiFillHeart } from "react-icons/ai";
 import { BsCartCheck } from "react-icons/bs";
+import { API_ROUTES } from "../../routes/routes-constants";
 
 export const sideBarMenus = {
   basicRoutes: [
@@ -68,7 +69,7 @@ export const sideBarMenus = {
       icon: <FaHome />,
     },
     {
-      path: "/signup",
+      path: API_ROUTES.SIGNUP,
       name: "User Enquiry",
       icon: <FaUser />,
     },

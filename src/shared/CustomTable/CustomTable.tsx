@@ -103,6 +103,8 @@ const CustomTable = (props: ICustomTableProps) => {
     <div>Error</div>;
   }
 
+  console.log("DATA", data);
+
   return (
     <Box>
       {isRefreshButtonVisible && (

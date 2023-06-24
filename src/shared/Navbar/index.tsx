@@ -50,9 +50,8 @@ const LayoutComponent = (props: IProps) => {
   let sideBarMenu;
   let basicMenus;
   console.log("In Layout", navBarMenus);
-  console.log(loggedInUser.type);
+  console.log(children);
   if (loggedInUser?.type === "SUPERADMIN") {
-    console.log("IN Supperadmin");
     sideBarMenu = sideBarMenus.superAdmin;
   } else {
     sideBarMenu = sideBarMenus.basicRoutes;
@@ -63,8 +62,6 @@ const LayoutComponent = (props: IProps) => {
   } else {
     basicMenus = commonNavBarMenus.logout;
   }
-
-  console.log(sideBarMenu);
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -244,7 +241,9 @@ const LayoutComponent = (props: IProps) => {
                     right: "0.5rem",
                   }}
                 >
-                  {loggedInUser?.type ? loggedInUser.type : "HI USER"}
+                  {loggedInUser?.type
+                    ? `HI ${loggedInUser.name.toUpperCase()}`
+                    : "HI USER"}
                 </Box>
               </Box>
 
@@ -287,7 +286,7 @@ const LayoutComponent = (props: IProps) => {
             <SideBar sideBarMenus={sideBarMenu} />
           </Grid>
         )}
-        <Grid item xs={10}>
+        <Grid item xs={9}>
           <div>
             {/* <Outlet /> */}
             {children}

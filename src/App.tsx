@@ -12,6 +12,7 @@ import { checkAutoLogin } from "./services/AuthServices";
 import { sideBarMenus } from "./shared/Sidebar/constants";
 import { commonNavBarMenus, navBarMenus } from "./shared/Navbar/constants";
 import { logoutStart } from "./redux/actions/authActions";
+import SignupContainer from "./pages/Signup/SignupList";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function App() {
           <Route path="/" element={<LoginContainer />} />
           <Route path="/logout" element={<LoginContainer />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path={API_ROUTES.SIGNUP} element={<SignupContainer />} />
         </Routes>
       </LayoutComponent>
     </div>
