@@ -68,8 +68,8 @@ export const sideBarMenus = {
       icon: <FaHome />,
     },
     {
-      path: "/users",
-      name: "Users",
+      path: "/signup",
+      name: "User Enquiry",
       icon: <FaUser />,
     },
     {
