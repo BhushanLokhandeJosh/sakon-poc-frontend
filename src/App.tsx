@@ -1,45 +1,80 @@
 import "./App.css";
 import LayoutComponent from "./shared/Navbar";
-import SideNavBar from "./shared/SideNavBar/SideNavBar";
+import { FaHome, FaLock, FaMoneyBill, FaUser } from "react-icons/fa";
+import { MdMessage } from "react-icons/md";
+import { BiAnalyse } from "react-icons/bi";
+import { BiCog } from "react-icons/bi";
+import { AiFillHeart } from "react-icons/ai";
+import { BsCartCheck } from "react-icons/bs";
+
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
-  const sideBarMenus = [
+  const sideBarRoutes = [
     {
-      text: "Dashboard",
-      icon: "icons/grid.svg",
+      path: "/",
+      name: "Dashboard",
+      icon: <FaHome />,
     },
     {
-      text: "Admin Profile",
-      icon: "icons/user.svg",
+      path: "/users",
+      name: "Users",
+      icon: <FaUser />,
     },
     {
-      text: "Messages",
-      icon: "icons/message.svg",
+      path: "/messages",
+      name: "Messages",
+      icon: <MdMessage />,
     },
     {
-      text: "Analytics",
-      icon: "icons/pie-chart.svg",
+      path: "/analytics",
+      name: "Analytics",
+      icon: <BiAnalyse />,
     },
     {
-      text: "File Manager",
-      icon: "icons/folder.svg",
+      path: "/order",
+      name: "Order",
+      icon: <BsCartCheck />,
     },
     {
-      text: "Orders",
-      icon: "icons/shopping-cart.svg",
+      path: "/saved",
+      name: "Saved",
+      icon: <AiFillHeart />,
     },
     {
-      text: "Saved Items",
-      icon: "icons/heart.svg",
-    },
-    {
-      text: "Settings",
-      icon: "icons/settings.svg",
+      path: "/settings",
+      name: "Settings",
+      icon: <BiCog />,
+      exact: true,
+      subRoutes: [
+        {
+          path: "/settings/profile",
+          name: "Profile ",
+          icon: <FaUser />,
+        },
+        {
+          path: "/settings/2fa",
+          name: "2FA",
+          icon: <FaLock />,
+        },
+        {
+          path: "/settings/billing",
+          name: "Billing",
+          icon: <FaMoneyBill />,
+        },
+      ],
     },
   ];
   return (
     <div className="App">
-      <LayoutComponent sideBarMenus={sideBarMenus} />
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={<LayoutComponent sideBarRoutes={sideBarRoutes} />}
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }

@@ -17,7 +17,7 @@ import { Grid } from "@mui/material";
 
 import "./styles/style.css";
 import { PAGE_MENU, SETTING_MENU } from "./constants";
-import SideNavBar from "../SideNavBar/SideNavBar";
+import SideBar from "../Sidebar/SideBar";
 
 const sidebarMenu = [
   "Dashboard",
@@ -30,13 +30,13 @@ const sidebarMenu = [
 
 interface IProps {
   children?: React.ReactNode;
-  sideBarMenus: { text: string; icon: string }[];
+  sideBarRoutes: { path: string; name: string; icon: any }[];
 }
 
 //TODO : Visit and checkout all components and also see check whether it is
 //  responsiveness or not.
 const LayoutComponent = (props: IProps) => {
-  const { children, sideBarMenus } = props;
+  const { children, sideBarRoutes } = props;
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -184,11 +184,11 @@ const LayoutComponent = (props: IProps) => {
       </div>
       <Grid container spacing={2}>
         <Grid item xs={2}>
-          <SideNavBar sideBarMenus={sideBarMenus} />
+          <SideBar sideBarRoutes={sideBarRoutes} />
         </Grid>
-        {/* <Grid item xs={10}>
+        <Grid item xs={10}>
           <div>{children}</div>
-        </Grid> */}
+        </Grid>
       </Grid>
     </div>
   );
