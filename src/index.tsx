@@ -2,6 +2,8 @@ import ReactDOM from "react-dom/client";
 import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "react-query";
 
+import { BrowserRouter as Router } from "react-router-dom";
+
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -20,7 +22,9 @@ root.render(
   <Provider store={store}>
     <QueryClientProvider client={queryClient}>
       <ToastContainer />
-      <App />
+      <Router>
+        <App />
+      </Router>
     </QueryClientProvider>
   </Provider>
 );

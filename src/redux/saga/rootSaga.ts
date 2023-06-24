@@ -1,7 +1,7 @@
 import { fork, all } from "redux-saga/effects";
-import { onLoginUsers } from "./helpers/authSaga";
+import { onLoginUsers, onLogoutUsers } from "./helpers/authSaga";
 
-const rootSagas = [fork(onLoginUsers)];
+const rootSagas = [fork(onLoginUsers), fork(onLogoutUsers)];
 
 export default function* rootSaga() {
   yield all([...rootSagas]);

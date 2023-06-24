@@ -1,8 +1,12 @@
 import { call, delay, put, takeEvery } from "redux-saga/effects";
 import * as types from "../../types/actionTypes";
-import { loginUserApi } from "../../../pages/loginsignup-services";
+import {
+  loginUserApi,
+  signoutUserApi,
+} from "../../../pages/loginsignup-services";
 import { toast } from "react-toastify";
-import { loginSuccess } from "../../actions/action";
+import { loginSuccess, logoutSuccess } from "../../actions/authActions";
+import { removeToken, saveToken } from "../../../services/AuthServices";
 
 function* onLoginUserStartAsync(user: any) {
   try {
@@ -12,6 +16,7 @@ function* onLoginUserStartAsync(user: any) {
     if (response.userdetails) {
       console.log("Saga Service", response);
       yield delay(500);
+      yield saveToken(response.userdetails, response.accesstoken);
       yield put(loginSuccess(response.userdetails, response.accesstoken));
       //   yield user.payload.navigate(user.payload.from);
       yield toast.success(response.Message);
@@ -22,6 +27,25 @@ function* onLoginUserStartAsync(user: any) {
   }
 }
 
+function* onLogoutUserStartAsync() {
+  // try {
+  //@ts-ignore
+  const response: any = yield call(signoutUserApi);
+  if (response.status === 200) {
+    console.log("In Logout Saga");
+    yield delay(500);
+    yield put(logoutSuccess());
+    yield toast.success(response.message);
+  }
+  // } catch (error) {
+  //   yield put(logoutError(error.message));
+  // }
+}
+
 export function* onLoginUsers() {
   yield takeEvery(types.LOAD_USER_LOGIN, onLoginUserStartAsync);
+}
+
+export function* onLogoutUsers() {
+  yield takeEvery(types.LOAD_USER_SIGNOUT, onLogoutUserStartAsync);
 }
