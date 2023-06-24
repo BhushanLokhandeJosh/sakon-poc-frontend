@@ -19,6 +19,7 @@ import "./styles/style.css";
 import { PAGE_MENU, SETTING_MENU } from "./constants";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import SideBar from "../Sidebar/SideBar";
+import { ADMIN, SUPER_ADMIN, USER } from "../../pages/User/UserListing/types";
 
 const sidebarMenu = [
   "Dashboard",
@@ -51,8 +52,12 @@ const LayoutComponent = (props: IProps) => {
   let basicMenus;
   console.log("In Layout", navBarMenus);
   console.log(children);
-  if (loggedInUser?.type === "SUPERADMIN") {
+  if (loggedInUser?.type === SUPER_ADMIN) {
     sideBarMenu = sideBarMenus.superAdmin;
+  } else if (loggedInUser?.type === ADMIN) {
+    sideBarMenu = sideBarMenus.admin;
+  } else if (loggedInUser?.type === USER) {
+    sideBarMenu = sideBarMenus.user;
   } else {
     sideBarMenu = sideBarMenus.basicRoutes;
   }
@@ -217,7 +222,7 @@ const LayoutComponent = (props: IProps) => {
                       color: "white",
                       display: "block",
                       position: "absolute",
-                      right: "3rem",
+                      right: "10rem",
                     }}
                   >
                     <Link
@@ -225,7 +230,7 @@ const LayoutComponent = (props: IProps) => {
                       style={{
                         color: "white",
                         textDecoration: "none",
-                        paddingRight: "6rem",
+                        paddingRight: "2rem",
                       }}
                     >
                       {item.name}
@@ -238,7 +243,7 @@ const LayoutComponent = (props: IProps) => {
                     color: "white",
                     display: "block",
                     position: "absolute",
-                    right: "0.5rem",
+                    right: "0",
                   }}
                 >
                   {loggedInUser?.type
@@ -280,19 +285,25 @@ const LayoutComponent = (props: IProps) => {
           </Container>
         </AppBar>
       </div>
-      <Grid container spacing={2}>
-        {loggedInUser?.type && (
+      {loggedInUser?.type ? (
+        <Grid container spacing={2}>
           <Grid item xs={2}>
             <SideBar sideBarMenus={sideBarMenu} />
           </Grid>
-        )}
-        <Grid item xs={9}>
-          <div>
+          <Grid item xs={9}>
+            {/* <div> */}
             {/* <Outlet /> */}
             {children}
-          </div>
+            {/* </div> */}
+          </Grid>
         </Grid>
-      </Grid>
+      ) : (
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            {children}
+          </Grid>
+        </Grid>
+      )}
     </div>
   );
 };

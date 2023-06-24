@@ -75,25 +75,5 @@ export const SignUpUserColumns = (handleEditSignup: Function): GridColDef[] => {
         return <CustomColumnPopover arr={params?.row.service_providers} />;
       },
     },
-    {
-      field: "edit",
-      headerName: "Edit",
-      description: "Edit actions column.",
-      sortable: false,
-      headerAlign: "center",
-      align: "center",
-      width: 200,
-      renderCell: (params: GridCellParams) => {
-        return (
-          <>
-            <Tooltip title="Edit" placement="top">
-              <IconButton onClick={() => handleEditSignup(params.row)}>
-                <EditIcon />
-              </IconButton>
-            </Tooltip>
-          </>
-        );
-      },
-    },
   ];
 };

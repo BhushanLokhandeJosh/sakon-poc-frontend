@@ -3,6 +3,7 @@ import { MdMessage } from "react-icons/md";
 import { BiAnalyse } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
 import { AiFillHeart } from "react-icons/ai";
+import { LiaUserSolid } from "react-icons/lia";
 import { BsCartCheck } from "react-icons/bs";
 import { RiServiceFill } from "react-icons/ri";
 import { GoOrganization } from "react-icons/go";
@@ -66,7 +67,7 @@ export const sideBarMenus = {
   ],
   superAdmin: [
     {
-      path: "/",
+      path: "/dashboard",
       name: "Dashboard",
       icon: <FaHome />,
     },
@@ -86,14 +87,38 @@ export const sideBarMenus = {
       icon: <GoOrganization />,
     },
     {
-      path: "/order",
-      name: "Order",
-      icon: <BsCartCheck />,
+      path: API_ROUTES.USER_LISTING,
+      name: "Users",
+      icon: <LiaUserSolid />,
+    },
+  ],
+  admin: [
+    {
+      path: "/dashboard",
+      name: "Dashboard",
+      icon: <FaHome />,
     },
     {
-      path: "/saved",
-      name: "Saved",
-      icon: <AiFillHeart />,
+      path: API_ROUTES.DEPARTMENT_LIST,
+      name: "Department",
+      icon: <FaUser />,
+    },
+    {
+      path: API_ROUTES.USER_LISTING,
+      name: "Users",
+      icon: <LiaUserSolid />,
+    },
+    {
+      path: API_ROUTES.SERVICE_PROVIDERS,
+      name: "Service Providers",
+      icon: <RiServiceFill />,
+    },
+  ],
+  user: [
+    {
+      path: "/dashboard",
+      name: "Dashboard",
+      icon: <FaHome />,
     },
   ],
 };

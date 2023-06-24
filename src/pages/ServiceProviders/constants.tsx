@@ -34,14 +34,14 @@ export const ServiceProvidersColumns = (
     {
       field: "name",
       headerName: "Service Provider Name",
-      width: 400,
+      width: 300,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "url",
       headerName: "Website URL",
-      width: 700,
+      width: 650,
       headerAlign: "center",
       align: "center",
     },

@@ -12,9 +12,11 @@ import { checkAutoLogin } from "./services/AuthServices";
 import { sideBarMenus } from "./shared/Sidebar/constants";
 import { commonNavBarMenus, navBarMenus } from "./shared/Navbar/constants";
 import { logoutStart } from "./redux/actions/authActions";
+import RequireAuth from "./routes/RequireAuth";
 import SignupContainer from "./pages/Signup/SignupList";
 import ServiceProvidersContainer from "./pages/ServiceProviders/ServiceProviderList";
 import OrganizationsContainer from "./pages/Organization/OrganizationList";
+import UserContainer from "./pages/User/UserListing";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +26,11 @@ function App() {
   const { loggedInUser } = useSelector((state) => state.AuthReducer);
   console.log(loggedInUser, "In App");
 
+  const systemUsers = {
+    SUPERADMIN: "SUPERADMIN",
+    ADMIN: "ADMIN",
+    USER: "USER",
+  };
   useEffect(() => {
     // console.log(location.pathname);
     // if (location.pathname === "/logout") {
@@ -45,23 +52,63 @@ function App() {
           <Route path="/" element={<LoginContainer />} />
           <Route path="/logout" element={<LoginContainer />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path={API_ROUTES.SIGNUP} element={<SignupContainer />} />
           <Route
-            path={API_ROUTES.SERVICE_PROVIDERS}
-            element={<ServiceProvidersContainer />}
-          />
+            element={<RequireAuth allowedRoles={[systemUsers.SUPERADMIN]} />}
+          >
+            <Route path="/dashboard" element={<DashBoardContainer />} />
+            <Route path={API_ROUTES.SIGNUP} element={<SignupContainer />} />
+
+            <Route
+              path={API_ROUTES.ORGANIZATION_LIST}
+              element={<OrganizationsContainer />}
+            />
+          </Route>
+
+          <Route element={<RequireAuth allowedRoles={[systemUsers.ADMIN]} />}>
+            <Route path="/dashboard" element={<DashBoardContainer />} />
+            <Route
+              path={API_ROUTES.DEPARTMENT_LIST}
+              element={<DepartmentList />}
+            />
+          </Route>
+
           <Route
-            path={API_ROUTES.ORGANIZATION_LIST}
-            element={<OrganizationsContainer />}
-          />
+            element={
+              <RequireAuth
+                allowedRoles={[systemUsers.ADMIN, systemUsers.SUPERADMIN]}
+              />
+            }
+          >
+            <Route
+              path={API_ROUTES.USER_LISTING}
+              element={<UserContainer loggedInUser={loggedInUser} />}
+            />
+            <Route
+              path={API_ROUTES.SERVICE_PROVIDERS}
+              element={<ServiceProvidersContainer />}
+            />
+          </Route>
+
+          <Route path={API_ROUTES.UNAUTHORIZED} element={<UnAuthorized />} />
         </Routes>
       </LayoutComponent>
     </div>
   );
 }
 
+const DepartmentList = () => {
+  return <h1>DepartmentList</h1>;
+};
+
+const DashBoardContainer = () => {
+  return <h1>DashBoard Page</h1>;
+};
+
+const UnAuthorized = () => {
+  return <h1>UnAuthorized</h1>;
+};
+
 const HomePage = () => {
   return <h1>Home Page</h1>;
 };
-
 export default App;

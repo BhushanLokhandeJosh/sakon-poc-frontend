@@ -22,7 +22,7 @@ const SideBar = ({ sideBarMenus }: any) => {
     },
     show: {
       width: "140px",
-      padding: "5px 15px",
+      padding: "1rem",
       transition: {
         duration: 0.2,
       },
@@ -39,7 +39,7 @@ const SideBar = ({ sideBarMenus }: any) => {
     },
     show: {
       opacity: 1,
-      width: "auto",
+      width: "5rem",
       transition: {
         duration: 0.5,
       },
@@ -51,7 +51,7 @@ const SideBar = ({ sideBarMenus }: any) => {
       <div className="main-container">
         <motion.div
           animate={{
-            width: isOpen ? "13rem" : "4rem",
+            width: isOpen ? "15rem" : "4rem",
 
             transition: {
               duration: 0.5,

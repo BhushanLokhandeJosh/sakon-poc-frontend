@@ -20,7 +20,7 @@ export const UPDATE_ORGANIZATION_MESSAGE =
 
 export const CREATE_ORGANIZATION_MESSAGE = "Organization Added Successfully...";
 
-export const ERROR_MESSAGE = "Something Went Wrong..."
+export const ERROR_MESSAGE = "Something Went Wrong...";
 
 export const GET_ALL_ORGANIZATION = "getAllOrganization";
 
@@ -33,7 +33,7 @@ export const OrganizationColumns = (
     {
       field: "id",
       headerName: "Id",
-      width: 200,
+      width: 175,
       headerAlign: "center",
       align: "center",
     },
@@ -41,21 +41,20 @@ export const OrganizationColumns = (
       field: "name",
       headerName: "Organization Name",
       width: 350,
-
       headerAlign: "center",
       align: "center",
     },
     {
       field: "department_count",
       headerName: "Dept. Count",
-      width: 350,
+      width: 250,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "service_providers",
       headerName: "Service Providers",
-      width: 350,
+      width: 375,
       sortable: false,
       headerAlign: "center",
       align: "center",
