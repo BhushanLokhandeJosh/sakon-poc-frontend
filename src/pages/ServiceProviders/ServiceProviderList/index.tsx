@@ -4,8 +4,6 @@ import { Box } from "@mui/material";
 
 import useToggle from "../../../shared/CustomHooks/useToggle";
 
-import OrganizationListing from "./component";
-import OrganizationModal from "./component/ServiceProviderModal";
 import ServiceProviderModal from "./component/ServiceProviderModal";
 import ServiceProviderListing from "./component";
 

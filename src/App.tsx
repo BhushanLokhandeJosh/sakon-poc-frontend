@@ -14,6 +14,7 @@ import { commonNavBarMenus, navBarMenus } from "./shared/Navbar/constants";
 import { logoutStart } from "./redux/actions/authActions";
 import SignupContainer from "./pages/Signup/SignupList";
 import ServiceProvidersContainer from "./pages/ServiceProviders/ServiceProviderList";
+import OrganizationsContainer from "./pages/Organization/OrganizationList";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,10 @@ function App() {
           <Route
             path={API_ROUTES.SERVICE_PROVIDERS}
             element={<ServiceProvidersContainer />}
+          />
+          <Route
+            path={API_ROUTES.ORGANIZATION_LIST}
+            element={<OrganizationsContainer />}
           />
         </Routes>
       </LayoutComponent>

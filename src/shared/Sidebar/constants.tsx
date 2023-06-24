@@ -5,6 +5,7 @@ import { BiCog } from "react-icons/bi";
 import { AiFillHeart } from "react-icons/ai";
 import { BsCartCheck } from "react-icons/bs";
 import { RiServiceFill } from "react-icons/ri";
+import { GoOrganization } from "react-icons/go";
 import { API_ROUTES } from "../../routes/routes-constants";
 
 export const sideBarMenus = {
@@ -80,9 +81,9 @@ export const sideBarMenus = {
       icon: <RiServiceFill />,
     },
     {
-      path: "/analytics",
-      name: "Analytics",
-      icon: <BiAnalyse />,
+      path: API_ROUTES.ORGANIZATION_LIST,
+      name: "Organizations",
+      icon: <GoOrganization />,
     },
     {
       path: "/order",
