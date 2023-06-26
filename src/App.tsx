@@ -20,6 +20,7 @@ import DepartmentContainer from "./pages/Department/DepartmentListing";
 import ContactUs from "./HomePages/ContactUs/component";
 import Services from "./HomePages/Services/component";
 import Landingpage from "./HomePages/LandingPage/component";
+import SchedulersContainer from "./pages/Scheduler/SchedulersList";
 
 function App() {
   const dispatch = useDispatch();
@@ -69,8 +70,9 @@ function App() {
             />
             <Route
               path={API_ROUTES.SCHEDULING_LIST}
-              element={<SchedulerContainer />}
+              element={<SchedulersContainer />}
             />
+
             <Route path={API_ROUTES.JOBS_LIST} element={<JobsContainer />} />
             <Route
               path={API_ROUTES.DEPARTMENT_LIST}
@@ -118,10 +120,6 @@ const UnAuthorized = () => {
 
 const ConfigurationContainer = () => {
   return <h1>Configurations Page</h1>;
-};
-
-const SchedulerContainer = () => {
-  return <h1>Schedulers Page</h1>;
 };
 
 const JobsContainer = () => {

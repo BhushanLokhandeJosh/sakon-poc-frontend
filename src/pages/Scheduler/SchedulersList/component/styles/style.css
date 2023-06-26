@@ -1,0 +1,109 @@
+.input-btn-container {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 22px;
+  height: 40px;
+}
+.filter-modal-style {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: 0.7em;
+  margin-bottom: 3.5em;
+}
+
+.scheduler-table-style {
+  height: 700px;
+  width: auto;
+}
+
+/* create scheduler styles */
+.form {
+  display: flex;
+  margin: 3% 0% 0% 2%;
+}
+
+.grid-align-style {
+  align-items: baseline;
+}
+
+.form-control-input {
+  width: 80%;
+  padding: 10px 10px;
+  text-align: left;
+  font-size: 15px;
+  border: 0.5px solid rgb(213, 212, 212);
+  border-radius: 5px;
+}
+
+.configuration-style {
+  width: 83.5%;
+  height: fit-content;
+  text-align: left;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.card-style {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .form {
+    align-items: baseline;
+  }
+
+  .card-style {
+    flex-direction: column;
+  }
+
+  .month-style {
+    padding: 100px 0px;
+  }
+}
+
+/* .form-control {
+  padding: 5px 0px;
+  text-align: left;
+  font-size: 15px;
+} */
+
+.form-control-monthly {
+  padding: 5px 0px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.form-control-weekly {
+  width: 31%;
+  height: auto;
+  font-size: 15px;
+}
+
+.form-control-time {
+  height: 35px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  border: 0.5px solid rgb(213, 212, 212);
+}
+
+.form-control-timezone {
+  width: 83.5%;
+  text-align: left;
+  font-size: 15px;
+  border-radius: 4px rgb(117, 116, 116);
+  height: 5%;
+  overflow-y: none;
+}
+
+.month-style {
+  padding: 0px 10px;
+  align-items: baseline;
+}
+/* create scheduler styles end*/

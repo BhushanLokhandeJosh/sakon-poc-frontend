@@ -1,0 +1,25 @@
+{
+  "schedulers": [
+    {
+      "id": 1,
+      "schedule_name": "Abc",
+      "frequency": "daily at 12:00",
+      "configuration": ["airtel", "jio", "vodafone"],
+      "created_at": "2023-04-30 07:31:00.120712"
+    },
+    {
+      "id": 2,
+      "schedule_name": "Def",
+      "frequency": "monthly on 2nd at 12:00",
+      "configuration": ["vodafone"],
+      "created_at": "2023-02-02 07:31:00.120712"
+    },
+    {
+      "id": 3,
+      "schedule_name": "Ghi",
+      "frequency": "weekly sunday at 12:00",
+      "configuration": ["airtel", "jio"],
+      "created_at": "2023-05-08 15:31:00.120712"
+    }
+  ]
+}
