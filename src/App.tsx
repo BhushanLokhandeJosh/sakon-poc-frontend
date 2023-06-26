@@ -21,6 +21,7 @@ import ContactUs from "./HomePages/ContactUs/component";
 import Services from "./HomePages/Services/component";
 import Landingpage from "./HomePages/LandingPage/component";
 import SchedulersContainer from "./pages/Scheduler/SchedulersList";
+import ConfigurationsContainer from "./pages/Configuration/GetAllConfigurations";
 
 function App() {
   const dispatch = useDispatch();
@@ -66,7 +67,7 @@ function App() {
           <Route element={<RequireAuth allowedRoles={[systemUsers.ADMIN]} />}>
             <Route
               path={API_ROUTES.CONFIGURATION_LIST}
-              element={<ConfigurationContainer />}
+              element={<ConfigurationsContainer />}
             />
             <Route
               path={API_ROUTES.SCHEDULING_LIST}
@@ -116,10 +117,6 @@ const DashBoardContainer = () => {
 
 const UnAuthorized = () => {
   return <h1>UnAuthorized</h1>;
-};
-
-const ConfigurationContainer = () => {
-  return <h1>Configurations Page</h1>;
 };
 
 const JobsContainer = () => {
