@@ -22,6 +22,7 @@ import Services from "./HomePages/Services/component";
 import Landingpage from "./HomePages/LandingPage/component";
 import SchedulersContainer from "./pages/Scheduler/SchedulersList";
 import ConfigurationsContainer from "./pages/Configuration/GetAllConfigurations";
+import JobListingContainer from "./pages/Jobs/JobListing/component";
 
 function App() {
   const dispatch = useDispatch();
@@ -74,7 +75,10 @@ function App() {
               element={<SchedulersContainer />}
             />
 
-            <Route path={API_ROUTES.JOBS_LIST} element={<JobsContainer />} />
+            <Route
+              path={API_ROUTES.JOBS_LIST}
+              element={<JobListingContainer />}
+            />
             <Route
               path={API_ROUTES.DEPARTMENT_LIST}
               element={<DepartmentContainer />}
@@ -119,7 +123,4 @@ const UnAuthorized = () => {
   return <h1>UnAuthorized</h1>;
 };
 
-const JobsContainer = () => {
-  return <h1>Jobs Page</h1>;
-};
 export default App;

@@ -1,0 +1,176 @@
+{
+  "jobDetails": [
+    {
+      "id": 1,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/jas",
+      "Department_Name": "IT",
+      "service": "Download",
+      "Status": "Pending",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 2,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/DE",
+      "Department_Name": "CS",
+      "service": "File Validation",
+      "Status": "Failed",
+      "Triggered_At": "10 Dec 2023 At 12:32:00"
+    },
+    {
+      "id": 3,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "IT",
+      "service": "File Validation",
+      "Status": "Pending",
+      "Triggered_At": "10 Dec 2023 At 12:20:00"
+    },
+    {
+      "id": 4,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "CS",
+      "Status": "Failed",
+      "service": "Upload",
+      "Triggered_At": "10 Dec 2023 At 12:21:00"
+    },
+    {
+      "id": 5,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "FINANCE",
+      "Status": "Pending",
+      "service": "Download",
+      "Triggered_At": "10 Dec 2023 At 12:32:00"
+    },
+    {
+      "id": 6,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "IT",
+      "Status": "Failed",
+      "service": "Template Validation",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 7,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "HR",
+      "Status": "Completed",
+      "service": "File Validation",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 8,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "IT",
+      "Status": "Pending",
+      "service": "Template Validation",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 9,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "FINANCE",
+      "Status": "Completed",
+      "service": "Download",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 10,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "IT",
+      "Status": "Completed",
+      "service": "Template Validation",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 11,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "TAD",
+      "Status": "Pending",
+      "service": "File Validation",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 12,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "IT",
+      "Status": "Completed",
+      "service": "Upload",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 13,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "HR",
+      "Status": "Completed",
+      "service": "File Validation",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 14,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "IT",
+      "Status": "Pending",
+      "service": "Download",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    },
+    {
+      "id": 15,
+      "Scheduler_Name": "Daily Scheduler",
+      "Configuration_Name": "josh/bfsi",
+      "Department_Name": "TAD",
+      "Status": "Completed",
+      "service": "Upload",
+      "Triggered_At": "10 Dec 2023 At 12:04:00"
+    }
+  ],
+  "downloads": [
+    {
+      "id": 1,
+      "status": "abc",
+      "triggered_at": "10 Dec 2023 At 12:04:00",
+      "attempts": "0 of 3",
+      "description": "donwnloading is successful"
+    }
+  ],
+  "fileValidators": [
+    {
+      "id": 1,
+      "status": "abc",
+      "triggered_at": "10 Dec 2023 At 12:04:00",
+      "attempts": "0 of 3",
+      "description": "file validation is successful"
+    }
+  ],
+  "templateValidators": [
+    {
+      "id": 1,
+      "status": "xyz",
+      "triggered_at": "10 Dec 2023 At 12:04:00",
+      "attempts": "0 of 3",
+      "description": "template validation is completed",
+      "variance": "2"
+    }
+  ],
+  "uploads": [
+    {
+      "id": 1,
+      "status": "abc",
+      "triggered_at": "10 Dec 2023 At 12:04:00",
+      "attempts": "0 of 3",
+      "description": "uploads is pending"
+    }
+  ]
+}
