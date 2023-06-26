@@ -1,9 +1,28 @@
 import { useQuery } from "react-query";
-import { getAllOrganizations, getPieChartData } from "./config-services";
+import {
+  getAllOrganizations,
+  getDepartments,
+  getSuperAdminData,
+} from "./config-services";
 
-export const useFetchPieChartData = (values: any) => {
-  const response = useQuery(["getPieChartDetails"], () =>
-    getPieChartData(values)
+/**
+ * This hook is used to fetch all the organizations data which is required to show on bar graph and pie chart.
+ */
+export const useGetOrganizations = () => {
+  const response = useQuery(["getAllOrganizations"], () =>
+    getAllOrganizations()
+  );
+
+  return {
+    data: response?.data?.results,
+    isLoading: response.isLoading,
+    isError: response.isError,
+  };
+};
+
+export const useFetchSuperAdminData = (queryParams: any) => {
+  const response = useQuery(["getSuperAdmintData"], () =>
+    getSuperAdminData(queryParams)
   );
   return {
     // to check data.
@@ -13,11 +32,9 @@ export const useFetchPieChartData = (values: any) => {
   };
 };
 
-export const useGetOrganizations = () => {
-  const response = useQuery(["getAllOrganizations"], () =>
-    getAllOrganizations()
-  );
-
+//This hook is used to fetch all the departments.
+export const useGetDepartments = () => {
+  const response = useQuery(["departments"], () => getDepartments());
   return {
     data: response?.data?.results,
     isLoading: response.isLoading,

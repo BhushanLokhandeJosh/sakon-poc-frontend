@@ -17,6 +17,9 @@ export const API_ROUTES = {
   ORGANIZATIONS: {
     GET: "/organizations",
   },
+  DEPARTMENT: {
+    GET: "/departments",
+  },
 };
 
 export const NAVIGATION_ROUTES = {

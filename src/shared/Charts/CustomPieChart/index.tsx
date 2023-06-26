@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, Tooltip } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, Label } from "recharts";
 import { COLORS } from "./constants";
 import RenderCustomizedLabel from "./RenderCustomizedLabel";
 import { IChartDataOption } from "../../types";
@@ -10,7 +10,8 @@ interface ICustomPieChartProps {
   cy: number;
   outerRadius: number;
   data: IChartDataOption[];
-  dataKey: string;
+  dataKey?: string;
+  label?: string;
 }
 const CustomPieChart = ({
   width,
@@ -19,6 +20,7 @@ const CustomPieChart = ({
   cy,
   outerRadius,
   data,
+  label,
   dataKey = "value",
 }: ICustomPieChartProps) => {
   return (
@@ -33,9 +35,14 @@ const CustomPieChart = ({
         fill="#8884d8"
         dataKey={dataKey}
       >
-        {data.map((entry, index: number) => (
+        {data?.map((entry, index: number) => (
           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
         ))}
+        <Label
+          value={label}
+          position="outside"
+          style={{ fontSize: "16px", fontWeight: "bold" }}
+        />
       </Pie>
       <Tooltip />
     </PieChart>

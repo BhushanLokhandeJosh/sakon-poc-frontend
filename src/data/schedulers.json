@@ -10,14 +10,13 @@
     { "name": "Success", "value": 300 },
     { "name": "Failures", "value": 400 }
   ],
-  "lineGraph": [
-    { "time": "12:00 AM", "error": 0 },
-    { "time": "03:00 AM", "error": 2 },
-    { "time": "06:00 AM", "error": 1 },
-    { "time": "09:00 AM", "error": 4 },
-    { "time": "12:00 PM", "error": 3 },
-    { "time": "03:00 PM", "error": 2 },
-    { "time": "06:00 PM", "error": 1 },
-    { "time": "09:00 PM", "error": 0 }
+  "jobData": [
+    { "name": "Sunday", "error": 10 },
+    { "name": "Monday", "error": 5 },
+    { "name": "Tuesday", "error": 8 },
+    { "name": "Wednesday", "error": 3 },
+    { "name": "Thursday", "error": 5 },
+    { "name": "Friday", "error": 3 },
+    { "name": "Saturday", "error": 7 }
   ]
 }
