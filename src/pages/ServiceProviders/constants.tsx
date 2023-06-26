@@ -3,7 +3,10 @@ import { Tooltip } from "@mui/material";
 import { IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 
+import { useSelector } from "react-redux";
+
 import { IServiceProvidersPayload } from "./ServiceProviderList/types";
+import { SUPER_ADMIN } from "../User/UserListing/types";
 
 export const initialServiceProviderValues: IServiceProvidersPayload = {
   name: "",
@@ -23,7 +26,10 @@ export const GET_ALL_SERVICE_PROVIDERS = "getServiceProviders";
 export const ServiceProvidersColumns = (
   handleEditServiceProviders: Function
 ): GridColDef[] => {
-  return [
+  //@ts-ignore
+  const { loggedInUser } = useSelector((state) => state.AuthReducer);
+
+  const columns: any = [
     {
       field: "id",
       headerName: "Id",
@@ -45,7 +51,10 @@ export const ServiceProvidersColumns = (
       headerAlign: "center",
       align: "center",
     },
-    {
+  ];
+
+  if (loggedInUser?.type === SUPER_ADMIN) {
+    columns.push({
       field: "edit",
       headerName: "Edit",
       description: "Edit actions column.",
@@ -66,6 +75,8 @@ export const ServiceProvidersColumns = (
           </>
         );
       },
-    },
-  ];
+    });
+  }
+
+  return columns;
 };

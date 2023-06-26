@@ -3,8 +3,8 @@
   padding: 1rem;
 }
 
-.text-input {
-  width: 80%;
+.form-control-input {
+  width: 100%;
   padding: 10px 10px;
   text-align: left;
   font-size: 15px;
@@ -12,10 +12,4 @@
   border-radius: 5px;
 }
 
-.select-input {
-  width: 80%;
-  height: fit-content;
-  text-align: left;
-  font-size: 15px;
-  border-radius: 5px;
-}
+

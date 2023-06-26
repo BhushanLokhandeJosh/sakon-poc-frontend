@@ -45,6 +45,7 @@ const ServiceProviderForm = (props: IServiceProvidersProps): JSX.Element => {
           <div>
             <Input
               type={INPUT_TYPE.TEXT}
+              placeholder="Website Url"
               name="url"
               className="form-control-input"
               value={values.url}

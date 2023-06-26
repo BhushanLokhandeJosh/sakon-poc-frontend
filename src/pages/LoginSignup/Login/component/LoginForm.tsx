@@ -14,7 +14,9 @@ const LoginForm = (props: any) => {
   return (
     <div className="login-page">
       <Grid item lg={9} md={8} sm={8} xs={12}>
-        <InputLabel style={{ color: "black", fontSize: "2rem" }}>
+        <InputLabel
+          style={{ color: "#565a59", fontSize: "3rem", fontWeight: "300" }}
+        >
           Login
         </InputLabel>
       </Grid>
@@ -40,7 +42,7 @@ const LoginForm = (props: any) => {
                   <Input
                     type={INPUT_TYPE.TEXT}
                     name="email"
-                    className="form-control-input"
+                    className="form-control"
                     placeholder="Email"
                     value={formik.values.email}
                   />
@@ -53,7 +55,7 @@ const LoginForm = (props: any) => {
                   <Input
                     type={INPUT_TYPE.PASSWORD}
                     name="password"
-                    className="form-control-input"
+                    className="form-control"
                     placeholder="Password"
                     value={formik.values.password}
                   />
@@ -66,7 +68,9 @@ const LoginForm = (props: any) => {
                   variant="contained"
                   sx={{
                     textTransform: "capitalize",
-                    marginLeft: "17.5rem",
+                    display: "flex",
+                    marginLeft: "18rem",
+                    marginTop: "1rem",
                   }}
                 >
                   Submit

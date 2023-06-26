@@ -27,7 +27,7 @@ const LoginContainer = () => {
       ) : (
         <SignupPageContainer toggleModal={togglePage} isOpen={isOpen} />
       )}
-      <p>
+      <p style={{ marginTop: "1rem", color: "black" }}>
         {!isOpen ? "Don't have an account?" : "Already have an account?"}
         <Button
           variant="contained"

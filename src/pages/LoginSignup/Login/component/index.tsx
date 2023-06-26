@@ -5,21 +5,11 @@
 import LoginForm from "./LoginForm";
 import { useDispatch } from "react-redux";
 import { loginStart } from "../../../../redux/actions/authActions";
+import { useNavigate } from "react-router-dom";
 
 const LoginPageContainer = () => {
   const dispatch = useDispatch();
-  // const onSuccess = (value: AxiosResponse) => {
-  //   toast.success("User Login Added Successfully...");
-  // };
-
-  // const onError = (values: AxiosError) => {
-  //   toast.error(values.message);
-  // };
-
-  // const { mutate: loginUser } = useLoginUser({
-  //   onSuccess,
-  //   onError,
-  // });
+  const navigate = useNavigate();
 
   const onSubmit = (values: any) => {
     console.log("Form Submitted", values);
@@ -28,9 +18,7 @@ const LoginPageContainer = () => {
       password: values.password,
     };
 
-    dispatch(loginStart(loginCredentials));
-
-    // loginUser(values);
+    dispatch(loginStart(loginCredentials, navigate));
   };
 
   return <LoginForm onSubmitHandler={onSubmit} />;

@@ -7,28 +7,20 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Grid } from "@mui/material";
 
 import AvatarImage from "../../assets/images/avatar-icon.jpeg";
+import { useDispatch } from "react-redux";
 
 import "./styles/style.css";
-import { PAGE_MENU, SETTING_MENU } from "./constants";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SideBar from "../Sidebar/SideBar";
 import { ADMIN, SUPER_ADMIN, USER } from "../../pages/User/UserListing/types";
-
-const sidebarMenu = [
-  "Dashboard",
-  " Carrier Details",
-  " Reports",
-  " Variance",
-  "File Status",
-  "Log Out",
-];
+import { logoutStart } from "../../redux/actions/authActions";
+import Footer from "../../HomePages/Footer/component";
+import { API_ROUTES } from "../../routes/routes-constants";
 
 interface IProps {
   children?: React.ReactNode;
@@ -41,6 +33,7 @@ interface IProps {
 //TODO : Visit and checkout all components and also see check whether it is
 //  responsiveness or not.
 const LayoutComponent = (props: IProps) => {
+  const dispatch = useDispatch();
   const {
     children,
     sideBarMenus,
@@ -50,16 +43,12 @@ const LayoutComponent = (props: IProps) => {
   } = props;
   let sideBarMenu;
   let basicMenus;
-  console.log("In Layout", navBarMenus);
-  console.log(children);
   if (loggedInUser?.type === SUPER_ADMIN) {
     sideBarMenu = sideBarMenus.superAdmin;
   } else if (loggedInUser?.type === ADMIN) {
     sideBarMenu = sideBarMenus.admin;
   } else if (loggedInUser?.type === USER) {
     sideBarMenu = sideBarMenus.user;
-  } else {
-    sideBarMenu = sideBarMenus.basicRoutes;
   }
 
   if (loggedInUser?.type === undefined) {
@@ -74,17 +63,20 @@ const LayoutComponent = (props: IProps) => {
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+    if (loggedInUser?.type) {
+      dispatch(logoutStart());
+    } else return;
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
 
   return (
     <div>
@@ -111,7 +103,15 @@ const LayoutComponent = (props: IProps) => {
                   textDecoration: "none",
                 }}
               >
-                BOT
+                <Link
+                  to={API_ROUTES.HOME}
+                  style={{
+                    color: "white",
+                    textDecoration: "none",
+                  }}
+                >
+                  BOT
+                </Link>
               </Typography>
 
               <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -213,6 +213,24 @@ const LayoutComponent = (props: IProps) => {
                     </Link>
                   </Button>
                 ))}
+
+                <Box
+                  sx={{
+                    my: 3,
+                    color: "white",
+                    fontSize: "1rem",
+                    display: "block",
+                    position: "absolute",
+                    right: "5rem",
+                  }}
+                >
+                  {loggedInUser?.type
+                    ? `HI ${loggedInUser.name.toUpperCase()} (${
+                        loggedInUser?.type
+                      })`
+                    : "HI USER"}
+                </Box>
+
                 {basicMenus.map((item: any) => (
                   <Button
                     key={item.name}
@@ -222,7 +240,7 @@ const LayoutComponent = (props: IProps) => {
                       color: "white",
                       display: "block",
                       position: "absolute",
-                      right: "10rem",
+                      right: "-5%",
                     }}
                   >
                     <Link
@@ -237,19 +255,6 @@ const LayoutComponent = (props: IProps) => {
                     </Link>
                   </Button>
                 ))}
-                <Box
-                  sx={{
-                    my: 3,
-                    color: "white",
-                    display: "block",
-                    position: "absolute",
-                    right: "0",
-                  }}
-                >
-                  {loggedInUser?.type
-                    ? `HI ${loggedInUser.name.toUpperCase()}`
-                    : "HI USER"}
-                </Box>
               </Box>
 
               {/* <Box sx={{ flexGrow: 0 }}>
@@ -296,11 +301,23 @@ const LayoutComponent = (props: IProps) => {
             {children}
             {/* </div> */}
           </Grid>
+          <Grid item xs={12}>
+            <Footer />
+          </Grid>
         </Grid>
       ) : (
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
+        <Grid spacing={2}>
+          <Grid
+            item
+            xs={12}
+            sx={{
+              background: "linear-gradient(to right top, #f7f7f7, #dfefff)",
+            }}
+          >
             {children}
+          </Grid>
+          <Grid item xs={12}>
+            <Footer />
           </Grid>
         </Grid>
       )}

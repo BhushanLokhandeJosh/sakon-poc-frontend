@@ -7,6 +7,7 @@ import {
 import { toast } from "react-toastify";
 import { loginSuccess, logoutSuccess } from "../../actions/authActions";
 import { removeToken, saveToken } from "../../../services/AuthServices";
+import { API_ROUTES } from "../../../routes/routes-constants";
 
 function* onLoginUserStartAsync(user: any) {
   try {
@@ -18,7 +19,7 @@ function* onLoginUserStartAsync(user: any) {
       yield delay(500);
       yield saveToken(response.userdetails, response.accesstoken);
       yield put(loginSuccess(response.userdetails, response.accesstoken));
-      //   yield user.payload.navigate(user.payload.from);
+      yield user.payload.navigate(API_ROUTES.DASHBOARD);
       yield toast.success(response.Message);
     }
   } catch (error) {

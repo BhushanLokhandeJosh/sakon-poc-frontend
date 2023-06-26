@@ -1,8 +1,8 @@
 import * as types from "../types/actionTypes";
 
-export const loginStart = (user: any) => ({
+export const loginStart = (user: any, navigate: any) => ({
   type: types.LOAD_USER_LOGIN,
-  payload: { user },
+  payload: { user, navigate },
 });
 
 export const loginSuccess = (user: Object, token: string) => ({

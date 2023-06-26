@@ -1,15 +1,17 @@
 export const API_ROUTES = {
-  CONFIGURATION: {
-    GET: "/configurations", // GET: "/configDetails",
-    CREATE: "/configurations",
-  },
+  CONTACT: "/contactus",
+  SERVICES: "/services",
+  CONFIGURATION_LIST: "/configurations",
   DEPARTMENT_LIST: "/departments",
   ORGANIZATION_LIST: "/organizations",
+  SCHEDULING_LIST: "/schedules",
+  JOBS_LIST: "/jobs",
   SERVICE_PROVIDERS: "/serviceprovider",
   USER_LISTING: "/employees",
   HOME: "/",
   LOGIN: "/login",
+  LOGOUT: "/logout",
   SIGNUP: "/signup",
-  UNAUTHORIZED:"/unauthorized",
-  
+  UNAUTHORIZED: "/unauthorized",
+  DASHBOARD: "/dashboard",
 };

@@ -3,7 +3,7 @@ import { API_ROUTES } from "./routes/routes-constants";
 import "./App.css";
 import LayoutComponent from "./shared/Navbar";
 
-import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import LoginContainer from "./pages/LoginSignup";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,17 +11,19 @@ import { useEffect } from "react";
 import { checkAutoLogin } from "./services/AuthServices";
 import { sideBarMenus } from "./shared/Sidebar/constants";
 import { commonNavBarMenus, navBarMenus } from "./shared/Navbar/constants";
-import { logoutStart } from "./redux/actions/authActions";
 import RequireAuth from "./routes/RequireAuth";
 import SignupContainer from "./pages/Signup/SignupList";
 import ServiceProvidersContainer from "./pages/ServiceProviders/ServiceProviderList";
 import OrganizationsContainer from "./pages/Organization/OrganizationList";
 import UserContainer from "./pages/User/UserListing";
+import DepartmentContainer from "./pages/Department/DepartmentListing";
+import ContactUs from "./HomePages/ContactUs/component";
+import Services from "./HomePages/Services/component";
+import Landingpage from "./HomePages/LandingPage/component";
 
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
   //@ts-ignore
   const { loggedInUser } = useSelector((state) => state.AuthReducer);
   console.log(loggedInUser, "In App");
@@ -31,12 +33,8 @@ function App() {
     ADMIN: "ADMIN",
     USER: "USER",
   };
+
   useEffect(() => {
-    // console.log(location.pathname);
-    // if (location.pathname === "/logout") {
-    //   console.log("In Logout Start");
-    //   dispatch(logoutStart());
-    // }
     checkAutoLogin(dispatch, navigate);
   }, []);
 
@@ -49,13 +47,14 @@ function App() {
         commonNavBarMenus={commonNavBarMenus}
       >
         <Routes>
-          <Route path="/" element={<LoginContainer />} />
-          <Route path="/logout" element={<LoginContainer />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route path={API_ROUTES.HOME} element={<Landingpage />} />
+          <Route path={API_ROUTES.CONTACT} element={<ContactUs />} />
+          <Route path={API_ROUTES.LOGIN} element={<LoginContainer />} />
+          <Route path={API_ROUTES.SERVICES} element={<Services />} />
+          <Route path={API_ROUTES.LOGOUT} element={<Landingpage />} />
           <Route
             element={<RequireAuth allowedRoles={[systemUsers.SUPERADMIN]} />}
           >
-            <Route path="/dashboard" element={<DashBoardContainer />} />
             <Route path={API_ROUTES.SIGNUP} element={<SignupContainer />} />
 
             <Route
@@ -63,22 +62,36 @@ function App() {
               element={<OrganizationsContainer />}
             />
           </Route>
-
           <Route element={<RequireAuth allowedRoles={[systemUsers.ADMIN]} />}>
-            <Route path="/dashboard" element={<DashBoardContainer />} />
+            <Route
+              path={API_ROUTES.CONFIGURATION_LIST}
+              element={<ConfigurationContainer />}
+            />
+            <Route
+              path={API_ROUTES.SCHEDULING_LIST}
+              element={<SchedulerContainer />}
+            />
+            <Route path={API_ROUTES.JOBS_LIST} element={<JobsContainer />} />
             <Route
               path={API_ROUTES.DEPARTMENT_LIST}
-              element={<DepartmentList />}
+              element={<DepartmentContainer />}
             />
           </Route>
-
           <Route
             element={
               <RequireAuth
-                allowedRoles={[systemUsers.ADMIN, systemUsers.SUPERADMIN]}
+                allowedRoles={[
+                  systemUsers.ADMIN,
+                  systemUsers.SUPERADMIN,
+                  systemUsers.USER,
+                ]}
               />
             }
           >
+            <Route
+              path={API_ROUTES.DASHBOARD}
+              element={<DashBoardContainer />}
+            />
             <Route
               path={API_ROUTES.USER_LISTING}
               element={<UserContainer loggedInUser={loggedInUser} />}
@@ -88,17 +101,12 @@ function App() {
               element={<ServiceProvidersContainer />}
             />
           </Route>
-
           <Route path={API_ROUTES.UNAUTHORIZED} element={<UnAuthorized />} />
         </Routes>
       </LayoutComponent>
     </div>
   );
 }
-
-const DepartmentList = () => {
-  return <h1>DepartmentList</h1>;
-};
 
 const DashBoardContainer = () => {
   return <h1>DashBoard Page</h1>;
@@ -108,7 +116,15 @@ const UnAuthorized = () => {
   return <h1>UnAuthorized</h1>;
 };
 
-const HomePage = () => {
-  return <h1>Home Page</h1>;
+const ConfigurationContainer = () => {
+  return <h1>Configurations Page</h1>;
+};
+
+const SchedulerContainer = () => {
+  return <h1>Schedulers Page</h1>;
+};
+
+const JobsContainer = () => {
+  return <h1>Jobs Page</h1>;
 };
 export default App;

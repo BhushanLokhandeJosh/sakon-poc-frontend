@@ -37,7 +37,7 @@ const SignUpUserForm = (props: IOrganizationProps): JSX.Element => {
               type={INPUT_TYPE.EMAIL}
               placeholder="Email"
               name="email"
-              className="form-control-input"
+              className="form-control-ip"
               value={values.email}
             />
           </div>
@@ -52,7 +52,7 @@ const SignUpUserForm = (props: IOrganizationProps): JSX.Element => {
               type={INPUT_TYPE.TEXT}
               placeholder="Organization Name"
               name="organization"
-              className="form-control-input"
+              className="form-control-ip"
               value={values.organization}
             />
           </div>
@@ -66,7 +66,7 @@ const SignUpUserForm = (props: IOrganizationProps): JSX.Element => {
             <Input
               type={INPUT_TYPE.NUMBER}
               name="department_count"
-              className="form-control-input"
+              className="form-control-ip"
               value={values.department_count}
             />
           </div>
@@ -81,7 +81,7 @@ const SignUpUserForm = (props: IOrganizationProps): JSX.Element => {
               type={INPUT_TYPE.TEXT}
               placeholder="Designation"
               name="designation"
-              className="form-control-input"
+              className="form-control-ip"
               value={values.designation}
             />
           </div>

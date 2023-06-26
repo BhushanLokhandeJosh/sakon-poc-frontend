@@ -40,7 +40,7 @@ const UserForm = (props: IOrganizationProps): JSX.Element => {
               type={INPUT_TYPE.TEXT}
               placeholder="Enter Name"
               name="name"
-              className="form-control-input"
+              className="text-input"
               value={values.name}
             />
           </div>
@@ -55,7 +55,7 @@ const UserForm = (props: IOrganizationProps): JSX.Element => {
               type={INPUT_TYPE.EMAIL}
               placeholder="Enter Name"
               name="email"
-              className="form-control-input"
+              className="text-input"
               value={values.email}
             />
           </div>
@@ -72,7 +72,7 @@ const UserForm = (props: IOrganizationProps): JSX.Element => {
                   name="Department"
                   placeholder="Select Department"
                   options={departmentOptions}
-                  className="multiselect-style"
+                  className="select-input"
                   menuPlacement="bottom"
                   maxMenuHeight={80}
                   isMulti={true}
@@ -93,7 +93,7 @@ const UserForm = (props: IOrganizationProps): JSX.Element => {
                   name="org"
                   placeholder="Select Organization"
                   options={organizationsOptions}
-                  className="multiselect-style"
+                  className="select-input"
                   menuPlacement="bottom"
                   maxMenuHeight={80}
                   isMulti={false}

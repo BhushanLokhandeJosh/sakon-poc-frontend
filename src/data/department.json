@@ -1,0 +1,17 @@
+{
+  "departments": [
+    {
+      "id": 1,
+      "name": "Development"
+    },
+    {
+      "id": 2,
+      "name": "Marketing",
+      "org": "1"
+    },
+    {
+      "name": "Sales",
+      "id": 3
+    }
+  ]
+}

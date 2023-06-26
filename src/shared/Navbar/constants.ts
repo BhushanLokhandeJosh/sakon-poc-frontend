@@ -15,12 +15,8 @@ export enum SETTING_MENU {
 
 export const navBarMenus = [
   {
-    path: "/home",
+    path: "/",
     name: "Home",
-  },
-  {
-    path: "/aboutus",
-    name: "About Us",
   },
   {
     path: "/services",
@@ -29,10 +25,6 @@ export const navBarMenus = [
   {
     path: "/contactus",
     name: "Contact Us",
-  },
-  {
-    path: "/products",
-    name: "Products",
   },
 ];
 
