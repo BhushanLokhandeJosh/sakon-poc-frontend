@@ -9,6 +9,7 @@ const SchedulersContainer = () => {
   const { isOpen, handleToggle } = useToggle();
   const [scheduler, setScheduler] = useState<any>();
 
+  //Used
   const handleToggleWithSchedulerReset = () => {
     handleToggle();
     if (scheduler) {
