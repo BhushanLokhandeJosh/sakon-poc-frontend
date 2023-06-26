@@ -10,6 +10,7 @@ const ConfigurationsContainer = () => {
   const { isOpen, handleToggle } = useToggle();
   const [configuration, setConfiguration] = useState<any>();
 
+  // Used
   const handleToggleWithConfigurationReset = () => {
     handleToggle();
     if (configuration) {
