@@ -32,7 +32,7 @@ const CustomBarGraph = ({ data, width, height }: IProps) => {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey="error" fill="#82ca9d" />
+      <Bar dataKey="error" fill="#D40032" />
     </BarChart>
   );
 };

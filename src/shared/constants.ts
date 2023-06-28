@@ -11,8 +11,14 @@ export const API_ROUTES = {
     CREATE: "/schedules",
     PUT: "/schedules",
   },
-  DASHBOARD: {
-    GET: "/piechart",
+  SUPERADMIN: {
+    GET: "/dashboard/graph",
+  },
+  ADMIN: {
+    GET: "/dashboard/graph",
+  },
+  USER: {
+    GET: "/dashboard/graph",
   },
   ORGANIZATIONS: {
     GET: "/organizations",

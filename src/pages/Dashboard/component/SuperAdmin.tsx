@@ -10,62 +10,47 @@ import Admin from "./Admin";
 import User from "./User";
 
 const SuperAdmin = () => {
-  const [uploadPieChartData, setUploadPieChartData] = useState([]);
-  const [downloadPieChartData, setDownloadPieChartData] = useState([]);
-  const [jobData, setJobData] = useState([]);
   const selectOrganizationOptions: { label: string; value: string }[] = [];
   const selectFrequencyOptions: any[] = [
     { label: "daily", value: "daily" },
     { label: "weekly", value: "weekly" },
     { label: "monthly", value: "monthly" },
   ];
+  const [filterData, setFilterData] = useState<any>({});
 
-  useEffect(() => {
-    Promise.all([
-      fetch("http://localhost:8001/uploadPieChart").then((response) =>
-        response.json()
-      ),
-      fetch("http://localhost:8001/downloadPieChart").then((response) =>
-        response.json()
-      ),
-      fetch(" http://localhost:8001/jobData").then((response) =>
-        response.json()
-      ),
-    ])
-      .then(([uploadData, downloadData, jobData]) => {
-        setUploadPieChartData(uploadData);
-        setDownloadPieChartData(downloadData);
-        setJobData(jobData);
-      })
-      .catch((error) => console.error("Error", error));
-  }, []);
-
-  // This hook is to fetch all the organizations.
+  //This hook use to fetch all organizations.
   const { data: organizationNames, isLoading, isError } = useGetOrganizations();
 
-  if (isLoading) {
+  //This hook use to fetch all superAdmin related data.
+  const {
+    data,
+    isLoading: SuperAdminLoading,
+    isError: SuperAdminError,
+    refetch,
+  } = useFetchSuperAdminData({ filterData });
+
+  const errorGraphData = data?.errorgraphdata;
+  const donwnloadData = data?.downloaddata;
+  const uploadData = data?.uploaddata;
+
+  if (isLoading || SuperAdminLoading) {
     return <>Loading...</>;
   }
-  if (isError) {
+  if (isError || SuperAdminError) {
     return <>Error</>;
   }
 
   organizationNames?.map((item: any) => {
     const obj = {
       label: item.name,
-      value: item.name,
+      value: item.id,
     };
     selectOrganizationOptions.push(obj);
-    console.log(selectOrganizationOptions);
   });
 
-  // const getSuperAdmintData = (values: any) => {
-  //   const { data, isLoading, isError } = useFetchSuperAdminData(values);
-  // };
-
   const onSubmit = (values: any) => {
-    console.log("org values", values);
-    // getSuperAdmintData(values);
+    setFilterData(values);
+    refetch();
   };
 
   return (
@@ -135,68 +120,84 @@ const SuperAdmin = () => {
           </Grid>
         </Form>
       </Formik>
+
       <div style={{ display: "flex" }}>
-        <Box
-          sx={{
-            marginTop: "7%",
-            position: "relative",
-            left: "15%",
-            fontSize: "16px",
-            fontWeight: "bold",
-            color: "gray",
-          }}
-        >
-          Uploads
-        </Box>
-        {uploadPieChartData.length > 0 && (
-          <CustomPieChart
-            width={600}
-            height={450}
-            cx={400}
-            cy={250}
-            outerRadius={150}
-            data={uploadPieChartData}
-            // label="Uploads"
-          />
+        {/* for upload section */}
+        {uploadData?.length > 0 ? (
+          <>
+            <Box
+              sx={{
+                marginTop: "7%",
+                position: "relative",
+                left: "15%",
+                fontSize: "16px",
+                fontWeight: "bold",
+                color: "gray",
+              }}
+            >
+              Uploads
+            </Box>
+            <CustomPieChart
+              width={600}
+              height={450}
+              cx={400}
+              cy={250}
+              outerRadius={150}
+              data={uploadData}
+              // label="Uploads"
+            />
+          </>
+        ) : (
+          <Box /* Placeholder or message when uploadData is not available */>
+            Upload data is Not Available
+          </Box>
         )}
-        <Box
-          sx={{
-            marginTop: "7%",
-            position: "relative",
-            left: "15%",
-            fontSize: "16px",
-            fontWeight: "bold",
-            color: "gray",
-          }}
-        >
-          Downloads
-        </Box>
-        {downloadPieChartData.length > 0 && (
-          <CustomPieChart
-            width={600}
-            height={450}
-            cx={400}
-            cy={250}
-            outerRadius={150}
-            data={downloadPieChartData}
-            // label="Downloads"
-          />
+        {/* for download section */}
+        {donwnloadData?.length > 0 ? (
+          <>
+            <Box
+              sx={{
+                marginTop: "7%",
+                position: "relative",
+                left: "15%",
+                fontSize: "16px",
+                fontWeight: "bold",
+                color: "gray",
+              }}
+            >
+              Downloads
+            </Box>
+            <CustomPieChart
+              width={600}
+              height={450}
+              cx={400}
+              cy={250}
+              outerRadius={150}
+              data={donwnloadData}
+            />
+          </>
+        ) : (
+          <Box /* Placeholder or message when uploadData is not available */>
+            Download data is Not Available
+          </Box>
         )}
       </div>
       <div style={{ marginLeft: "15%" }}>
-        <Box
-          sx={{
-            marginRight: "100%",
-            fontSize: "16px",
-            fontWeight: "bold",
-            color: "gray",
-          }}
-        >
-          Jobs
-        </Box>
-
-        {jobData.length > 0 && (
-          <CustomBarGraph width={1100} height={300} data={jobData} />
+        {errorGraphData?.length > 0 && (
+          <>
+            <Box
+              sx={{
+                marginRight: "100%",
+                fontSize: "16px",
+                fontWeight: "bold",
+                color: "gray",
+                marginBottom: "2%",
+              }}
+            >
+              Jobs
+            </Box>
+            <CustomBarGraph width={1100} height={300} data={errorGraphData} />
+          </>
         )}
       </div>
     </>

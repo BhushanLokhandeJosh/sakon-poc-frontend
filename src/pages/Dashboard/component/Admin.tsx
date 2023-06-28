@@ -1,5 +1,9 @@
 import CustomPieChart from "../../../shared/Charts/CustomPieChart";
-import { useGetDepartments, useGetOrganizations } from "../config-hooks";
+import {
+  useFetchAdminData,
+  useGetDepartments,
+  useGetOrganizations,
+} from "../config-hooks";
 import { Formik, Form } from "formik";
 import { Box, Button, Grid, InputLabel } from "@mui/material";
 import Select from "../../../shared/FormComponents/Select";
@@ -9,8 +13,6 @@ import CustomBarGraph from "../../../shared/Charts/CustomBarGraph";
 import User from "./User";
 
 const Admin = () => {
-  const [uploadPieChartData, setUploadPieChartData] = useState([]);
-  const [downloadPieChartData, setDownloadPieChartData] = useState([]);
   const [jobData, setJobData] = useState([]);
   const selectDepartmentOptions: { label: string; value: string }[] = [];
   const selectFrequencyOptions: any[] = [
@@ -18,59 +20,48 @@ const Admin = () => {
     { label: "weekly", value: "weekly" },
     { label: "monthly", value: "monthly" },
   ];
+  const [filterData, setFilterData] = useState<any>({});
 
-  useEffect(() => {
-    Promise.all([
-      fetch("http://localhost:8001/uploadPieChart").then((response) =>
-        response.json()
-      ),
-      fetch("http://localhost:8001/downloadPieChart").then((response) =>
-        response.json()
-      ),
-      fetch(" http://localhost:8001/jobData").then((response) =>
-        response.json()
-      ),
-    ])
-      .then(([uploadData, downloadData, jobData]) => {
-        setUploadPieChartData(uploadData);
-        setDownloadPieChartData(downloadData);
-        setJobData(jobData);
-      })
-      .catch((error) => console.error("Error", error));
-  }, []);
-
-  // This hook is to fetch all the organizations.
+  // This hook is to fetch all the Departments.
   const { data: departmentNames, isLoading, isError } = useGetDepartments();
-  console.log(departmentNames);
 
-  if (isLoading) {
+  //This hook is used to fetch all Admin related data.
+  const {
+    data,
+    isLoading: adminLoading,
+    isError: adminError,
+    refetch,
+  } = useFetchAdminData({ filterData });
+
+  const errorGraphData = data?.errorgraphdata;
+  const donwnloadData = data?.downloaddata;
+  const uploadData = data?.uploaddata;
+
+  console.log("upload data", uploadData);
+
+  if (isLoading || adminLoading) {
     return <>Loading...</>;
   }
-  if (isError) {
+  if (isError || adminError) {
     return <>Error</>;
   }
 
   departmentNames?.map((item: any) => {
     const obj = {
       label: item.name,
-      value: item.name,
+      value: item.id,
     };
     selectDepartmentOptions.push(obj);
-    console.log(selectDepartmentOptions);
   });
 
-  // const getSuperAdmintData = (values: any) => {
-  //   const { data, isLoading, isError } = useFetchSuperAdminData(values);
-  // };
-
   const onSubmit = (values: any) => {
-    console.log("admin values", values);
-    // getSuperAdmintData(values);
+    setFilterData(values);
+    refetch();
   };
 
   return (
     <>
-      <Formik initialValues={{ select: "" }} onSubmit={onSubmit}>
+      <Formik initialValues={{}} onSubmit={onSubmit}>
         <Form>
           <Grid sx={{ display: "flex", marginLeft: "5rem" }}>
             <Grid
@@ -83,8 +74,8 @@ const Admin = () => {
               }}
             >
               {/* <Grid xs={3}>
-                <InputLabel sx={{ color: "black" }}>Organization:</InputLabel>
-              </Grid> */}
+              <InputLabel sx={{ color: "black" }}>Organization:</InputLabel>
+            </Grid> */}
               <Grid xs={6}>
                 <Select
                   name="department"
@@ -108,8 +99,8 @@ const Admin = () => {
               }}
             >
               {/* <Grid xs={3}>
-                <InputLabel sx={{ color: "black" }}>Frequncy:</InputLabel>
-              </Grid> */}
+              <InputLabel sx={{ color: "black" }}>Frequncy:</InputLabel>
+            </Grid> */}
               <Grid xs={6}>
                 <Select
                   name="frequency"
@@ -135,68 +126,88 @@ const Admin = () => {
           </Grid>
         </Form>
       </Formik>
+
       <div style={{ display: "flex" }}>
-        <Box
-          sx={{
-            marginTop: "7%",
-            position: "relative",
-            left: "15%",
-            fontSize: "16px",
-            fontWeight: "bold",
-            color: "gray",
-          }}
-        >
-          Uploads
-        </Box>
-        {uploadPieChartData.length > 0 && (
-          <CustomPieChart
-            width={600}
-            height={450}
-            cx={400}
-            cy={250}
-            outerRadius={150}
-            data={uploadPieChartData}
-            // label="Uploads"
-          />
+        {/* for upload section */}
+        {uploadData && uploadData?.length > 0 ? (
+          <>
+            <Box
+              sx={{
+                marginTop: "7%",
+                position: "relative",
+                left: "15%",
+                fontSize: "16px",
+                fontWeight: "bold",
+                color: "gray",
+              }}
+            >
+              Uploads
+            </Box>
+            <CustomPieChart
+              width={600}
+              height={450}
+              cx={400}
+              cy={250}
+              outerRadius={150}
+              data={uploadData}
+              // label="Uploads"
+            />
+          </>
+        ) : (
+          <Box /* Placeholder or message when uploadData is not available */>
+            Upload data is Not Available
+          </Box>
         )}
-        <Box
-          sx={{
-            marginTop: "7%",
-            position: "relative",
-            left: "15%",
-            fontSize: "16px",
-            fontWeight: "bold",
-            color: "gray",
-          }}
-        >
-          Downloads
-        </Box>
-        {downloadPieChartData.length > 0 && (
-          <CustomPieChart
-            width={600}
-            height={450}
-            cx={400}
-            cy={250}
-            outerRadius={150}
-            data={downloadPieChartData}
-            // label="Downloads"
-          />
+        {/* for download section */}
+
+        {donwnloadData && donwnloadData?.length > 0 ? (
+          <>
+            <Box
+              sx={{
+                marginTop: "7%",
+                position: "relative",
+                left: "15%",
+                fontSize: "16px",
+                fontWeight: "bold",
+                color: "gray",
+              }}
+            >
+              Downloads
+            </Box>
+            <CustomPieChart
+              width={600}
+              height={450}
+              cx={400}
+              cy={250}
+              outerRadius={150}
+              data={donwnloadData}
+            />
+          </>
+        ) : (
+          <Box /* Placeholder or message when uploadData is not available */>
+            Download data is Not Available
+          </Box>
         )}
       </div>
-      <div style={{ marginLeft: "15%" }}>
-        <Box
-          sx={{
-            marginRight: "100%",
-            fontSize: "16px",
-            fontWeight: "bold",
-            color: "gray",
-          }}
-        >
-          Jobs
-        </Box>
 
-        {jobData.length > 0 && (
-          <CustomBarGraph width={1100} height={300} data={jobData} />
+      <div style={{ marginLeft: "15%" }}>
+        {errorGraphData && errorGraphData?.length > 0 ? (
+          <>
+            <Box
+              sx={{
+                marginRight: "100%",
+                fontSize: "16px",
+                fontWeight: "bold",
+                color: "gray",
+                marginBottom: "2%",
+              }}
+            >
+              Jobs
+            </Box>
+            <CustomBarGraph width={1100} height={300} data={errorGraphData} />
+          </>
+        ) : (
+          <Box>No job data available.</Box>
         )}
       </div>
     </>

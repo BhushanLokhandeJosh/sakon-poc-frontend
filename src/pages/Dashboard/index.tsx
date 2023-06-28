@@ -6,7 +6,7 @@ const DashboardContainer = () => {
     name: "Bhushan",
     org_id: 7,
     org_name: "Sakon",
-    type: "ADMIN",
+    type: "SUPERADMIN",
   };
 
   //type : SUPERADMIN,ADMIN,USER

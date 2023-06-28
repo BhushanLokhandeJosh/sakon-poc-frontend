@@ -1,8 +1,10 @@
 import { useQuery } from "react-query";
 import {
+  getAdminData,
   getAllOrganizations,
   getDepartments,
   getSuperAdminData,
+  getUserData,
 } from "./config-services";
 
 /**
@@ -20,15 +22,22 @@ export const useGetOrganizations = () => {
   };
 };
 
-export const useFetchSuperAdminData = (queryParams: any) => {
-  const response = useQuery(["getSuperAdmintData"], () =>
-    getSuperAdminData(queryParams)
+export const useFetchSuperAdminData = ({
+  filterData,
+}: {
+  filterData?: any;
+}) => {
+  const response = useQuery(["getSuperAdmintData", filterData], () =>
+    getSuperAdminData({
+      organization: filterData?.organization,
+      frequency: filterData?.frequency,
+    })
   );
   return {
-    // to check data.
-    data: response?.data?.data,
+    data: response?.data,
     isLoading: response.isLoading,
     isError: response.isError,
+    refetch: response?.refetch,
   };
 };
 
@@ -36,8 +45,37 @@ export const useFetchSuperAdminData = (queryParams: any) => {
 export const useGetDepartments = () => {
   const response = useQuery(["departments"], () => getDepartments());
   return {
-    data: response?.data?.results,
+    data: response?.data?.data,
     isLoading: response.isLoading,
     isError: response.isError,
+  };
+};
+
+export const useFetchAdminData = ({ filterData }: { filterData?: any }) => {
+  const response = useQuery(["getAdminData", filterData], () =>
+    getAdminData({
+      department: filterData?.department,
+      frequency: filterData?.frequency,
+    })
+  );
+  return {
+    data: response?.data,
+    isLoading: response.isLoading,
+    isError: response.isError,
+    refetch: response?.refetch,
+  };
+};
+
+export const useFetchUserData = ({ filterData }: { filterData: any }) => {
+  const response = useQuery(["getUserData", filterData], () =>
+    getUserData({
+      frequency: filterData?.frequency,
+    })
+  );
+  return {
+    data: response?.data,
+    isLoading: response.isLoading,
+    isError: response.isError,
+    refetch: response?.refetch,
   };
 };
