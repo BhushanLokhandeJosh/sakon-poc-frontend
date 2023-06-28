@@ -1,13 +1,11 @@
 import CustomPieChart from "../../../shared/Charts/CustomPieChart";
 import { useGetOrganizations } from "../config-hooks";
 import { Formik, Form } from "formik";
-import { Box, Button, Grid, InputLabel } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import Select from "../../../shared/FormComponents/Select";
 import { useFetchSuperAdminData } from "../config-hooks";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CustomBarGraph from "../../../shared/Charts/CustomBarGraph";
-import Admin from "./Admin";
-import User from "./User";
 
 const SuperAdmin = () => {
   const selectOrganizationOptions: { label: string; value: string }[] = [];
@@ -123,7 +121,7 @@ const SuperAdmin = () => {
 
       <div style={{ display: "flex" }}>
         {/* for upload section */}
-        {uploadData?.length > 0 ? (
+        {uploadData && uploadData?.length > 0 ? (
           <>
             <Box
               sx={{
@@ -153,7 +151,7 @@ const SuperAdmin = () => {
           </Box>
         )}
         {/* for download section */}
-        {donwnloadData?.length > 0 ? (
+        {donwnloadData && donwnloadData?.length > 0 ? (
           <>
             <Box
               sx={{
@@ -183,7 +181,7 @@ const SuperAdmin = () => {
         )}
       </div>
       <div style={{ marginLeft: "15%" }}>
-        {errorGraphData?.length > 0 && (
+        {errorGraphData && errorGraphData?.length > 0 && (
           <>
             <Box
               sx={{
