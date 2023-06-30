@@ -82,5 +82,20 @@ export const sideBarMenus = {
       name: "Dashboard",
       icon: <FaHome />,
     },
+    {
+      path: API_ROUTES.CONFIGURATION_LIST,
+      name: "Configuration",
+      icon: <FcDataConfiguration />,
+    },
+    {
+      path: API_ROUTES.SCHEDULING_LIST,
+      name: "Scheduler",
+      icon: <AiOutlineSchedule />,
+    },
+    {
+      path: API_ROUTES.JOBS_LIST,
+      name: "Jobs",
+      icon: <GoTasklist />,
+    },
   ],
 };

@@ -6,7 +6,7 @@ import {
 } from "../../../pages/loginsignup-services";
 import { toast } from "react-toastify";
 import { loginSuccess, logoutSuccess } from "../../actions/authActions";
-import { removeToken, saveToken } from "../../../services/AuthServices";
+import { saveToken } from "../../../services/AuthServices";
 import { API_ROUTES } from "../../../routes/routes-constants";
 
 function* onLoginUserStartAsync(user: any) {
@@ -15,7 +15,7 @@ function* onLoginUserStartAsync(user: any) {
     const response: any = yield call(loginUserApi, user.payload.user);
 
     if (response.userdetails) {
-      console.log("Saga Service", response);
+      console.log("In Login Saga", response);
       yield delay(500);
       yield saveToken(response.userdetails, response.accesstoken);
       yield put(loginSuccess(response.userdetails, response.accesstoken));

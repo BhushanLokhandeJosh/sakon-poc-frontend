@@ -18,7 +18,8 @@ const RequireAuth = ({ allowedRoles }: any) => {
     <Navigate to={API_ROUTES.UNAUTHORIZED} state={{ from: location }} replace />
   ) : (
     //@ts-ignore
-    <Navigate to={API_ROUTES.LOGIN} state={{ from: location }} replace />
+    // <Navigate to={API_ROUTES.LOGIN} state={{ from: location }} replace />
+    <Outlet />
   );
 };
 

@@ -46,7 +46,6 @@ function App() {
       <LayoutComponent
         sideBarMenus={sideBarMenus}
         navBarMenus={navBarMenus}
-        loggedInUser={loggedInUser}
         commonNavBarMenus={commonNavBarMenus}
       >
         <Routes>
@@ -67,6 +66,18 @@ function App() {
           </Route>
           <Route element={<RequireAuth allowedRoles={[systemUsers.ADMIN]} />}>
             <Route
+              path={API_ROUTES.DEPARTMENT_LIST}
+              element={<DepartmentContainer />}
+            />
+          </Route>
+          <Route
+            element={
+              <RequireAuth
+                allowedRoles={[systemUsers.ADMIN, systemUsers.USER]}
+              />
+            }
+          >
+            <Route
               path={API_ROUTES.CONFIGURATION_LIST}
               element={<ConfigurationsContainer />}
             />
@@ -74,14 +85,9 @@ function App() {
               path={API_ROUTES.SCHEDULING_LIST}
               element={<SchedulersContainer />}
             />
-
             <Route
               path={API_ROUTES.JOBS_LIST}
               element={<JobListingContainer />}
-            />
-            <Route
-              path={API_ROUTES.DEPARTMENT_LIST}
-              element={<DepartmentContainer />}
             />
           </Route>
           <Route

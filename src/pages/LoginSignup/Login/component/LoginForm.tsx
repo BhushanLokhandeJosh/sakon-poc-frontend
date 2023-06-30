@@ -26,7 +26,6 @@ const LoginForm = (props: any) => {
         onSubmit={onSubmitHandler}
       >
         {(formik: IFormikProps<any>) => {
-          console.log(formik.values);
           return (
             <Form>
               <Grid
