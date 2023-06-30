@@ -28,20 +28,15 @@ export const useFetchOrganization = ({
 }: {
   searchValue?: string;
 }) => {
-  // const { onSuccess, onError } = props;
-
   const response = useQuery(GET_ALL_ORGANIZATION, () => getOrganization({search:searchValue}));
-  console.log("Fetch Response", response);
   return {
     data: response?.data?.results,
     isLoading: response.isLoading,
     isError: response.isError,
   };
 };
-// getServiceProviders
 
 export const useFetchServiceProviders = () => {
-  // const { onSuccess, onError } = props;
   return useQuery(GET_ALL_SERVICE_PROVIDERS, () => getServiceProviders());
 };
 

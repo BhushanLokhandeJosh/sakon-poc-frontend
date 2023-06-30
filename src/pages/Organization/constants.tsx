@@ -33,29 +33,28 @@ export const OrganizationColumns = (
     {
       field: "id",
       headerName: "Id",
-      width: 200,
+      flex:1,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "name",
       headerName: "Organization Name",
-      width: 350,
-
+      flex:1,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "department_count",
       headerName: "Dept. Count",
-      width: 350,
+      flex:1,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "service_providers",
       headerName: "Service Providers",
-      width: 350,
+      flex:1,
       sortable: false,
       headerAlign: "center",
       align: "center",
@@ -70,7 +69,7 @@ export const OrganizationColumns = (
       sortable: false,
       headerAlign: "center",
       align: "center",
-      width: 200,
+      flex:1,
       renderCell: (params: GridCellParams) => {
         return (
           <>

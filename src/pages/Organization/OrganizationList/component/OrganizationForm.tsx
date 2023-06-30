@@ -29,7 +29,7 @@ const OrganizationForm = (props: IOrganizationProps): JSX.Element => {
         <Grid item lg={3} md={4} sm={5} xs={12}>
           <InputLabel sx={{ color: "black" }}>Organization</InputLabel>
         </Grid>
-        <Grid item lg={9} md={8} sm={8} xs={12}>
+        <Grid item lg={9} sm={8} xs={12}>
           <div>
             <Input
               type={INPUT_TYPE.TEXT}
@@ -44,7 +44,7 @@ const OrganizationForm = (props: IOrganizationProps): JSX.Element => {
         <Grid item lg={3} md={4} sm={5} xs={12}>
           <InputLabel sx={{ color: "black" }}>Department Count</InputLabel>
         </Grid>
-        <Grid item lg={9} md={8} sm={8} xs={12}>
+        <Grid item lg={9} sm={8} xs={12}>
           <div>
             <Input
               type={INPUT_TYPE.NUMBER}
@@ -58,7 +58,7 @@ const OrganizationForm = (props: IOrganizationProps): JSX.Element => {
         <Grid item lg={3} md={4} sm={5} xs={12}>
           <InputLabel sx={{ color: "black" }}>Service Providers</InputLabel>
         </Grid>
-        <Grid item lg={9} md={8} sm={8} xs={12}>
+        <Grid item lg={9} sm={8} xs={12}>
           <Select
             name="service_providers"
             placeholder="Select Service Providers"

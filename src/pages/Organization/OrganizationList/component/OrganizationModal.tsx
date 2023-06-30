@@ -25,6 +25,7 @@ const OrganizationModal = ({
   toggleModal,
   organization,
 }: IOrganizationModalProps) => {
+  const queryClient = useQueryClient();
 
   const [serviceProviders, setServiceProviders] = useState<
     {
@@ -35,15 +36,13 @@ const OrganizationModal = ({
 
   const { data } = useFetchServiceProviders();
 
-  const queryClient = useQueryClient();
-
   const isEdit = organization ? true : false;
 
   let updateOrganizationValues;
 
   useEffect(() => {
     if (isEdit) {
-      let arr: any = [];
+      let arr = [];
       const length = organization.service_providers.length;
 
       for (let i = 0; i < length; i++) {
@@ -63,8 +62,6 @@ const OrganizationModal = ({
           label: data?.results[i].name,
         });
       }
-
-      console.log("Serviec array", arr);
       setServiceProviders(arr);
     }
   }, [data]);
@@ -102,7 +99,6 @@ const OrganizationModal = ({
   });
 
   const onSubmit = (values: any) => {
-    // TODO: Currently, there is only one employee defined. Therefore hardcoded as "1".
     !isEdit ? createOrganization(values) : updateOrganization(values);
   };
 
