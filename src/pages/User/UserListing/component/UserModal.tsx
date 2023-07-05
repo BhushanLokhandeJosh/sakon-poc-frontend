@@ -21,13 +21,16 @@ import { toast } from "react-toastify";
 import { AxiosError, AxiosResponse } from "axios";
 import { useQueryClient } from "react-query";
 import { Console, log } from "console";
+import { useSelector } from "react-redux";
 
 const UserModal = ({
   isOpen: isModalOpen,
   toggleModal,
-  user,
-  loggedInUser,
+  user
 }: any) => {
+   //@ts-ignore
+   const { loggedInUser } = useSelector((state) => state.AuthReducer);
+   console.log("InEdit",user);
   const [departmentOptions, SetDepartmentOptions] = useState<
     {
       label: string;
@@ -47,17 +50,16 @@ const UserModal = ({
   const { data: departments } = useFetchDepartmentList({ org_id: 1 });
 
   const { data: organizations } = useFetchOrganization();
-  console.log("Org", organizations?.results);
 
   const isEdit = user ? true : false;
+  console.log("Org", organizations);
 
   let updateUserValues;
+  let arr1:any = [];
+  let arr2:any = [];
 
   useEffect(() => {
     if (!isEdit) {
-      let arr1 = [];
-      let arr2 = [];
-
       const length1 = departments?.length;
       const length2 = organizations?.results?.length;
 
@@ -81,14 +83,28 @@ const UserModal = ({
   }, [departments, organizations]);
 
   if (isEdit) {
-    updateUserValues = {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      department: user.department,
-      org: user.org,
-    };
+    if(user.role === ADMIN) {
+      updateUserValues = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        org: user.org,
+      };
+    }
+
+    if(user.role === SUPER_ADMIN) {
+      updateUserValues = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        org: user.org,
+      };
+    }
+
+    
+    
   }
 
   const onSuccess = async (values: AxiosResponse) => {

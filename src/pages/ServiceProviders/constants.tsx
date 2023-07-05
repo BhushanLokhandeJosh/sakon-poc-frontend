@@ -33,7 +33,7 @@ export const ServiceProvidersColumns = (
     {
       field: "id",
       headerName: "Id",
-      width: 200,
+      width: 150,
       headerAlign: "center",
       align: "center",
     },
@@ -47,7 +47,7 @@ export const ServiceProvidersColumns = (
     {
       field: "url",
       headerName: "Website URL",
-      width: 650,
+      width: 600,
       headerAlign: "center",
       align: "center",
     },

@@ -22,13 +22,15 @@ import Services from "./HomePages/Services/component";
 import Landingpage from "./HomePages/LandingPage/component";
 import SchedulersContainer from "./pages/Scheduler/SchedulersList";
 import ConfigurationsContainer from "./pages/Configuration/GetAllConfigurations";
+import JobListingContainer from "./pages/Jobs/JobListing/component";
+import DashboardContainer from "./pages/Dashboard";
+import JobsDetailsContainer from "./pages/Jobs/JobDetails/component";
 
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //@ts-ignore
   const { loggedInUser } = useSelector((state) => state.AuthReducer);
-  console.log(loggedInUser, "In App");
 
   const systemUsers = {
     SUPERADMIN: "SUPERADMIN",
@@ -66,6 +68,12 @@ function App() {
           </Route>
           <Route element={<RequireAuth allowedRoles={[systemUsers.ADMIN]} />}>
             <Route
+              path={API_ROUTES.DEPARTMENT_LIST}
+              element={<DepartmentContainer />}
+            />
+          </Route>
+          <Route element={<RequireAuth allowedRoles={[systemUsers.ADMIN,systemUsers.USER]} />}>
+            <Route
               path={API_ROUTES.CONFIGURATION_LIST}
               element={<ConfigurationsContainer />}
             />
@@ -73,12 +81,15 @@ function App() {
               path={API_ROUTES.SCHEDULING_LIST}
               element={<SchedulersContainer />}
             />
-
-            <Route path={API_ROUTES.JOBS_LIST} element={<JobsContainer />} />
-            <Route
-              path={API_ROUTES.DEPARTMENT_LIST}
-              element={<DepartmentContainer />}
+            <Route 
+            path={`${API_ROUTES.JOBS_LIST}${API_ROUTES.JOBS_DETAILS}/:id`}
+            element={<JobsDetailsContainer/>}
             />
+            <Route 
+              path={API_ROUTES.JOBS_LIST}
+              element={<JobListingContainer />}
+            />
+            
           </Route>
           <Route
             element={
@@ -93,11 +104,11 @@ function App() {
           >
             <Route
               path={API_ROUTES.DASHBOARD}
-              element={<DashBoardContainer />}
+              element={<DashboardContainer />}
             />
             <Route
               path={API_ROUTES.USER_LISTING}
-              element={<UserContainer loggedInUser={loggedInUser} />}
+              element={<UserContainer />}
             />
             <Route
               path={API_ROUTES.SERVICE_PROVIDERS}
@@ -111,15 +122,10 @@ function App() {
   );
 }
 
-const DashBoardContainer = () => {
-  return <h1>DashBoard Page</h1>;
-};
+
 
 const UnAuthorized = () => {
   return <h1>UnAuthorized</h1>;
 };
 
-const JobsContainer = () => {
-  return <h1>Jobs Page</h1>;
-};
 export default App;

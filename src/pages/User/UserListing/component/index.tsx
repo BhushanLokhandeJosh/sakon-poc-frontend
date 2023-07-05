@@ -7,8 +7,13 @@ import PageComponent from "../../../../shared/PageComponent/PageComponent";
 import CustomTable from "../../../../shared/CustomTable/CustomTable";
 import { useFetchUserList } from "../../user-hooks";
 import { UserColumns } from "../../constants";
+import { useSelector } from "react-redux";
 
 const UserListing = ({ toggleModal, handleEditUser }: any) => {
+   //@ts-ignore
+   const { loggedInUser } = useSelector((state) => state.AuthReducer);
+   const id = loggedInUser?.org_id;
+   console.log("UserListing",id);
   return (
     <Box>
       <PageComponent
@@ -19,6 +24,7 @@ const UserListing = ({ toggleModal, handleEditUser }: any) => {
           <CustomTable
             searchConfiguration={{ isSearchBoxVisible: true }}
             columnHeaders={UserColumns(handleEditUser)}
+            queryArguments={id}
             useCustomFetch={useFetchUserList}
             tableClassName="user-listing-style"
           />

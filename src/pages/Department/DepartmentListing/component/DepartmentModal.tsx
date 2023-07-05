@@ -22,8 +22,11 @@ import {
 } from "../../department-hooks";
 import { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const DepartmentModal = (props: IDepartmentFormProps) => {
+  //@ts-ignore
+  const { loggedInUser } = useSelector((state) => state.AuthReducer);
   const { isOpen, toggleModal, department } = props;
 
   const queryClient = useQueryClient();
@@ -64,8 +67,7 @@ const DepartmentModal = (props: IDepartmentFormProps) => {
   });
 
   const onSubmit = (values: IDepartmentPayload) => {
-    //TODO : THIS ID BELONGS TO LOGGEDIN ADMIN ORAGANIZATIONS.(Hard Coded)
-    values.org = 1;
+    values.org = loggedInUser.org_id;
     console.log("Values", values);
     !isEdit ? createDepartment(values) : updateDepartment(values);
   };

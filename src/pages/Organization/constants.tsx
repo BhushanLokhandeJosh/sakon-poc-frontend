@@ -33,7 +33,7 @@ export const OrganizationColumns = (
     {
       field: "id",
       headerName: "Id",
-      width: 175,
+      width: 150,
       headerAlign: "center",
       align: "center",
     },
@@ -54,7 +54,7 @@ export const OrganizationColumns = (
     {
       field: "service_providers",
       headerName: "Service Providers",
-      width: 375,
+      width: 300,
       sortable: false,
       headerAlign: "center",
       align: "center",

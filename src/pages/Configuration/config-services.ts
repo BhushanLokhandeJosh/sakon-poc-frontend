@@ -6,7 +6,7 @@ import { IObjectWithAnyFields } from "../../shared/types";
 import { IConfiguration } from "./CreateConfiguration/types";
 
 export const getConfigurations = (params: IObjectWithAnyFields) => {
-  return GET(API_ROUTES.CONFIGURATION_LIST, params);
+  return GET(API_ROUTES.CONFIGURATION_LIST);
 };
 
 export const getDepartments = () => {

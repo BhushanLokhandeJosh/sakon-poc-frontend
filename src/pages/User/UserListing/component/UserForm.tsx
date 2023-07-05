@@ -21,7 +21,6 @@ const UserForm = (props: IOrganizationProps): JSX.Element => {
   const { values } = props.formik;
   const { departmentOptions, organizationsOptions, isEdit, loggedInUser } =
     props;
-  console.log("UserForm", loggedInUser);
 
   return (
     <Form>

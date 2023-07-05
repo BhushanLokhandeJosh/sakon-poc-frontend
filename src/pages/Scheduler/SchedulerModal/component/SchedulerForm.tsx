@@ -72,12 +72,12 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
         <InputLabel sx={{ color: "black" }}>Frequency</InputLabel>
       </Grid>
       <Grid item lg={9} sm={8} xs={12}>
-        <div className="card-style">
+        <div className="card-style-frequency">
           <Select
             name="interval"
             placeholder="Interval"
             options={Interval}
-            className="form-control"
+            // className="form-control"
           />
           {isMonthly ? (
             <>

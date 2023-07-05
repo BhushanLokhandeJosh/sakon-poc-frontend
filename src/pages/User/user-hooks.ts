@@ -10,6 +10,10 @@ import {
   updateUser,
 } from "./user-services";
 import { GET_ALL_ORG, GET_ALL_USER, GET_ORG_DEPT } from "./constants";
+import { useSelector } from "react-redux";
+import { GET } from "../../services/api/axios";
+import { API_ROUTES } from "../../routes/routes-constants";
+import { getDepartment } from "../Department/department-services";
 
 interface IResponseProps {
   onSuccess: (values: AxiosResponse) => void;
@@ -24,10 +28,17 @@ export const useCreateUser = (props: IResponseProps) => {
   });
 };
 
-export const useFetchUserList = ({ searchValue }: { searchValue?: string }) => {
-  const response = useQuery(GET_ALL_USER, () =>
-    getUserList({ search: searchValue })
+export const useFetchUserList =  ({ searchValue,queryArguments }: { searchValue?: string,queryArguments?:any }) => {
+  //@ts-ignore
+  console.log(typeof queryArguments)
+  // const { loggedInUser } = useSelector((state) => state.AuthReducer);
+  // const id = loggedInUser?.id;
+  // console.log("use fetch hook",{id});
+  
+  const response =  useQuery('bHUSHAN', () =>
+  getDepartment({ search: searchValue,id:queryArguments })
   );
+
   console.log("response", response);
   return {
     data: response?.data?.employee_info,
@@ -50,7 +61,7 @@ export const useFetchDepartmentList = ({ org_id }: { org_id: number }) => {
     getDepartmentList({ org_id: org_id })
   );
   return {
-    data: response?.data?.results,
+    data: response?.data?.department,
     isLoading: response.isLoading,
     isError: response.isError,
   };

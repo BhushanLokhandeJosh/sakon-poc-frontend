@@ -30,7 +30,7 @@ export const DepartmentColumns = (
     {
       field: "name",
       headerName: "Department Name",
-      width: 700,
+      width: 600,
       headerAlign: "center",
       align: "center",
     },
@@ -41,7 +41,7 @@ export const DepartmentColumns = (
       sortable: false,
       headerAlign: "center",
       align: "center",
-      width: 400,
+      width: 350,
       renderCell: (params: GridCellParams) => {
         return (
           <>

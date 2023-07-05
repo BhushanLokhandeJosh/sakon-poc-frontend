@@ -11,7 +11,9 @@ export const createDepartment = (
 };
 
 export const getDepartment = (params: any) => {
-  return GET(API_ROUTES.DEPARTMENT_LIST, params);
+  const { id,searchValue } = params;
+  console.log("In Dept",id)
+  return GET(`${API_ROUTES.DEPARTMENT_LIST}/${id}`, searchValue);
 };
 
 export const updateDepartment = (

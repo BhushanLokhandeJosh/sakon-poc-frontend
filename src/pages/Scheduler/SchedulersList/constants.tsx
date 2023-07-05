@@ -15,32 +15,31 @@ export const SchedulerColumns = (
     {
       field: "id",
       headerName: "Id",
-      width: 150,
-      headerAlign: "left",
-      align: "left",
+      width: 100,
+      headerAlign: "center",
+      align: "center",
     },
     {
       field: "schedule_name",
       headerName: "Schedule Name",
-      width: 250,
-
-      headerAlign: "left",
-      align: "left",
+      width: 200,
+      headerAlign: "center",
+      align: "center",
     },
     {
       field: "interval",
       headerName: "Frequency",
-      width: 300,
-      headerAlign: "left",
-      align: "left",
+      width: 250,
+      headerAlign: "center",
+      align: "center",
     },
     {
       field: "configuration",
       headerName: "Configuration",
       width: 200,
       sortable: false,
-      headerAlign: "left",
-      align: "left",
+      headerAlign: "center",
+      align: "center",
       renderCell: (params: IObjectWithAnyFields) => {
         return <CustomColumnPopover arr={params?.row.configuration} />;
       },
@@ -50,8 +49,8 @@ export const SchedulerColumns = (
       headerName: "Created At",
       width: 350,
       sortable: false,
-      headerAlign: "left",
-      align: "left",
+      headerAlign: "center",
+      align: "center",
       renderCell: (params) => {
         const currentTime = params?.row.created_at;
         const date = new Date(params?.value);
@@ -80,6 +79,8 @@ export const SchedulerColumns = (
       headerName: "Edit",
       description: "Edit actions column.",
       sortable: false,
+      headerAlign: "center",
+      align: "center",
       width: 100,
       renderCell: (params: GridCellParams) => {
         return (

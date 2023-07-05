@@ -10,12 +10,17 @@ export const createUser = (
   return POST(`${API_ROUTES.USER_LISTING}`, payload);
 };
 
-export const getUserList = (params: any) => {
-  return GET(API_ROUTES.USER_LISTING, params);
+export const getUserList = async (props: any) => {
+  // const  {id,search} 
+  const user=JSON.parse(localStorage.getItem("user") as string);
+  console.log(user);
+  
+  return await GET(`${API_ROUTES.USER_LISTING}/${user?.id}`, props?.search);
 };
 
 export const getDepartmentList = (params: any) => {
-  return GET(API_ROUTES.DEPARTMENT_LIST, params);
+  const { org_id } = params;
+  return GET(`${API_ROUTES.DEPARTMENT_LIST}/${org_id}`);
 };
 
 export const getOrganizations = () => {

@@ -29,3 +29,12 @@ export interface IFormikProps<T> extends FormikProps<T> {}
 export interface IObjectWithAnyFields {
   [key: string]: any;
 }
+
+export interface IOption<T> {
+  label:string;
+  value:T
+}
+export interface IChartDataOption {
+  name: string;
+  value: number;
+}

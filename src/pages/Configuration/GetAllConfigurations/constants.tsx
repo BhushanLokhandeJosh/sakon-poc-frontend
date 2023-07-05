@@ -26,21 +26,21 @@ export const ConfigurationListColumns = (
     {
       field: "department",
       headerName: "Department",
-      width: 270,
+      width: 150,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "carrierName",
       headerName: "Carrier Name",
-      width: 270,
+      width: 150,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "email",
       headerName: "Email",
-      width: 270,
+      width: 250,
       sortable: false,
       headerAlign: "center",
       align: "center",
@@ -59,6 +59,8 @@ export const ConfigurationListColumns = (
       description: "Edit actions column.",
       sortable: false,
       width: 100,
+      headerAlign: "center",
+      align: "center",
       renderCell: (params: GridCellParams) => {
         console.log(params, "conf");
 

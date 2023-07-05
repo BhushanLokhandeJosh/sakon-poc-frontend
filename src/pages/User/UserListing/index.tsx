@@ -7,7 +7,7 @@ import { Box } from "@mui/material";
 import UserListing from "./component";
 import UserModal from "./component/UserModal";
 
-const UserContainer = ({ loggedInUser }: any) => {
+const UserContainer = () => {
   const { isOpen, handleToggle } = useToggle();
   const [user, setUser] = useState<any>();
 
@@ -19,6 +19,7 @@ const UserContainer = ({ loggedInUser }: any) => {
   };
 
   const handleEditUser = (value: GridCellParams) => {
+    console.log(value,"In handleEditUser");
     setUser(value);
     handleToggle();
   };
@@ -30,7 +31,7 @@ const UserContainer = ({ loggedInUser }: any) => {
           isOpen={isOpen}
           toggleModal={handleUserReset}
           user={user}
-          loggedInUser={loggedInUser}
+         
         />
       )}
       <UserListing

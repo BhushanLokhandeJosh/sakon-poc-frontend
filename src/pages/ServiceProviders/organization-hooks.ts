@@ -22,11 +22,16 @@ export const useCreateServiceProviders = (props: IResponseProps) => {
   });
 };
 
-export const useFetchServiceProviders = () => {
+export const useFetchServiceProviders = (
+  {
+    searchValue,
+  }: {
+    searchValue?: string;
+  }) => {
   // const { onSuccess, onError } = props;
 
   const response = useQuery(GET_ALL_SERVICE_PROVIDERS, () =>
-    getServiceProviders()
+    getServiceProviders({search:searchValue})
   );
 
   console.log("Response", response);

@@ -101,8 +101,7 @@ const OrganizationModal = ({
     onError,
   });
 
-  const onSubmit = (values: any) => {
-    // TODO: Currently, there is only one employee defined. Therefore hardcoded as "1".
+  const onSubmit = (values: any) => { 
     !isEdit ? createOrganization(values) : updateOrganization(values);
   };
 

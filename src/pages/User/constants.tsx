@@ -49,7 +49,7 @@ export const UserColumns = (handleEditUser: Function): GridColDef[] => {
     {
       field: "email",
       headerName: "Email",
-      width: 400,
+      width: 300,
       headerAlign: "center",
       align: "center",
     },

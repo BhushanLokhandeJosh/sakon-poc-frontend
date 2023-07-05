@@ -2,6 +2,7 @@ import { Dispatch } from "react";
 import { NavigateFunction } from "react-router-dom";
 import { API_ROUTES } from "../routes/routes-constants";
 import { loginSuccess, logoutStart } from "../redux/actions/authActions";
+import { log } from "console";
 
 export const getToken = () => {
   const tokenString: string | null = sessionStorage.getItem("token");
@@ -38,6 +39,7 @@ export const checkAutoLogin = (dispatch: Dispatch<any>, navigate: any) => {
     navigate(API_ROUTES.HOME);
     return;
   } else {
+    console.log("In Checlautologin",userDetails,tokenDetails)
     dispatch(loginSuccess(userDetails, tokenDetails));
   }
 };

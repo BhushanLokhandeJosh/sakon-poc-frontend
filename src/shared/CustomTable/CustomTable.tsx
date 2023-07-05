@@ -91,9 +91,8 @@ const CustomTable = (props: ICustomTableProps) => {
   const { data, isLoading, isError, refetch } = useCustomFetch({
     searchValue: searchTrigger,
     filterData,
-    queryArguments,
+    queryArguments
   });
-  console.log("Data", data);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -103,7 +102,6 @@ const CustomTable = (props: ICustomTableProps) => {
     <div>Error</div>;
   }
 
-  console.log("DATA", data);
 
   return (
     <Box>

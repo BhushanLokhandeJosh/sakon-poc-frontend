@@ -4,8 +4,13 @@ import CustomTable from "../../../../shared/CustomTable/CustomTable";
 import { Box } from "@mui/material";
 import { DepartmentColumns } from "../../constants";
 import { useFetchDepartment } from "../../department-hooks";
+import { useSelector } from "react-redux";
 
 const DepartmentListing = ({ toggleModal, handleEditDepartment }: any) => {
+  //@ts-ignore
+  const { loggedInUser } = useSelector((state) => state.AuthReducer);
+   const id = loggedInUser?.org_id;
+   console.log("UserListing",id);
   return (
     <Box>
       <PageComponent
@@ -16,6 +21,7 @@ const DepartmentListing = ({ toggleModal, handleEditDepartment }: any) => {
           <CustomTable
             searchConfiguration={{ isSearchBoxVisible: true }}
             columnHeaders={DepartmentColumns(handleEditDepartment)}
+            queryArguments={id}
             useCustomFetch={useFetchDepartment}
           />
         }

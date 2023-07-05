@@ -21,12 +21,15 @@ import FormikModalComponent from "../../../../shared/FormikModalComponent/compon
 import SchedulerForm from "../../SchedulerModal/component/SchedulerForm";
 import { useQueryClient } from "react-query";
 import { GET_ALL_SCHEDULERS } from "../../constant";
+import { useSelector } from "react-redux";
 
 const SchedulerModal = ({
   isOpen: isSchedulerModalOpen,
   toggleModal,
   scheduler,
 }: ICreateSchedulerProps) => {
+  //@ts-ignore
+  const { loggedInUser } = useSelector((state) => state.AuthReducer);
   const [configurationOptions, setConfigurationOptions] =
     useState<{ value: string; label: string }[]>();
 
@@ -101,8 +104,7 @@ const SchedulerModal = ({
   });
 
   const onSubmit = (values: any) => {
-    // TODO: Currently, there is only one employee defined. Therefore hardcoded as "1".
-    values.emp = "1";
+    values.emp = loggedInUser.id;
     isEdit ? updateScheduler(values) : createScheduler(values);
   };
 

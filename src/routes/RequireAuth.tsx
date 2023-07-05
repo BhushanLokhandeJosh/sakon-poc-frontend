@@ -7,6 +7,7 @@ const RequireAuth = ({ allowedRoles }: any) => {
   const { loggedInUser } = useSelector((state) => state.AuthReducer);
   const location = useLocation();
   console.log("Allowed", allowedRoles);
+  console.log(loggedInUser, "User");
   console.log(loggedInUser?.type, "In Require");
   //Outlet Component refers to any child component of RequireAuth Component.
 
@@ -18,7 +19,9 @@ const RequireAuth = ({ allowedRoles }: any) => {
     <Navigate to={API_ROUTES.UNAUTHORIZED} state={{ from: location }} replace />
   ) : (
     //@ts-ignore
-    <Navigate to={API_ROUTES.LOGIN} state={{ from: location }} replace />
+    // <Navigate to={API_ROUTES.LOGIN} state={{ from: location }} replace />
+    <Outlet />
+
   );
 };
 

@@ -26,12 +26,16 @@ import {
 
 import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
 import ConfigurationForm from "../../CreateConfiguration/component/ConfigurationForm";
+import { useSelector } from "react-redux";
 
 const ConfigurationModal = ({
   isOpen: isConfigurationModalOpen,
   toggleModal,
   configuration,
 }: IConfigurationFormInfo) => {
+    //@ts-ignore
+  const { loggedInUser } = useSelector((state) => state.AuthReducer);
+  console.log("loggedinuser", loggedInUser);
   const queryClient = useQueryClient();
 
   const isEdit = configuration ? true : false;
@@ -81,7 +85,7 @@ const ConfigurationModal = ({
   });
 
   const onSubmit = (values: IConfiguration) => {
-    const formData = formDataMapping(values);
+    const formData = formDataMapping(values,loggedInUser);
     isEdit ? updateConfiguration(values) : createConfiguration(formData);
   };
 

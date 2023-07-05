@@ -24,7 +24,7 @@ const Landingpage = () => {
             alt="Can't Load"
             style={{
               width: "95%",
-              height: "80vh",
+              height: "90vh",
               textAlign: "center",
             }}
           />

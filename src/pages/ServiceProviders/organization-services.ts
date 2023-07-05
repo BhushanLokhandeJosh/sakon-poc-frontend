@@ -12,8 +12,8 @@ export const createServiceProviders = (
   return POST(`${API_ROUTES.SERVICE_PROVIDERS}`, payload);
 };
 
-export const getServiceProviders = () => {
-  return GET(API_ROUTES.SERVICE_PROVIDERS);
+export const getServiceProviders = (params: any) => {
+  return GET(API_ROUTES.SERVICE_PROVIDERS,params);
 };
 
 export const updateServiceProviders = (

@@ -10,6 +10,7 @@ import { GridCellParams } from "@mui/x-data-grid";
 import DepartmentListing from "./component";
 import DepartmentModal from "./component/DepartmentModal";
 import { Box } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const DepartmentContainer = () => {
   const { isOpen, handleToggle } = useToggle();

@@ -6,6 +6,7 @@ export const API_ROUTES = {
   ORGANIZATION_LIST: "/organizations",
   SCHEDULING_LIST: "/schedules",
   JOBS_LIST: "/jobs",
+  JOBS_DETAILS:"/job-details",
   SERVICE_PROVIDERS: "/serviceprovider",
   USER_LISTING: "/employees",
   HOME: "/",
@@ -13,5 +14,26 @@ export const API_ROUTES = {
   LOGOUT: "/logout",
   SIGNUP: "/signup",
   UNAUTHORIZED: "/unauthorized",
-  DASHBOARD: "/dashboard",
+  DASHBOARD: "/dashboard/graph",  
+  JOBS: "/jobs",
+  DOWNLOADS: "/jobs/report/download",
+  FILEVALIDATORS: "/jobs/report/filevalidation",
+  TEMPLATEVALIDATORS: "/jobs/report/templatevalidation",
+  UPLOADS: "/jobs/report/upload",
 };
+
+// JOBS: {
+//     GET: "/jobs", //GET: "/jobDetails",
+//   },
+//   DOWNLOADS: {
+//     GET: "/jobs/report/download", // GET: "/downloads",
+//   },
+//   FILEVALIDATORS: {
+//     GET: "/jobs/report/filevalidation", // GET: "/fileValidators",
+//   },
+//   TEMPLATEVALIDATORS: {
+//     GET: "/jobs/report/templatevalidation", //GET: "/templateValidators",
+//   },
+//   UPLOADS: {
+//     GET: "/jobs/report/upload", // GET: "/uploads",
+//   },
