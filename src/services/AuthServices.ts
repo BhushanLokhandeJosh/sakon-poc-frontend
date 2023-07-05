@@ -1,5 +1,4 @@
 import { Dispatch } from "react";
-import { NavigateFunction } from "react-router-dom";
 import { API_ROUTES } from "../routes/routes-constants";
 import { loginSuccess, logoutStart } from "../redux/actions/authActions";
 import { log } from "console";
@@ -35,6 +34,7 @@ export const checkAutoLogin = (dispatch: Dispatch<any>, navigate: any) => {
   const userDetails = getUser();
 
   if (!tokenDetails) {
+    console.log("Logout Called");
     dispatch(logoutStart());
     navigate(API_ROUTES.HOME);
     return;

@@ -12,7 +12,6 @@ const LoginPageContainer = () => {
   const navigate = useNavigate();
 
   const onSubmit = (values: any) => {
-    console.log("Form Submitted", values);
     const loginCredentials = {
       email: values.email,
       password: values.password,

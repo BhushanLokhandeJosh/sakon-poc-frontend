@@ -47,7 +47,6 @@ function App() {
       <LayoutComponent
         sideBarMenus={sideBarMenus}
         navBarMenus={navBarMenus}
-        loggedInUser={loggedInUser}
         commonNavBarMenus={commonNavBarMenus}
       >
         <Routes>

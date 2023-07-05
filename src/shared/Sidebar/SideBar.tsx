@@ -4,7 +4,6 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 
-import { BiSearch } from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
 
 import "./sidebar.css";
@@ -37,6 +36,7 @@ const SideBar = ({ sideBarMenus }: any) => {
         duration: 0.5,
       },
     },
+
     show: {
       opacity: 1,
       width: "5rem",

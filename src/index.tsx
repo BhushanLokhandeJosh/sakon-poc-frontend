@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import "./index.css";
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 import store from "../src/redux/saga/store";
 import { Provider } from "react-redux";

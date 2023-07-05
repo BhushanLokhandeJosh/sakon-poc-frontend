@@ -12,7 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Grid } from "@mui/material";
 
 import AvatarImage from "../../assets/images/avatar-icon.jpeg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./styles/style.css";
 import { Link } from "react-router-dom";
@@ -27,17 +27,17 @@ interface IProps {
   sideBarMenus: any;
   navBarMenus: { path: string; name: string }[];
   commonNavBarMenus: any;
-  loggedInUser: any;
 }
 
 //TODO : Visit and checkout all components and also see check whether it is
 //  responsiveness or not.
 const LayoutComponent = (props: IProps) => {
   const dispatch = useDispatch();
+  //@ts-ignore
+  const { loggedInUser } = useSelector((state) => state.AuthReducer);
   const {
     children,
     sideBarMenus,
-    loggedInUser,
     navBarMenus,
     commonNavBarMenus,
   } = props;
@@ -296,10 +296,7 @@ const LayoutComponent = (props: IProps) => {
             <SideBar sideBarMenus={sideBarMenu} />
           </Grid>
           <Grid item xs={9}>
-            {/* <div> */}
-            {/* <Outlet /> */}
             {children}
-            {/* </div> */}
           </Grid>
           <Grid item xs={12}>
             <Footer />

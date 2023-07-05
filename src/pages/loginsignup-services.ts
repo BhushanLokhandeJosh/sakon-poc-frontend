@@ -7,7 +7,6 @@ import { removeToken } from "../services/AuthServices";
 export const userLogin = (
   payload: FormData
 ): Promise<AxiosResponse<string, any>> => {
-  console.log(payload);
   return POST(`${API_ROUTES.LOGIN}`, payload);
 };
 
@@ -18,12 +17,10 @@ export const getServiceProviders = () => {
 export const createSignup = (
   payload: any
 ): Promise<AxiosResponse<string, any>> => {
-  console.log(payload);
   return POST(`${API_ROUTES.SIGNUP}`, payload);
 };
 
 export const loginUserApi = async (user: any) => {
-  console.log("Service user", user);
   const response = await POST(`${API_ROUTES.LOGIN}`, user);
   return response;
 };
