@@ -65,6 +65,7 @@ const DepartmentModal = (props: IDepartmentFormProps) => {
 
   const onSubmit = (values: IDepartmentPayload) => {
     //TODO : THIS ID BELONGS TO LOGGEDIN ADMIN ORAGANIZATIONS.(Hard Coded)
+    //when integrated with redux then loggedInUser organization id should be passed.
     values.org = 1;
     console.log("Values", values);
     !isEdit ? createDepartment(values) : updateDepartment(values);

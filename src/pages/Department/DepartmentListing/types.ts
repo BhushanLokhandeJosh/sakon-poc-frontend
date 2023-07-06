@@ -8,5 +8,4 @@ export interface IDepartmentFormProps {
   isOpen: boolean;
   toggleModal: () => void;
   department: IDepartmentPayload;
-  // onSubmit: (values: any) => void;
 }

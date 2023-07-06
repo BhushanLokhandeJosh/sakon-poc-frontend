@@ -14,7 +14,6 @@ interface IDepartmentProps {
 
 const DepartmentForm = (props: IDepartmentProps): JSX.Element => {
   const { values } = props.formik;
-  console.log(values);
 
   return (
     <Form>
