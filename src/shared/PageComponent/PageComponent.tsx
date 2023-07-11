@@ -1,12 +1,12 @@
 import { Button } from "@mui/material";
 import { ReactNode } from "react";
+import "../PageComponent/style/styles.css";
 
-import "./style/styles.css";
 interface IProps {
   pageTitle: string;
   buttonLabel?: string;
   pageBody: ReactNode;
-  pageHeadingClassName: string;
+  pageRootClassName: string;
   pageTitleClassName: string;
   pageButtonClassName: string;
 }
@@ -16,14 +16,15 @@ const PageComponent = (props: IProps) => {
     pageTitle,
     buttonLabel,
     pageBody,
-    pageHeadingClassName,
+    pageRootClassName,
     pageTitleClassName,
     pageButtonClassName,
   } = props;
+
   return (
-    <div>
-      <div className={pageHeadingClassName}>
-        <h1 className={pageTitleClassName}>{pageTitle}</h1>
+    <>
+      <div className={pageRootClassName}>
+        <div className={pageTitleClassName}>{pageTitle}</div>
         {buttonLabel && (
           <Button variant="contained" className={pageButtonClassName}>
             {buttonLabel}
@@ -31,14 +32,14 @@ const PageComponent = (props: IProps) => {
         )}
       </div>
       {pageBody}
-    </div>
+    </>
   );
 };
 
 PageComponent.defaultProps = {
-  pageHeadingClassName: "page-heading",
-  pageTitleClassName: "page-title",
-  pageButtonClassName: "page-button",
+  pageRootClassName: "root",
+  pageTitleClassName: "title",
+  pageButtonClassName: "button",
 };
 
 export default PageComponent;
