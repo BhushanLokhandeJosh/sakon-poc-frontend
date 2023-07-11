@@ -31,6 +31,8 @@ const UserModal = ({
    //@ts-ignore
    const { loggedInUser } = useSelector((state) => state.AuthReducer);
    console.log("InEdit",user);
+
+   const empId = loggedInUser?.id;
   const [departmentOptions, SetDepartmentOptions] = useState<
     {
       label: string;
@@ -47,22 +49,25 @@ const UserModal = ({
 
   const queryClient = useQueryClient();
 
-  const { data: departments } = useFetchDepartmentList({ org_id: 1 });
+  const { data: departments } = useFetchDepartmentList({ emp_id: empId });
 
   const { data: organizations } = useFetchOrganization();
 
   const isEdit = user ? true : false;
-  console.log("Org", organizations);
+  console.log("Organization", organizations);
 
   let updateUserValues;
   let arr1:any = [];
   let arr2:any = [];
+  let arr3:any = [];
+
+  const length1 = departments?.length;
+  const length2 = organizations?.length;
+
 
   useEffect(() => {
     if (!isEdit) {
-      const length1 = departments?.length;
-      const length2 = organizations?.results?.length;
-
+     
       for (let i = 0; i < length1; i++) {
         arr1.push({
           label: departments[i].name,
@@ -72,47 +77,58 @@ const UserModal = ({
 
       for (let i = 0; i < length2; i++) {
         arr2.push({
-          label: organizations?.results[i].name,
-          value: organizations?.results[i].id,
+          label: organizations[i]?.name,
+          value: organizations[i]?.id,
         });
       }
 
       SetDepartmentOptions(arr1);
       SetOrganizationOptions(arr2);
-    }
-  }, [departments, organizations]);
+    } else {
+      const lengthOfDept = user.Department?.length;
 
-  if (isEdit) {
-    if(user.role === ADMIN) {
+      for (let i = 0; i < lengthOfDept; i++) {
+        arr3.push({
+          label: user.Department[i],
+          value: user.Department[i],
+        });
+      }
+
+      for (let i = 0; i < length2; i++) {
+        arr2.push({
+          label: organizations[i]?.name,
+          value: organizations[i]?.id,
+        });
+      }
+
+
+      SetDepartmentOptions(arr3);
+      SetOrganizationOptions(arr2);
+
+
+    }
+  }, [departments, organizations,isEdit]);
+
+  
+  if(isEdit) {
       updateUserValues = {
         id: user.id,
         name: user.name,
         email: user.email,
-        role: user.role,
+        Department:user.Department,
+        role: user.type,
         org: user.org,
-      };
-    }
+      };  
 
-    if(user.role === SUPER_ADMIN) {
-      updateUserValues = {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        org: user.org,
-      };
-    }
-
+  }    
     
-    
-  }
-
   const onSuccess = async (values: AxiosResponse) => {
     isEdit
       ? toast.success(UPDATE_USER_MESSAGE)
       : toast.success(CREATE_USER_MESSAGE);
     queryClient.invalidateQueries(GET_ALL_USER);
     toggleModal();
+    
   };
 
   const onError = (values: AxiosError) => {

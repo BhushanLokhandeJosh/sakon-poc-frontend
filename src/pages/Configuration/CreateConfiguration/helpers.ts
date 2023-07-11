@@ -28,7 +28,7 @@ export const validationSchema = Yup.object({
 Provides a way to easily construct a set of key/value pairs representing
 form fields and their values.*/
 
-export const formDataMapping = (values: IConfiguration,loggedInUser:any ): FormData => {
+export const formDataMapping = (values: IConfiguration,loggedInUser:any ): FormData | any => {
   const {
     configurationName,
     department,
@@ -41,7 +41,7 @@ export const formDataMapping = (values: IConfiguration,loggedInUser:any ): FormD
     sftpLogin,
     sftpPassword,
   } = values;
-  let form = new FormData();
+  let form: FormData | any = new FormData();
   console.log("Form helper", {
     configurationName,
     department,
@@ -56,7 +56,7 @@ export const formDataMapping = (values: IConfiguration,loggedInUser:any ): FormD
   });
 
   form.append("name", configurationName);
-  form.append("dept_name", department);
+  form.append("department", department);
   form.append("email", email);
   form.append("password", password);
   form.append("emp", loggedInUser.id);

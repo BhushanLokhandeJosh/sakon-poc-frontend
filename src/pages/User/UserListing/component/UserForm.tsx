@@ -19,8 +19,13 @@ interface IOrganizationProps {
 
 const UserForm = (props: IOrganizationProps): JSX.Element => {
   const { values } = props.formik;
+  console.log("In Userform Formik",props.formik);
   const { departmentOptions, organizationsOptions, isEdit, loggedInUser } =
     props;
+  console.log(values,"In UserForm");
+
+  const DepartmentOpt:any = [{label:"DE"}];
+ 
 
   return (
     <Form>

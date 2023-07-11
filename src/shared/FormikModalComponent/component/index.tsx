@@ -42,6 +42,8 @@ const FormikModalComponent = (props: IFormikModalProp) => {
     showCancelButton,
   } = props;
 
+  console.log("initialValues in common component",initialValues);
+
   const handleReset = (formik: IFormikProps<any>) => {
     formik.resetForm();
   };

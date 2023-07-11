@@ -6,7 +6,9 @@ import { IObjectWithAnyFields } from "../../shared/types";
 import { IConfiguration } from "./CreateConfiguration/types";
 
 export const getConfigurations = (params: IObjectWithAnyFields) => {
-  return GET(API_ROUTES.CONFIGURATION_LIST);
+  const {queryArguments,department,schedulingStatus} = params;  
+  let is_scheduled = (schedulingStatus === "not scheduled") ? false :(schedulingStatus === "scheduled" ?true:undefined)
+  return GET(`${API_ROUTES.CONFIGURATION_LIST}${API_ROUTES.GET}/${queryArguments}`,{department_id:department,is_scheduled});
 };
 
 export const getDepartments = () => {
@@ -14,7 +16,7 @@ export const getDepartments = () => {
 };
 
 export const createConfiguration = (
-  payload: FormData
+  payload: FormData | any
 ): Promise<AxiosResponse<string, any>> => {
   return POST(`${API_ROUTES.CONFIGURATION_LIST}`, payload);
 };
@@ -30,4 +32,7 @@ export const updateConfiguration = (
   return PUT(`${API_ROUTES.CONFIGURATION_LIST}/${payload.id}`, payload);
 };
 
-//createconfigurationpayload => formdata
+export const getConfigurationsById = (params: IObjectWithAnyFields) => {
+  const {queryArguments} = params;  
+  return GET(`${API_ROUTES.CONFIGURATION_LIST}/${queryArguments}`);
+};

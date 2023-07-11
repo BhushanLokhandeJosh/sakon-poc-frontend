@@ -6,6 +6,7 @@ import { DEPARTMENTS, GET_ALL_CONFIGURATIONS } from "./constants";
 import { ConfigurationFilterFormInitialValues } from "./GetAllConfigurations/types";
 import {
   getConfigurations,
+  getConfigurationsById,
   getDepartments,
   updateConfiguration,
 } from "./config-services";
@@ -22,17 +23,22 @@ interface IResponseProps {
 export const useFetchConfigurations = ({
   searchValue,
   filterData,
+  queryArguments
 }: {
   searchValue?: string;
   filterData?: ConfigurationFilterFormInitialValues;
+  queryArguments?:any
 }) => {
+  console.log("filterDatafilterdata", filterData);
+  
   const response = useQuery<any>(
     [GET_ALL_CONFIGURATIONS, searchValue, filterData],
     () =>
       getConfigurations({
+        queryArguments,
         carrier_name: searchValue, // carrierName_like: searchValue,
-        department_like: filterData?.department,
-        schedulingStatus_like: filterData?.schedulingStatus,
+        department: filterData?.department,
+        schedulingStatus: filterData?.schedulingStatus,
       })
   );
 
@@ -63,3 +69,16 @@ export const useUpdateConfiguration = (props: any) => {
     onError,
   });
 };
+
+
+export const useFetchConfigurationById = ({queryArguments}: {queryArguments?:any}) => {
+  console.log("In Hooks",queryArguments);
+  const response = useQuery<any>(
+    ["Bhushan"],() =>getConfigurationsById({queryArguments})
+  )
+  return {
+    data: response?.data?.data,
+    isLoading: response.isLoading,
+    isError: response.isError,
+  };
+}

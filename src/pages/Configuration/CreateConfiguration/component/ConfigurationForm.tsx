@@ -7,13 +7,20 @@ import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
 import "./styles/styles.css";
 
 import Input from "../../../../shared/FormComponents/Input";
+import Select from "../../../../shared/FormComponents/Select";
 
 interface IConfigurationProps {
   formik: IFormikProps<IConfiguration>;
+  selectDepartmentOptions: { label: string; value: string }[];
 }
 
 const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
   const { values, setFieldValue } = props.formik;
+  const { selectDepartmentOptions } = props;
+
+  console.log("In Form")
+
+  console.log("selectDepartmentOptions",selectDepartmentOptions);
 
   return (
     <Form>
@@ -24,7 +31,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               type={INPUT_TYPE.TEXT}
               label="Configuration Name"
               name="configurationName"
-              className="input-field"
+              className="input-field-config"
               value={values.configurationName}
             />
           </div>
@@ -36,7 +43,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               type={INPUT_TYPE.TEXT}
               label="Carrier Name"
               name="carrierName"
-              className="input-field"
+              className="input-field-config"
               value={values.carrierName}
             />
           </div>
@@ -48,7 +55,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               type={INPUT_TYPE.TEXT}
               label="Email"
               name="email"
-              className="input-field"
+              className="input-field-config"
               value={values.email}
             />
           </div>
@@ -59,7 +66,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               type={INPUT_TYPE.PASSWORD}
               label="Password"
               name="password"
-              className="input-field"
+              className="input-field-config"
               value={values.password}
             />
           </div>
@@ -67,12 +74,12 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
 
         <Grid item xs={12} md={10} lg={6}>
           <div>
-            <Input
-              type={INPUT_TYPE.TEXT}
-              label="Department"
+            <Select
               name="department"
-              className="input-field"
-              value={values.department}
+              label="Department"
+              options={selectDepartmentOptions}
+              placeholder="Select Department"
+              className="select-field-config"
             />
           </div>
         </Grid>
@@ -82,7 +89,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               type={INPUT_TYPE.TEXT}
               label="Sftp Location"
               name="sftpLocation"
-              className="input-field"
+              className="input-field-config"
               value={values.sftpLocation}
             />
           </div>
@@ -93,7 +100,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               type={INPUT_TYPE.TEXT}
               label="Sftp Login"
               name="sftpLogin"
-              className="input-field"
+              className="input-field-config"
               value={values.sftpLogin}
             />
           </div>
@@ -104,7 +111,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               type={INPUT_TYPE.PASSWORD}
               label="Sftp Password"
               name="sftpPassword"
-              className="input-field"
+              className="input-field-config"
               value={values.sftpPassword}
             />
           </div>
@@ -116,7 +123,7 @@ const ConfigurationForm = (props: IConfigurationProps): JSX.Element => {
               type={INPUT_TYPE.TEXT}
               label="Download Link"
               name="downloadPath"
-              className="input-field"
+              className="input-field-config"
               value={values.downloadPath}
             />
           </div>

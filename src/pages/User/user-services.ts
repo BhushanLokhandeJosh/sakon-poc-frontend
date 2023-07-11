@@ -11,16 +11,15 @@ export const createUser = (
 };
 
 export const getUserList = async (props: any) => {
-  // const  {id,search} 
-  const user=JSON.parse(localStorage.getItem("user") as string);
-  console.log(user);
+  const  {id,search} = props;
+  console.log("In Service",id);
   
-  return await GET(`${API_ROUTES.USER_LISTING}/${user?.id}`, props?.search);
+  return await GET(`${API_ROUTES.USER_LISTING}/${id}`, search);
 };
 
 export const getDepartmentList = (params: any) => {
-  const { org_id } = params;
-  return GET(`${API_ROUTES.DEPARTMENT_LIST}/${org_id}`);
+  const { emp_id } = params;
+  return GET(`${API_ROUTES.DEPARTMENT_LIST}/${emp_id}`);
 };
 
 export const getOrganizations = () => {
@@ -30,5 +29,6 @@ export const getOrganizations = () => {
 export const updateUser = (
   payload: IUserPayload
 ): Promise<AxiosResponse<string, any>> => {
+  console.log("Update User service Called");
   return PUT(`${API_ROUTES.USER_LISTING}/${payload.id}`, payload);
 };

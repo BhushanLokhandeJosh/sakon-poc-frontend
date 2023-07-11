@@ -4,6 +4,8 @@ import { InputLabel } from "@mui/material";
 import FormError from "../FormError";
 import CustomSelect from "./CustomSelect";
 
+import "../styles/styles.css";
+
 interface IMultiSelectProps {
   className?: string;
   name: string;
@@ -34,7 +36,7 @@ const Select = (props: IMultiSelectProps) => {
   return (
     <>
       <div className="label-style">
-        <InputLabel htmlFor={name}>{label}</InputLabel>
+        <InputLabel htmlFor={name} sx={{color: "black"}}>{label}</InputLabel>
       </div>
 
       <Field

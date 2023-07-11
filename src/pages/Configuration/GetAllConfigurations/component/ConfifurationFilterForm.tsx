@@ -5,13 +5,21 @@ import { useGetDepartments } from "../../config-hooks";
 import Input from "../../../../shared/FormComponents/Input";
 import Select from "../../../../shared/FormComponents/Select";
 import { INPUT_TYPE, IObjectWithAnyFields } from "../../../../shared/types";
+import { useSelector } from "react-redux";
+import { useFetchDepartmentList } from "../../../User/user-hooks";
 
 const ConfifurationFilterForm = (props: IObjectWithAnyFields) => {
-  const { data, isLoading, isError } = useGetDepartments();
 
-  const departmentData = data?.data?.map((department: any) => ({
+  //@ts-ignore
+  const { loggedInUser } = useSelector((state) => state.AuthReducer);
+  const empId = loggedInUser?.id;
+  console.log("empId",empId);
+  
+  const { data, isLoading, isError } = useFetchDepartmentList({ emp_id: empId });
+
+  const departmentData = data?.map((department: any) => ({
     label: department.name,
-    value: department.name,
+    value: department.id,
   }));
 
   if (isLoading) {

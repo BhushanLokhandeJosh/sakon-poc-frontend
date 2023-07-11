@@ -1,10 +1,14 @@
+import { QueriesObserver } from "react-query";
 import { API_ROUTES } from "../../routes/routes-constants";
 import { GET } from "../../services/api/axios";
 
 /**
  * This is used to fetch all jobs.
  */
-export const fetchAllJobs = () => GET(API_ROUTES.JOBS);
+export const fetchAllJobs = (params:any) => {
+  const {queryArguments} = params;
+  return GET(`${API_ROUTES.JOBS}${API_ROUTES.GET}/${queryArguments}`);
+} 
 
 /**
  * This is used to fetch all downloads.

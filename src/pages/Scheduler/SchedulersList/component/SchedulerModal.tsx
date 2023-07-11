@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { validationSchema } from "../../SchedulerModal/helpers";
 import {
   useFetchAllSchedulers,
+  useFetchUnscheduledConfigurations,
   useScheduleConfiguration,
   useUpdateScheduler,
 } from "../../scheduler-hooks";
@@ -38,9 +39,20 @@ const SchedulerModal = ({
   const isEdit = scheduler ? true : false;
   let schedulerInitialData;
 
+  const id = loggedInUser?.id;
+
   const { data } = useFetchAllSchedulers({
     is_scheduled: false,
+    queryArguments:id
   });
+  
+
+  const { data:configurations} = useFetchUnscheduledConfigurations({
+    is_scheduled: false,
+    queryArguments:id
+  })
+
+  console.log("scheduler Edit",scheduler);
 
   useEffect(() => {
     if (isEdit) {
@@ -59,8 +71,8 @@ const SchedulerModal = ({
 
       for (let i = 0; i < data?.length; i++) {
         arr.push({
-          value: JSON.stringify(data[i].id),
-          label: data[i].configuration[0],
+          value: configurations[i]?.id,
+          label: configurations[i]?.configurationName,
         });
       }
       setConfigurationOptions(arr);
@@ -72,8 +84,9 @@ const SchedulerModal = ({
       ...scheduler,
       configurations: configurationOptions,
       schedularName: scheduler?.schedule_name,
-      interval: scheduler?.interval,
+      interval: scheduler?.interval?.split(" ")[0],
       timeDuration: scheduler?.time,
+      timeZone:scheduler?.timeZone
     };
   }
 

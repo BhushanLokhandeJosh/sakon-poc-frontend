@@ -9,8 +9,8 @@ import { useSelector } from "react-redux";
 const DepartmentListing = ({ toggleModal, handleEditDepartment }: any) => {
   //@ts-ignore
   const { loggedInUser } = useSelector((state) => state.AuthReducer);
-   const id = loggedInUser?.org_id;
-   console.log("UserListing",id);
+   const id = loggedInUser?.id;
+   console.log("UserListing",loggedInUser);
   return (
     <Box>
       <PageComponent

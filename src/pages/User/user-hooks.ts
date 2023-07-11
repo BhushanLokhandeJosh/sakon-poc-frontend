@@ -28,15 +28,12 @@ export const useCreateUser = (props: IResponseProps) => {
   });
 };
 
-export const useFetchUserList =  ({ searchValue,queryArguments }: { searchValue?: string,queryArguments?:any }) => {
+export const useFetchUsers =  ({ searchValue,queryArguments }: { searchValue?: string,queryArguments?:any }) => {
   //@ts-ignore
-  console.log(typeof queryArguments)
-  // const { loggedInUser } = useSelector((state) => state.AuthReducer);
-  // const id = loggedInUser?.id;
-  // console.log("use fetch hook",{id});
+  console.log("queryArguments",queryArguments)
   
   const response =  useQuery('bHUSHAN', () =>
-  getDepartment({ search: searchValue,id:queryArguments })
+  getUserList({ search: searchValue,id:queryArguments })
   );
 
   console.log("response", response);
@@ -50,15 +47,15 @@ export const useFetchUserList =  ({ searchValue,queryArguments }: { searchValue?
 export const useFetchOrganization = () => {
   const response = useQuery(GET_ALL_ORG, () => getOrganizations());
   return {
-    data: response?.data,
+    data: response?.data?.data,
     isLoading: response.isLoading,
     isError: response.isError,
   };
 };
 
-export const useFetchDepartmentList = ({ org_id }: { org_id: number }) => {
+export const useFetchDepartmentList = ({ emp_id }: { emp_id: any }) => {
   const response = useQuery(GET_ORG_DEPT, () =>
-    getDepartmentList({ org_id: org_id })
+    getDepartmentList({ emp_id: emp_id })
   );
   return {
     data: response?.data?.department,
@@ -68,6 +65,7 @@ export const useFetchDepartmentList = ({ org_id }: { org_id: number }) => {
 };
 
 export const useUpdateUser = (props: IResponseProps) => {
+  console.log("Update User Called");
   const { onSuccess, onError } = props;
   return useMutation(updateUser, {
     onSuccess,

@@ -11,13 +11,15 @@ import {
 export const useFetchAllJobs = ({
   searchValue,
   filterData,
+  queryArguments
 }: {
   searchValue?: string;
   filterData?: any;
+  queryArguments?:any
 }) => {
   const response = useQuery<any, any>(
     ["getAllConfigurations", searchValue, filterData],
-    () => fetchAllJobs()
+    () => fetchAllJobs({queryArguments})
   );
   return {
     data: response.data?.data,

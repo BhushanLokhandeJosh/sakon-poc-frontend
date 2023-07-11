@@ -3,3 +3,8 @@
   text-align: left;
   padding-top: 5px;
 }
+
+.label-style {
+  color: black;
+  font-weight: bold;
+}

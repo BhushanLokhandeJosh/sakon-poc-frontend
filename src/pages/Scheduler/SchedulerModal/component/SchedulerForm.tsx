@@ -17,7 +17,7 @@ interface ISchedulerFormProps {
 
 const SchedulerForm = (props: ISchedulerFormProps) => {
   const { configurationOptions } = props;
-  const { interval, schedularName, timeDuration } = props.formik.values;
+  const { interval, schedularName, timeDuration,timeZone,weekDay } = props.formik.values;
   const { setFieldValue } = props.formik;
   const isMonthly: boolean = interval === INTERVAL.MONTHLY;
   const isWeekly: boolean = interval === INTERVAL.WEEKLY;
@@ -107,6 +107,7 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
                   menuPlacement="bottom"
                   maxMenuHeight={100}
                   className="form-control-weekly"
+                  value={weekDay}
                   // isMulti={true}
                 />
               </>
@@ -134,6 +135,7 @@ const SchedulerForm = (props: ISchedulerFormProps) => {
           menuPlacement="bottom"
           maxMenuHeight={70}
           menuShouldScrollIntoView={true}
+          value={timeZone}
         />
       </Grid>
     </Grid>

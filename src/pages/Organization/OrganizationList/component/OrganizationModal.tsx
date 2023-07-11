@@ -59,7 +59,7 @@ const OrganizationModal = ({
 
       for (let i = 0; i < length; i++) {
         arr.push({
-          value: data?.results[i].name,
+          value: data?.results[i].id,
           label: data?.results[i].name,
         });
       }

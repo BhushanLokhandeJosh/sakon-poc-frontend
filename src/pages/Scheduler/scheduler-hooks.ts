@@ -3,6 +3,7 @@ import { AxiosError, AxiosResponse } from "axios";
 
 import {
   getSchedulers,
+  getUnscheduledConfigurations,
   scheduleConfiguration,
   updateScheduler,
 } from "./scheduler-services";
@@ -25,12 +26,15 @@ export const useScheduleConfiguration = (props: IScheduleResponseProps) => {
 export const useFetchAllSchedulers = ({
   searchValue,
   is_scheduled,
+  queryArguments
 }: {
   searchValue?: string;
   is_scheduled?: boolean;
+  queryArguments?:any
 }) => {
   const response = useQuery([GET_ALL_SCHEDULERS, searchValue], () =>
     getSchedulers({
+      queryArguments,
       schedule_name: searchValue,
       is_scheduled,
     })
@@ -49,4 +53,29 @@ export const useUpdateScheduler = (props: IScheduleResponseProps) => {
     onSuccess,
     onError,
   });
+};
+
+
+export const useFetchUnscheduledConfigurations = ({
+  is_scheduled,
+  queryArguments
+}: {
+  is_scheduled:boolean,
+  queryArguments:any
+}) => {
+  
+  const response = useQuery<any>(
+    ["unscheduled", is_scheduled],
+    () =>
+      getUnscheduledConfigurations({
+        is_scheduled,
+        queryArguments
+      })
+  );
+
+  return {
+    data: response?.data?.data,
+    isLoading: response.isLoading,
+    isError: response.isError,
+  };
 };

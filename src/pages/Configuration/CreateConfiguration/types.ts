@@ -1,6 +1,6 @@
 export interface IConfiguration {
   configurationName: string;
-  department: string;
+  department: "";
   email: string;
   password: string;
   carrierName: string;
@@ -9,7 +9,6 @@ export interface IConfiguration {
   sftpLocation: string;
   downloadPath: string;
   template: string | Blob;
-  // template: FileList | null;
 }
 
 export interface IConfigurationFormInfo {

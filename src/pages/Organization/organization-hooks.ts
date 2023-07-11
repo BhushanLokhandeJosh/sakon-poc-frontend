@@ -33,7 +33,7 @@ export const useFetchOrganization = ({
   const response = useQuery(GET_ALL_ORGANIZATION, () => getOrganization({search:searchValue}));
   console.log("Fetch Response", response);
   return {
-    data: response?.data?.results,
+    data: response?.data?.data,
     isLoading: response.isLoading,
     isError: response.isError,
   };

@@ -1,4 +1,5 @@
 export const API_ROUTES = {
+  GET:"/get",
   CONTACT: "/contactus",
   SERVICES: "/services",
   CONFIGURATION_LIST: "/configurations",

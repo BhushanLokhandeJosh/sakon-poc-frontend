@@ -32,6 +32,9 @@ const SuperAdmin = () => {
   const donwnloadData = data?.downloaddata;
   const uploadData = data?.uploaddata;
 
+  console.log("errorGraphData", errorGraphData, "donwnloadData", donwnloadData,"uploadData", uploadData);
+  
+
   if (isLoading || SuperAdminLoading) {
     return <>Loading...</>;
   }
