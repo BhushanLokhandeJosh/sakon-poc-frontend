@@ -66,8 +66,8 @@ export const CustomSelect = ({
       placeholder={placeholder}
       options={options}
       isMulti={isMulti}
-      menuShouldScrollIntoView={menuShouldScrollIntoView}
       maxMenuHeight={maxMenuHeight}
+      menuShouldScrollIntoView={menuShouldScrollIntoView}
     />
   );
 };

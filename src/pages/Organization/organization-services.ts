@@ -8,7 +8,6 @@ import { IOrganizationPayload } from "./OrganizationList/types";
 export const createOrganization = (
   payload: FormData
 ): Promise<AxiosResponse<string, any>> => {
-  console.log(payload);
   return POST(`${API_ROUTES.ORGANIZATION_LIST}`, payload);
 };
 

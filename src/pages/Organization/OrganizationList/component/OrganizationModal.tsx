@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
-import { IFormikProps } from "../../../../shared/types";
+import { IFormikProps, IOption } from "../../../../shared/types";
 import { IOrganizationModalProps, IOrganizationPayload } from "../types";
 import OrganizationForm from "./OrganizationForm";
 import {
@@ -28,10 +28,7 @@ const OrganizationModal = ({
   const queryClient = useQueryClient();
 
   const [serviceProviders, setServiceProviders] = useState<
-    {
-      label: string;
-      value: string;
-    }[]
+    IOption<String>[]
   >();
 
   const { data } = useFetchServiceProviders();
@@ -58,7 +55,7 @@ const OrganizationModal = ({
 
       for (let i = 0; i < length; i++) {
         arr.push({
-          value: data?.results[i].name,
+          value: data?.results[i].id,
           label: data?.results[i].name,
         });
       }

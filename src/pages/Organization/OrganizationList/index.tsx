@@ -6,6 +6,7 @@ import useToggle from "../../../shared/CustomHooks/useToggle";
 
 import OrganizationListing from "./component";
 import OrganizationModal from "./component/OrganizationModal";
+import { IOrganizationPayload } from "./types";
 
 const OrganizationsContainer = () => {
   const { isOpen, handleToggle } = useToggle();

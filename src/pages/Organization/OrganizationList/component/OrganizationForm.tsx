@@ -2,7 +2,7 @@ import { Form } from "formik";
 import { Grid, InputLabel } from "@mui/material";
 
 import { IOrganizationPayload } from "../types";
-import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
+import { IFormikProps, INPUT_TYPE, IOption } from "../../../../shared/types";
 
 import "./styles/styles.css";
 
@@ -10,7 +10,7 @@ import Input from "../../../../shared/FormComponents/Input";
 import Select from "../../../../shared/FormComponents/Select";
 
 interface IOrganizationProps {
-  serviceProviders?: { label: string; value: string }[];
+  serviceProviders?: IOption<String>[];
   formik: IFormikProps<IOrganizationPayload>;
 }
 
@@ -35,7 +35,7 @@ const OrganizationForm = (props: IOrganizationProps): JSX.Element => {
               type={INPUT_TYPE.TEXT}
               placeholder="Organization Name"
               name="name"
-              className="form-control-input"
+              className="form-input"
               value={values.name}
             />
           </div>
@@ -49,7 +49,7 @@ const OrganizationForm = (props: IOrganizationProps): JSX.Element => {
             <Input
               type={INPUT_TYPE.NUMBER}
               name="department_count"
-              className="form-control-input"
+              className="form-input"
               value={values.department_count}
             />
           </div>
@@ -63,7 +63,7 @@ const OrganizationForm = (props: IOrganizationProps): JSX.Element => {
             name="service_providers"
             placeholder="Select Service Providers"
             options={serviceProviders}
-            className="multiselect-style"
+            className="multiselect"
             menuPlacement="bottom"
             maxMenuHeight={80}
             isMulti={true}
