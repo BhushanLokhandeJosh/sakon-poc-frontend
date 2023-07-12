@@ -30,13 +30,14 @@ export const useFetchOrganization = ({
 }) => {
   const response = useQuery(GET_ALL_ORGANIZATION, () => getOrganization({search:searchValue}));
   return {
-    data: response?.data?.results,
+    data: response?.data?.data,
     isLoading: response.isLoading,
     isError: response.isError,
   };
 };
 
 export const useFetchServiceProviders = () => {
+  
   return useQuery(GET_ALL_SERVICE_PROVIDERS, () => getServiceProviders());
 };
 

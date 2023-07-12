@@ -1,6 +1,4 @@
-import { Box } from "@mui/material";
-
-import { OrganizationColumns } from "../../constants";
+import { organizationColumns } from "../../constants";
 
 import "./styles/styles.css";
 
@@ -10,7 +8,6 @@ import { useFetchOrganization } from "../../organization-hooks";
 
 const OrganizationListing = ({ toggleModal, handleEditOrganization }: any) => {
   return (
-    <Box>
       <PageComponent
         pageTitle="Organization"
         buttonLabel="Create Organization"
@@ -18,12 +15,12 @@ const OrganizationListing = ({ toggleModal, handleEditOrganization }: any) => {
         pageBody={
           <CustomTable
             searchConfiguration={{ isSearchBoxVisible: true }}
-            columnHeaders={OrganizationColumns(handleEditOrganization)}
+            columnHeaders={organizationColumns(handleEditOrganization)}
             useCustomFetch={useFetchOrganization}
+            tableClassName="organization-table"
           />
         }
       />
-    </Box>
   );
 };
 

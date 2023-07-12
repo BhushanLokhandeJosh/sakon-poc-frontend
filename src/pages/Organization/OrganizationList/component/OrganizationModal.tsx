@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
@@ -21,14 +21,14 @@ import {
 import { AxiosError, AxiosResponse } from "axios";
 
 const OrganizationModal = ({
-  isOpen: isModalOpen,
+  isOpen:isOrganizationModalOpen,
   toggleModal,
   organization,
 }: IOrganizationModalProps) => {
   const queryClient = useQueryClient();
 
   const [serviceProviders, setServiceProviders] = useState<
-    IOption<String>[]
+    IOption<string>[]
   >();
 
   const { data } = useFetchServiceProviders();
@@ -55,7 +55,7 @@ const OrganizationModal = ({
 
       for (let i = 0; i < length; i++) {
         arr.push({
-          value: data?.results[i].id,
+          value: data?.results[i].name,
           label: data?.results[i].name,
         });
       }
@@ -63,14 +63,26 @@ const OrganizationModal = ({
     }
   }, [data]);
 
-  if (isEdit) {
-    updateOrganizationValues = {
-      id: organization.id,
+  updateOrganizationValues = useMemo(() => {
+    if(isEdit) {
+      const obj = {
+      id: organization?.id,
       name: organization.name,
       department_count: organization.department_count,
       service_providers: organization.service_providers,
-    };
-  }
+      }
+      return obj;
+    }
+  },[]);
+
+   
+  let organizationProps = isEdit ? {
+       initialValue:updateOrganizationValues,
+       modalTitle: "Edit Organization"
+    }:{
+        initialValue:initialOrganizationValues,
+        modalTitle: "Create Organization"
+  };
 
   const onSuccess = async (values: AxiosResponse) => {
     isEdit
@@ -101,14 +113,14 @@ const OrganizationModal = ({
 
   return (
     <FormikModalComponent
-      isOpen={isModalOpen}
+      isOpen={isOrganizationModalOpen}
       toggleModal={toggleModal}
-      modalTitle={isEdit ? "Edit Organization" : "Create Organization"}
+      modalTitle={organizationProps.modalTitle}
       getFormBody={(formik: IFormikProps<IOrganizationPayload>) => (
         <OrganizationForm formik={formik} serviceProviders={serviceProviders} />
       )}
       initialValues={
-        !isEdit ? initialOrganizationValues : updateOrganizationValues
+        organizationProps.initialValue
       }
       validationSchema={organizationValidationSchema}
       onSubmit={onSubmit}

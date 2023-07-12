@@ -10,7 +10,7 @@ import Input from "../../../../shared/FormComponents/Input";
 import Select from "../../../../shared/FormComponents/Select";
 
 interface IOrganizationProps {
-  serviceProviders?: IOption<String>[];
+  serviceProviders?: IOption<string>[];
   formik: IFormikProps<IOrganizationPayload>;
 }
 

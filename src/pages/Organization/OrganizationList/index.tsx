@@ -6,10 +6,9 @@ import useToggle from "../../../shared/CustomHooks/useToggle";
 
 import OrganizationListing from "./component";
 import OrganizationModal from "./component/OrganizationModal";
-import { IOrganizationPayload } from "./types";
 
 const OrganizationsContainer = () => {
-  const { isOpen, handleToggle } = useToggle();
+  const { isOpen:isOrganizationModalOpen, handleToggle } = useToggle();
   const [organization, setOrganization] = useState<any>();
 
   const handleOrganizationReset = useCallback(() => {
@@ -17,21 +16,21 @@ const OrganizationsContainer = () => {
       setOrganization(undefined);
     }
     handleToggle();
-  }, [isOpen]);
+  }, [isOrganizationModalOpen,organization]);
 
   const handleEditOrganization = useCallback(
     (value: GridCellParams) => {
       setOrganization(value);
       handleToggle();
     },
-    [isOpen]
+    [isOrganizationModalOpen]
   );
 
   return (
     <Box>
-      {isOpen && (
+      {isOrganizationModalOpen && (
         <OrganizationModal
-          isOpen={isOpen}
+          isOpen={isOrganizationModalOpen}
           toggleModal={handleOrganizationReset}
           organization={organization}
         />

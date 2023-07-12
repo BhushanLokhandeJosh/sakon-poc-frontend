@@ -18,7 +18,6 @@ export const getOrganization = (params: any) => {
 export const updateOrganization = (
   payload: IOrganizationPayload
 ): Promise<AxiosResponse<string, any>> => {
-  console.log(payload.id, "id");
   return PUT(`${API_ROUTES.ORGANIZATION_LIST}/${payload.id}`, payload);
 };
 
