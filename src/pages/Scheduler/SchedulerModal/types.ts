@@ -14,10 +14,10 @@ export interface IUpdateSchedulerPayload extends ICreateSchedulerPayload {
 }
 
 export interface ICreateSchedulerProps {
+  toggleModal: () => void;
   configurationOptions?: { value: string; label: string }[];
-  onSubmit: (values: any) => void;
-  initialSchedulerValue?: any;
-  // TODO : need to check initialSchedulerValue.
+  isOpen: boolean;
+  scheduler: any;
 }
 
 export enum INTERVAL {
