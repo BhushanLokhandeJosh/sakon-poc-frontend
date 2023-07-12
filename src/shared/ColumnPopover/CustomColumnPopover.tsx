@@ -1,4 +1,4 @@
-import { Button, Popover } from "@mui/material";
+import { Box, Button, Popover } from "@mui/material";
 import { useState } from "react";
 
 interface CustomColumnPopoverProps {
@@ -19,9 +19,9 @@ const CustomColumnPopover = ({ arr }: CustomColumnPopoverProps) => {
   const content = arr
     ?.filter((item: string, index: number) => index !== 0)
     .map((item: string, index: number) => (
-      <div key={index} className="content-container">
+      <Box key={index} sx={{ padding: { xs: 2, sm: 2 } }}>
         {item}
-      </div>
+      </Box>
     ));
 
   return (
