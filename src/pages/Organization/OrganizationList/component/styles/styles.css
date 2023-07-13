@@ -1,0 +1,27 @@
+
+.grid-align-style {
+  align-items: baseline;
+  padding: 1rem;
+}
+
+.form-input {
+  width: 80%;
+  padding: 10px 10px;
+  text-align: left;
+  font-size: 15px;
+  border: 0.5px solid rgb(213, 212, 212);
+  border-radius: 5px;
+}
+
+.multiselect {
+  width: 83.5%;
+  height: fit-content;
+  text-align: left;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.organization-table {
+  width: 95%;
+  margin-left: 1rem;
+}
