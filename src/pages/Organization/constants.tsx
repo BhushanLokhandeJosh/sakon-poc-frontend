@@ -20,28 +20,36 @@ export const ERROR_MESSAGE = "Something Went Wrong...";
 
 export const GET_ALL_SERVICE_PROVIDERS = "getServiceProviders";
 
-export const ServiceProvidersColumns = (
+export const PAGE_TITLE = "Service Providers";
+
+export const BUTTON_LABEL = "Create Service Provider";
+
+export const EDIT_MODAL_TITLE = "Edit ServiceProvider";
+
+export const CREATE_MODAL_TITLE = "Create ServiceProvider";
+
+export const serviceProvidersColumns = (
   handleEditServiceProviders: Function
 ): GridColDef[] => {
   return [
     {
       field: "id",
       headerName: "Id",
-      width: 200,
+      flex:0.5,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "name",
       headerName: "Service Provider Name",
-      width: 400,
+      flex:1,
       headerAlign: "center",
       align: "center",
     },
     {
       field: "url",
       headerName: "Website URL",
-      width: 700,
+      flex:1,
       headerAlign: "center",
       align: "center",
     },
@@ -52,10 +60,8 @@ export const ServiceProvidersColumns = (
       sortable: false,
       headerAlign: "center",
       align: "center",
-      width: 200,
-      renderCell: (params: GridCellParams) => {
-        return (
-          <>
+      flex:1,
+      renderCell: (params: GridCellParams) => (
             <Tooltip title="Edit" placement="top">
               <IconButton
                 onClick={() => handleEditServiceProviders(params.row)}
@@ -63,9 +69,7 @@ export const ServiceProvidersColumns = (
                 <EditIcon />
               </IconButton>
             </Tooltip>
-          </>
-        );
-      },
+        )
     },
   ];
 };

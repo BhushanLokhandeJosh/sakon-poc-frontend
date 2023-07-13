@@ -8,12 +8,11 @@ import { IServiceProvidersPayload } from "./OrganizationList/types";
 export const createServiceProviders = (
   payload: IServiceProvidersPayload
 ): Promise<AxiosResponse<string, any>> => {
-  console.log(payload);
   return POST(`${API_ROUTES.SERVICE_PROVIDERS}`, payload);
 };
 
-export const getServiceProviders = () => {
-  return GET(API_ROUTES.SERVICE_PROVIDERS);
+export const getServiceProviders = (params:any) => {
+  return GET(API_ROUTES.SERVICE_PROVIDERS,params);
 };
 
 export const updateServiceProviders = (

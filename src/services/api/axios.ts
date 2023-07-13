@@ -5,9 +5,7 @@ const instance = axios.create({
 });
 
 export const GET = (url: string, params?: any) => {
-  return instance.get(url, { params }).then((res) => {
-    return res.data;
-  });
+  return instance.get(url, { params }).then((res) => res.data);
 };
 
 export const POST = (
@@ -22,4 +20,3 @@ export const PUT = (url: string, body: any) => {
   return instance.put(url, body).then((res) => res.data);
 };
 
-//TODO -> Other API calls like GET,PUT,DELETE have yet to be implemented.

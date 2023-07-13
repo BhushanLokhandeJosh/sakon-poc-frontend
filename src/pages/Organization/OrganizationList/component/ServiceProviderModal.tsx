@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
@@ -6,7 +6,9 @@ import { IFormikProps } from "../../../../shared/types";
 import { IServiceProvidersPayload, IServiceProvidersProps } from "../types";
 
 import {
+  CREATE_MODAL_TITLE,
   CREATE_SERVICE_PROVIDER_MESSAGE,
+  EDIT_MODAL_TITLE,
   ERROR_MESSAGE,
   GET_ALL_SERVICE_PROVIDERS,
   UPDATE_SERVICE_PROVIDER_MESSAGE,
@@ -25,21 +27,30 @@ const ServiceProviderModal = ({
   toggleModal,
   serviceProvider,
 }: IServiceProvidersProps) => {
-  console.log("serviceProvider", serviceProvider);
 
   const queryClient = useQueryClient();
 
   const isEdit = serviceProvider ? true : false;
+ 
+  let updateServiceProviderValues = useMemo(() => {
+    if(isEdit) {
+      const editServiceProvider = {
+        id: serviceProvider.id,
+        name: serviceProvider.name,
+        url: serviceProvider.url,
+      }
+      return editServiceProvider;
+    }
+  },[serviceProvider]);
 
-  let updateServiceProviderValues;
 
-  if (isEdit) {
-    updateServiceProviderValues = {
-      id: serviceProvider.id,
-      name: serviceProvider.name,
-      url: serviceProvider.url,
-    };
-  }
+  let serviceProvidersProps = isEdit ? {
+       initialValue:updateServiceProviderValues,
+       modalTitle: EDIT_MODAL_TITLE
+    }: {
+        initialValue:initialServiceProviderValues,
+        modalTitle: CREATE_MODAL_TITLE
+  };
 
   const onSuccess = async (values: AxiosResponse) => {
     isEdit
@@ -64,7 +75,7 @@ const ServiceProviderModal = ({
     onError,
   });
 
-  const onSubmit = (values: any) => {
+  const onSubmit = (values: IServiceProvidersPayload) => {
     !isEdit ? createServiceProviders(values) : updateServiceProviders(values);
   };
 
@@ -72,12 +83,12 @@ const ServiceProviderModal = ({
     <FormikModalComponent
       isOpen={isModalOpen}
       toggleModal={toggleModal}
-      modalTitle={isEdit ? "Edit Organization" : "Create Organization"}
+      modalTitle={serviceProvidersProps?.modalTitle}
       getFormBody={(formik: IFormikProps<IServiceProvidersPayload>) => (
         <ServiceProviderForm formik={formik} />
       )}
       initialValues={
-        !isEdit ? initialServiceProviderValues : updateServiceProviderValues
+        serviceProvidersProps?.initialValue
       }
       validationSchema={serviceProviderValidationSchema}
       onSubmit={onSubmit}

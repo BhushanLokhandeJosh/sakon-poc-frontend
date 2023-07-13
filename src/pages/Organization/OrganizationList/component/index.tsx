@@ -1,6 +1,5 @@
-import { Box } from "@mui/material";
 
-import { ServiceProvidersColumns } from "../../constants";
+import { BUTTON_LABEL, PAGE_TITLE, serviceProvidersColumns } from "../../constants";
 
 import "./styles/styles.css";
 
@@ -13,20 +12,19 @@ const ServiceProviderListing = ({
   handleEditServiceProviders,
 }: any) => {
   return (
-    <Box>
       <PageComponent
-        pageTitle="Service Providers"
-        buttonLabel="Create Service"
+        pageTitle={PAGE_TITLE}
+        buttonLabel={BUTTON_LABEL}
         handleButtonAction={toggleModal}
         pageBody={
           <CustomTable
             searchConfiguration={{ isSearchBoxVisible: true }}
-            columnHeaders={ServiceProvidersColumns(handleEditServiceProviders)}
+            columnHeaders={serviceProvidersColumns(handleEditServiceProviders)}
             useCustomFetch={useFetchServiceProviders}
+            tableClassName="service-provider-table"
           />
         }
       />
-    </Box>
   );
 };
 

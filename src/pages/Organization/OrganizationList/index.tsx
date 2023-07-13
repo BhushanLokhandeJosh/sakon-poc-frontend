@@ -1,35 +1,34 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { GridCellParams } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 
 import useToggle from "../../../shared/CustomHooks/useToggle";
 
-import OrganizationListing from "./component";
-import OrganizationModal from "./component/ServiceProviderModal";
 import ServiceProviderModal from "./component/ServiceProviderModal";
 import ServiceProviderListing from "./component";
+import { IServiceProvidersPayload } from "./types";
 
 const ServiceProvidersContainer = () => {
-  const { isOpen, handleToggle } = useToggle();
+  const { isOpen:isServiceProviderModalOpen, handleToggle } = useToggle();
   const [serviceProviders, setServiceProviders] = useState<any>();
 
-  const handleServiceProvidersReset = () => {
+  const handleServiceProvidersReset = useCallback(() => {
     if (serviceProviders) {
       setServiceProviders(undefined);
     }
     handleToggle();
-  };
+  },[serviceProviders, handleToggle]);
 
-  const handleEditServiceProviders = (value: GridCellParams) => {
+  const handleEditServiceProviders = useCallback((value: GridCellParams) => {
     setServiceProviders(value);
     handleToggle();
-  };
+  },[handleToggle]);
 
   return (
     <Box>
-      {isOpen && (
+      {isServiceProviderModalOpen && (
         <ServiceProviderModal
-          isOpen={isOpen}
+          isOpen={isServiceProviderModalOpen}
           toggleModal={handleServiceProvidersReset}
           serviceProvider={serviceProviders}
         />

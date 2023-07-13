@@ -22,21 +22,23 @@ export const useCreateServiceProviders = (props: IResponseProps) => {
   });
 };
 
-export const useFetchServiceProviders = () => {
-  // const { onSuccess, onError } = props;
-
+export const useFetchServiceProviders = (
+  {
+  searchValue,
+  } : {
+  searchValue?: string;
+  }
+) => {
   const response = useQuery(GET_ALL_SERVICE_PROVIDERS, () =>
-    getServiceProviders()
+    getServiceProviders({search:searchValue})
   );
 
-  console.log("Response", response);
   return {
     data: response?.data?.results,
     isLoading: response.isLoading,
     isError: response.isError,
   };
 };
-// getServiceProviders
 
 export const useUpdateServiceProviders = (props: IResponseProps) => {
   const { onSuccess, onError } = props;

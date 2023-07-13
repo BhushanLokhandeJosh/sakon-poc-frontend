@@ -3,19 +3,20 @@ import { InputLabel } from "@mui/material";
 
 import FormError from "../FormError";
 import CustomSelect from "./CustomSelect";
+import { IOption } from "../../types";
 
 interface IMultiSelectProps {
   className?: string;
   name: string;
-  // Here Options Value can be either string or number.so number type is added. 
-  options?: { label: string; value: string | number }[];
+  // Here Options Value can be either string or number.so number type is added.
+  options?: IOption<string | number>[];
   placeholder?: string;
   isMulti?: boolean;
   label?: string;
   menuPlacement?: string;
   maxMenuHeight?: number;
   menuShouldScrollIntoView?: boolean;
-  value?:string
+  value?: string;
 }
 
 const Select = (props: IMultiSelectProps) => {
@@ -29,7 +30,7 @@ const Select = (props: IMultiSelectProps) => {
     menuPlacement,
     menuShouldScrollIntoView,
     maxMenuHeight,
-    value
+    value,
   } = props;
   return (
     <>
