@@ -27,6 +27,8 @@ export const GET_ALL_SIGNUP = "getAllSignupUser";
 
 export const GET_ALL_SERVICE_PROVIDERS = "getServiceProviders";
 
+export const USER_ENQUIRY = "User Enquiry";
+
 export const SignUpUserColumns = (handleEditSignup: Function): GridColDef[] => {
   return [
     {

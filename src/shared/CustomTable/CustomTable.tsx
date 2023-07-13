@@ -6,12 +6,12 @@ import { Box, Button } from "@mui/material";
 import SearchBox from "./SearchBox";
 import { dataGridStyleForColumnSortArrow } from "./constant";
 import { BUTTONS_LABLES } from "../constants";
-import { IObjectWithAnyFields, MAX_WIDTH } from "../types";
 
 import "./style.css";
 
 import FormikModalComponent from "../FormikModalComponent/component";
 import useToggle from "../CustomHooks/useToggle";
+import { IObjectWithAnyFields, MAX_WIDTH } from "../types";
 
 interface ICustomTableProps {
   columnHeaders: GridColDef[];
@@ -74,7 +74,6 @@ const CustomTable = (props: ICustomTableProps) => {
   const [searchTrigger, setSearchTrigger] = useState<string>("");
   const { isOpen, handleToggle } = useToggle();
   const [filterData, setFilterData] = useState<any>({});
-
   const onSubmit = (values: IObjectWithAnyFields) => {
     setFilterData(values);
     handleToggle();
@@ -155,6 +154,7 @@ const CustomTable = (props: ICustomTableProps) => {
           rows={data}
           columns={columnHeaders}
           sx={dataGridStyleForColumnSortArrow}
+          hideFooter
         />
       </div>
     </Box>

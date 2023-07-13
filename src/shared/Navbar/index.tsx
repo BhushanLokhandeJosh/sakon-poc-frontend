@@ -17,6 +17,7 @@ import AvatarImage from "../../assets/images/avatar-icon.jpeg";
 
 import "./styles/style.css";
 import { PAGE_MENU, SETTING_MENU } from "./constants";
+
 import { Outlet } from "react-router-dom";
 
 const sidebarMenu = [

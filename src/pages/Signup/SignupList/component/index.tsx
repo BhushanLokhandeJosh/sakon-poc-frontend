@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 
-import { SignUpUserColumns } from "../../constants";
+import { SignUpUserColumns, USER_ENQUIRY } from "../../constants";
 
 import "./styles/styles.css";
 
@@ -12,12 +12,13 @@ const SignUpUserListing = ({ toggleModal, handleEditSignup }: any) => {
   return (
     <Box>
       <PageComponent
-        pageTitle="User Enquiry"
+        pageTitle={USER_ENQUIRY}
         handleButtonAction={toggleModal}
         pageBody={
           <CustomTable
             columnHeaders={SignUpUserColumns(handleEditSignup)}
             useCustomFetch={useFetchSignupUserList}
+            tableClassName="signup-table"
           />
         }
       />
