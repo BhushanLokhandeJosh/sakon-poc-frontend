@@ -1,13 +1,11 @@
 export const API_ROUTES = {
-  CONFIGURATION: {
-    GET: "/configurations", // GET: "/configDetails",
-    CREATE: "/configurations",
-  },
-  DEPARTMENT: {
-    GET: "/departments",
-  },
-  ORGANIZATION: "/organizations",
-
-  USER_LISTING: "/employees",
+  CONFIGURATION: "/configurations",
   DEPARTMENTS: "/departments",
+  ORGANIZATION: "/organizations",
+  SERVICE_PROVIDERS: "/serviceprovider",
+  HOME: "/home",
+  LOGIN: "/login",
+  SIGNUP: "/signup",
+  LOGOUT: "/logout",
+  USER_LISTING: "/employees",
 };

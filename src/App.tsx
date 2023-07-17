@@ -1,27 +1,40 @@
-import { Box } from "@mui/material";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-
-import "./App.css";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import LayoutComponent from "./shared/Navbar";
+import { sideBarMenus } from "./shared/Sidebar/constants";
+import { commonNavBarMenus, navBarMenus } from "./shared/Navbar/constants";
+
+import { checkAutoLogin } from "./services/AuthServices";
+import { IRootState } from "./redux/reducer/rootReducer";
 import { API_ROUTES } from "./routes/routes-constants";
 import UserContainer from "./pages/User/UserListing";
 
 function App() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { loggedInUser } = useSelector(
+    (state: IRootState) => state.AuthReducer
+  );
+
+  //This is for auto login when user clicks on page refresh and based on
+  //user loggedin or not we will navigate to login page or requested page.
+  useEffect(() => {
+    checkAutoLogin(dispatch, navigate);
+  }, []);
+
   return (
-    <Box>
-      <Router>
-        <Routes>
-          {/* <Route path="/" element={<Home />}></Route> */}
-          <Route element={<LayoutComponent />}>
-            <Route
-              path={API_ROUTES.USER_LISTING}
-              element={<UserContainer />}
-            />
-          </Route>
-        </Routes>
-      </Router>
-    </Box>
+    <LayoutComponent
+      sideBarMenus={sideBarMenus}
+      navBarMenus={navBarMenus}
+      loggedInUser={loggedInUser}
+      commonNavBarMenus={commonNavBarMenus}
+    >
+      <Routes>
+        <Route path={API_ROUTES.USER_LISTING} element={<UserContainer />} />
+      </Routes>
+    </LayoutComponent>
   );
 }
 

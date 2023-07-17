@@ -2,7 +2,7 @@ import { Form } from "formik";
 import { Grid, InputLabel } from "@mui/material";
 
 import { ADMIN, IUserPayload, SUPER_ADMIN } from "../types";
-import { IFormikProps, INPUT_TYPE } from "../../../../shared/types";
+import { IFormikProps, INPUT_TYPE, IOption } from "../../../../shared/types";
 
 import "./styles/styles.css";
 
@@ -11,8 +11,8 @@ import Select from "../../../../shared/FormComponents/Select";
 
 interface IOrganizationProps {
   formik: IFormikProps<IUserPayload>;
-  departmentOptions?: { label: string; value: string }[];
-  organizationsOptions?: { label: number; value: string }[];
+  departmentOptions?: IOption<string>[];
+  organizationsOptions?: IOption<string>[];
   isEdit: boolean;
 }
 

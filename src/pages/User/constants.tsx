@@ -26,7 +26,7 @@ export const GET_ALL_ORG = "getAllOrganization";
 
 export const GET_ORG_DEPT = "getOrganizationDepartment";
 
-export const UserColumns = (handleEditUser: Function): GridColDef[] => {
+export const userColumns = (handleEditUser: Function): GridColDef[] => {
   return [
     {
       field: "id",
@@ -56,9 +56,9 @@ export const UserColumns = (handleEditUser: Function): GridColDef[] => {
       sortable: false,
       headerAlign: "center",
       align: "center",
-      renderCell: (params: IObjectWithAnyFields) => {
-        return <CustomColumnPopover arr={params?.row.Department} />;
-      },
+      renderCell: (params: IObjectWithAnyFields) => (
+        <CustomColumnPopover arr={params?.row.Department} />
+      ),
     },
     {
       field: "org",
@@ -76,17 +76,13 @@ export const UserColumns = (handleEditUser: Function): GridColDef[] => {
       headerAlign: "center",
       align: "center",
       width: 200,
-      renderCell: (params: GridCellParams) => {
-        return (
-          <>
-            <Tooltip title="Edit" placement="top">
-              <IconButton onClick={() => handleEditUser(params.row)}>
-                <EditIcon />
-              </IconButton>
-            </Tooltip>
-          </>
-        );
-      },
+      renderCell: (params: GridCellParams) => (
+        <Tooltip title="Edit" placement="top">
+          <IconButton onClick={() => handleEditUser(params.row)}>
+            <EditIcon />
+          </IconButton>
+        </Tooltip>
+      ),
     },
   ];
 };

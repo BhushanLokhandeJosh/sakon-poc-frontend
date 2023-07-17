@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
-import { IFormikProps } from "../../../../shared/types";
+import { IFormikProps, IOption } from "../../../../shared/types";
 import { IUserPayload } from "../types";
 import UserForm from "./UserForm";
 import { userValidationSchema } from "../helpers";
@@ -24,17 +24,11 @@ import { Console, log } from "console";
 
 const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
   const [departmentOptions, SetDepartmentOptions] = useState<
-    {
-      label: string;
-      value: string;
-    }[]
+    IOption<string>[]
   >();
 
   const [organizationOptions, SetOrganizationOptions] = useState<
-    {
-      label: number;
-      value: string;
-    }[]
+    IOption<string>[]
   >();
 
   const queryClient = useQueryClient();
@@ -42,7 +36,6 @@ const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
   const { data: departments } = useFetchDepartmentList({ org_id: 1 });
 
   const { data: organizations } = useFetchOrganization();
-  console.log("Org", organizations?.results);
 
   const isEdit = user ? true : false;
 
@@ -75,16 +68,29 @@ const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
     }
   }, [departments, organizations]);
 
-  if (isEdit) {
-    updateUserValues = {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      department: user.department,
-      org: user.org,
-    };
-  }
+  updateUserValues = useMemo(() => {
+    if (isEdit) {
+      const obj = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        department: user.department,
+        org: user.org,
+      };
+      return obj;
+    }
+  }, []);
+
+  let userProps = isEdit
+    ? {
+        initialValue: updateUserValues,
+        modalTitle: "Edit User",
+      }
+    : {
+        initialValue: initialUserValues,
+        modalTitle: "Create User",
+      };
 
   const onSuccess = async (values: AxiosResponse) => {
     isEdit
@@ -129,7 +135,7 @@ const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
     <FormikModalComponent
       isOpen={isModalOpen}
       toggleModal={toggleModal}
-      modalTitle={isEdit ? "Edit User" : "Create User"}
+      modalTitle={userProps.modalTitle}
       getFormBody={(formik: IFormikProps<IUserPayload>) => (
         <UserForm
           formik={formik}
@@ -138,7 +144,7 @@ const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
           isEdit={isEdit}
         />
       )}
-      initialValues={!isEdit ? initialUserValues : updateUserValues}
+      initialValues={userProps.initialValue}
       validationSchema={userValidationSchema}
       onSubmit={onSubmit}
     />

@@ -1,7 +1,7 @@
 import useToggle from "../../../shared/CustomHooks/useToggle";
 
 // import { IUserPayload } from "./types";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { GridCellParams } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import UserListing from "./component";
@@ -11,17 +11,20 @@ const UserContainer = () => {
   const { isOpen, handleToggle } = useToggle();
   const [user, setUser] = useState<any>();
 
-  const handleUserReset = () => {
+  const handleUserReset = useCallback(() => {
     if (user) {
       setUser(undefined);
     }
     handleToggle();
-  };
+  }, [user, handleToggle]);
 
-  const handleEditUser = (value: GridCellParams) => {
-    setUser(value);
-    handleToggle();
-  };
+  const handleEditUser = useCallback(
+    (value: GridCellParams) => {
+      setUser(value);
+      handleToggle();
+    },
+    [user]
+  );
 
   return (
     <Box>
