@@ -25,7 +25,9 @@ function* onLoginUserStartAsync(user: any) {
       yield toast.success(response.Message);
     }
   } catch (error) {
-    console.log(error);
+    if (error instanceof Error) {
+      yield toast.error(error.message);
+    }
   }
 }
 
@@ -38,8 +40,9 @@ function* onLogoutUserStartAsync() {
       yield toast.success(response.message);
     }
   } catch (error) {
-    console.log(error);
-    // toast.error(error?.message);
+    if (error instanceof Error) {
+      yield toast.error(error.message);
+    }
   }
 }
 
