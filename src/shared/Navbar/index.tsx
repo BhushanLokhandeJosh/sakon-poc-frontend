@@ -7,52 +7,83 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Grid } from "@mui/material";
 
-import AvatarImage from "../../assets/images/avatar-icon.jpeg";
-
 import "./styles/style.css";
-import { PAGE_MENU, SETTING_MENU } from "./constants";
-import { Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
+import SideBar from "../Sidebar/SideBar";
+import { useDispatch } from "react-redux";
+import { logoutStart } from "../../redux/actions/authActions";
+import { IRootState } from "../../redux/reducer/rootReducer";
 
-const sidebarMenu = [
-  "Dashboard",
-  " Carrier Details",
-  " Reports",
-  " Variance",
-  "File Status",
-  "Log Out",
-];
+interface ISideBarProps {
+  basicRoutes: {
+    path: string;
+    name: string;
+    icon: JSX.Element;
+  }[];
+  superAdmin: {
+    path: string;
+    name: string;
+    icon: JSX.Element;
+  }[];
+}
+
+interface ICommonNavbarProps {
+  login: {
+    path: string;
+    name: string;
+  }[];
+  logout: {
+    path: string;
+    name: string;
+  }[];
+}
 
 interface IProps {
   children?: React.ReactNode;
+  sideBarMenus: ISideBarProps;
+  navBarMenus: { path: string; name: string }[];
+  commonNavBarMenus: ICommonNavbarProps;
+  loggedInUser: IRootState["AuthReducer"]["loggedInUser"];
 }
 
-//TODO : Visit and checkout all components and also see check whether it is
-//  responsiveness or not.
 const LayoutComponent = (props: IProps) => {
-  const { children } = props;
+  const {
+    children,
+    sideBarMenus,
+    loggedInUser,
+    navBarMenus,
+    commonNavBarMenus,
+  } = props;
+  const dispatch = useDispatch();
+  let sideBarMenu;
+  let basicMenus;
+  if (loggedInUser?.type === "SUPERADMIN") {
+    sideBarMenu = sideBarMenus.superAdmin;
+  } else {
+    sideBarMenu = sideBarMenus.basicRoutes;
+  }
+
+  if (loggedInUser?.type === undefined) {
+    basicMenus = commonNavBarMenus.login;
+  } else {
+    basicMenus = commonNavBarMenus.logout;
+  }
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    if (loggedInUser?.type) {
+      dispatch(logoutStart());
+    } else return;
   };
 
   return (
@@ -64,7 +95,6 @@ const LayoutComponent = (props: IProps) => {
         >
           <Container maxWidth="xl">
             <Toolbar disableGutters>
-              {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
               <Typography
                 variant="h6"
                 noWrap
@@ -80,7 +110,7 @@ const LayoutComponent = (props: IProps) => {
                   textDecoration: "none",
                 }}
               >
-                LOGO
+                BOT
               </Typography>
 
               <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -110,14 +140,29 @@ const LayoutComponent = (props: IProps) => {
                     display: { xs: "block", md: "none" },
                   }}
                 >
-                  {Object.values(PAGE_MENU).map((value) => (
-                    <MenuItem key={value} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{value}</Typography>
+                  {navBarMenus.map((item) => (
+                    <MenuItem
+                      key={item.name}
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        color: "white",
+                        display: "block",
+                        textDecoration: "none",
+                      }}
+                    >
+                      <Link
+                        to={item.path}
+                        style={{
+                          color: "black",
+                          textDecoration: "none",
+                        }}
+                      >
+                        {item.name}
+                      </Link>
                     </MenuItem>
                   ))}
                 </Menu>
               </Box>
-              {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
               <Typography
                 variant="h5"
                 noWrap
@@ -136,67 +181,84 @@ const LayoutComponent = (props: IProps) => {
               >
                 LOGO
               </Typography>
-              <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                {Object.values(PAGE_MENU).map((value) => (
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  color: "white",
+                  display: { xs: "none", md: "flex" },
+                  position: "relative",
+                }}
+              >
+                {navBarMenus.map((item) => (
                   <Button
-                    key={value}
+                    key={item.name}
                     onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: "white", display: "block" }}
+                    sx={{
+                      my: 2,
+                      color: "white",
+                      display: "block",
+                      px: 4,
+                    }}
                   >
-                    {value}
+                    <Link
+                      to={item.path}
+                      style={{
+                        color: "white",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {item.name}
+                    </Link>
                   </Button>
                 ))}
-              </Box>
-
-              <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Can't Load" src={AvatarImage} />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: "90px" }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
+                {basicMenus.map((item: any) => (
+                  <Button
+                    key={item.name}
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 2,
+                      color: "white",
+                      display: "block",
+                      position: "absolute",
+                      right: "3rem",
+                    }}
+                  >
+                    <Link
+                      to={item.path}
+                      style={{
+                        color: "white",
+                        textDecoration: "none",
+                        paddingRight: "6rem",
+                      }}
+                    >
+                      {item.name}
+                    </Link>
+                  </Button>
+                ))}
+                <Box
+                  sx={{
+                    my: 3,
+                    color: "white",
+                    display: "block",
+                    position: "absolute",
+                    right: "0.5rem",
                   }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
                 >
-                  {Object.values(SETTING_MENU).map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
+                  {loggedInUser?.type ? loggedInUser.type : "HI USER"}
+                </Box>
               </Box>
             </Toolbar>
           </Container>
         </AppBar>
       </div>
       <Grid container spacing={2}>
-        <Grid item xs={2}>
-          <div className="sidebar-container">
-            <div className="sidebar-menu"></div>
-            {sidebarMenu.map((item) => (
-              <div key={item} className="sidebar-menu">
-                {item}
-              </div>
-            ))}
-          </div>
-        </Grid>
+        {loggedInUser?.type && (
+          <Grid item xs={2}>
+            <SideBar sideBarMenus={sideBarMenu} />
+          </Grid>
+        )}
         <Grid item xs={10}>
-          {/* <div>{children}</div> */}
-          <div>
-            <Outlet />
-          </div>
+          <div>{children}</div>
         </Grid>
       </Grid>
     </div>

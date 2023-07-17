@@ -1,27 +1,42 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
-import { NAVIGATION_ROUTES } from "./shared/constants";
-
-import "./App.css";
 import LayoutComponent from "./shared/Navbar";
-import SchedulersContainer from "./pages/Scheduler/SchedulersList";
-import DashboardContainer from "./pages/Dashboard";
+import { sideBarMenus } from "./shared/Sidebar/constants";
+import LoginContainer from "./pages/LoginSignup";
+import { commonNavBarMenus, navBarMenus } from "./shared/Navbar/constants";
+
+import { checkAutoLogin } from "./services/AuthServices";
+import { IRootState } from "./redux/reducer/rootReducer";
+import { API_ROUTES } from "./routes/routes-constants";
+import { Box } from "@mui/material";
 
 function App() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { loggedInUser } = useSelector(
+    (state: IRootState) => state.AuthReducer
+  );
+
+  //This is for auto login when user clicks on page refresh and based on
+  //user loggedin or not we will navigate to login page or requested page.
+  useEffect(() => {
+    checkAutoLogin(dispatch, navigate);
+  }, []);
+
   return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route element={<LayoutComponent />}>
-            <Route path="/" element={<DashboardContainer />} />
-            <Route
-              path={NAVIGATION_ROUTES.SCHEDULING_LIST}
-              element={<SchedulersContainer />}
-            />
-          </Route>
-        </Routes>
-      </Router>
-    </div>
+    <LayoutComponent
+      sideBarMenus={sideBarMenus}
+      navBarMenus={navBarMenus}
+      loggedInUser={loggedInUser}
+      commonNavBarMenus={commonNavBarMenus}
+    >
+      <Routes>
+        <Route path={API_ROUTES.LOGIN} element={<LoginContainer />} />
+        <Route path={API_ROUTES.LOGOUT} element={<LoginContainer />} />
+      </Routes>
+    </LayoutComponent>
   );
 }
 
