@@ -1,0 +1,81 @@
+{
+  "organizations": [
+    {
+      "name": "Tata",
+      "department_count": 54,
+      "service_providers": [
+        "VI",
+        "Verizone"
+      ],
+      "id": 1
+    },
+    {
+      "name": "Josh",
+      "department_count": 5,
+      "service_providers": [
+        "VI",
+        "Verizone"
+      ],
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Deut",
+      "department_count": 10,
+      "service_providers": [
+        "MI",
+        "Idea"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Perpetual",
+      "department_count": 10,
+      "service_providers": [
+        "Idea",
+        "VI"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "HP",
+      "department_count": 10,
+      "service_providers": [
+        "VI",
+        "Idea",
+        "Verizone"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Dell",
+      "department_count": 4,
+      "service_providers": [
+        "MI",
+        "Idea"
+      ]
+    }
+  ],
+  "serviceProviders": [
+    {
+      "label": "Jio",
+      "value": "Jio"
+    },
+    {
+      "label": "VI",
+      "value": "VI"
+    },
+    {
+      "label": "Verizone",
+      "value": "Verizone"
+    },
+    {
+      "label": "Idea",
+      "value": "Idea"
+    },
+    {
+      "label": "MI",
+      "value": "MI"
+    }
+  ]
+}
