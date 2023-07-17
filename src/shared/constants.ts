@@ -16,3 +16,9 @@ export const API_ROUTES = {
 export const NAVIGATION_ROUTES = {
   SCHEDULING_LIST: "/schedulingList",
 };
+
+export const ROLES = {
+  ADMIN: "ADMIN",
+  SUPERADMIN: "SUPERADMIN",
+  USER: "USER",
+};

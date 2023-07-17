@@ -93,7 +93,6 @@ const CustomTable = (props: ICustomTableProps) => {
     filterData,
     queryArguments,
   });
-  console.log("Data", data);
 
   if (isLoading) {
     return <div>Loading...</div>;

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
 import { IFormikProps, IOption } from "../../../../shared/types";
-import { IUserPayload } from "../types";
+import { ADMIN, IUserResponse } from "../types";
 import UserForm from "./UserForm";
 import { userValidationSchema } from "../helpers";
 import {
@@ -14,13 +14,14 @@ import {
   CREATE_USER_MESSAGE,
   ERROR_MESSAGE,
   GET_ALL_USER,
+  SUPERADMIN,
   UPDATE_USER_MESSAGE,
   initialUserValues,
 } from "../../constants";
 import { toast } from "react-toastify";
 import { AxiosError, AxiosResponse } from "axios";
 import { useQueryClient } from "react-query";
-import { Console, log } from "console";
+import { ROLES } from "../../../../shared/constants";
 
 const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
   const [departmentOptions, SetDepartmentOptions] = useState<
@@ -39,7 +40,19 @@ const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
 
   const isEdit = user ? true : false;
 
-  let updateUserValues;
+  const updateUserValues = useMemo(() => {
+    if (isEdit) {
+      const obj = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        department: user.department,
+        org: user.org,
+      };
+      return obj;
+    }
+  }, []);
 
   useEffect(() => {
     if (!isEdit) {
@@ -68,21 +81,7 @@ const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
     }
   }, [departments, organizations]);
 
-  updateUserValues = useMemo(() => {
-    if (isEdit) {
-      const obj = {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        department: user.department,
-        org: user.org,
-      };
-      return obj;
-    }
-  }, []);
-
-  let userProps = isEdit
+  const userProps = isEdit
     ? {
         initialValue: updateUserValues,
         modalTitle: "Edit User",
@@ -115,11 +114,11 @@ const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
     onError,
   });
 
-  const onSubmit = (values: any) => {
+  const onSubmit = (values: IUserResponse) => {
     if (!isEdit) {
-      if (values.role === "ADMIN") {
+      if (values.role === ROLES.ADMIN) {
         delete values.org;
-      } else if (values.role === "SUPERADMIN") {
+      } else if (values.role === ROLES.SUPERADMIN) {
         delete values.Department;
       }
       createUser(values);
@@ -128,15 +127,12 @@ const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
     }
   };
 
-  console.log(organizationOptions);
-  console.log(departmentOptions);
-
   return (
     <FormikModalComponent
       isOpen={isModalOpen}
       toggleModal={toggleModal}
       modalTitle={userProps.modalTitle}
-      getFormBody={(formik: IFormikProps<IUserPayload>) => (
+      getFormBody={(formik: IFormikProps<IUserResponse>) => (
         <UserForm
           formik={formik}
           departmentOptions={departmentOptions}

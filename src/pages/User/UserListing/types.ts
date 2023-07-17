@@ -1,13 +1,12 @@
 export const SUPER_ADMIN = "SUPERADMIN";
 export const ADMIN = "ADMIN";
 
-export interface IUserPayload {
-  id?: number;
+export interface IUserResponse {
   name: string;
   email: string;
   role: string;
-  Department: number[];
-  org: number;
+  Department: number[] | undefined;
+  org: number | undefined;
 }
 
 export interface IUserFormProps {

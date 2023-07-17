@@ -1,6 +1,5 @@
 import useToggle from "../../../shared/CustomHooks/useToggle";
 
-// import { IUserPayload } from "./types";
 import { useCallback, useState } from "react";
 import { GridCellParams } from "@mui/x-data-grid";
 import { Box } from "@mui/material";

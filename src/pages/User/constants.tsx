@@ -1,12 +1,12 @@
 import { GridCellParams, GridColDef } from "@mui/x-data-grid";
-import { IUserPayload } from "./UserListing/types";
+import { IUserResponse } from "./UserListing/types";
 import { IconButton, Tooltip } from "@mui/material";
 
 import EditIcon from "@mui/icons-material/Edit";
 import CustomColumnPopover from "../../shared/ColumnPopover/CustomColumnPopover";
 import { IObjectWithAnyFields } from "../../shared/types";
 
-export const initialUserValues: IUserPayload = {
+export const initialUserValues: IUserResponse = {
   name: "",
   email: "",
   role: "",
