@@ -1,7 +1,7 @@
 export interface IDepartmentPayload {
   id?: number;
   name: string;
-  org: number | undefined;
+  org: number | null;
 }
 
 export interface IDepartmentFormProps {

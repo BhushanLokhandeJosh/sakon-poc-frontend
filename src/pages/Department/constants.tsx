@@ -17,7 +17,7 @@ export const PAGE_TITLE = "Department";
 
 export const initialDepartmentValues: IDepartmentPayload = {
   name: "",
-  org: undefined,
+  org: null,
 };
 
 export const departmentColumns = (
