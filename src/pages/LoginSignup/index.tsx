@@ -6,11 +6,7 @@ import LoginPageContainer from "./Login/component";
 import SignupPageContainer from "./Signup/component";
 
 const LoginContainer = () => {
-  const { isOpen:isLoginPage, handleToggle } = useToggle();
-
-  const togglePage = () => {
-    handleToggle();
-  };
+  const { isOpen: isLoginPage, handleToggle } = useToggle();
 
   return (
     <Box
@@ -25,13 +21,13 @@ const LoginContainer = () => {
       {!isLoginPage ? (
         <LoginPageContainer />
       ) : (
-        <SignupPageContainer toggleModal={togglePage} isOpen={isLoginPage} />
+        <SignupPageContainer toggleModal={handleToggle} isOpen={isLoginPage} />
       )}
-      <Box sx={{marginLeft:"15rem",marginTop:"2rem"}}>
+      <Box sx={{ marginLeft: "15rem", marginTop: "2rem" }}>
         {!isLoginPage ? "Don't have an account?" : "Already have an account?"}
         <Button
           variant="contained"
-          onClick={togglePage}
+          onClick={handleToggle}
           style={{ marginLeft: "2rem" }}
         >
           {!isLoginPage ? "Sign up" : "Log in"}

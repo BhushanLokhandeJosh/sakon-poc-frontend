@@ -15,27 +15,29 @@ import { Box } from "@mui/material";
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loggedInUser } = useSelector((state:IRootState) => state.AuthReducer);
+  const { loggedInUser } = useSelector(
+    (state: IRootState) => state.AuthReducer
+  );
 
+  //This is for auto login when user clicks on page refresh and based on
+  //user loggedin or not we will navigate to login page or requested page.
   useEffect(() => {
     checkAutoLogin(dispatch, navigate);
   }, []);
 
   return (
-      <LayoutComponent
-        sideBarMenus={sideBarMenus}
-        navBarMenus={navBarMenus}
-        loggedInUser={loggedInUser}
-        commonNavBarMenus={commonNavBarMenus}
-      >
-        <Routes>
-          <Route path={API_ROUTES.LOGIN} element={<LoginContainer />} />
-          <Route path={API_ROUTES.LOGOUT} element={<LoginContainer />} />
-        </Routes>
-      </LayoutComponent>
+    <LayoutComponent
+      sideBarMenus={sideBarMenus}
+      navBarMenus={navBarMenus}
+      loggedInUser={loggedInUser}
+      commonNavBarMenus={commonNavBarMenus}
+    >
+      <Routes>
+        <Route path={API_ROUTES.LOGIN} element={<LoginContainer />} />
+        <Route path={API_ROUTES.LOGOUT} element={<LoginContainer />} />
+      </Routes>
+    </LayoutComponent>
   );
 }
-
-
 
 export default App;

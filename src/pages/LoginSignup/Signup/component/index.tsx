@@ -15,9 +15,7 @@ import { initialSignUpUserValues } from "../constant";
 import { signUpValidationSchema } from "../helpers";
 
 const SignupPageContainer = ({ toggleModal, isOpen: isModalOpen }: any) => {
-  const [serviceProviders, setServiceProviders] = useState<
-    IOption<string>[]
-  >();
+  const [serviceProviders, setServiceProviders] = useState<IOption<string>[]>();
 
   const { data: services } = useFetchServiceProviders();
 
@@ -51,7 +49,6 @@ const SignupPageContainer = ({ toggleModal, isOpen: isModalOpen }: any) => {
   });
 
   const onSubmit = (values: ISignupPayload) => {
-    console.log(values, "values");
     createSignupUser(values);
   };
 

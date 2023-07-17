@@ -11,29 +11,43 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { Grid } from "@mui/material";
 
-import AvatarImage from "../../assets/images/avatar-icon.jpeg";
-
 import "./styles/style.css";
 import { Link } from "react-router-dom";
 import SideBar from "../Sidebar/SideBar";
 import { useDispatch } from "react-redux";
 import { logoutStart } from "../../redux/actions/authActions";
+import { IRootState } from "../../redux/reducer/rootReducer";
 
-const sidebarMenu = [
-  "Dashboard",
-  " Carrier Details",
-  " Reports",
-  " Variance",
-  "File Status",
-  "Log Out",
-];
+interface ISideBarProps {
+  basicRoutes: {
+    path: string;
+    name: string;
+    icon: JSX.Element;
+  }[];
+  superAdmin: {
+    path: string;
+    name: string;
+    icon: JSX.Element;
+  }[];
+}
+
+interface ICommonNavbarProps {
+  login: {
+    path: string;
+    name: string;
+  }[];
+  logout: {
+    path: string;
+    name: string;
+  }[];
+}
 
 interface IProps {
   children?: React.ReactNode;
-  sideBarMenus: any;
+  sideBarMenus: ISideBarProps;
   navBarMenus: { path: string; name: string }[];
-  commonNavBarMenus: any;
-  loggedInUser: any;
+  commonNavBarMenus: ICommonNavbarProps;
+  loggedInUser: IRootState["AuthReducer"]["loggedInUser"];
 }
 
 const LayoutComponent = (props: IProps) => {
@@ -47,10 +61,7 @@ const LayoutComponent = (props: IProps) => {
   const dispatch = useDispatch();
   let sideBarMenu;
   let basicMenus;
-  console.log("In Layout", navBarMenus);
-  console.log(loggedInUser.type);
   if (loggedInUser?.type === "SUPERADMIN") {
-    console.log("IN Supperadmin");
     sideBarMenu = sideBarMenus.superAdmin;
   } else {
     sideBarMenu = sideBarMenus.basicRoutes;
@@ -61,8 +72,6 @@ const LayoutComponent = (props: IProps) => {
   } else {
     basicMenus = commonNavBarMenus.logout;
   }
-
-  console.log(sideBarMenu);
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
@@ -76,7 +85,6 @@ const LayoutComponent = (props: IProps) => {
       dispatch(logoutStart());
     } else return;
   };
-
 
   return (
     <div>
@@ -250,9 +258,7 @@ const LayoutComponent = (props: IProps) => {
           </Grid>
         )}
         <Grid item xs={10}>
-          <div>
-            {children}
-          </div>
+          <div>{children}</div>
         </Grid>
       </Grid>
     </div>

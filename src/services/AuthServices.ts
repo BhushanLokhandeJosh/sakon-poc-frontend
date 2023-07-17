@@ -12,9 +12,14 @@ export const getToken = () => {
 
 export const getUser = () => {
   const userString: string | null = sessionStorage.getItem("user");
-  if (userString) {
-    const user_detail = JSON.parse(userString);
-    return user_detail;
+  const tokenString: string | null = sessionStorage.getItem("token");
+  if (userString && tokenString) {
+    const userDetails = JSON.parse(userString);
+    const tokenDetails = JSON.parse(tokenString);
+    return {
+      userDetails,
+      tokenDetails,
+    };
   } else return;
 };
 
@@ -29,14 +34,13 @@ export const removeToken = () => {
 };
 
 export const checkAutoLogin = (dispatch: Dispatch<any>, navigate: any) => {
-  const tokenDetails = getToken();
-  const userDetails = getUser();
+  const response = getUser();
 
-  if (!tokenDetails) {
+  if (!response?.tokenDetails) {
     dispatch(logoutStart());
     navigate(API_ROUTES.LOGIN);
     return;
   } else {
-    dispatch(loginSuccess(userDetails, tokenDetails));
+    dispatch(loginSuccess(response?.userDetails, response?.tokenDetails));
   }
 };

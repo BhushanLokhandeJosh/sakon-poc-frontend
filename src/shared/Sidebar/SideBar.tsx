@@ -2,9 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import SidebarMenu from "./SidebarMenu";
 
-import { BiSearch } from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
 
 import "./sidebar.css";
@@ -47,82 +45,69 @@ const SideBar = ({ sideBarMenus }: any) => {
   };
 
   return (
-    <>
-      <div className="main-container">
-        <motion.div
-          animate={{
-            width: isOpen ? "13rem" : "4rem",
+    <div className="main-container">
+      <motion.div
+        animate={{
+          width: isOpen ? "13rem" : "4rem",
 
-            transition: {
-              duration: 0.5,
-              type: "spring",
-              damping: 10,
-            },
-          }}
-          className={`sidebar`}
-        >
-          <div className="top_section">
-            <AnimatePresence>
-              {isOpen && (
-                <motion.h1
-                  variants={showAnimation}
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  className="logo"
-                >
-                  BOT
-                </motion.h1>
-              )}
-            </AnimatePresence>
+          transition: {
+            duration: 0.5,
+            type: "spring",
+            damping: 10,
+          },
+        }}
+        className={`sidebar`}
+      >
+        <div className="top_section">
+          <AnimatePresence>
+            {isOpen && (
+              <motion.h1
+                variants={showAnimation}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                className="logo"
+              >
+                BOT
+              </motion.h1>
+            )}
+          </AnimatePresence>
 
-            <div className="bars">
-              <FaBars onClick={toggle} />
-            </div>
+          <div className="bars">
+            <FaBars onClick={toggle} />
           </div>
+        </div>
 
-          <section className="routes">
-            {sideBarMenus.map((route: any, index: any) => {
-              if (route.subRoutes) {
-                return (
-                  <SidebarMenu
-                    setIsOpen={setIsOpen}
-                    route={route}
-                    showAnimation={showAnimation}
-                    isOpen={isOpen}
-                  />
-                );
-              }
-
-              return (
-                <NavLink
-                  to={route.path}
-                  key={index}
-                  className="link"
-                  //@ts-ignore
-                  activeClassName="active"
-                >
-                  <div className="icon">{route.icon}</div>
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        variants={showAnimation}
-                        initial="hidden"
-                        animate="show"
-                        exit="hidden"
-                        className="link_text"
-                      >
-                        {route.name}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </NavLink>
-              );
-            })}
-          </section>
-        </motion.div>
-      </div>
-    </>
+        <section className="routes">
+          {sideBarMenus.map((route: any, index: any) => {
+            return (
+              <NavLink
+                to={route.path}
+                key={index}
+                className="link"
+                //@ts-ignore
+                activeClassName="active"
+              >
+                <div className="icon">{route.icon}</div>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      variants={showAnimation}
+                      initial="hidden"
+                      animate="show"
+                      exit="hidden"
+                      className="link_text"
+                    >
+                      {route.name}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </NavLink>
+            );
+          })}
+        </section>
+      </motion.div>
+    </div>
   );
 };
 

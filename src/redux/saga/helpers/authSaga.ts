@@ -9,8 +9,8 @@ import { loginSuccess, logoutSuccess } from "../../actions/authActions";
 import { saveToken } from "../../../services/AuthServices";
 
 interface ILogoutResponse {
-  status:number,
-  message:string
+  status: number;
+  message: string;
 }
 
 function* onLoginUserStartAsync(user: any) {
@@ -19,7 +19,6 @@ function* onLoginUserStartAsync(user: any) {
     const response: any = yield call(loginUserApi, user.payload.user);
 
     if (response.userdetails) {
-      console.log("Saga Service", response);
       yield delay(500);
       yield saveToken(response.userdetails, response.accesstoken);
       yield put(loginSuccess(response.userdetails, response.accesstoken));
@@ -32,15 +31,15 @@ function* onLoginUserStartAsync(user: any) {
 
 function* onLogoutUserStartAsync() {
   try {
-  const response:ILogoutResponse = yield call(signoutUserApi);
-  if (response.status === 200) {
-    console.log("In Logout Saga");
-    yield delay(500);
-    yield put(logoutSuccess());
-    yield toast.success(response.message);
-  }
+    const response: ILogoutResponse = yield call(signoutUserApi);
+    if (response.status === 200) {
+      yield delay(500);
+      yield put(logoutSuccess());
+      yield toast.success(response.message);
+    }
   } catch (error) {
     console.log(error);
+    // toast.error(error?.message);
   }
 }
 
