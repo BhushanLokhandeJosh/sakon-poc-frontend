@@ -35,9 +35,6 @@ interface IProps {
 //TODO : Visit and checkout all components and also see check whether it is
 //  responsiveness or not.
 const LayoutComponent = (props: IProps) => {
-  const { children } = props;
-  console.log(children)
-
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -195,7 +192,7 @@ const LayoutComponent = (props: IProps) => {
         </Grid>
         <Grid item xs={10}>
           <div>
-            <Outlet/>
+            <Outlet />
           </div>
         </Grid>
       </Grid>
