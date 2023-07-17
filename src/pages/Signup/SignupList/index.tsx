@@ -1,11 +1,9 @@
 import { useCallback, useState } from "react";
 import { GridCellParams } from "@mui/x-data-grid";
-import { Box } from "@mui/material";
 
 import useToggle from "../../../shared/CustomHooks/useToggle";
 
 import SignUpUserListing from "./component";
-import SignUpModal from "./component/SignUpModal";
 
 const SignupContainer = () => {
   const { isOpen, handleToggle } = useToggle();
@@ -16,14 +14,14 @@ const SignupContainer = () => {
       setSignupuser(undefined);
     }
     handleToggle();
-  }, [handleToggle, signupuser]);
+  }, [signupuser, handleToggle]);
 
   const handleEditSignup = useCallback(
     (value: GridCellParams) => {
       setSignupuser(value);
       handleToggle();
     },
-    [handleToggle, signupuser]
+    [setSignupuser]
   );
 
   return (

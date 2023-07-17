@@ -8,7 +8,6 @@ import { ISignupPayload } from "./SignupList/types";
 export const createSignup = (
   payload: any
 ): Promise<AxiosResponse<string, any>> => {
-  console.log(payload);
   return POST(`${API_ROUTES.SIGNUP}`, payload);
 };
 
@@ -19,7 +18,6 @@ export const getSignUpUserList = () => {
 export const updateSignUp = (
   payload: ISignupPayload
 ): Promise<AxiosResponse<string, any>> => {
-  console.log(payload, "id");
   return PUT(`${API_ROUTES.SIGNUP}/${payload.id}`, payload);
 };
 

@@ -21,5 +21,3 @@ export const PUT = (url: string, body: any) => {
   console.log(body, "body");
   return instance.put(url, body).then((res) => res.data);
 };
-
-//TODO -> Other API calls like GET,PUT,DELETE have yet to be implemented.

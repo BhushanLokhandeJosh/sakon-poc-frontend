@@ -73,9 +73,9 @@ export const SignUpUserColumns = (handleEditSignup: Function): GridColDef[] => {
       sortable: false,
       headerAlign: "center",
       align: "center",
-      renderCell: (params: IObjectWithAnyFields) => {
-        return <CustomColumnPopover arr={params?.row.service_providers} />;
-      },
+      renderCell: (params: IObjectWithAnyFields) => (
+        <CustomColumnPopover arr={params?.row.service_providers} />
+      ),
     },
     {
       field: "edit",
@@ -85,17 +85,13 @@ export const SignUpUserColumns = (handleEditSignup: Function): GridColDef[] => {
       headerAlign: "center",
       align: "center",
       width: 200,
-      renderCell: (params: GridCellParams) => {
-        return (
-          <>
-            <Tooltip title="Edit" placement="top">
-              <IconButton onClick={() => handleEditSignup(params.row)}>
-                <EditIcon />
-              </IconButton>
-            </Tooltip>
-          </>
-        );
-      },
+      renderCell: (params: GridCellParams) => (
+        <Tooltip title="Edit" placement="top">
+          <IconButton onClick={() => handleEditSignup(params.row)}>
+            <EditIcon />
+          </IconButton>
+        </Tooltip>
+      ),
     },
   ];
 };

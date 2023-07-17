@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 import FormikModalComponent from "../../../../shared/FormikModalComponent/component";
-import { IFormikProps } from "../../../../shared/types";
+import { IFormikProps, IOption } from "../../../../shared/types";
 import { ISignUpModalProps, ISignupPayload } from "../types";
 import {
   CREATE_ORGANIZATION_MESSAGE,
@@ -25,20 +25,13 @@ const SignUpModal = ({
   toggleModal,
   signupuser,
 }: ISignUpModalProps) => {
-  const [serviceProviders, setServiceProviders] = useState<
-    {
-      label: string;
-      value: string;
-    }[]
-  >();
+  const [serviceProviders, setServiceProviders] = useState<IOption<string>[]>();
 
   const { data: services } = useFetchServiceProviders();
 
   const queryClient = useQueryClient();
 
   const isEdit = signupuser ? true : false;
-
-  let updateSignupValues;
 
   useEffect(() => {
     if (!isEdit) {
@@ -67,16 +60,19 @@ const SignUpModal = ({
     }
   }, [services]);
 
-  if (isEdit) {
-    updateSignupValues = {
-      id: signupuser.id,
-      email: signupuser.email,
-      organization: signupuser.organization,
-      designation: signupuser.designation,
-      department_count: signupuser.department_count,
-      service_providers: signupuser.service_providers,
-    };
-  }
+  const updateSignupValues = useMemo(() => {
+    if (isEdit) {
+      const obj = {
+        id: signupuser.id,
+        email: signupuser.email,
+        organization: signupuser.organization,
+        designation: signupuser.designation,
+        department_count: signupuser.department_count,
+        service_providers: signupuser.service_providers,
+      };
+      return obj;
+    }
+  }, [isEdit, signupuser]);
 
   const onSuccess = async (values: AxiosResponse) => {
     isEdit
@@ -101,8 +97,17 @@ const SignUpModal = ({
     onError,
   });
 
-  const onSubmit = (values: any) => {
-    console.log(values, "values");
+  const signUpProps = isEdit
+    ? {
+        initialValue: updateSignupValues,
+        modalTitle: "Edit Enquiry",
+      }
+    : {
+        initialValue: initialSignUpUserValues,
+        modalTitle: "Create Enquiry",
+      };
+
+  const onSubmit = (values: ISignupPayload) => {
     !isEdit ? createSignupUser(values) : updateSignupUser(values);
   };
 
@@ -110,11 +115,11 @@ const SignUpModal = ({
     <FormikModalComponent
       isOpen={isModalOpen}
       toggleModal={toggleModal}
-      modalTitle={isEdit ? "Edit Enquiry" : "Create Enquiry"}
+      modalTitle={signUpProps.modalTitle}
       getFormBody={(formik: IFormikProps<ISignupPayload>) => (
         <SignUpUserForm formik={formik} serviceProviders={serviceProviders} />
       )}
-      initialValues={!isEdit ? initialSignUpUserValues : updateSignupValues}
+      initialValues={signUpProps.initialValue}
       validationSchema={signUpValidationSchema}
       onSubmit={onSubmit}
     />
