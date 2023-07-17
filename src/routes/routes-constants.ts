@@ -1,10 +1,10 @@
 export const API_ROUTES = {
-  CONFIGURATION: {
-    GET: "/configurations", // GET: "/configDetails",
-    CREATE: "/configurations",
-  },
-  DEPARTMENT_LIST: "/departments",
-  ORGANIZATION: {
-    CREATE: "/organizations",
-  },
+  CONFIGURATION: "/configurations",
+  DEPARTMENT: "/departments",
+  ORGANIZATION_LIST: "/organizations",
+  SERVICE_PROVIDERS: "/serviceprovider",
+  HOME: "/home",
+  LOGIN: "/login",
+  SIGNUP: "/signup",
+  LOGOUT: "/logout",
 };

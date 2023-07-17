@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, useMediaQuery } from "@mui/material";
 
 import { departmentValidationSchema } from "../helpers";
 import { IDepartmentFormProps, IDepartmentPayload } from "../types";
@@ -22,23 +22,40 @@ import {
 } from "../../department-hooks";
 import { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { useMemo } from "react";
+import { IRootState } from "../../../../redux/reducer/rootReducer";
 
 const DepartmentModal = (props: IDepartmentFormProps) => {
+  const { loggedInUser } = useSelector(
+    (state: IRootState) => state.AuthReducer
+  );
   const { isOpen, toggleModal, department } = props;
 
   const queryClient = useQueryClient();
 
   const isEdit = department ? true : false;
 
-  let updateDepartmentValues;
+  const updateDepartmentValues = useMemo(() => {
+    if (isEdit) {
+      const obj = {
+        id: department.id,
+        name: department.name,
+        org: department.org,
+      };
+      return obj;
+    }
+  }, [isEdit, department]);
 
-  if (isEdit) {
-    updateDepartmentValues = {
-      id: department.id,
-      name: department.name,
-      org: department.org,
-    };
-  }
+  const departmentProps = isEdit
+    ? {
+        initialValue: updateDepartmentValues,
+        modalTitle: "Edit Department",
+      }
+    : {
+        initialValue: initialDepartmentValues,
+        modalTitle: "Create Department",
+      };
 
   const onSuccess = async (values: AxiosResponse) => {
     isEdit
@@ -64,10 +81,7 @@ const DepartmentModal = (props: IDepartmentFormProps) => {
   });
 
   const onSubmit = (values: IDepartmentPayload) => {
-    //TODO : THIS ID BELONGS TO LOGGEDIN ADMIN ORAGANIZATIONS.(Hard Coded)
-    //when integrated with redux then loggedInUser organization id should be passed.
-    values.org = 1;
-    console.log("Values", values);
+    values.org = loggedInUser.org_id;
     !isEdit ? createDepartment(values) : updateDepartment(values);
   };
 
@@ -75,11 +89,11 @@ const DepartmentModal = (props: IDepartmentFormProps) => {
     <FormikModalComponent
       isOpen={isOpen}
       toggleModal={toggleModal}
-      modalTitle={isEdit ? "Edit Department" : "Create Department"}
+      modalTitle={departmentProps.modalTitle}
       getFormBody={(formik: IFormikProps<IDepartmentPayload>) => (
         <DepartmentForm formik={formik} />
       )}
-      initialValues={!isEdit ? initialDepartmentValues : updateDepartmentValues}
+      initialValues={departmentProps.initialValue}
       validationSchema={departmentValidationSchema}
       onSubmit={onSubmit}
     />

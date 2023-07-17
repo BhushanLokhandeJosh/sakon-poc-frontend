@@ -1,25 +1,30 @@
-import useToggle from "../../../shared/CustomHooks/useToggle";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { GridCellParams } from "@mui/x-data-grid";
+import { Box } from "@mui/material";
+
+import useToggle from "../../../shared/CustomHooks/useToggle";
+
 import DepartmentListing from "./component";
 import DepartmentModal from "./component/DepartmentModal";
-import { Box } from "@mui/material";
 
 const DepartmentContainer = () => {
   const { isOpen, handleToggle } = useToggle();
   const [department, setDepartment] = useState<any>();
 
-  const handleDepartmentReset = () => {
+  const handleDepartmentReset = useCallback(() => {
     if (department) {
       setDepartment(undefined);
     }
     handleToggle();
-  };
+  }, [department, handleToggle]);
 
-  const handleEditDepartment = (value: GridCellParams) => {
-    setDepartment(value);
-    handleToggle();
-  };
+  const handleEditDepartment = useCallback(
+    (value: GridCellParams) => {
+      setDepartment(value);
+      handleToggle();
+    },
+    [department]
+  );
 
   return (
     <Box>

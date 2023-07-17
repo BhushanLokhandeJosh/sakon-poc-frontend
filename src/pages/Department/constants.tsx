@@ -11,12 +11,16 @@ export const ERROR_MESSAGE = "Something Went Wrong...";
 
 export const GET_ALL_DEPARTMENT = "getAllDepartment";
 
+export const BUTTON_LABEL = "Create Department";
+
+export const PAGE_TITLE = "Department";
+
 export const initialDepartmentValues: IDepartmentPayload = {
   name: "",
   org: undefined,
 };
 
-export const DepartmentColumns = (
+export const departmentColumns = (
   handleEditDepartment: Function
 ): GridColDef[] => {
   return [
@@ -30,7 +34,7 @@ export const DepartmentColumns = (
     {
       field: "name",
       headerName: "Department Name",
-      width: 900,
+      width: 600,
       headerAlign: "center",
       align: "center",
     },
@@ -41,18 +45,14 @@ export const DepartmentColumns = (
       sortable: false,
       headerAlign: "center",
       align: "center",
-      width: 300,
-      renderCell: (params: GridCellParams) => {
-        return (
-          <>
-            <Tooltip title="Edit" placement="top">
-              <IconButton onClick={() => handleEditDepartment(params.row)}>
-                <EditIcon />
-              </IconButton>
-            </Tooltip>
-          </>
-        );
-      },
+      width: 350,
+      renderCell: (params: GridCellParams) => (
+        <Tooltip title="Edit" placement="top">
+          <IconButton onClick={() => handleEditDepartment(params.row)}>
+            <EditIcon />
+          </IconButton>
+        </Tooltip>
+      ),
     },
   ];
 };

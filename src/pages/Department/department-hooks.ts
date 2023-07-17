@@ -24,14 +24,17 @@ export const useCreateDepartment = (props: IResponseProps) => {
 
 export const useFetchDepartment = ({
   searchValue,
+  queryArguments,
 }: {
   searchValue?: string;
+  queryArguments?: any;
 }) => {
   const response = useQuery(GET_ALL_DEPARTMENT, () =>
-    getDepartment({ search: searchValue })
+    getDepartment({ search: searchValue, id: queryArguments })
   );
+
   return {
-    data: response?.data?.results,
+    data: response?.data?.department,
     isLoading: response.isLoading,
     isError: response.isError,
   };

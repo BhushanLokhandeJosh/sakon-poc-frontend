@@ -7,17 +7,16 @@ import { IDepartmentPayload } from "./DepartmentListing/types";
 export const createDepartment = (
   payload: IDepartmentPayload
 ): Promise<AxiosResponse<string, any>> => {
-  return POST(`${API_ROUTES.DEPARTMENT_LIST}`, payload);
+  return POST(`${API_ROUTES.DEPARTMENT}`, payload);
 };
 
-
 export const getDepartment = (params: any) => {
-  return GET(API_ROUTES.DEPARTMENT_LIST, params);
+  const { id, searchValue } = params;
+  return GET(`${API_ROUTES.DEPARTMENT}/${id}`, searchValue);
 };
 
 export const updateDepartment = (
   payload: IDepartmentPayload
 ): Promise<AxiosResponse<string, any>> => {
-  console.log("Updatedept", payload.id);
-  return PUT(`${API_ROUTES.DEPARTMENT_LIST}/${payload.id}`, payload);
+  return PUT(`${API_ROUTES.DEPARTMENT}/${payload.id}`, payload);
 };
