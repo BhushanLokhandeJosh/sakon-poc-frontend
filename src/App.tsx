@@ -4,13 +4,12 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 
 import LayoutComponent from "./shared/Navbar";
 import { sideBarMenus } from "./shared/Sidebar/constants";
-import LoginContainer from "./pages/LoginSignup";
 import { commonNavBarMenus, navBarMenus } from "./shared/Navbar/constants";
 
 import { checkAutoLogin } from "./services/AuthServices";
 import { IRootState } from "./redux/reducer/rootReducer";
 import { API_ROUTES } from "./routes/routes-constants";
-import { Box } from "@mui/material";
+import UserContainer from "./pages/User/UserListing";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,8 +32,7 @@ function App() {
       commonNavBarMenus={commonNavBarMenus}
     >
       <Routes>
-        <Route path={API_ROUTES.LOGIN} element={<LoginContainer />} />
-        <Route path={API_ROUTES.LOGOUT} element={<LoginContainer />} />
+        <Route path={API_ROUTES.USER_LISTING} element={<UserContainer />} />
       </Routes>
     </LayoutComponent>
   );
