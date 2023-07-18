@@ -1,7 +1,7 @@
 import { Form } from "formik";
 import { Grid, InputLabel } from "@mui/material";
 
-import { ADMIN, IUserPayload, SUPER_ADMIN } from "../types";
+import { ADMIN, IUserResponse, SUPER_ADMIN } from "../types";
 import { IFormikProps, INPUT_TYPE, IOption } from "../../../../shared/types";
 
 import "./styles/styles.css";
@@ -10,7 +10,7 @@ import Input from "../../../../shared/FormComponents/Input";
 import Select from "../../../../shared/FormComponents/Select";
 
 interface IOrganizationProps {
-  formik: IFormikProps<IUserPayload>;
+  formik: IFormikProps<IUserResponse>;
   departmentOptions?: IOption<string>[];
   organizationsOptions?: IOption<string>[];
   isEdit: boolean;
@@ -85,7 +85,7 @@ const UserForm = (props: IOrganizationProps): JSX.Element => {
             <Grid item lg={9} md={8} sm={8} xs={12}>
               <div>
                 <Select
-                  name="Department"
+                  name="department"
                   placeholder="Select Department"
                   options={departmentOptions}
                   className="multiselect-style"

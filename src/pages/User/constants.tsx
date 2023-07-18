@@ -10,7 +10,7 @@ export const initialUserValues: IUserResponse = {
   name: "",
   email: "",
   role: "",
-  Department: [],
+  department: [],
   org: 0,
 };
 
@@ -50,7 +50,7 @@ export const userColumns = (handleEditUser: Function): GridColDef[] => {
       align: "center",
     },
     {
-      field: "Department",
+      field: "department",
       headerName: "Department",
       width: 300,
       sortable: false,

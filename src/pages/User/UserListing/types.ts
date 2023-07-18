@@ -5,7 +5,7 @@ export interface IUserResponse {
   name: string;
   email: string;
   role: string;
-  Department: number[] | undefined;
+  department: number[] | undefined;
   org: number | undefined;
 }
 

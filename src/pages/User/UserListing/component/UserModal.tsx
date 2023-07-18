@@ -14,7 +14,6 @@ import {
   CREATE_USER_MESSAGE,
   ERROR_MESSAGE,
   GET_ALL_USER,
-  SUPERADMIN,
   UPDATE_USER_MESSAGE,
   initialUserValues,
 } from "../../constants";
@@ -119,7 +118,7 @@ const UserModal = ({ isOpen: isModalOpen, toggleModal, user }: any) => {
       if (values.role === ROLES.ADMIN) {
         delete values.org;
       } else if (values.role === ROLES.SUPERADMIN) {
-        delete values.Department;
+        delete values.department;
       }
       createUser(values);
     } else {
