@@ -11,6 +11,7 @@ import { checkAutoLogin } from "./services/AuthServices";
 import { IRootState } from "./redux/reducer/rootReducer";
 import { API_ROUTES } from "./routes/routes-constants";
 import { Box } from "@mui/material";
+import SignupContainer from "./pages/Signup/SignupList";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,8 +34,7 @@ function App() {
       commonNavBarMenus={commonNavBarMenus}
     >
       <Routes>
-        <Route path={API_ROUTES.LOGIN} element={<LoginContainer />} />
-        <Route path={API_ROUTES.LOGOUT} element={<LoginContainer />} />
+        <Route path={API_ROUTES.SIGNUP} element={<SignupContainer />} />
       </Routes>
     </LayoutComponent>
   );
