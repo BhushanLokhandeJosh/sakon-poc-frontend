@@ -8,7 +8,7 @@ export interface ISignupPayload {
 }
 
 export interface ISignUpModalProps {
-  isOpen: boolean;
+  isModalOpen: boolean;
   toggleModal: () => void;
-  signupuser: ISignupPayload;
+  signUpUser: ISignupPayload;
 }

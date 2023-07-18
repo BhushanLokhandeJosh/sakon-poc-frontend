@@ -15,8 +15,10 @@ interface IOrganizationProps {
 }
 
 const SignUpUserForm = (props: IOrganizationProps): JSX.Element => {
-  const { values } = props.formik;
-  const { serviceProviders } = props;
+  const {
+    serviceProviders,
+    formik: { values },
+  } = props;
 
   return (
     <Form>

@@ -6,7 +6,7 @@ import { API_ROUTES } from "../../routes/routes-constants";
 import { ISignupPayload } from "./SignupList/types";
 
 export const createSignup = (
-  payload: any
+  payload: ISignupPayload
 ): Promise<AxiosResponse<string, any>> => {
   return POST(`${API_ROUTES.SIGNUP}`, payload);
 };

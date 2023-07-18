@@ -7,21 +7,21 @@ import SignUpUserListing from "./component";
 
 const SignupContainer = () => {
   const { isOpen, handleToggle } = useToggle();
-  const [signupuser, setSignupuser] = useState<any>();
+  const [signUpUser, setSignUpUser] = useState<any>();
 
   const handleSignupReset = useCallback(() => {
-    if (signupuser) {
-      setSignupuser(undefined);
+    if (signUpUser) {
+      setSignUpUser(undefined);
     }
     handleToggle();
-  }, [signupuser, handleToggle]);
+  }, [signUpUser, handleToggle]);
 
   const handleEditSignup = useCallback(
     (value: GridCellParams) => {
-      setSignupuser(value);
+      setSignUpUser(value);
       handleToggle();
     },
-    [setSignupuser]
+    [setSignUpUser]
   );
 
   return (
