@@ -12,7 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Grid } from "@mui/material";
 
 import "./styles/style.css";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import SideBar from "../Sidebar/SideBar";
 import { useDispatch } from "react-redux";
 import { logoutStart } from "../../redux/actions/authActions";
@@ -258,7 +258,9 @@ const LayoutComponent = (props: IProps) => {
           </Grid>
         )}
         <Grid item xs={10}>
-          <div>{children}</div>
+          <div>
+            <Outlet />
+          </div>
         </Grid>
       </Grid>
     </div>

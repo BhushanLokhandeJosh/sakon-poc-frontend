@@ -10,7 +10,7 @@ import { commonNavBarMenus, navBarMenus } from "./shared/Navbar/constants";
 import { checkAutoLogin } from "./services/AuthServices";
 import { IRootState } from "./redux/reducer/rootReducer";
 import { API_ROUTES } from "./routes/routes-constants";
-import { Box } from "@mui/material";
+import DepartmentContainer from "./pages/Department/DepartmentListing";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,8 +33,7 @@ function App() {
       commonNavBarMenus={commonNavBarMenus}
     >
       <Routes>
-        <Route path={API_ROUTES.LOGIN} element={<LoginContainer />} />
-        <Route path={API_ROUTES.LOGOUT} element={<LoginContainer />} />
+        <Route path={API_ROUTES.DEPARTMENT} element={<DepartmentContainer />} />
       </Routes>
     </LayoutComponent>
   );
