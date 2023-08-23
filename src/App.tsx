@@ -12,6 +12,10 @@ import { IRootState } from "./redux/reducer/rootReducer";
 import { API_ROUTES } from "./routes/routes-constants";
 import { Box } from "@mui/material";
 
+import LayoutComponent from "./shared/Navbar";
+import ConfigurationsContainer from "./pages/Configuration/GetAllConfigurations";
+import { NAVIGATION_ROUTES } from "./shared/constants";
+
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,6 +39,13 @@ function App() {
       <Routes>
         <Route path={API_ROUTES.LOGIN} element={<LoginContainer />} />
         <Route path={API_ROUTES.LOGOUT} element={<LoginContainer />} />
+
+          <Route element={<LayoutComponent />}>
+            <Route
+              path={NAVIGATION_ROUTES.CONFIGURATION_LIST}
+              element={<ConfigurationsContainer />}
+            />
+          </Route>
       </Routes>
     </LayoutComponent>
   );

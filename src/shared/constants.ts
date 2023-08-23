@@ -16,3 +16,10 @@ export const API_ROUTES = {
 export const NAVIGATION_ROUTES = {
   SCHEDULING_LIST: "/schedulingList",
 };
+
+/**
+ *  All Navigation Routes
+ */
+export const NAVIGATION_ROUTES = {
+  CONFIGURATION_LIST: "/configurationList",
+};

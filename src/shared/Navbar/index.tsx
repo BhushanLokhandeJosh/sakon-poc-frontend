@@ -258,7 +258,9 @@ const LayoutComponent = (props: IProps) => {
           </Grid>
         )}
         <Grid item xs={10}>
-          <div>{children}</div>
+          <div>
+            <Outlet />
+          </div>
         </Grid>
       </Grid>
     </div>
