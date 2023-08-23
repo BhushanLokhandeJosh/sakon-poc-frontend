@@ -5,6 +5,18 @@ export const BUTTONS_LABLES = {
   REFRESH: "Refresh",
 };
 
+export const API_ROUTES = {
+  SCHEDULERS: {
+    GET: "/schedules",
+    CREATE: "/schedules",
+    PUT: "/schedules",
+  },
+};
+
+export const NAVIGATION_ROUTES = {
+  SCHEDULING_LIST: "/schedulingList",
+};
+
 /**
  *  All Navigation Routes
  */

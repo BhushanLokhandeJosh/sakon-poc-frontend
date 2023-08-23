@@ -1,0 +1,29 @@
+.login-page {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%;
+  align-items: center;
+  padding: 5rem;
+  border-radius: 8px;
+  background: linear-gradient(to right top, #aef0fa, #c4e0e5, #ffffff);
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.grid-align-style {
+  align-items: baseline;
+  padding: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.form-control {
+  width: 100%;
+  padding: 1rem 0.75rem;
+  text-align: left;
+  font-size: 1rem;
+  background-color: #f4f9fa;
+  border: 0.5px solid rgb(213, 212, 212);
+  border-radius: 0.5rem;
+}

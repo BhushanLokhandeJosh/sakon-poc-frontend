@@ -12,7 +12,7 @@ interface CommonProps {
   name: string;
   className?: string;
   placeholder?: string;
-  value: string | Blob;
+  value: string | Blob | number;
 }
 
 interface InputElementProps extends CommonProps {
